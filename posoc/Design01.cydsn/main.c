@@ -164,7 +164,8 @@ int main()
     CutReg.UnloadTime      =   500;
     /////////////////////////////////////////
     for(;;)
-    { 
+    {    
+        //增加了 配置回复模式 如果开始没有在上止点就进入此模式
          if(config_para.isConfig_para_state == EnterConfig &&!PumpSignal())
          { 
         //    LED_WRITE(0X01);                          //进入阀组配置状态后默认显示“快下”模式下状态
