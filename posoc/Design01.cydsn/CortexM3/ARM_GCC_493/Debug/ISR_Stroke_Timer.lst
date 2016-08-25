@@ -1,0 +1,2313 @@
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ISR_Stroke_Timer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.ISR_Stroke_Timer_Interrupt,"ax",%progbits
+  19              		.align	2
+  20              		.global	ISR_Stroke_Timer_Interrupt
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	ISR_Stroke_Timer_Interrupt, %function
+  24              	ISR_Stroke_Timer_Interrupt:
+  25              	.LFB66:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\ISR_Stroke_Timer.c"
+   1:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * File Name: ISR_Stroke_Timer.c  
+   3:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Version 1.70
+   4:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+   5:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Description:
+   6:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   API for controlling the state of an interrupt.
+   7:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+   8:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+   9:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Note:
+  10:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  11:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  18:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  19:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include <cydevice_trm.h>
+  20:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include <CyLib.h>
+  21:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include <ISR_Stroke_Timer.h>
+  22:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include "cyapicallbacks.h"
+  23:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  24:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #if !defined(ISR_Stroke_Timer__REMOVED) /* Check for removal by optimization */
+  25:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  26:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+  27:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Place your includes, defines and code here 
+  28:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************/
+  29:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /* `#START ISR_Stroke_Timer_intc` */
+  30:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include "product.h"
+  31:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include <ISR_Stroke_Timer.h>
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include "TestSlave.h"
+  33:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #include "canfestival.h"
+  34:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** static unsigned char count;
+  35:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****  int ISR_Stroke_Timer_states = 0;
+  36:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** static int time_count = 0;
+  37:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /* `#END` */
+  38:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  39:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #ifndef CYINT_IRQ_BASE
+  40:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #define CYINT_IRQ_BASE      16
+  41:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #endif /* CYINT_IRQ_BASE */
+  42:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #ifndef CYINT_VECT_TABLE
+  43:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #define CYINT_VECT_TABLE    ((cyisraddress **) CYREG_NVIC_VECT_OFFSET)
+  44:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** #endif /* CYINT_VECT_TABLE */
+  45:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  46:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /* Declared in startup, used to set unused interrupts to. */
+  47:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** CY_ISR_PROTO(IntDefaultHandler);
+  48:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  49:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  50:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_Start
+  52:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  54:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+  55:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  56:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  57:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  58:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  interrupt controller.
+  59:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  60:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:  
+  61:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+  62:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  63:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+  64:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+  65:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  66:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+  67:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_Start(void)
+  68:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+  69:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* For all we know the interrupt is active. */
+  70:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_Disable();
+  71:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  72:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Set the ISR to point to the ISR_Stroke_Timer Interrupt. */
+  73:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_SetVector(&ISR_Stroke_Timer_Interrupt);
+  74:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  75:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Set the priority. */
+  76:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_SetPriority((uint8)ISR_Stroke_Timer_INTC_PRIOR_NUMBER);
+  77:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  78:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Enable it. */
+  79:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_Enable();
+  80:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+  81:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  82:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+  83:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+  84:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_StartEx
+  85:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+  86:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+  87:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+  88:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  90:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  91:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  the interrupt to the interrupt controller.
+  92:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  
+  93:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  94:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  used to provide consistent definition across compilers:
+  95:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  
+  96:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *  Function definition example:
+  97:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   CY_ISR(MyISR)
+  98:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   {
+  99:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   }
+ 100:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Function prototype example:
+ 101:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   CY_ISR_PROTO(MyISR);
+ 102:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 103:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:  
+ 104:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 105:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 106:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 107:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 108:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 109:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 110:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_StartEx(cyisraddress address)
+ 111:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 112:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* For all we know the interrupt is active. */
+ 113:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_Disable();
+ 114:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 115:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Set the ISR to point to the ISR_Stroke_Timer Interrupt. */
+ 116:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_SetVector(address);
+ 117:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 118:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Set the priority. */
+ 119:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_SetPriority((uint8)ISR_Stroke_Timer_INTC_PRIOR_NUMBER);
+ 120:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 121:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Enable it. */
+ 122:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_Enable();
+ 123:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 124:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 125:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 126:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 127:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_Stop
+ 128:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 129:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 130:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 131:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Disables and removes the interrupt.
+ 132:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 133:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:  
+ 134:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 135:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 136:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 137:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 138:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 139:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 140:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_Stop(void)
+ 141:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 142:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Disable this interrupt. */
+ 143:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_Disable();
+ 144:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 145:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Set the ISR to point to the passive one. */
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 4
+
+
+ 146:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ISR_Stroke_Timer_SetVector(&IntDefaultHandler);
+ 147:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 148:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 149:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 150:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 151:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_Interrupt
+ 152:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 153:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 154:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 155:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   The default Interrupt Service Routine for ISR_Stroke_Timer.
+ 156:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 157:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Add custom code between the coments to keep the next version of this file
+ 158:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   from over writting your code.
+ 159:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 160:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:  
+ 161:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 162:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 163:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 164:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 165:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 166:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** CY_ISR(ISR_Stroke_Timer_Interrupt)
+ 167:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+  27              		.loc 1 167 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ 168:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     #ifdef ISR_Stroke_Timer_INTERRUPT_INTERRUPT_CALLBACK
+ 169:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****         ISR_Stroke_Timer_Interrupt_InterruptCallback();
+ 170:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     #endif /* ISR_Stroke_Timer_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 171:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 172:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /*  Place your Interrupt code here. */
+ 173:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* `#START ISR_Stroke_Timer_Interrupt` */
+ 174:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     Timer_1_ReadStatusRegister();
+  35              		.loc 1 174 0
+  36 0002 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
+  37              	.LVL0:
+ 175:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****    /* Toggle the LED */
+ 176:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     LED1_Write(~LED1_Read());
+  38              		.loc 1 176 0
+  39 0006 FFF7FEFF 		bl	LED1_Read
+  40              	.LVL1:
+  41 000a C043     		mvns	r0, r0
+  42 000c C0B2     		uxtb	r0, r0
+  43 000e FFF7FEFF 		bl	LED1_Write
+  44              	.LVL2:
+ 177:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     time_count++;
+  45              		.loc 1 177 0
+  46 0012 0E4A     		ldr	r2, .L4
+  47 0014 1368     		ldr	r3, [r2]
+  48 0016 0133     		adds	r3, r3, #1
+  49 0018 1360     		str	r3, [r2]
+ 178:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     if(time_count > 10 & ISR_Stroke_Timer_states == 0x00 )
+  50              		.loc 1 178 0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 5
+
+
+  51 001a 5268     		ldr	r2, [r2, #4]
+  52 001c 0A2B     		cmp	r3, #10
+  53 001e D4BF     		ite	le
+  54 0020 0023     		movle	r3, #0
+  55 0022 0123     		movgt	r3, #1
+  56 0024 002A     		cmp	r2, #0
+  57 0026 18BF     		it	ne
+  58 0028 0023     		movne	r3, #0
+  59 002a 23B1     		cbz	r3, .L2
+  60              	.LBB2:
+ 179:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     {
+ 180:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****         time_count = 0;
+  61              		.loc 1 180 0
+  62 002c 0022     		movs	r2, #0
+  63 002e 074B     		ldr	r3, .L4
+  64 0030 1A60     		str	r2, [r3]
+ 181:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****         timer_10ms();
+  65              		.loc 1 181 0
+  66 0032 FFF7FEFF 		bl	timer_10ms
+  67              	.LVL3:
+  68              	.L2:
+  69              	.LBE2:
+ 182:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     }
+ 183:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     TPDO_IN_Status = Read_Status_Reg;
+  70              		.loc 1 183 0
+  71 0036 FFF7FEFF 		bl	Status_Reg_1_Read
+  72              	.LVL4:
+  73 003a 60F07F00 		orn	r0, r0, #127
+  74 003e C043     		mvns	r0, r0
+  75 0040 034B     		ldr	r3, .L4+4
+  76 0042 1870     		strb	r0, [r3]
+ 184:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     timerForCan();
+  77              		.loc 1 184 0
+  78 0044 FFF7FEFF 		bl	timerForCan
+  79              	.LVL5:
+  80 0048 08BD     		pop	{r3, pc}
+  81              	.L5:
+  82 004a 00BF     		.align	2
+  83              	.L4:
+  84 004c 00000000 		.word	.LANCHOR0
+  85 0050 00000000 		.word	TPDO_IN_Status
+  86              		.cfi_endproc
+  87              	.LFE66:
+  88              		.size	ISR_Stroke_Timer_Interrupt, .-ISR_Stroke_Timer_Interrupt
+  89              		.section	.text.ISR_Stroke_Timer_SetVector,"ax",%progbits
+  90              		.align	2
+  91              		.global	ISR_Stroke_Timer_SetVector
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	ISR_Stroke_Timer_SetVector, %function
+  95              	ISR_Stroke_Timer_SetVector:
+  96              	.LFB67:
+ 185:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* `#END` */
+ 186:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 187:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 188:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 189:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 6
+
+
+ 190:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_SetVector
+ 191:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 192:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 193:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 194:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Change the ISR vector for the Interrupt. Note calling ISR_Stroke_Timer_Start
+ 195:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   will override any effect this method would have had. To set the vector 
+ 196:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   before the component has been started use ISR_Stroke_Timer_StartEx instead.
+ 197:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * 
+ 198:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 199:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   used to provide consistent definition across compilers:
+ 200:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 201:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Function definition example:
+ 202:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   CY_ISR(MyISR)
+ 203:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   {
+ 204:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   }
+ 205:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 206:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Function prototype example:
+ 207:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *     CY_ISR_PROTO(MyISR);
+ 208:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 209:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 210:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 211:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 212:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 213:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 214:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 215:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 216:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_SetVector(cyisraddress address)
+ 217:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+  97              		.loc 1 217 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102              	.LVL6:
+ 218:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     cyisraddress * ramVectorTable;
+ 219:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 220:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+ 103              		.loc 1 220 0
+ 104 0000 014B     		ldr	r3, .L7
+ 105 0002 1B68     		ldr	r3, [r3]
+ 106              	.LVL7:
+ 221:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 222:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)ISR_Stroke_Timer__INTC_NUMBER] = address;
+ 107              		.loc 1 222 0
+ 108 0004 1864     		str	r0, [r3, #64]
+ 109 0006 7047     		bx	lr
+ 110              	.L8:
+ 111              		.align	2
+ 112              	.L7:
+ 113 0008 08ED00E0 		.word	-536810232
+ 114              		.cfi_endproc
+ 115              	.LFE67:
+ 116              		.size	ISR_Stroke_Timer_SetVector, .-ISR_Stroke_Timer_SetVector
+ 117              		.section	.text.ISR_Stroke_Timer_GetVector,"ax",%progbits
+ 118              		.align	2
+ 119              		.global	ISR_Stroke_Timer_GetVector
+ 120              		.thumb
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 7
+
+
+ 121              		.thumb_func
+ 122              		.type	ISR_Stroke_Timer_GetVector, %function
+ 123              	ISR_Stroke_Timer_GetVector:
+ 124              	.LFB68:
+ 223:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 224:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 225:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 226:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 227:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_GetVector
+ 228:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 229:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 230:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 231:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 232:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 233:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 234:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 235:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 236:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 237:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Address of the ISR in the interrupt vector table.
+ 238:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 239:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 240:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** cyisraddress ISR_Stroke_Timer_GetVector(void)
+ 241:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 125              		.loc 1 241 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 242:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     cyisraddress * ramVectorTable;
+ 243:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 244:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+ 130              		.loc 1 244 0
+ 131 0000 014B     		ldr	r3, .L10
+ 132 0002 1B68     		ldr	r3, [r3]
+ 133              	.LVL8:
+ 245:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 246:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)ISR_Stroke_Timer__INTC_NUMBER];
+ 247:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 134              		.loc 1 247 0
+ 135 0004 186C     		ldr	r0, [r3, #64]
+ 136 0006 7047     		bx	lr
+ 137              	.L11:
+ 138              		.align	2
+ 139              	.L10:
+ 140 0008 08ED00E0 		.word	-536810232
+ 141              		.cfi_endproc
+ 142              	.LFE68:
+ 143              		.size	ISR_Stroke_Timer_GetVector, .-ISR_Stroke_Timer_GetVector
+ 144              		.section	.text.ISR_Stroke_Timer_SetPriority,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	ISR_Stroke_Timer_SetPriority
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.type	ISR_Stroke_Timer_SetPriority, %function
+ 150              	ISR_Stroke_Timer_SetPriority:
+ 151              	.LFB69:
+ 248:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 8
+
+
+ 249:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 250:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 251:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_SetPriority
+ 252:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 253:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 254:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 255:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Sets the Priority of the Interrupt. 
+ 256:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 257:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Note calling ISR_Stroke_Timer_Start or ISR_Stroke_Timer_StartEx will 
+ 258:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   override any effect this API would have had. This API should only be called
+ 259:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   after ISR_Stroke_Timer_Start or ISR_Stroke_Timer_StartEx has been called. 
+ 260:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 261:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Interrupt Editor.
+ 262:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 263:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 264:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 265:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 266:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 267:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 268:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *             PSoC 4: Priority is from 0 to 3.
+ 269:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 270:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 271:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 272:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 273:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 274:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_SetPriority(uint8 priority)
+ 275:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 152              		.loc 1 275 0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		@ link register save eliminated.
+ 157              	.LVL9:
+ 276:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     *ISR_Stroke_Timer_INTC_PRIOR = priority << 5;
+ 158              		.loc 1 276 0
+ 159 0000 4001     		lsls	r0, r0, #5
+ 160              	.LVL10:
+ 161 0002 C0B2     		uxtb	r0, r0
+ 162 0004 014B     		ldr	r3, .L13
+ 163 0006 1870     		strb	r0, [r3]
+ 164 0008 7047     		bx	lr
+ 165              	.L14:
+ 166 000a 00BF     		.align	2
+ 167              	.L13:
+ 168 000c 00E400E0 		.word	-536812544
+ 169              		.cfi_endproc
+ 170              	.LFE69:
+ 171              		.size	ISR_Stroke_Timer_SetPriority, .-ISR_Stroke_Timer_SetPriority
+ 172              		.section	.text.ISR_Stroke_Timer_GetPriority,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	ISR_Stroke_Timer_GetPriority
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.type	ISR_Stroke_Timer_GetPriority, %function
+ 178              	ISR_Stroke_Timer_GetPriority:
+ 179              	.LFB70:
+ 277:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 9
+
+
+ 278:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 279:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 280:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 281:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_GetPriority
+ 282:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 283:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 284:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 285:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Gets the Priority of the Interrupt.
+ 286:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 287:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 288:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 289:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 290:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 291:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Priority of the interrupt, 0 being the highest priority
+ 292:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 293:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *    PSoC 4: Priority is from 0 to 3.
+ 294:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 295:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 296:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** uint8 ISR_Stroke_Timer_GetPriority(void)
+ 297:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 180              		.loc 1 297 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 298:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     uint8 priority;
+ 299:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 300:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 301:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     priority = *ISR_Stroke_Timer_INTC_PRIOR >> 5;
+ 185              		.loc 1 301 0
+ 186 0000 014B     		ldr	r3, .L16
+ 187 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 188              	.LVL11:
+ 302:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 303:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     return priority;
+ 304:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 189              		.loc 1 304 0
+ 190 0004 4009     		lsrs	r0, r0, #5
+ 191              	.LVL12:
+ 192 0006 7047     		bx	lr
+ 193              	.L17:
+ 194              		.align	2
+ 195              	.L16:
+ 196 0008 00E400E0 		.word	-536812544
+ 197              		.cfi_endproc
+ 198              	.LFE70:
+ 199              		.size	ISR_Stroke_Timer_GetPriority, .-ISR_Stroke_Timer_GetPriority
+ 200              		.section	.text.ISR_Stroke_Timer_Enable,"ax",%progbits
+ 201              		.align	2
+ 202              		.global	ISR_Stroke_Timer_Enable
+ 203              		.thumb
+ 204              		.thumb_func
+ 205              		.type	ISR_Stroke_Timer_Enable, %function
+ 206              	ISR_Stroke_Timer_Enable:
+ 207              	.LFB71:
+ 305:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 306:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 10
+
+
+ 307:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 308:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_Enable
+ 309:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 310:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 311:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 312:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 313:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 314:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   function, which sets the vector and the priority, has been called.
+ 315:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 316:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 317:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 318:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 319:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 320:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 321:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 322:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 323:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_Enable(void)
+ 324:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 208              		.loc 1 324 0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 325:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Enable the general interrupt. */
+ 326:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     *ISR_Stroke_Timer_INTC_SET_EN = ISR_Stroke_Timer__INTC_MASK;
+ 213              		.loc 1 326 0
+ 214 0000 0122     		movs	r2, #1
+ 215 0002 014B     		ldr	r3, .L19
+ 216 0004 1A60     		str	r2, [r3]
+ 217 0006 7047     		bx	lr
+ 218              	.L20:
+ 219              		.align	2
+ 220              	.L19:
+ 221 0008 00E100E0 		.word	-536813312
+ 222              		.cfi_endproc
+ 223              	.LFE71:
+ 224              		.size	ISR_Stroke_Timer_Enable, .-ISR_Stroke_Timer_Enable
+ 225              		.section	.text.ISR_Stroke_Timer_GetState,"ax",%progbits
+ 226              		.align	2
+ 227              		.global	ISR_Stroke_Timer_GetState
+ 228              		.thumb
+ 229              		.thumb_func
+ 230              		.type	ISR_Stroke_Timer_GetState, %function
+ 231              	ISR_Stroke_Timer_GetState:
+ 232              	.LFB72:
+ 327:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 328:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 329:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 330:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 331:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_GetState
+ 332:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 333:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 334:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 335:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 336:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 337:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 338:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 11
+
+
+ 339:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 340:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 341:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   1 if enabled, 0 if disabled.
+ 342:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 343:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 344:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** uint8 ISR_Stroke_Timer_GetState(void)
+ 345:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 233              		.loc 1 345 0
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		@ link register save eliminated.
+ 346:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Get the state of the general interrupt. */
+ 347:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     return ((*ISR_Stroke_Timer_INTC_SET_EN & (uint32)ISR_Stroke_Timer__INTC_MASK) != 0u) ? 1u:0u;
+ 238              		.loc 1 347 0
+ 239 0000 024B     		ldr	r3, .L22
+ 240 0002 1868     		ldr	r0, [r3]
+ 348:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 241              		.loc 1 348 0
+ 242 0004 00F00100 		and	r0, r0, #1
+ 243 0008 7047     		bx	lr
+ 244              	.L23:
+ 245 000a 00BF     		.align	2
+ 246              	.L22:
+ 247 000c 00E100E0 		.word	-536813312
+ 248              		.cfi_endproc
+ 249              	.LFE72:
+ 250              		.size	ISR_Stroke_Timer_GetState, .-ISR_Stroke_Timer_GetState
+ 251              		.section	.text.ISR_Stroke_Timer_Disable,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	ISR_Stroke_Timer_Disable
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	ISR_Stroke_Timer_Disable, %function
+ 257              	ISR_Stroke_Timer_Disable:
+ 258              	.LFB73:
+ 349:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 350:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 351:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 352:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_Disable
+ 353:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 354:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 355:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 356:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Disables the Interrupt in the interrupt controller.
+ 357:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 358:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 359:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 360:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 361:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 362:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 363:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 364:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 365:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_Disable(void)
+ 366:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 259              		.loc 1 366 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 12
+
+
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 367:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Disable the general interrupt. */
+ 368:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     *ISR_Stroke_Timer_INTC_CLR_EN = ISR_Stroke_Timer__INTC_MASK;
+ 264              		.loc 1 368 0
+ 265 0000 0122     		movs	r2, #1
+ 266 0002 014B     		ldr	r3, .L25
+ 267 0004 1A60     		str	r2, [r3]
+ 268 0006 7047     		bx	lr
+ 269              	.L26:
+ 270              		.align	2
+ 271              	.L25:
+ 272 0008 80E100E0 		.word	-536813184
+ 273              		.cfi_endproc
+ 274              	.LFE73:
+ 275              		.size	ISR_Stroke_Timer_Disable, .-ISR_Stroke_Timer_Disable
+ 276              		.section	.text.ISR_Stroke_Timer_Start,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	ISR_Stroke_Timer_Start
+ 279              		.thumb
+ 280              		.thumb_func
+ 281              		.type	ISR_Stroke_Timer_Start, %function
+ 282              	ISR_Stroke_Timer_Start:
+ 283              	.LFB63:
+  68:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* For all we know the interrupt is active. */
+ 284              		.loc 1 68 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288 0000 08B5     		push	{r3, lr}
+ 289              		.cfi_def_cfa_offset 8
+ 290              		.cfi_offset 3, -8
+ 291              		.cfi_offset 14, -4
+  70:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 292              		.loc 1 70 0
+ 293 0002 FFF7FEFF 		bl	ISR_Stroke_Timer_Disable
+ 294              	.LVL13:
+  73:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 295              		.loc 1 73 0
+ 296 0006 0448     		ldr	r0, .L29
+ 297 0008 FFF7FEFF 		bl	ISR_Stroke_Timer_SetVector
+ 298              	.LVL14:
+  76:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 299              		.loc 1 76 0
+ 300 000c 0720     		movs	r0, #7
+ 301 000e FFF7FEFF 		bl	ISR_Stroke_Timer_SetPriority
+ 302              	.LVL15:
+  79:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 303              		.loc 1 79 0
+ 304 0012 FFF7FEFF 		bl	ISR_Stroke_Timer_Enable
+ 305              	.LVL16:
+ 306 0016 08BD     		pop	{r3, pc}
+ 307              	.L30:
+ 308              		.align	2
+ 309              	.L29:
+ 310 0018 00000000 		.word	ISR_Stroke_Timer_Interrupt
+ 311              		.cfi_endproc
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 13
+
+
+ 312              	.LFE63:
+ 313              		.size	ISR_Stroke_Timer_Start, .-ISR_Stroke_Timer_Start
+ 314              		.section	.text.ISR_Stroke_Timer_StartEx,"ax",%progbits
+ 315              		.align	2
+ 316              		.global	ISR_Stroke_Timer_StartEx
+ 317              		.thumb
+ 318              		.thumb_func
+ 319              		.type	ISR_Stroke_Timer_StartEx, %function
+ 320              	ISR_Stroke_Timer_StartEx:
+ 321              	.LFB64:
+ 111:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* For all we know the interrupt is active. */
+ 322              		.loc 1 111 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              	.LVL17:
+ 327 0000 10B5     		push	{r4, lr}
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 4, -8
+ 330              		.cfi_offset 14, -4
+ 331 0002 0446     		mov	r4, r0
+ 113:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 332              		.loc 1 113 0
+ 333 0004 FFF7FEFF 		bl	ISR_Stroke_Timer_Disable
+ 334              	.LVL18:
+ 116:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 335              		.loc 1 116 0
+ 336 0008 2046     		mov	r0, r4
+ 337 000a FFF7FEFF 		bl	ISR_Stroke_Timer_SetVector
+ 338              	.LVL19:
+ 119:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 339              		.loc 1 119 0
+ 340 000e 0720     		movs	r0, #7
+ 341 0010 FFF7FEFF 		bl	ISR_Stroke_Timer_SetPriority
+ 342              	.LVL20:
+ 122:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 343              		.loc 1 122 0
+ 344 0014 FFF7FEFF 		bl	ISR_Stroke_Timer_Enable
+ 345              	.LVL21:
+ 346 0018 10BD     		pop	{r4, pc}
+ 347              		.cfi_endproc
+ 348              	.LFE64:
+ 349              		.size	ISR_Stroke_Timer_StartEx, .-ISR_Stroke_Timer_StartEx
+ 350 001a 00BF     		.section	.text.ISR_Stroke_Timer_Stop,"ax",%progbits
+ 351              		.align	2
+ 352              		.global	ISR_Stroke_Timer_Stop
+ 353              		.thumb
+ 354              		.thumb_func
+ 355              		.type	ISR_Stroke_Timer_Stop, %function
+ 356              	ISR_Stroke_Timer_Stop:
+ 357              	.LFB65:
+ 141:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     /* Disable this interrupt. */
+ 358              		.loc 1 141 0
+ 359              		.cfi_startproc
+ 360              		@ args = 0, pretend = 0, frame = 0
+ 361              		@ frame_needed = 0, uses_anonymous_args = 0
+ 362 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 14
+
+
+ 363              		.cfi_def_cfa_offset 8
+ 364              		.cfi_offset 3, -8
+ 365              		.cfi_offset 14, -4
+ 143:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 366              		.loc 1 143 0
+ 367 0002 FFF7FEFF 		bl	ISR_Stroke_Timer_Disable
+ 368              	.LVL22:
+ 146:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 369              		.loc 1 146 0
+ 370 0006 0248     		ldr	r0, .L35
+ 371 0008 FFF7FEFF 		bl	ISR_Stroke_Timer_SetVector
+ 372              	.LVL23:
+ 373 000c 08BD     		pop	{r3, pc}
+ 374              	.L36:
+ 375 000e 00BF     		.align	2
+ 376              	.L35:
+ 377 0010 00000000 		.word	IntDefaultHandler
+ 378              		.cfi_endproc
+ 379              	.LFE65:
+ 380              		.size	ISR_Stroke_Timer_Stop, .-ISR_Stroke_Timer_Stop
+ 381              		.section	.text.ISR_Stroke_Timer_SetPending,"ax",%progbits
+ 382              		.align	2
+ 383              		.global	ISR_Stroke_Timer_SetPending
+ 384              		.thumb
+ 385              		.thumb_func
+ 386              		.type	ISR_Stroke_Timer_SetPending, %function
+ 387              	ISR_Stroke_Timer_SetPending:
+ 388              	.LFB74:
+ 369:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 370:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 371:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 372:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 373:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_SetPending
+ 374:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 375:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 376:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 377:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 378:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   generating the interrupt.
+ 379:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 380:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 381:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 382:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 383:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 384:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 385:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 386:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Side Effects:
+ 387:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 388:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 389:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   interrupts).
+ 390:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 391:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 392:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_SetPending(void)
+ 393:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 389              		.loc 1 393 0
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 15
+
+
+ 393              		@ link register save eliminated.
+ 394:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     *ISR_Stroke_Timer_INTC_SET_PD = ISR_Stroke_Timer__INTC_MASK;
+ 394              		.loc 1 394 0
+ 395 0000 0122     		movs	r2, #1
+ 396 0002 014B     		ldr	r3, .L38
+ 397 0004 1A60     		str	r2, [r3]
+ 398 0006 7047     		bx	lr
+ 399              	.L39:
+ 400              		.align	2
+ 401              	.L38:
+ 402 0008 00E200E0 		.word	-536813056
+ 403              		.cfi_endproc
+ 404              	.LFE74:
+ 405              		.size	ISR_Stroke_Timer_SetPending, .-ISR_Stroke_Timer_SetPending
+ 406              		.section	.text.ISR_Stroke_Timer_ClearPending,"ax",%progbits
+ 407              		.align	2
+ 408              		.global	ISR_Stroke_Timer_ClearPending
+ 409              		.thumb
+ 410              		.thumb_func
+ 411              		.type	ISR_Stroke_Timer_ClearPending, %function
+ 412              	ISR_Stroke_Timer_ClearPending:
+ 413              	.LFB75:
+ 395:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** }
+ 396:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 397:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** 
+ 398:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** /*******************************************************************************
+ 399:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Function Name: ISR_Stroke_Timer_ClearPending
+ 400:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** ********************************************************************************
+ 401:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 402:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Summary:
+ 403:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Clears a pending interrupt in the interrupt controller.
+ 404:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 405:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 406:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 407:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 408:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 409:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 410:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Parameters:
+ 411:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 412:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 413:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** * Return:
+ 414:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *   None
+ 415:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *
+ 416:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** *******************************************************************************/
+ 417:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** void ISR_Stroke_Timer_ClearPending(void)
+ 418:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c **** {
+ 414              		.loc 1 418 0
+ 415              		.cfi_startproc
+ 416              		@ args = 0, pretend = 0, frame = 0
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418              		@ link register save eliminated.
+ 419:.\Generated_Source\PSoC5/ISR_Stroke_Timer.c ****     *ISR_Stroke_Timer_INTC_CLR_PD = ISR_Stroke_Timer__INTC_MASK;
+ 419              		.loc 1 419 0
+ 420 0000 0122     		movs	r2, #1
+ 421 0002 014B     		ldr	r3, .L41
+ 422 0004 1A60     		str	r2, [r3]
+ 423 0006 7047     		bx	lr
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 16
+
+
+ 424              	.L42:
+ 425              		.align	2
+ 426              	.L41:
+ 427 0008 80E200E0 		.word	-536812928
+ 428              		.cfi_endproc
+ 429              	.LFE75:
+ 430              		.size	ISR_Stroke_Timer_ClearPending, .-ISR_Stroke_Timer_ClearPending
+ 431              		.global	ISR_Stroke_Timer_states
+ 432              		.bss
+ 433              		.align	2
+ 434              		.set	.LANCHOR0,. + 0
+ 435              		.type	time_count, %object
+ 436              		.size	time_count, 4
+ 437              	time_count:
+ 438 0000 00000000 		.space	4
+ 439              		.type	ISR_Stroke_Timer_states, %object
+ 440              		.size	ISR_Stroke_Timer_states, 4
+ 441              	ISR_Stroke_Timer_states:
+ 442 0004 00000000 		.space	4
+ 443              		.text
+ 444              	.Letext0:
+ 445              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 446              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 447              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 448              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 449              		.file 6 "./TestSlave.h"
+ 450              		.file 7 "Generated_Source\\PSoC5/Timer_1.h"
+ 451              		.file 8 "Generated_Source\\PSoC5/LED1.h"
+ 452              		.file 9 "Generated_Source\\PSoC5/Status_Reg_1.h"
+ 453              		.file 10 "./canfestival.h"
+ 454              		.section	.debug_info,"",%progbits
+ 455              	.Ldebug_info0:
+ 456 0000 CA030000 		.4byte	0x3ca
+ 457 0004 0400     		.2byte	0x4
+ 458 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 459 000a 04       		.byte	0x4
+ 460 000b 01       		.uleb128 0x1
+ 461 000c 2E020000 		.4byte	.LASF44
+ 462 0010 01       		.byte	0x1
+ 463 0011 4F010000 		.4byte	.LASF45
+ 464 0015 81000000 		.4byte	.LASF46
+ 465 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 466 001d 00000000 		.4byte	0
+ 467 0021 00000000 		.4byte	.Ldebug_line0
+ 468 0025 02       		.uleb128 0x2
+ 469 0026 04       		.byte	0x4
+ 470 0027 05       		.byte	0x5
+ 471 0028 696E7400 		.ascii	"int\000"
+ 472 002c 03       		.uleb128 0x3
+ 473 002d 04       		.byte	0x4
+ 474 002e 07       		.byte	0x7
+ 475 002f F5010000 		.4byte	.LASF0
+ 476 0033 03       		.uleb128 0x3
+ 477 0034 01       		.byte	0x1
+ 478 0035 06       		.byte	0x6
+ 479 0036 A9030000 		.4byte	.LASF1
+ 480 003a 03       		.uleb128 0x3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 17
+
+
+ 481 003b 01       		.byte	0x1
+ 482 003c 08       		.byte	0x8
+ 483 003d CA000000 		.4byte	.LASF2
+ 484 0041 03       		.uleb128 0x3
+ 485 0042 02       		.byte	0x2
+ 486 0043 05       		.byte	0x5
+ 487 0044 6C030000 		.4byte	.LASF3
+ 488 0048 03       		.uleb128 0x3
+ 489 0049 02       		.byte	0x2
+ 490 004a 07       		.byte	0x7
+ 491 004b 08010000 		.4byte	.LASF4
+ 492 004f 04       		.uleb128 0x4
+ 493 0050 4F000000 		.4byte	.LASF11
+ 494 0054 02       		.byte	0x2
+ 495 0055 3F       		.byte	0x3f
+ 496 0056 5A000000 		.4byte	0x5a
+ 497 005a 03       		.uleb128 0x3
+ 498 005b 04       		.byte	0x4
+ 499 005c 05       		.byte	0x5
+ 500 005d 59000000 		.4byte	.LASF5
+ 501 0061 03       		.uleb128 0x3
+ 502 0062 04       		.byte	0x4
+ 503 0063 07       		.byte	0x7
+ 504 0064 DD000000 		.4byte	.LASF6
+ 505 0068 03       		.uleb128 0x3
+ 506 0069 08       		.byte	0x8
+ 507 006a 05       		.byte	0x5
+ 508 006b 32030000 		.4byte	.LASF7
+ 509 006f 03       		.uleb128 0x3
+ 510 0070 08       		.byte	0x8
+ 511 0071 07       		.byte	0x7
+ 512 0072 0A020000 		.4byte	.LASF8
+ 513 0076 03       		.uleb128 0x3
+ 514 0077 04       		.byte	0x4
+ 515 0078 07       		.byte	0x7
+ 516 0079 1A030000 		.4byte	.LASF9
+ 517 007d 05       		.uleb128 0x5
+ 518 007e 04       		.byte	0x4
+ 519 007f 83000000 		.4byte	0x83
+ 520 0083 06       		.uleb128 0x6
+ 521 0084 03       		.uleb128 0x3
+ 522 0085 01       		.byte	0x1
+ 523 0086 08       		.byte	0x8
+ 524 0087 52030000 		.4byte	.LASF10
+ 525 008b 04       		.uleb128 0x4
+ 526 008c 12030000 		.4byte	.LASF12
+ 527 0090 03       		.byte	0x3
+ 528 0091 2C       		.byte	0x2c
+ 529 0092 4F000000 		.4byte	0x4f
+ 530 0096 04       		.uleb128 0x4
+ 531 0097 76030000 		.4byte	.LASF13
+ 532 009b 04       		.byte	0x4
+ 533 009c C2       		.byte	0xc2
+ 534 009d 3A000000 		.4byte	0x3a
+ 535 00a1 04       		.uleb128 0x4
+ 536 00a2 EE010000 		.4byte	.LASF14
+ 537 00a6 04       		.byte	0x4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 18
+
+
+ 538 00a7 C4       		.byte	0xc4
+ 539 00a8 61000000 		.4byte	0x61
+ 540 00ac 03       		.uleb128 0x3
+ 541 00ad 04       		.byte	0x4
+ 542 00ae 04       		.byte	0x4
+ 543 00af A9000000 		.4byte	.LASF15
+ 544 00b3 03       		.uleb128 0x3
+ 545 00b4 08       		.byte	0x8
+ 546 00b5 04       		.byte	0x4
+ 547 00b6 7A000000 		.4byte	.LASF16
+ 548 00ba 07       		.uleb128 0x7
+ 549 00bb D8000000 		.4byte	.LASF17
+ 550 00bf 04       		.byte	0x4
+ 551 00c0 6C01     		.2byte	0x16c
+ 552 00c2 C6000000 		.4byte	0xc6
+ 553 00c6 08       		.uleb128 0x8
+ 554 00c7 96000000 		.4byte	0x96
+ 555 00cb 07       		.uleb128 0x7
+ 556 00cc A3030000 		.4byte	.LASF18
+ 557 00d0 04       		.byte	0x4
+ 558 00d1 6E01     		.2byte	0x16e
+ 559 00d3 D7000000 		.4byte	0xd7
+ 560 00d7 08       		.uleb128 0x8
+ 561 00d8 A1000000 		.4byte	0xa1
+ 562 00dc 07       		.uleb128 0x7
+ 563 00dd 21020000 		.4byte	.LASF19
+ 564 00e1 04       		.byte	0x4
+ 565 00e2 7E01     		.2byte	0x17e
+ 566 00e4 7D000000 		.4byte	0x7d
+ 567 00e8 09       		.uleb128 0x9
+ 568 00e9 D3010000 		.4byte	.LASF20
+ 569 00ed 01       		.byte	0x1
+ 570 00ee A6       		.byte	0xa6
+ 571 00ef 00000000 		.4byte	.LFB66
+ 572 00f3 54000000 		.4byte	.LFE66-.LFB66
+ 573 00f7 01       		.uleb128 0x1
+ 574 00f8 9C       		.byte	0x9c
+ 575 00f9 53010000 		.4byte	0x153
+ 576 00fd 0A       		.uleb128 0xa
+ 577 00fe 2C000000 		.4byte	.LBB2
+ 578 0102 0A000000 		.4byte	.LBE2-.LBB2
+ 579 0106 25010000 		.4byte	0x125
+ 580 010a 0B       		.uleb128 0xb
+ 581 010b 1D000000 		.4byte	.LASF39
+ 582 010f 01       		.byte	0x1
+ 583 0110 B5       		.byte	0xb5
+ 584 0111 25000000 		.4byte	0x25
+ 585 0115 1B010000 		.4byte	0x11b
+ 586 0119 0C       		.uleb128 0xc
+ 587 011a 00       		.byte	0
+ 588 011b 0D       		.uleb128 0xd
+ 589 011c 36000000 		.4byte	.LVL3
+ 590 0120 81030000 		.4byte	0x381
+ 591 0124 00       		.byte	0
+ 592 0125 0D       		.uleb128 0xd
+ 593 0126 06000000 		.4byte	.LVL0
+ 594 012a 92030000 		.4byte	0x392
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 19
+
+
+ 595 012e 0D       		.uleb128 0xd
+ 596 012f 0A000000 		.4byte	.LVL1
+ 597 0133 9D030000 		.4byte	0x39d
+ 598 0137 0D       		.uleb128 0xd
+ 599 0138 12000000 		.4byte	.LVL2
+ 600 013c A8030000 		.4byte	0x3a8
+ 601 0140 0D       		.uleb128 0xd
+ 602 0141 3A000000 		.4byte	.LVL4
+ 603 0145 B9030000 		.4byte	0x3b9
+ 604 0149 0D       		.uleb128 0xd
+ 605 014a 48000000 		.4byte	.LVL5
+ 606 014e C4030000 		.4byte	0x3c4
+ 607 0152 00       		.byte	0
+ 608 0153 09       		.uleb128 0x9
+ 609 0154 AF000000 		.4byte	.LASF21
+ 610 0158 01       		.byte	0x1
+ 611 0159 D8       		.byte	0xd8
+ 612 015a 00000000 		.4byte	.LFB67
+ 613 015e 0C000000 		.4byte	.LFE67-.LFB67
+ 614 0162 01       		.uleb128 0x1
+ 615 0163 9C       		.byte	0x9c
+ 616 0164 83010000 		.4byte	0x183
+ 617 0168 0E       		.uleb128 0xe
+ 618 0169 02020000 		.4byte	.LASF24
+ 619 016d 01       		.byte	0x1
+ 620 016e D8       		.byte	0xd8
+ 621 016f DC000000 		.4byte	0xdc
+ 622 0173 01       		.uleb128 0x1
+ 623 0174 50       		.byte	0x50
+ 624 0175 0F       		.uleb128 0xf
+ 625 0176 57030000 		.4byte	.LASF22
+ 626 017a 01       		.byte	0x1
+ 627 017b DA       		.byte	0xda
+ 628 017c 83010000 		.4byte	0x183
+ 629 0180 01       		.uleb128 0x1
+ 630 0181 53       		.byte	0x53
+ 631 0182 00       		.byte	0
+ 632 0183 05       		.uleb128 0x5
+ 633 0184 04       		.byte	0x4
+ 634 0185 DC000000 		.4byte	0xdc
+ 635 0189 10       		.uleb128 0x10
+ 636 018a C7020000 		.4byte	.LASF26
+ 637 018e 01       		.byte	0x1
+ 638 018f F0       		.byte	0xf0
+ 639 0190 DC000000 		.4byte	0xdc
+ 640 0194 00000000 		.4byte	.LFB68
+ 641 0198 0C000000 		.4byte	.LFE68-.LFB68
+ 642 019c 01       		.uleb128 0x1
+ 643 019d 9C       		.byte	0x9c
+ 644 019e B0010000 		.4byte	0x1b0
+ 645 01a2 0F       		.uleb128 0xf
+ 646 01a3 57030000 		.4byte	.LASF22
+ 647 01a7 01       		.byte	0x1
+ 648 01a8 F2       		.byte	0xf2
+ 649 01a9 83010000 		.4byte	0x183
+ 650 01ad 01       		.uleb128 0x1
+ 651 01ae 53       		.byte	0x53
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 20
+
+
+ 652 01af 00       		.byte	0
+ 653 01b0 11       		.uleb128 0x11
+ 654 01b1 00000000 		.4byte	.LASF23
+ 655 01b5 01       		.byte	0x1
+ 656 01b6 1201     		.2byte	0x112
+ 657 01b8 00000000 		.4byte	.LFB69
+ 658 01bc 10000000 		.4byte	.LFE69-.LFB69
+ 659 01c0 01       		.uleb128 0x1
+ 660 01c1 9C       		.byte	0x9c
+ 661 01c2 D7010000 		.4byte	0x1d7
+ 662 01c6 12       		.uleb128 0x12
+ 663 01c7 B1010000 		.4byte	.LASF25
+ 664 01cb 01       		.byte	0x1
+ 665 01cc 1201     		.2byte	0x112
+ 666 01ce 96000000 		.4byte	0x96
+ 667 01d2 00000000 		.4byte	.LLST0
+ 668 01d6 00       		.byte	0
+ 669 01d7 13       		.uleb128 0x13
+ 670 01d8 32010000 		.4byte	.LASF27
+ 671 01dc 01       		.byte	0x1
+ 672 01dd 2801     		.2byte	0x128
+ 673 01df 96000000 		.4byte	0x96
+ 674 01e3 00000000 		.4byte	.LFB70
+ 675 01e7 0C000000 		.4byte	.LFE70-.LFB70
+ 676 01eb 01       		.uleb128 0x1
+ 677 01ec 9C       		.byte	0x9c
+ 678 01ed 02020000 		.4byte	0x202
+ 679 01f1 14       		.uleb128 0x14
+ 680 01f2 B1010000 		.4byte	.LASF25
+ 681 01f6 01       		.byte	0x1
+ 682 01f7 2A01     		.2byte	0x12a
+ 683 01f9 96000000 		.4byte	0x96
+ 684 01fd 21000000 		.4byte	.LLST1
+ 685 0201 00       		.byte	0
+ 686 0202 15       		.uleb128 0x15
+ 687 0203 62000000 		.4byte	.LASF28
+ 688 0207 01       		.byte	0x1
+ 689 0208 4301     		.2byte	0x143
+ 690 020a 00000000 		.4byte	.LFB71
+ 691 020e 0C000000 		.4byte	.LFE71-.LFB71
+ 692 0212 01       		.uleb128 0x1
+ 693 0213 9C       		.byte	0x9c
+ 694 0214 16       		.uleb128 0x16
+ 695 0215 E2020000 		.4byte	.LASF47
+ 696 0219 01       		.byte	0x1
+ 697 021a 5801     		.2byte	0x158
+ 698 021c 96000000 		.4byte	0x96
+ 699 0220 00000000 		.4byte	.LFB72
+ 700 0224 10000000 		.4byte	.LFE72-.LFB72
+ 701 0228 01       		.uleb128 0x1
+ 702 0229 9C       		.byte	0x9c
+ 703 022a 15       		.uleb128 0x15
+ 704 022b BA010000 		.4byte	.LASF29
+ 705 022f 01       		.byte	0x1
+ 706 0230 6D01     		.2byte	0x16d
+ 707 0232 00000000 		.4byte	.LFB73
+ 708 0236 0C000000 		.4byte	.LFE73-.LFB73
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 21
+
+
+ 709 023a 01       		.uleb128 0x1
+ 710 023b 9C       		.byte	0x9c
+ 711 023c 09       		.uleb128 0x9
+ 712 023d B5030000 		.4byte	.LASF30
+ 713 0241 01       		.byte	0x1
+ 714 0242 43       		.byte	0x43
+ 715 0243 00000000 		.4byte	.LFB63
+ 716 0247 1C000000 		.4byte	.LFE63-.LFB63
+ 717 024b 01       		.uleb128 0x1
+ 718 024c 9C       		.byte	0x9c
+ 719 024d 8E020000 		.4byte	0x28e
+ 720 0251 0D       		.uleb128 0xd
+ 721 0252 06000000 		.4byte	.LVL13
+ 722 0256 2A020000 		.4byte	0x22a
+ 723 025a 17       		.uleb128 0x17
+ 724 025b 0C000000 		.4byte	.LVL14
+ 725 025f 53010000 		.4byte	0x153
+ 726 0263 71020000 		.4byte	0x271
+ 727 0267 18       		.uleb128 0x18
+ 728 0268 01       		.uleb128 0x1
+ 729 0269 50       		.byte	0x50
+ 730 026a 05       		.uleb128 0x5
+ 731 026b 03       		.byte	0x3
+ 732 026c 00000000 		.4byte	ISR_Stroke_Timer_Interrupt
+ 733 0270 00       		.byte	0
+ 734 0271 17       		.uleb128 0x17
+ 735 0272 12000000 		.4byte	.LVL15
+ 736 0276 B0010000 		.4byte	0x1b0
+ 737 027a 84020000 		.4byte	0x284
+ 738 027e 18       		.uleb128 0x18
+ 739 027f 01       		.uleb128 0x1
+ 740 0280 50       		.byte	0x50
+ 741 0281 01       		.uleb128 0x1
+ 742 0282 37       		.byte	0x37
+ 743 0283 00       		.byte	0
+ 744 0284 0D       		.uleb128 0xd
+ 745 0285 16000000 		.4byte	.LVL16
+ 746 0289 02020000 		.4byte	0x202
+ 747 028d 00       		.byte	0
+ 748 028e 09       		.uleb128 0x9
+ 749 028f EF000000 		.4byte	.LASF31
+ 750 0293 01       		.byte	0x1
+ 751 0294 6E       		.byte	0x6e
+ 752 0295 00000000 		.4byte	.LFB64
+ 753 0299 1A000000 		.4byte	.LFE64-.LFB64
+ 754 029d 01       		.uleb128 0x1
+ 755 029e 9C       		.byte	0x9c
+ 756 029f EC020000 		.4byte	0x2ec
+ 757 02a3 19       		.uleb128 0x19
+ 758 02a4 02020000 		.4byte	.LASF24
+ 759 02a8 01       		.byte	0x1
+ 760 02a9 6E       		.byte	0x6e
+ 761 02aa DC000000 		.4byte	0xdc
+ 762 02ae 38000000 		.4byte	.LLST2
+ 763 02b2 0D       		.uleb128 0xd
+ 764 02b3 08000000 		.4byte	.LVL18
+ 765 02b7 2A020000 		.4byte	0x22a
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 22
+
+
+ 766 02bb 17       		.uleb128 0x17
+ 767 02bc 0E000000 		.4byte	.LVL19
+ 768 02c0 53010000 		.4byte	0x153
+ 769 02c4 CF020000 		.4byte	0x2cf
+ 770 02c8 18       		.uleb128 0x18
+ 771 02c9 01       		.uleb128 0x1
+ 772 02ca 50       		.byte	0x50
+ 773 02cb 02       		.uleb128 0x2
+ 774 02cc 74       		.byte	0x74
+ 775 02cd 00       		.sleb128 0
+ 776 02ce 00       		.byte	0
+ 777 02cf 17       		.uleb128 0x17
+ 778 02d0 14000000 		.4byte	.LVL20
+ 779 02d4 B0010000 		.4byte	0x1b0
+ 780 02d8 E2020000 		.4byte	0x2e2
+ 781 02dc 18       		.uleb128 0x18
+ 782 02dd 01       		.uleb128 0x1
+ 783 02de 50       		.byte	0x50
+ 784 02df 01       		.uleb128 0x1
+ 785 02e0 37       		.byte	0x37
+ 786 02e1 00       		.byte	0
+ 787 02e2 0D       		.uleb128 0xd
+ 788 02e3 18000000 		.4byte	.LVL21
+ 789 02e7 02020000 		.4byte	0x202
+ 790 02eb 00       		.byte	0
+ 791 02ec 09       		.uleb128 0x9
+ 792 02ed FC020000 		.4byte	.LASF32
+ 793 02f1 01       		.byte	0x1
+ 794 02f2 8C       		.byte	0x8c
+ 795 02f3 00000000 		.4byte	.LFB65
+ 796 02f7 14000000 		.4byte	.LFE65-.LFB65
+ 797 02fb 01       		.uleb128 0x1
+ 798 02fc 9C       		.byte	0x9c
+ 799 02fd 14030000 		.4byte	0x314
+ 800 0301 0D       		.uleb128 0xd
+ 801 0302 06000000 		.4byte	.LVL22
+ 802 0306 2A020000 		.4byte	0x22a
+ 803 030a 0D       		.uleb128 0xd
+ 804 030b 0C000000 		.4byte	.LVL23
+ 805 030f 53010000 		.4byte	0x153
+ 806 0313 00       		.byte	0
+ 807 0314 15       		.uleb128 0x15
+ 808 0315 33000000 		.4byte	.LASF33
+ 809 0319 01       		.byte	0x1
+ 810 031a 8801     		.2byte	0x188
+ 811 031c 00000000 		.4byte	.LFB74
+ 812 0320 0C000000 		.4byte	.LFE74-.LFB74
+ 813 0324 01       		.uleb128 0x1
+ 814 0325 9C       		.byte	0x9c
+ 815 0326 15       		.uleb128 0x15
+ 816 0327 7B010000 		.4byte	.LASF34
+ 817 032b 01       		.byte	0x1
+ 818 032c A101     		.2byte	0x1a1
+ 819 032e 00000000 		.4byte	.LFB75
+ 820 0332 0C000000 		.4byte	.LFE75-.LFB75
+ 821 0336 01       		.uleb128 0x1
+ 822 0337 9C       		.byte	0x9c
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 23
+
+
+ 823 0338 1A       		.uleb128 0x1a
+ 824 0339 66030000 		.4byte	.LASF48
+ 825 033d 01       		.byte	0x1
+ 826 033e 22       		.byte	0x22
+ 827 033f 3A000000 		.4byte	0x3a
+ 828 0343 0F       		.uleb128 0xf
+ 829 0344 BC020000 		.4byte	.LASF35
+ 830 0348 01       		.byte	0x1
+ 831 0349 24       		.byte	0x24
+ 832 034a 25000000 		.4byte	0x25
+ 833 034e 05       		.uleb128 0x5
+ 834 034f 03       		.byte	0x3
+ 835 0350 00000000 		.4byte	time_count
+ 836 0354 1B       		.uleb128 0x1b
+ 837 0355 25010000 		.4byte	.LASF36
+ 838 0359 05       		.byte	0x5
+ 839 035a 2A06     		.2byte	0x62a
+ 840 035c 60030000 		.4byte	0x360
+ 841 0360 08       		.uleb128 0x8
+ 842 0361 8B000000 		.4byte	0x8b
+ 843 0365 1C       		.uleb128 0x1c
+ 844 0366 23030000 		.4byte	.LASF37
+ 845 036a 06       		.byte	0x6
+ 846 036b 09       		.byte	0x9
+ 847 036c 3A000000 		.4byte	0x3a
+ 848 0370 1D       		.uleb128 0x1d
+ 849 0371 99010000 		.4byte	.LASF38
+ 850 0375 01       		.byte	0x1
+ 851 0376 23       		.byte	0x23
+ 852 0377 25000000 		.4byte	0x25
+ 853 037b 05       		.uleb128 0x5
+ 854 037c 03       		.byte	0x3
+ 855 037d 00000000 		.4byte	ISR_Stroke_Timer_states
+ 856 0381 0B       		.uleb128 0xb
+ 857 0382 1D000000 		.4byte	.LASF39
+ 858 0386 01       		.byte	0x1
+ 859 0387 B5       		.byte	0xb5
+ 860 0388 25000000 		.4byte	0x25
+ 861 038c 92030000 		.4byte	0x392
+ 862 0390 0C       		.uleb128 0xc
+ 863 0391 00       		.byte	0
+ 864 0392 1E       		.uleb128 0x1e
+ 865 0393 7C030000 		.4byte	.LASF40
+ 866 0397 07       		.byte	0x7
+ 867 0398 5E       		.byte	0x5e
+ 868 0399 96000000 		.4byte	0x96
+ 869 039d 1E       		.uleb128 0x1e
+ 870 039e 1B010000 		.4byte	.LASF41
+ 871 03a2 08       		.byte	0x8
+ 872 03a3 2B       		.byte	0x2b
+ 873 03a4 96000000 		.4byte	0x96
+ 874 03a8 1F       		.uleb128 0x1f
+ 875 03a9 28000000 		.4byte	.LASF42
+ 876 03ad 08       		.byte	0x8
+ 877 03ae 28       		.byte	0x28
+ 878 03af B9030000 		.4byte	0x3b9
+ 879 03b3 20       		.uleb128 0x20
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 24
+
+
+ 880 03b4 96000000 		.4byte	0x96
+ 881 03b8 00       		.byte	0
+ 882 03b9 1E       		.uleb128 0x1e
+ 883 03ba 40030000 		.4byte	.LASF43
+ 884 03be 09       		.byte	0x9
+ 885 03bf 28       		.byte	0x28
+ 886 03c0 96000000 		.4byte	0x96
+ 887 03c4 21       		.uleb128 0x21
+ 888 03c5 97030000 		.4byte	.LASF49
+ 889 03c9 0A       		.byte	0xa
+ 890 03ca 47       		.byte	0x47
+ 891 03cb 0C       		.uleb128 0xc
+ 892 03cc 00       		.byte	0
+ 893 03cd 00       		.byte	0
+ 894              		.section	.debug_abbrev,"",%progbits
+ 895              	.Ldebug_abbrev0:
+ 896 0000 01       		.uleb128 0x1
+ 897 0001 11       		.uleb128 0x11
+ 898 0002 01       		.byte	0x1
+ 899 0003 25       		.uleb128 0x25
+ 900 0004 0E       		.uleb128 0xe
+ 901 0005 13       		.uleb128 0x13
+ 902 0006 0B       		.uleb128 0xb
+ 903 0007 03       		.uleb128 0x3
+ 904 0008 0E       		.uleb128 0xe
+ 905 0009 1B       		.uleb128 0x1b
+ 906 000a 0E       		.uleb128 0xe
+ 907 000b 55       		.uleb128 0x55
+ 908 000c 17       		.uleb128 0x17
+ 909 000d 11       		.uleb128 0x11
+ 910 000e 01       		.uleb128 0x1
+ 911 000f 10       		.uleb128 0x10
+ 912 0010 17       		.uleb128 0x17
+ 913 0011 00       		.byte	0
+ 914 0012 00       		.byte	0
+ 915 0013 02       		.uleb128 0x2
+ 916 0014 24       		.uleb128 0x24
+ 917 0015 00       		.byte	0
+ 918 0016 0B       		.uleb128 0xb
+ 919 0017 0B       		.uleb128 0xb
+ 920 0018 3E       		.uleb128 0x3e
+ 921 0019 0B       		.uleb128 0xb
+ 922 001a 03       		.uleb128 0x3
+ 923 001b 08       		.uleb128 0x8
+ 924 001c 00       		.byte	0
+ 925 001d 00       		.byte	0
+ 926 001e 03       		.uleb128 0x3
+ 927 001f 24       		.uleb128 0x24
+ 928 0020 00       		.byte	0
+ 929 0021 0B       		.uleb128 0xb
+ 930 0022 0B       		.uleb128 0xb
+ 931 0023 3E       		.uleb128 0x3e
+ 932 0024 0B       		.uleb128 0xb
+ 933 0025 03       		.uleb128 0x3
+ 934 0026 0E       		.uleb128 0xe
+ 935 0027 00       		.byte	0
+ 936 0028 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 25
+
+
+ 937 0029 04       		.uleb128 0x4
+ 938 002a 16       		.uleb128 0x16
+ 939 002b 00       		.byte	0
+ 940 002c 03       		.uleb128 0x3
+ 941 002d 0E       		.uleb128 0xe
+ 942 002e 3A       		.uleb128 0x3a
+ 943 002f 0B       		.uleb128 0xb
+ 944 0030 3B       		.uleb128 0x3b
+ 945 0031 0B       		.uleb128 0xb
+ 946 0032 49       		.uleb128 0x49
+ 947 0033 13       		.uleb128 0x13
+ 948 0034 00       		.byte	0
+ 949 0035 00       		.byte	0
+ 950 0036 05       		.uleb128 0x5
+ 951 0037 0F       		.uleb128 0xf
+ 952 0038 00       		.byte	0
+ 953 0039 0B       		.uleb128 0xb
+ 954 003a 0B       		.uleb128 0xb
+ 955 003b 49       		.uleb128 0x49
+ 956 003c 13       		.uleb128 0x13
+ 957 003d 00       		.byte	0
+ 958 003e 00       		.byte	0
+ 959 003f 06       		.uleb128 0x6
+ 960 0040 15       		.uleb128 0x15
+ 961 0041 00       		.byte	0
+ 962 0042 27       		.uleb128 0x27
+ 963 0043 19       		.uleb128 0x19
+ 964 0044 00       		.byte	0
+ 965 0045 00       		.byte	0
+ 966 0046 07       		.uleb128 0x7
+ 967 0047 16       		.uleb128 0x16
+ 968 0048 00       		.byte	0
+ 969 0049 03       		.uleb128 0x3
+ 970 004a 0E       		.uleb128 0xe
+ 971 004b 3A       		.uleb128 0x3a
+ 972 004c 0B       		.uleb128 0xb
+ 973 004d 3B       		.uleb128 0x3b
+ 974 004e 05       		.uleb128 0x5
+ 975 004f 49       		.uleb128 0x49
+ 976 0050 13       		.uleb128 0x13
+ 977 0051 00       		.byte	0
+ 978 0052 00       		.byte	0
+ 979 0053 08       		.uleb128 0x8
+ 980 0054 35       		.uleb128 0x35
+ 981 0055 00       		.byte	0
+ 982 0056 49       		.uleb128 0x49
+ 983 0057 13       		.uleb128 0x13
+ 984 0058 00       		.byte	0
+ 985 0059 00       		.byte	0
+ 986 005a 09       		.uleb128 0x9
+ 987 005b 2E       		.uleb128 0x2e
+ 988 005c 01       		.byte	0x1
+ 989 005d 3F       		.uleb128 0x3f
+ 990 005e 19       		.uleb128 0x19
+ 991 005f 03       		.uleb128 0x3
+ 992 0060 0E       		.uleb128 0xe
+ 993 0061 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 26
+
+
+ 994 0062 0B       		.uleb128 0xb
+ 995 0063 3B       		.uleb128 0x3b
+ 996 0064 0B       		.uleb128 0xb
+ 997 0065 27       		.uleb128 0x27
+ 998 0066 19       		.uleb128 0x19
+ 999 0067 11       		.uleb128 0x11
+ 1000 0068 01       		.uleb128 0x1
+ 1001 0069 12       		.uleb128 0x12
+ 1002 006a 06       		.uleb128 0x6
+ 1003 006b 40       		.uleb128 0x40
+ 1004 006c 18       		.uleb128 0x18
+ 1005 006d 9742     		.uleb128 0x2117
+ 1006 006f 19       		.uleb128 0x19
+ 1007 0070 01       		.uleb128 0x1
+ 1008 0071 13       		.uleb128 0x13
+ 1009 0072 00       		.byte	0
+ 1010 0073 00       		.byte	0
+ 1011 0074 0A       		.uleb128 0xa
+ 1012 0075 0B       		.uleb128 0xb
+ 1013 0076 01       		.byte	0x1
+ 1014 0077 11       		.uleb128 0x11
+ 1015 0078 01       		.uleb128 0x1
+ 1016 0079 12       		.uleb128 0x12
+ 1017 007a 06       		.uleb128 0x6
+ 1018 007b 01       		.uleb128 0x1
+ 1019 007c 13       		.uleb128 0x13
+ 1020 007d 00       		.byte	0
+ 1021 007e 00       		.byte	0
+ 1022 007f 0B       		.uleb128 0xb
+ 1023 0080 2E       		.uleb128 0x2e
+ 1024 0081 01       		.byte	0x1
+ 1025 0082 3F       		.uleb128 0x3f
+ 1026 0083 19       		.uleb128 0x19
+ 1027 0084 03       		.uleb128 0x3
+ 1028 0085 0E       		.uleb128 0xe
+ 1029 0086 3A       		.uleb128 0x3a
+ 1030 0087 0B       		.uleb128 0xb
+ 1031 0088 3B       		.uleb128 0x3b
+ 1032 0089 0B       		.uleb128 0xb
+ 1033 008a 49       		.uleb128 0x49
+ 1034 008b 13       		.uleb128 0x13
+ 1035 008c 3C       		.uleb128 0x3c
+ 1036 008d 19       		.uleb128 0x19
+ 1037 008e 01       		.uleb128 0x1
+ 1038 008f 13       		.uleb128 0x13
+ 1039 0090 00       		.byte	0
+ 1040 0091 00       		.byte	0
+ 1041 0092 0C       		.uleb128 0xc
+ 1042 0093 18       		.uleb128 0x18
+ 1043 0094 00       		.byte	0
+ 1044 0095 00       		.byte	0
+ 1045 0096 00       		.byte	0
+ 1046 0097 0D       		.uleb128 0xd
+ 1047 0098 898201   		.uleb128 0x4109
+ 1048 009b 00       		.byte	0
+ 1049 009c 11       		.uleb128 0x11
+ 1050 009d 01       		.uleb128 0x1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 27
+
+
+ 1051 009e 31       		.uleb128 0x31
+ 1052 009f 13       		.uleb128 0x13
+ 1053 00a0 00       		.byte	0
+ 1054 00a1 00       		.byte	0
+ 1055 00a2 0E       		.uleb128 0xe
+ 1056 00a3 05       		.uleb128 0x5
+ 1057 00a4 00       		.byte	0
+ 1058 00a5 03       		.uleb128 0x3
+ 1059 00a6 0E       		.uleb128 0xe
+ 1060 00a7 3A       		.uleb128 0x3a
+ 1061 00a8 0B       		.uleb128 0xb
+ 1062 00a9 3B       		.uleb128 0x3b
+ 1063 00aa 0B       		.uleb128 0xb
+ 1064 00ab 49       		.uleb128 0x49
+ 1065 00ac 13       		.uleb128 0x13
+ 1066 00ad 02       		.uleb128 0x2
+ 1067 00ae 18       		.uleb128 0x18
+ 1068 00af 00       		.byte	0
+ 1069 00b0 00       		.byte	0
+ 1070 00b1 0F       		.uleb128 0xf
+ 1071 00b2 34       		.uleb128 0x34
+ 1072 00b3 00       		.byte	0
+ 1073 00b4 03       		.uleb128 0x3
+ 1074 00b5 0E       		.uleb128 0xe
+ 1075 00b6 3A       		.uleb128 0x3a
+ 1076 00b7 0B       		.uleb128 0xb
+ 1077 00b8 3B       		.uleb128 0x3b
+ 1078 00b9 0B       		.uleb128 0xb
+ 1079 00ba 49       		.uleb128 0x49
+ 1080 00bb 13       		.uleb128 0x13
+ 1081 00bc 02       		.uleb128 0x2
+ 1082 00bd 18       		.uleb128 0x18
+ 1083 00be 00       		.byte	0
+ 1084 00bf 00       		.byte	0
+ 1085 00c0 10       		.uleb128 0x10
+ 1086 00c1 2E       		.uleb128 0x2e
+ 1087 00c2 01       		.byte	0x1
+ 1088 00c3 3F       		.uleb128 0x3f
+ 1089 00c4 19       		.uleb128 0x19
+ 1090 00c5 03       		.uleb128 0x3
+ 1091 00c6 0E       		.uleb128 0xe
+ 1092 00c7 3A       		.uleb128 0x3a
+ 1093 00c8 0B       		.uleb128 0xb
+ 1094 00c9 3B       		.uleb128 0x3b
+ 1095 00ca 0B       		.uleb128 0xb
+ 1096 00cb 27       		.uleb128 0x27
+ 1097 00cc 19       		.uleb128 0x19
+ 1098 00cd 49       		.uleb128 0x49
+ 1099 00ce 13       		.uleb128 0x13
+ 1100 00cf 11       		.uleb128 0x11
+ 1101 00d0 01       		.uleb128 0x1
+ 1102 00d1 12       		.uleb128 0x12
+ 1103 00d2 06       		.uleb128 0x6
+ 1104 00d3 40       		.uleb128 0x40
+ 1105 00d4 18       		.uleb128 0x18
+ 1106 00d5 9742     		.uleb128 0x2117
+ 1107 00d7 19       		.uleb128 0x19
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 28
+
+
+ 1108 00d8 01       		.uleb128 0x1
+ 1109 00d9 13       		.uleb128 0x13
+ 1110 00da 00       		.byte	0
+ 1111 00db 00       		.byte	0
+ 1112 00dc 11       		.uleb128 0x11
+ 1113 00dd 2E       		.uleb128 0x2e
+ 1114 00de 01       		.byte	0x1
+ 1115 00df 3F       		.uleb128 0x3f
+ 1116 00e0 19       		.uleb128 0x19
+ 1117 00e1 03       		.uleb128 0x3
+ 1118 00e2 0E       		.uleb128 0xe
+ 1119 00e3 3A       		.uleb128 0x3a
+ 1120 00e4 0B       		.uleb128 0xb
+ 1121 00e5 3B       		.uleb128 0x3b
+ 1122 00e6 05       		.uleb128 0x5
+ 1123 00e7 27       		.uleb128 0x27
+ 1124 00e8 19       		.uleb128 0x19
+ 1125 00e9 11       		.uleb128 0x11
+ 1126 00ea 01       		.uleb128 0x1
+ 1127 00eb 12       		.uleb128 0x12
+ 1128 00ec 06       		.uleb128 0x6
+ 1129 00ed 40       		.uleb128 0x40
+ 1130 00ee 18       		.uleb128 0x18
+ 1131 00ef 9742     		.uleb128 0x2117
+ 1132 00f1 19       		.uleb128 0x19
+ 1133 00f2 01       		.uleb128 0x1
+ 1134 00f3 13       		.uleb128 0x13
+ 1135 00f4 00       		.byte	0
+ 1136 00f5 00       		.byte	0
+ 1137 00f6 12       		.uleb128 0x12
+ 1138 00f7 05       		.uleb128 0x5
+ 1139 00f8 00       		.byte	0
+ 1140 00f9 03       		.uleb128 0x3
+ 1141 00fa 0E       		.uleb128 0xe
+ 1142 00fb 3A       		.uleb128 0x3a
+ 1143 00fc 0B       		.uleb128 0xb
+ 1144 00fd 3B       		.uleb128 0x3b
+ 1145 00fe 05       		.uleb128 0x5
+ 1146 00ff 49       		.uleb128 0x49
+ 1147 0100 13       		.uleb128 0x13
+ 1148 0101 02       		.uleb128 0x2
+ 1149 0102 17       		.uleb128 0x17
+ 1150 0103 00       		.byte	0
+ 1151 0104 00       		.byte	0
+ 1152 0105 13       		.uleb128 0x13
+ 1153 0106 2E       		.uleb128 0x2e
+ 1154 0107 01       		.byte	0x1
+ 1155 0108 3F       		.uleb128 0x3f
+ 1156 0109 19       		.uleb128 0x19
+ 1157 010a 03       		.uleb128 0x3
+ 1158 010b 0E       		.uleb128 0xe
+ 1159 010c 3A       		.uleb128 0x3a
+ 1160 010d 0B       		.uleb128 0xb
+ 1161 010e 3B       		.uleb128 0x3b
+ 1162 010f 05       		.uleb128 0x5
+ 1163 0110 27       		.uleb128 0x27
+ 1164 0111 19       		.uleb128 0x19
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 29
+
+
+ 1165 0112 49       		.uleb128 0x49
+ 1166 0113 13       		.uleb128 0x13
+ 1167 0114 11       		.uleb128 0x11
+ 1168 0115 01       		.uleb128 0x1
+ 1169 0116 12       		.uleb128 0x12
+ 1170 0117 06       		.uleb128 0x6
+ 1171 0118 40       		.uleb128 0x40
+ 1172 0119 18       		.uleb128 0x18
+ 1173 011a 9742     		.uleb128 0x2117
+ 1174 011c 19       		.uleb128 0x19
+ 1175 011d 01       		.uleb128 0x1
+ 1176 011e 13       		.uleb128 0x13
+ 1177 011f 00       		.byte	0
+ 1178 0120 00       		.byte	0
+ 1179 0121 14       		.uleb128 0x14
+ 1180 0122 34       		.uleb128 0x34
+ 1181 0123 00       		.byte	0
+ 1182 0124 03       		.uleb128 0x3
+ 1183 0125 0E       		.uleb128 0xe
+ 1184 0126 3A       		.uleb128 0x3a
+ 1185 0127 0B       		.uleb128 0xb
+ 1186 0128 3B       		.uleb128 0x3b
+ 1187 0129 05       		.uleb128 0x5
+ 1188 012a 49       		.uleb128 0x49
+ 1189 012b 13       		.uleb128 0x13
+ 1190 012c 02       		.uleb128 0x2
+ 1191 012d 17       		.uleb128 0x17
+ 1192 012e 00       		.byte	0
+ 1193 012f 00       		.byte	0
+ 1194 0130 15       		.uleb128 0x15
+ 1195 0131 2E       		.uleb128 0x2e
+ 1196 0132 00       		.byte	0
+ 1197 0133 3F       		.uleb128 0x3f
+ 1198 0134 19       		.uleb128 0x19
+ 1199 0135 03       		.uleb128 0x3
+ 1200 0136 0E       		.uleb128 0xe
+ 1201 0137 3A       		.uleb128 0x3a
+ 1202 0138 0B       		.uleb128 0xb
+ 1203 0139 3B       		.uleb128 0x3b
+ 1204 013a 05       		.uleb128 0x5
+ 1205 013b 27       		.uleb128 0x27
+ 1206 013c 19       		.uleb128 0x19
+ 1207 013d 11       		.uleb128 0x11
+ 1208 013e 01       		.uleb128 0x1
+ 1209 013f 12       		.uleb128 0x12
+ 1210 0140 06       		.uleb128 0x6
+ 1211 0141 40       		.uleb128 0x40
+ 1212 0142 18       		.uleb128 0x18
+ 1213 0143 9742     		.uleb128 0x2117
+ 1214 0145 19       		.uleb128 0x19
+ 1215 0146 00       		.byte	0
+ 1216 0147 00       		.byte	0
+ 1217 0148 16       		.uleb128 0x16
+ 1218 0149 2E       		.uleb128 0x2e
+ 1219 014a 00       		.byte	0
+ 1220 014b 3F       		.uleb128 0x3f
+ 1221 014c 19       		.uleb128 0x19
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 30
+
+
+ 1222 014d 03       		.uleb128 0x3
+ 1223 014e 0E       		.uleb128 0xe
+ 1224 014f 3A       		.uleb128 0x3a
+ 1225 0150 0B       		.uleb128 0xb
+ 1226 0151 3B       		.uleb128 0x3b
+ 1227 0152 05       		.uleb128 0x5
+ 1228 0153 27       		.uleb128 0x27
+ 1229 0154 19       		.uleb128 0x19
+ 1230 0155 49       		.uleb128 0x49
+ 1231 0156 13       		.uleb128 0x13
+ 1232 0157 11       		.uleb128 0x11
+ 1233 0158 01       		.uleb128 0x1
+ 1234 0159 12       		.uleb128 0x12
+ 1235 015a 06       		.uleb128 0x6
+ 1236 015b 40       		.uleb128 0x40
+ 1237 015c 18       		.uleb128 0x18
+ 1238 015d 9742     		.uleb128 0x2117
+ 1239 015f 19       		.uleb128 0x19
+ 1240 0160 00       		.byte	0
+ 1241 0161 00       		.byte	0
+ 1242 0162 17       		.uleb128 0x17
+ 1243 0163 898201   		.uleb128 0x4109
+ 1244 0166 01       		.byte	0x1
+ 1245 0167 11       		.uleb128 0x11
+ 1246 0168 01       		.uleb128 0x1
+ 1247 0169 31       		.uleb128 0x31
+ 1248 016a 13       		.uleb128 0x13
+ 1249 016b 01       		.uleb128 0x1
+ 1250 016c 13       		.uleb128 0x13
+ 1251 016d 00       		.byte	0
+ 1252 016e 00       		.byte	0
+ 1253 016f 18       		.uleb128 0x18
+ 1254 0170 8A8201   		.uleb128 0x410a
+ 1255 0173 00       		.byte	0
+ 1256 0174 02       		.uleb128 0x2
+ 1257 0175 18       		.uleb128 0x18
+ 1258 0176 9142     		.uleb128 0x2111
+ 1259 0178 18       		.uleb128 0x18
+ 1260 0179 00       		.byte	0
+ 1261 017a 00       		.byte	0
+ 1262 017b 19       		.uleb128 0x19
+ 1263 017c 05       		.uleb128 0x5
+ 1264 017d 00       		.byte	0
+ 1265 017e 03       		.uleb128 0x3
+ 1266 017f 0E       		.uleb128 0xe
+ 1267 0180 3A       		.uleb128 0x3a
+ 1268 0181 0B       		.uleb128 0xb
+ 1269 0182 3B       		.uleb128 0x3b
+ 1270 0183 0B       		.uleb128 0xb
+ 1271 0184 49       		.uleb128 0x49
+ 1272 0185 13       		.uleb128 0x13
+ 1273 0186 02       		.uleb128 0x2
+ 1274 0187 17       		.uleb128 0x17
+ 1275 0188 00       		.byte	0
+ 1276 0189 00       		.byte	0
+ 1277 018a 1A       		.uleb128 0x1a
+ 1278 018b 34       		.uleb128 0x34
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 31
+
+
+ 1279 018c 00       		.byte	0
+ 1280 018d 03       		.uleb128 0x3
+ 1281 018e 0E       		.uleb128 0xe
+ 1282 018f 3A       		.uleb128 0x3a
+ 1283 0190 0B       		.uleb128 0xb
+ 1284 0191 3B       		.uleb128 0x3b
+ 1285 0192 0B       		.uleb128 0xb
+ 1286 0193 49       		.uleb128 0x49
+ 1287 0194 13       		.uleb128 0x13
+ 1288 0195 00       		.byte	0
+ 1289 0196 00       		.byte	0
+ 1290 0197 1B       		.uleb128 0x1b
+ 1291 0198 34       		.uleb128 0x34
+ 1292 0199 00       		.byte	0
+ 1293 019a 03       		.uleb128 0x3
+ 1294 019b 0E       		.uleb128 0xe
+ 1295 019c 3A       		.uleb128 0x3a
+ 1296 019d 0B       		.uleb128 0xb
+ 1297 019e 3B       		.uleb128 0x3b
+ 1298 019f 05       		.uleb128 0x5
+ 1299 01a0 49       		.uleb128 0x49
+ 1300 01a1 13       		.uleb128 0x13
+ 1301 01a2 3F       		.uleb128 0x3f
+ 1302 01a3 19       		.uleb128 0x19
+ 1303 01a4 3C       		.uleb128 0x3c
+ 1304 01a5 19       		.uleb128 0x19
+ 1305 01a6 00       		.byte	0
+ 1306 01a7 00       		.byte	0
+ 1307 01a8 1C       		.uleb128 0x1c
+ 1308 01a9 34       		.uleb128 0x34
+ 1309 01aa 00       		.byte	0
+ 1310 01ab 03       		.uleb128 0x3
+ 1311 01ac 0E       		.uleb128 0xe
+ 1312 01ad 3A       		.uleb128 0x3a
+ 1313 01ae 0B       		.uleb128 0xb
+ 1314 01af 3B       		.uleb128 0x3b
+ 1315 01b0 0B       		.uleb128 0xb
+ 1316 01b1 49       		.uleb128 0x49
+ 1317 01b2 13       		.uleb128 0x13
+ 1318 01b3 3F       		.uleb128 0x3f
+ 1319 01b4 19       		.uleb128 0x19
+ 1320 01b5 3C       		.uleb128 0x3c
+ 1321 01b6 19       		.uleb128 0x19
+ 1322 01b7 00       		.byte	0
+ 1323 01b8 00       		.byte	0
+ 1324 01b9 1D       		.uleb128 0x1d
+ 1325 01ba 34       		.uleb128 0x34
+ 1326 01bb 00       		.byte	0
+ 1327 01bc 03       		.uleb128 0x3
+ 1328 01bd 0E       		.uleb128 0xe
+ 1329 01be 3A       		.uleb128 0x3a
+ 1330 01bf 0B       		.uleb128 0xb
+ 1331 01c0 3B       		.uleb128 0x3b
+ 1332 01c1 0B       		.uleb128 0xb
+ 1333 01c2 49       		.uleb128 0x49
+ 1334 01c3 13       		.uleb128 0x13
+ 1335 01c4 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 32
+
+
+ 1336 01c5 19       		.uleb128 0x19
+ 1337 01c6 02       		.uleb128 0x2
+ 1338 01c7 18       		.uleb128 0x18
+ 1339 01c8 00       		.byte	0
+ 1340 01c9 00       		.byte	0
+ 1341 01ca 1E       		.uleb128 0x1e
+ 1342 01cb 2E       		.uleb128 0x2e
+ 1343 01cc 00       		.byte	0
+ 1344 01cd 3F       		.uleb128 0x3f
+ 1345 01ce 19       		.uleb128 0x19
+ 1346 01cf 03       		.uleb128 0x3
+ 1347 01d0 0E       		.uleb128 0xe
+ 1348 01d1 3A       		.uleb128 0x3a
+ 1349 01d2 0B       		.uleb128 0xb
+ 1350 01d3 3B       		.uleb128 0x3b
+ 1351 01d4 0B       		.uleb128 0xb
+ 1352 01d5 27       		.uleb128 0x27
+ 1353 01d6 19       		.uleb128 0x19
+ 1354 01d7 49       		.uleb128 0x49
+ 1355 01d8 13       		.uleb128 0x13
+ 1356 01d9 3C       		.uleb128 0x3c
+ 1357 01da 19       		.uleb128 0x19
+ 1358 01db 00       		.byte	0
+ 1359 01dc 00       		.byte	0
+ 1360 01dd 1F       		.uleb128 0x1f
+ 1361 01de 2E       		.uleb128 0x2e
+ 1362 01df 01       		.byte	0x1
+ 1363 01e0 3F       		.uleb128 0x3f
+ 1364 01e1 19       		.uleb128 0x19
+ 1365 01e2 03       		.uleb128 0x3
+ 1366 01e3 0E       		.uleb128 0xe
+ 1367 01e4 3A       		.uleb128 0x3a
+ 1368 01e5 0B       		.uleb128 0xb
+ 1369 01e6 3B       		.uleb128 0x3b
+ 1370 01e7 0B       		.uleb128 0xb
+ 1371 01e8 27       		.uleb128 0x27
+ 1372 01e9 19       		.uleb128 0x19
+ 1373 01ea 3C       		.uleb128 0x3c
+ 1374 01eb 19       		.uleb128 0x19
+ 1375 01ec 01       		.uleb128 0x1
+ 1376 01ed 13       		.uleb128 0x13
+ 1377 01ee 00       		.byte	0
+ 1378 01ef 00       		.byte	0
+ 1379 01f0 20       		.uleb128 0x20
+ 1380 01f1 05       		.uleb128 0x5
+ 1381 01f2 00       		.byte	0
+ 1382 01f3 49       		.uleb128 0x49
+ 1383 01f4 13       		.uleb128 0x13
+ 1384 01f5 00       		.byte	0
+ 1385 01f6 00       		.byte	0
+ 1386 01f7 21       		.uleb128 0x21
+ 1387 01f8 2E       		.uleb128 0x2e
+ 1388 01f9 01       		.byte	0x1
+ 1389 01fa 3F       		.uleb128 0x3f
+ 1390 01fb 19       		.uleb128 0x19
+ 1391 01fc 03       		.uleb128 0x3
+ 1392 01fd 0E       		.uleb128 0xe
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 33
+
+
+ 1393 01fe 3A       		.uleb128 0x3a
+ 1394 01ff 0B       		.uleb128 0xb
+ 1395 0200 3B       		.uleb128 0x3b
+ 1396 0201 0B       		.uleb128 0xb
+ 1397 0202 3C       		.uleb128 0x3c
+ 1398 0203 19       		.uleb128 0x19
+ 1399 0204 00       		.byte	0
+ 1400 0205 00       		.byte	0
+ 1401 0206 00       		.byte	0
+ 1402              		.section	.debug_loc,"",%progbits
+ 1403              	.Ldebug_loc0:
+ 1404              	.LLST0:
+ 1405 0000 00000000 		.4byte	.LVL9
+ 1406 0004 02000000 		.4byte	.LVL10
+ 1407 0008 0100     		.2byte	0x1
+ 1408 000a 50       		.byte	0x50
+ 1409 000b 02000000 		.4byte	.LVL10
+ 1410 000f 10000000 		.4byte	.LFE69
+ 1411 0013 0400     		.2byte	0x4
+ 1412 0015 F3       		.byte	0xf3
+ 1413 0016 01       		.uleb128 0x1
+ 1414 0017 50       		.byte	0x50
+ 1415 0018 9F       		.byte	0x9f
+ 1416 0019 00000000 		.4byte	0
+ 1417 001d 00000000 		.4byte	0
+ 1418              	.LLST1:
+ 1419 0021 04000000 		.4byte	.LVL11
+ 1420 0025 06000000 		.4byte	.LVL12
+ 1421 0029 0500     		.2byte	0x5
+ 1422 002b 70       		.byte	0x70
+ 1423 002c 00       		.sleb128 0
+ 1424 002d 35       		.byte	0x35
+ 1425 002e 25       		.byte	0x25
+ 1426 002f 9F       		.byte	0x9f
+ 1427 0030 00000000 		.4byte	0
+ 1428 0034 00000000 		.4byte	0
+ 1429              	.LLST2:
+ 1430 0038 00000000 		.4byte	.LVL17
+ 1431 003c 07000000 		.4byte	.LVL18-1
+ 1432 0040 0100     		.2byte	0x1
+ 1433 0042 50       		.byte	0x50
+ 1434 0043 07000000 		.4byte	.LVL18-1
+ 1435 0047 1A000000 		.4byte	.LFE64
+ 1436 004b 0100     		.2byte	0x1
+ 1437 004d 54       		.byte	0x54
+ 1438 004e 00000000 		.4byte	0
+ 1439 0052 00000000 		.4byte	0
+ 1440              		.section	.debug_aranges,"",%progbits
+ 1441 0000 7C000000 		.4byte	0x7c
+ 1442 0004 0200     		.2byte	0x2
+ 1443 0006 00000000 		.4byte	.Ldebug_info0
+ 1444 000a 04       		.byte	0x4
+ 1445 000b 00       		.byte	0
+ 1446 000c 0000     		.2byte	0
+ 1447 000e 0000     		.2byte	0
+ 1448 0010 00000000 		.4byte	.LFB66
+ 1449 0014 54000000 		.4byte	.LFE66-.LFB66
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 34
+
+
+ 1450 0018 00000000 		.4byte	.LFB67
+ 1451 001c 0C000000 		.4byte	.LFE67-.LFB67
+ 1452 0020 00000000 		.4byte	.LFB68
+ 1453 0024 0C000000 		.4byte	.LFE68-.LFB68
+ 1454 0028 00000000 		.4byte	.LFB69
+ 1455 002c 10000000 		.4byte	.LFE69-.LFB69
+ 1456 0030 00000000 		.4byte	.LFB70
+ 1457 0034 0C000000 		.4byte	.LFE70-.LFB70
+ 1458 0038 00000000 		.4byte	.LFB71
+ 1459 003c 0C000000 		.4byte	.LFE71-.LFB71
+ 1460 0040 00000000 		.4byte	.LFB72
+ 1461 0044 10000000 		.4byte	.LFE72-.LFB72
+ 1462 0048 00000000 		.4byte	.LFB73
+ 1463 004c 0C000000 		.4byte	.LFE73-.LFB73
+ 1464 0050 00000000 		.4byte	.LFB63
+ 1465 0054 1C000000 		.4byte	.LFE63-.LFB63
+ 1466 0058 00000000 		.4byte	.LFB64
+ 1467 005c 1A000000 		.4byte	.LFE64-.LFB64
+ 1468 0060 00000000 		.4byte	.LFB65
+ 1469 0064 14000000 		.4byte	.LFE65-.LFB65
+ 1470 0068 00000000 		.4byte	.LFB74
+ 1471 006c 0C000000 		.4byte	.LFE74-.LFB74
+ 1472 0070 00000000 		.4byte	.LFB75
+ 1473 0074 0C000000 		.4byte	.LFE75-.LFB75
+ 1474 0078 00000000 		.4byte	0
+ 1475 007c 00000000 		.4byte	0
+ 1476              		.section	.debug_ranges,"",%progbits
+ 1477              	.Ldebug_ranges0:
+ 1478 0000 00000000 		.4byte	.LFB66
+ 1479 0004 54000000 		.4byte	.LFE66
+ 1480 0008 00000000 		.4byte	.LFB67
+ 1481 000c 0C000000 		.4byte	.LFE67
+ 1482 0010 00000000 		.4byte	.LFB68
+ 1483 0014 0C000000 		.4byte	.LFE68
+ 1484 0018 00000000 		.4byte	.LFB69
+ 1485 001c 10000000 		.4byte	.LFE69
+ 1486 0020 00000000 		.4byte	.LFB70
+ 1487 0024 0C000000 		.4byte	.LFE70
+ 1488 0028 00000000 		.4byte	.LFB71
+ 1489 002c 0C000000 		.4byte	.LFE71
+ 1490 0030 00000000 		.4byte	.LFB72
+ 1491 0034 10000000 		.4byte	.LFE72
+ 1492 0038 00000000 		.4byte	.LFB73
+ 1493 003c 0C000000 		.4byte	.LFE73
+ 1494 0040 00000000 		.4byte	.LFB63
+ 1495 0044 1C000000 		.4byte	.LFE63
+ 1496 0048 00000000 		.4byte	.LFB64
+ 1497 004c 1A000000 		.4byte	.LFE64
+ 1498 0050 00000000 		.4byte	.LFB65
+ 1499 0054 14000000 		.4byte	.LFE65
+ 1500 0058 00000000 		.4byte	.LFB74
+ 1501 005c 0C000000 		.4byte	.LFE74
+ 1502 0060 00000000 		.4byte	.LFB75
+ 1503 0064 0C000000 		.4byte	.LFE75
+ 1504 0068 00000000 		.4byte	0
+ 1505 006c 00000000 		.4byte	0
+ 1506              		.section	.debug_line,"",%progbits
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 35
+
+
+ 1507              	.Ldebug_line0:
+ 1508 0000 AE020000 		.section	.debug_str,"MS",%progbits,1
+ 1508      0200B901 
+ 1508      00000201 
+ 1508      FB0E0D00 
+ 1508      01010101 
+ 1509              	.LASF23:
+ 1510 0000 4953525F 		.ascii	"ISR_Stroke_Timer_SetPriority\000"
+ 1510      5374726F 
+ 1510      6B655F54 
+ 1510      696D6572 
+ 1510      5F536574 
+ 1511              	.LASF39:
+ 1512 001d 74696D65 		.ascii	"timer_10ms\000"
+ 1512      725F3130 
+ 1512      6D7300
+ 1513              	.LASF42:
+ 1514 0028 4C454431 		.ascii	"LED1_Write\000"
+ 1514      5F577269 
+ 1514      746500
+ 1515              	.LASF33:
+ 1516 0033 4953525F 		.ascii	"ISR_Stroke_Timer_SetPending\000"
+ 1516      5374726F 
+ 1516      6B655F54 
+ 1516      696D6572 
+ 1516      5F536574 
+ 1517              	.LASF11:
+ 1518 004f 5F5F696E 		.ascii	"__int32_t\000"
+ 1518      7433325F 
+ 1518      7400
+ 1519              	.LASF5:
+ 1520 0059 6C6F6E67 		.ascii	"long int\000"
+ 1520      20696E74 
+ 1520      00
+ 1521              	.LASF28:
+ 1522 0062 4953525F 		.ascii	"ISR_Stroke_Timer_Enable\000"
+ 1522      5374726F 
+ 1522      6B655F54 
+ 1522      696D6572 
+ 1522      5F456E61 
+ 1523              	.LASF16:
+ 1524 007a 646F7562 		.ascii	"double\000"
+ 1524      6C6500
+ 1525              	.LASF46:
+ 1526 0081 443A5C41 		.ascii	"D:\\A20_CANfestival\\posoc\\Design01.cydsn\000"
+ 1526      32305F43 
+ 1526      414E6665 
+ 1526      73746976 
+ 1526      616C5C70 
+ 1527              	.LASF15:
+ 1528 00a9 666C6F61 		.ascii	"float\000"
+ 1528      7400
+ 1529              	.LASF21:
+ 1530 00af 4953525F 		.ascii	"ISR_Stroke_Timer_SetVector\000"
+ 1530      5374726F 
+ 1530      6B655F54 
+ 1530      696D6572 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 36
+
+
+ 1530      5F536574 
+ 1531              	.LASF2:
+ 1532 00ca 756E7369 		.ascii	"unsigned char\000"
+ 1532      676E6564 
+ 1532      20636861 
+ 1532      7200
+ 1533              	.LASF17:
+ 1534 00d8 72656738 		.ascii	"reg8\000"
+ 1534      00
+ 1535              	.LASF6:
+ 1536 00dd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1536      20756E73 
+ 1536      69676E65 
+ 1536      6420696E 
+ 1536      7400
+ 1537              	.LASF31:
+ 1538 00ef 4953525F 		.ascii	"ISR_Stroke_Timer_StartEx\000"
+ 1538      5374726F 
+ 1538      6B655F54 
+ 1538      696D6572 
+ 1538      5F537461 
+ 1539              	.LASF4:
+ 1540 0108 73686F72 		.ascii	"short unsigned int\000"
+ 1540      7420756E 
+ 1540      7369676E 
+ 1540      65642069 
+ 1540      6E7400
+ 1541              	.LASF41:
+ 1542 011b 4C454431 		.ascii	"LED1_Read\000"
+ 1542      5F526561 
+ 1542      6400
+ 1543              	.LASF36:
+ 1544 0125 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1544      52784275 
+ 1544      66666572 
+ 1544      00
+ 1545              	.LASF27:
+ 1546 0132 4953525F 		.ascii	"ISR_Stroke_Timer_GetPriority\000"
+ 1546      5374726F 
+ 1546      6B655F54 
+ 1546      696D6572 
+ 1546      5F476574 
+ 1547              	.LASF45:
+ 1548 014f 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ISR_Stroke_Timer.c\000"
+ 1548      6E657261 
+ 1548      7465645F 
+ 1548      536F7572 
+ 1548      63655C50 
+ 1549              	.LASF34:
+ 1550 017b 4953525F 		.ascii	"ISR_Stroke_Timer_ClearPending\000"
+ 1550      5374726F 
+ 1550      6B655F54 
+ 1550      696D6572 
+ 1550      5F436C65 
+ 1551              	.LASF38:
+ 1552 0199 4953525F 		.ascii	"ISR_Stroke_Timer_states\000"
+ 1552      5374726F 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 37
+
+
+ 1552      6B655F54 
+ 1552      696D6572 
+ 1552      5F737461 
+ 1553              	.LASF25:
+ 1554 01b1 7072696F 		.ascii	"priority\000"
+ 1554      72697479 
+ 1554      00
+ 1555              	.LASF29:
+ 1556 01ba 4953525F 		.ascii	"ISR_Stroke_Timer_Disable\000"
+ 1556      5374726F 
+ 1556      6B655F54 
+ 1556      696D6572 
+ 1556      5F446973 
+ 1557              	.LASF20:
+ 1558 01d3 4953525F 		.ascii	"ISR_Stroke_Timer_Interrupt\000"
+ 1558      5374726F 
+ 1558      6B655F54 
+ 1558      696D6572 
+ 1558      5F496E74 
+ 1559              	.LASF14:
+ 1560 01ee 75696E74 		.ascii	"uint32\000"
+ 1560      333200
+ 1561              	.LASF0:
+ 1562 01f5 756E7369 		.ascii	"unsigned int\000"
+ 1562      676E6564 
+ 1562      20696E74 
+ 1562      00
+ 1563              	.LASF24:
+ 1564 0202 61646472 		.ascii	"address\000"
+ 1564      65737300 
+ 1565              	.LASF8:
+ 1566 020a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1566      206C6F6E 
+ 1566      6720756E 
+ 1566      7369676E 
+ 1566      65642069 
+ 1567              	.LASF19:
+ 1568 0221 63796973 		.ascii	"cyisraddress\000"
+ 1568      72616464 
+ 1568      72657373 
+ 1568      00
+ 1569              	.LASF44:
+ 1570 022e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1570      4320342E 
+ 1570      392E3320 
+ 1570      32303135 
+ 1570      30333033 
+ 1571 0261 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1571      20726576 
+ 1571      6973696F 
+ 1571      6E203232 
+ 1571      31323230 
+ 1572 0294 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1572      66756E63 
+ 1572      74696F6E 
+ 1572      2D736563 
+ 1572      74696F6E 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 38
+
+
+ 1573              	.LASF35:
+ 1574 02bc 74696D65 		.ascii	"time_count\000"
+ 1574      5F636F75 
+ 1574      6E7400
+ 1575              	.LASF26:
+ 1576 02c7 4953525F 		.ascii	"ISR_Stroke_Timer_GetVector\000"
+ 1576      5374726F 
+ 1576      6B655F54 
+ 1576      696D6572 
+ 1576      5F476574 
+ 1577              	.LASF47:
+ 1578 02e2 4953525F 		.ascii	"ISR_Stroke_Timer_GetState\000"
+ 1578      5374726F 
+ 1578      6B655F54 
+ 1578      696D6572 
+ 1578      5F476574 
+ 1579              	.LASF32:
+ 1580 02fc 4953525F 		.ascii	"ISR_Stroke_Timer_Stop\000"
+ 1580      5374726F 
+ 1580      6B655F54 
+ 1580      696D6572 
+ 1580      5F53746F 
+ 1581              	.LASF12:
+ 1582 0312 696E7433 		.ascii	"int32_t\000"
+ 1582      325F7400 
+ 1583              	.LASF9:
+ 1584 031a 73697A65 		.ascii	"sizetype\000"
+ 1584      74797065 
+ 1584      00
+ 1585              	.LASF37:
+ 1586 0323 5450444F 		.ascii	"TPDO_IN_Status\000"
+ 1586      5F494E5F 
+ 1586      53746174 
+ 1586      757300
+ 1587              	.LASF7:
+ 1588 0332 6C6F6E67 		.ascii	"long long int\000"
+ 1588      206C6F6E 
+ 1588      6720696E 
+ 1588      7400
+ 1589              	.LASF43:
+ 1590 0340 53746174 		.ascii	"Status_Reg_1_Read\000"
+ 1590      75735F52 
+ 1590      65675F31 
+ 1590      5F526561 
+ 1590      6400
+ 1591              	.LASF10:
+ 1592 0352 63686172 		.ascii	"char\000"
+ 1592      00
+ 1593              	.LASF22:
+ 1594 0357 72616D56 		.ascii	"ramVectorTable\000"
+ 1594      6563746F 
+ 1594      72546162 
+ 1594      6C6500
+ 1595              	.LASF48:
+ 1596 0366 636F756E 		.ascii	"count\000"
+ 1596      7400
+ 1597              	.LASF3:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccoHDV9r.s 			page 39
+
+
+ 1598 036c 73686F72 		.ascii	"short int\000"
+ 1598      7420696E 
+ 1598      7400
+ 1599              	.LASF13:
+ 1600 0376 75696E74 		.ascii	"uint8\000"
+ 1600      3800
+ 1601              	.LASF40:
+ 1602 037c 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
+ 1602      725F315F 
+ 1602      52656164 
+ 1602      53746174 
+ 1602      75735265 
+ 1603              	.LASF49:
+ 1604 0397 74696D65 		.ascii	"timerForCan\000"
+ 1604      72466F72 
+ 1604      43616E00 
+ 1605              	.LASF18:
+ 1606 03a3 72656733 		.ascii	"reg32\000"
+ 1606      3200
+ 1607              	.LASF1:
+ 1608 03a9 7369676E 		.ascii	"signed char\000"
+ 1608      65642063 
+ 1608      68617200 
+ 1609              	.LASF30:
+ 1610 03b5 4953525F 		.ascii	"ISR_Stroke_Timer_Start\000"
+ 1610      5374726F 
+ 1610      6B655F54 
+ 1610      696D6572 
+ 1610      5F537461 
+ 1611              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,2552 @@
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.canSend,"ax",%progbits
+  19              		.align	2
+  20              		.global	canSend
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	canSend, %function
+  24              	canSend:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** 
+  13:.\main.c      **** #include "product.h"
+  14:.\main.c      **** #include <ISR_Stroke_Timer.h>
+  15:.\main.c      **** #include "TestSlave.h"
+  16:.\main.c      **** #include "canfestival.h"
+  17:.\main.c      **** #include "CanopenDictConfig.h"
+  18:.\main.c      **** 
+  19:.\main.c      **** 
+  20:.\main.c      **** #define CAN_RTR_DATA     ((unsigned int )0x00000000)
+  21:.\main.c      **** #define CAN_RTR_REMOTE   ((unsigned int )0x00000002)
+  22:.\main.c      **** #define CAN_ID_STD       ((unsigned int)0x00000000)
+  23:.\main.c      **** extern int ISR_Stroke_Timer_states;
+  24:.\main.c      **** 
+  25:.\main.c      **** uint8  key_count = 0;
+  26:.\main.c      **** //typedef struct
+  27:.\main.c      **** //{
+  28:.\main.c      **** //  uint32_t StdId;  /*!< Specifies the standard identifier.
+  29:.\main.c      **** //                        This parameter can be a value between 0 to 0x7FF. */
+  30:.\main.c      **** //
+  31:.\main.c      **** //  uint32_t ExtId;  /*!< Specifies the extended identifier.
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 2
+
+
+  32:.\main.c      **** //                        This parameter can be a value between 0 to 0x1FFFFFFF. */
+  33:.\main.c      **** //
+  34:.\main.c      **** //  uint8_t IDE;     /*!< Specifies the type of identifier for the message that
+  35:.\main.c      **** //                        will be transmitted. This parameter can be a value
+  36:.\main.c      **** //                        of @ref CAN_identifier_type */
+  37:.\main.c      **** //
+  38:.\main.c      **** //  uint8_t RTR;     /*!< Specifies the type of frame for the message that will
+  39:.\main.c      **** //                        be transmitted. This parameter can be a value of
+  40:.\main.c      **** //                        @ref CAN_remote_transmission_request */
+  41:.\main.c      **** //
+  42:.\main.c      **** //  uint8_t DLC;     /*!< Specifies the length of the frame that will be
+  43:.\main.c      **** //                        transmitted. This parameter can be a value between
+  44:.\main.c      **** //                        0 to 8 */
+  45:.\main.c      **** //
+  46:.\main.c      **** //  uint8_t Data[8]; /*!< Contains the data to be transmitted. It ranges from 0
+  47:.\main.c      **** //                        to 0xFF. */
+  48:.\main.c      **** //} CanTxMsg;
+  49:.\main.c      **** //
+  50:.\main.c      **** //typedef struct
+  51:.\main.c      **** //{
+  52:.\main.c      **** //  uint32_t StdId;  /*!< Specifies the standard identifier.
+  53:.\main.c      **** //                        This parameter can be a value between 0 to 0x7FF. */
+  54:.\main.c      **** //
+  55:.\main.c      **** //  uint32_t ExtId;  /*!< Specifies the extended identifier.
+  56:.\main.c      **** //                        This parameter can be a value between 0 to 0x1FFFFFFF. */
+  57:.\main.c      **** //
+  58:.\main.c      **** //  uint8_t IDE;     /*!< Specifies the type of identifier for the message that
+  59:.\main.c      **** //                        will be received. This parameter can be a value of
+  60:.\main.c      **** //                        @ref CAN_identifier_type */
+  61:.\main.c      **** //
+  62:.\main.c      **** //  uint8_t RTR;     /*!< Specifies the type of frame for the received message.
+  63:.\main.c      **** //                        This parameter can be a value of
+  64:.\main.c      **** //                        @ref CAN_remote_transmission_request */
+  65:.\main.c      **** //
+  66:.\main.c      **** //  uint8_t DLC;     /*!< Specifies the length of the frame that will be received.
+  67:.\main.c      **** //                        This parameter can be a value between 0 to 8 */
+  68:.\main.c      **** //
+  69:.\main.c      **** //  uint8_t Data[8]; /*!< Contains the data to be received. It ranges from 0 to
+  70:.\main.c      **** //                        0xFF. */
+  71:.\main.c      **** //
+  72:.\main.c      **** //  uint8_t FMI;     /*!< Specifies the index of the filter the message stored in
+  73:.\main.c      **** //                        the mailbox passes through. This parameter can be a
+  74:.\main.c      **** //                        value between 0 to 0xFF */
+  75:.\main.c      **** //} CanRxMsg;
+  76:.\main.c      **** 
+  77:.\main.c      **** unsigned char  receiveData[8]; 
+  78:.\main.c      **** 
+  79:.\main.c      **** CAN_1_TX_MSG CAN_message;     /* Declares Data as structure variable of type DATA_BYTES_MSG */  
+  80:.\main.c      **** 
+  81:.\main.c      **** CAN_1_DATA_BYTES_MSG Data;
+  82:.\main.c      **** 
+  83:.\main.c      **** unsigned char receiveData[8]; 
+  84:.\main.c      **** 
+  85:.\main.c      **** 
+  86:.\main.c      **** 
+  87:.\main.c      **** unsigned char canSend(CAN_PORT notused, Message *m)
+  88:.\main.c      **** {
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 3
+
+
+  27              		.loc 1 88 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 24
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 30B5     		push	{r4, r5, lr}
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  37 0002 87B0     		sub	sp, sp, #28
+  38              		.cfi_def_cfa_offset 40
+  39              	.LVL1:
+  89:.\main.c      ****     uint32_t i,index;
+  90:.\main.c      ****     CanTxMsg TxMessage;
+  91:.\main.c      ****     CanTxMsg *ptx_msg=&TxMessage;
+  92:.\main.c      ****     ptx_msg->StdId = m->cob_id;
+  40              		.loc 1 92 0
+  41 0004 0D88     		ldrh	r5, [r1]
+  93:.\main.c      **** 
+  94:.\main.c      ****     ptx_msg->RTR = CAN_RTR_DATA;
+  95:.\main.c      **** 
+  96:.\main.c      ****     ptx_msg->IDE = CAN_ID_STD;
+  97:.\main.c      **** 
+  98:.\main.c      ****     ptx_msg->DLC = m->len;
+  42              		.loc 1 98 0
+  43 0006 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+  44              	.LVL2:
+  99:.\main.c      ****     for(i = 0; i < m->len; i++)
+  45              		.loc 1 99 0
+  46 0008 0023     		movs	r3, #0
+  47 000a 06E0     		b	.L2
+  48              	.LVL3:
+  49              	.L3:
+ 100:.\main.c      ****     ptx_msg->Data[i] = m->data[i];
+  50              		.loc 1 100 0 discriminator 3
+  51 000c C818     		adds	r0, r1, r3
+  52 000e 0479     		ldrb	r4, [r0, #4]	@ zero_extendqisi2
+  53 0010 06A8     		add	r0, sp, #24
+  54 0012 1844     		add	r0, r0, r3
+  55 0014 00F8094C 		strb	r4, [r0, #-9]
+  99:.\main.c      ****     for(i = 0; i < m->len; i++)
+  56              		.loc 1 99 0 discriminator 3
+  57 0018 0133     		adds	r3, r3, #1
+  58              	.LVL4:
+  59              	.L2:
+  99:.\main.c      ****     for(i = 0; i < m->len; i++)
+  60              		.loc 1 99 0 is_stmt 0 discriminator 1
+  61 001a C878     		ldrb	r0, [r1, #3]	@ zero_extendqisi2
+  62 001c 9842     		cmp	r0, r3
+  63 001e F5D8     		bhi	.L3
+ 101:.\main.c      **** 
+ 102:.\main.c      ****     CAN_message.dlc = ptx_msg->DLC;
+  64              		.loc 1 102 0 is_stmt 1
+  65 0020 0F49     		ldr	r1, .L9
+  66              	.LVL5:
+  67 0022 8A71     		strb	r2, [r1, #6]
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 4
+
+
+ 103:.\main.c      ****             
+ 104:.\main.c      ****     CAN_message.id =  ptx_msg->StdId;
+  68              		.loc 1 104 0
+  69 0024 0D60     		str	r5, [r1]
+ 105:.\main.c      ****             
+ 106:.\main.c      ****     CAN_message.ide= ptx_msg->IDE;
+  70              		.loc 1 106 0
+  71 0026 0023     		movs	r3, #0
+  72              	.LVL6:
+  73 0028 4B71     		strb	r3, [r1, #5]
+  74              	.LVL7:
+ 107:.\main.c      ****             
+ 108:.\main.c      ****     for (index=0;index<CAN_message.dlc ;index++)
+  75              		.loc 1 108 0
+  76 002a 06E0     		b	.L4
+  77              	.LVL8:
+  78              	.L5:
+ 109:.\main.c      ****     {
+ 110:.\main.c      ****        receiveData[index] =ptx_msg->Data[index]  ; 
+  79              		.loc 1 110 0 discriminator 3
+  80 002c 06A9     		add	r1, sp, #24
+  81 002e 1944     		add	r1, r1, r3
+  82 0030 11F8090C 		ldrb	r0, [r1, #-9]	@ zero_extendqisi2
+  83 0034 0B49     		ldr	r1, .L9+4
+  84 0036 C854     		strb	r0, [r1, r3]
+ 108:.\main.c      ****     {
+  85              		.loc 1 108 0 discriminator 3
+  86 0038 0133     		adds	r3, r3, #1
+  87              	.LVL9:
+  88              	.L4:
+ 108:.\main.c      ****     {
+  89              		.loc 1 108 0 is_stmt 0 discriminator 1
+  90 003a 1146     		mov	r1, r2
+  91 003c 9A42     		cmp	r2, r3
+  92 003e F5D8     		bhi	.L5
+  93 0040 0023     		movs	r3, #0
+  94              	.LVL10:
+  95 0042 04E0     		b	.L6
+  96              	.LVL11:
+  97              	.L7:
+ 111:.\main.c      ****     }
+ 112:.\main.c      ****             
+ 113:.\main.c      ****     for(index=0;index<CAN_message.dlc ;index++)
+ 114:.\main.c      ****     {   
+ 115:.\main.c      ****         Data.byte[index] = receiveData[index];
+  98              		.loc 1 115 0 is_stmt 1 discriminator 3
+  99 0044 074A     		ldr	r2, .L9+4
+ 100 0046 D05C     		ldrb	r0, [r2, r3]	@ zero_extendqisi2
+ 101 0048 074A     		ldr	r2, .L9+8
+ 102 004a D054     		strb	r0, [r2, r3]
+ 113:.\main.c      ****     {   
+ 103              		.loc 1 113 0 discriminator 3
+ 104 004c 0133     		adds	r3, r3, #1
+ 105              	.LVL12:
+ 106              	.L6:
+ 113:.\main.c      ****     {   
+ 107              		.loc 1 113 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 5
+
+
+ 108 004e 8B42     		cmp	r3, r1
+ 109 0050 F8D3     		bcc	.L7
+ 116:.\main.c      ****     }
+ 117:.\main.c      ****     CAN_1_SendMsg(&CAN_message);
+ 110              		.loc 1 117 0 is_stmt 1
+ 111 0052 0348     		ldr	r0, .L9
+ 112 0054 FFF7FEFF 		bl	CAN_1_SendMsg
+ 113              	.LVL13:
+ 118:.\main.c      ****     
+ 119:.\main.c      ****     return 0;           
+ 120:.\main.c      **** }
+ 114              		.loc 1 120 0
+ 115 0058 0020     		movs	r0, #0
+ 116 005a 07B0     		add	sp, sp, #28
+ 117              		.cfi_def_cfa_offset 12
+ 118              		@ sp needed
+ 119 005c 30BD     		pop	{r4, r5, pc}
+ 120              	.LVL14:
+ 121              	.L10:
+ 122 005e 00BF     		.align	2
+ 123              	.L9:
+ 124 0060 00000000 		.word	CAN_message
+ 125 0064 00000000 		.word	receiveData
+ 126 0068 00000000 		.word	Data
+ 127              		.cfi_endproc
+ 128              	.LFE63:
+ 129              		.size	canSend, .-canSend
+ 130              		.section	.text.main,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	main
+ 133              		.thumb
+ 134              		.thumb_func
+ 135              		.type	main, %function
+ 136              	main:
+ 137              	.LFB64:
+ 121:.\main.c      **** 
+ 122:.\main.c      **** 
+ 123:.\main.c      **** 
+ 124:.\main.c      **** int main()
+ 125:.\main.c      **** {
+ 138              		.loc 1 125 0
+ 139              		.cfi_startproc
+ 140              		@ Volatile: function does not return.
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143 0000 08B5     		push	{r3, lr}
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 3, -8
+ 146              		.cfi_offset 14, -4
+ 126:.\main.c      ****     Init_Stroke_Timer(); 
+ 147              		.loc 1 126 0
+ 148 0002 FFF7FEFF 		bl	Init_Stroke_Timer
+ 149              	.LVL15:
+ 127:.\main.c      ****     
+ 128:.\main.c      ****     /* Enable global interrupts. */
+ 129:.\main.c      ****     CyGlobalIntEnable; 
+ 150              		.loc 1 129 0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 6
+
+
+ 151              	@ 129 ".\main.c" 1
+ 152 0006 62B6     		CPSIE   i
+ 153              	@ 0 "" 2
+ 130:.\main.c      ****     CAN_1_Start();    
+ 154              		.loc 1 130 0
+ 155              		.thumb
+ 156 0008 FFF7FEFF 		bl	CAN_1_Start
+ 157              	.LVL16:
+ 131:.\main.c      **** //    
+ 132:.\main.c      **** //    setNodeId(&TestSlave_Data, nodeID);	
+ 133:.\main.c      **** //	setState(&TestSlave_Data, Initialisation);
+ 134:.\main.c      **** //   CyGlobalIntEnable; 
+ 135:.\main.c      ****     CanopenInit();
+ 158              		.loc 1 135 0
+ 159 000c FFF7FEFF 		bl	CanopenInit
+ 160              	.LVL17:
+ 136:.\main.c      ****     
+ 137:.\main.c      ****    
+ 138:.\main.c      **** //    
+ 139:.\main.c      **** //   /* 说明：原A2O上机初始化双击按键程序 */
+ 140:.\main.c      ****  
+ 141:.\main.c      ****     
+ 142:.\main.c      ****     CyDelay(100);
+ 161              		.loc 1 142 0
+ 162 0010 6420     		movs	r0, #100
+ 163 0012 FFF7FEFF 		bl	CyDelay
+ 164              	.LVL18:
+ 143:.\main.c      ****    
+ 144:.\main.c      ****    //  Valve_config(1);
+ 145:.\main.c      ****     
+ 146:.\main.c      ****    
+ 147:.\main.c      ****     CutReg.SToDotFlag = 0;
+ 165              		.loc 1 147 0
+ 166 0016 2F4C     		ldr	r4, .L21
+ 167 0018 0025     		movs	r5, #0
+ 168 001a A575     		strb	r5, [r4, #22]
+ 148:.\main.c      ****     
+ 149:.\main.c      ****     Control_LED_Write(5);
+ 169              		.loc 1 149 0
+ 170 001c 0520     		movs	r0, #5
+ 171 001e FFF7FEFF 		bl	Control_LED_Write
+ 172              	.LVL19:
+ 150:.\main.c      ****     
+ 151:.\main.c      ****     ValveOut(CutReg.Action[VStop]);
+ 173              		.loc 1 151 0
+ 174 0022 607B     		ldrb	r0, [r4, #13]	@ zero_extendqisi2
+ 175 0024 FFF7FEFF 		bl	Control_Reg_1_Write
+ 176              	.LVL20:
+ 152:.\main.c      **** 
+ 153:.\main.c      ****     
+ 154:.\main.c      **** 
+ 155:.\main.c      ****     
+ 156:.\main.c      ****     /////////////ceshi fucha//////////////
+ 157:.\main.c      ****     CutReg.Action[VFast]   =   0x01;
+ 177              		.loc 1 157 0
+ 178 0028 0123     		movs	r3, #1
+ 179 002a 2372     		strb	r3, [r4, #8]
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 7
+
+
+ 158:.\main.c      ****     CutReg.Action[VSlow]   =   0x01;
+ 180              		.loc 1 158 0
+ 181 002c 6372     		strb	r3, [r4, #9]
+ 159:.\main.c      ****     CutReg.Action[VKeep]   =   0x01;
+ 182              		.loc 1 159 0
+ 183 002e A372     		strb	r3, [r4, #10]
+ 160:.\main.c      ****     CutReg.Action[VUnload] =   0x00;
+ 184              		.loc 1 160 0
+ 185 0030 E572     		strb	r5, [r4, #11]
+ 161:.\main.c      ****     CutReg.Action[VBack]   =   0x02;
+ 186              		.loc 1 161 0
+ 187 0032 0223     		movs	r3, #2
+ 188 0034 2373     		strb	r3, [r4, #12]
+ 162:.\main.c      ****     CutReg.Action[VStop]   =   0x00;
+ 189              		.loc 1 162 0
+ 190 0036 6573     		strb	r5, [r4, #13]
+ 163:.\main.c      ****     CutReg.KeepTime        =   500;
+ 191              		.loc 1 163 0
+ 192 0038 4FF4FA73 		mov	r3, #500
+ 193 003c 2380     		strh	r3, [r4]	@ movhi
+ 164:.\main.c      ****     CutReg.UnloadTime      =   500;
+ 194              		.loc 1 164 0
+ 195 003e 6380     		strh	r3, [r4, #2]	@ movhi
+ 196              	.L18:
+ 165:.\main.c      ****     /////////////////////////////////////////
+ 166:.\main.c      ****     for(;;)
+ 167:.\main.c      ****     { 
+ 168:.\main.c      ****          if(config_para.isConfig_para_state == EnterConfig &&!PumpSignal())
+ 197              		.loc 1 168 0
+ 198 0040 254B     		ldr	r3, .L21+4
+ 199 0042 9B7A     		ldrb	r3, [r3, #10]	@ zero_extendqisi2
+ 200 0044 AA2B     		cmp	r3, #170
+ 201 0046 09D1     		bne	.L12
+ 202              		.loc 1 168 0 is_stmt 0 discriminator 1
+ 203 0048 FFF7FEFF 		bl	Status_Reg_1_Read
+ 204              	.LVL21:
+ 205 004c 10F0400F 		tst	r0, #64
+ 206 0050 04D0     		beq	.L12
+ 207              	.LBB2:
+ 169:.\main.c      ****          { 
+ 170:.\main.c      ****         //    LED_WRITE(0X01);                          //进入阀组配置状态后默认显示�
+ 171:.\main.c      ****        //     ValveOut(CutReg.Action[VFast]);     
+ 172:.\main.c      ****             Write_config();
+ 208              		.loc 1 172 0 is_stmt 1
+ 209 0052 FFF7FEFF 		bl	Write_config
+ 210              	.LVL22:
+ 173:.\main.c      ****             config_para.isConfig_para_state =  FinsihConfig;
+ 211              		.loc 1 173 0
+ 212 0056 A022     		movs	r2, #160
+ 213 0058 1F4B     		ldr	r3, .L21+4
+ 214 005a 9A72     		strb	r2, [r3, #10]
+ 215              	.L12:
+ 216              	.LBE2:
+ 174:.\main.c      ****          }
+ 175:.\main.c      ****         if(!PumpSignal())
+ 217              		.loc 1 175 0
+ 218 005c FFF7FEFF 		bl	Status_Reg_1_Read
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 8
+
+
+ 219              	.LVL23:
+ 220 0060 10F0400F 		tst	r0, #64
+ 221 0064 0CD0     		beq	.L13
+ 176:.\main.c      **** 		{
+ 177:.\main.c      ****          
+ 178:.\main.c      **** 			ISR_Stroke_Timer_states = 0x01;
+ 222              		.loc 1 178 0
+ 223 0066 0122     		movs	r2, #1
+ 224 0068 1C4B     		ldr	r3, .L21+8
+ 225 006a 1A60     		str	r2, [r3]
+ 179:.\main.c      **** 			CutReg.CutStatus = StrokeStart;
+ 226              		.loc 1 179 0
+ 227 006c 194B     		ldr	r3, .L21
+ 228 006e 0022     		movs	r2, #0
+ 229 0070 1A74     		strb	r2, [r3, #16]
+ 180:.\main.c      **** 			CutReg.ModeRunFlag = 0;
+ 230              		.loc 1 180 0
+ 231 0072 1A75     		strb	r2, [r3, #20]
+ 181:.\main.c      **** 
+ 182:.\main.c      ****             LED_WRITE(0x20);
+ 232              		.loc 1 182 0
+ 233 0074 2020     		movs	r0, #32
+ 234 0076 1A49     		ldr	r1, .L21+12
+ 235 0078 0870     		strb	r0, [r1]
+ 183:.\main.c      ****           
+ 184:.\main.c      ****             
+ 185:.\main.c      ****             CutReg.Cnt = 0;
+ 236              		.loc 1 185 0
+ 237 007a DA81     		strh	r2, [r3, #14]	@ movhi
+ 186:.\main.c      **** 			CutReg.CutTimeStatus = VFast;   //结束  
+ 238              		.loc 1 186 0
+ 239 007c 5A74     		strb	r2, [r3, #17]
+ 240 007e 0CE0     		b	.L14
+ 241              	.L13:
+ 187:.\main.c      **** 		}
+ 188:.\main.c      ****         
+ 189:.\main.c      **** 		else if((System_enable == Enter_Start || CutReg.OneWorkFinshState == One_Work_Runing)&& System_en
+ 242              		.loc 1 189 0
+ 243 0080 184B     		ldr	r3, .L21+16
+ 244 0082 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 245 0084 AA2A     		cmp	r2, #170
+ 246 0086 04D0     		beq	.L15
+ 247              		.loc 1 189 0 is_stmt 0 discriminator 2
+ 248 0088 124B     		ldr	r3, .L21
+ 249 008a DB7D     		ldrb	r3, [r3, #23]	@ zero_extendqisi2
+ 250 008c DBB2     		uxtb	r3, r3
+ 251 008e 112B     		cmp	r3, #17
+ 252 0090 03D1     		bne	.L14
+ 253              	.L15:
+ 254              		.loc 1 189 0 discriminator 3
+ 255 0092 A02A     		cmp	r2, #160
+ 256 0094 01D0     		beq	.L14
+ 190:.\main.c      **** 		{
+ 191:.\main.c      **** 			Stroke_Process();
+ 257              		.loc 1 191 0 is_stmt 1
+ 258 0096 FFF7FEFF 		bl	Stroke_Process
+ 259              	.LVL24:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 9
+
+
+ 260              	.L14:
+ 192:.\main.c      **** 		}
+ 193:.\main.c      ****         
+ 194:.\main.c      ****         if(System_enable == Enter_QUIT) //停止一切活动20160825*/
+ 261              		.loc 1 194 0
+ 262 009a 124B     		ldr	r3, .L21+16
+ 263 009c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 264 009e A02B     		cmp	r3, #160
+ 265 00a0 05D1     		bne	.L16
+ 195:.\main.c      ****         {
+ 196:.\main.c      ****            ValveOut(CutReg.Action[VStop]); 
+ 266              		.loc 1 196 0
+ 267 00a2 0C4C     		ldr	r4, .L21
+ 268 00a4 607B     		ldrb	r0, [r4, #13]	@ zero_extendqisi2
+ 269 00a6 FFF7FEFF 		bl	Control_Reg_1_Write
+ 270              	.LVL25:
+ 197:.\main.c      ****             CutReg.OneWorkFinshState = One_Work_Finish;
+ 271              		.loc 1 197 0
+ 272 00aa FF23     		movs	r3, #255
+ 273 00ac E375     		strb	r3, [r4, #23]
+ 274              	.L16:
+ 198:.\main.c      ****            
+ 199:.\main.c      ****         }
+ 200:.\main.c      ****         if(System_enable == Enter_return)/*20160825进入回复模式*/
+ 275              		.loc 1 200 0
+ 276 00ae 0D4B     		ldr	r3, .L21+16
+ 277 00b0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 278 00b2 882B     		cmp	r3, #136
+ 279 00b4 07D1     		bne	.L17
+ 201:.\main.c      ****         {
+ 202:.\main.c      ****            FootStart_state = 0x00;                   //不允许往下只能回到上止点
+ 280              		.loc 1 202 0
+ 281 00b6 0021     		movs	r1, #0
+ 282 00b8 0B4A     		ldr	r2, .L21+20
+ 283 00ba 1170     		strb	r1, [r2]
+ 203:.\main.c      ****            CutReg.CutTimeStatus = VBack;
+ 284              		.loc 1 203 0
+ 285 00bc 054A     		ldr	r2, .L21
+ 286 00be 0421     		movs	r1, #4
+ 287 00c0 5174     		strb	r1, [r2, #17]
+ 204:.\main.c      ****            CutReg.OneWorkFinshState = One_Work_Runing;
+ 288              		.loc 1 204 0
+ 289 00c2 1121     		movs	r1, #17
+ 290 00c4 D175     		strb	r1, [r2, #23]
+ 291              	.L17:
+ 205:.\main.c      ****         }
+ 206:.\main.c      ****         if(System_enable == Enter_Start)
+ 292              		.loc 1 206 0
+ 293 00c6 AA2B     		cmp	r3, #170
+ 294 00c8 BAD1     		bne	.L18
+ 207:.\main.c      ****         {
+ 208:.\main.c      ****             FootStart_state = 0x01;
+ 295              		.loc 1 208 0
+ 296 00ca 0122     		movs	r2, #1
+ 297 00cc 064B     		ldr	r3, .L21+20
+ 298 00ce 1A70     		strb	r2, [r3]
+ 299 00d0 B6E7     		b	.L18
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 10
+
+
+ 300              	.L22:
+ 301 00d2 00BF     		.align	2
+ 302              	.L21:
+ 303 00d4 00000000 		.word	CutReg
+ 304 00d8 00000000 		.word	config_para
+ 305 00dc 00000000 		.word	ISR_Stroke_Timer_states
+ 306 00e0 00000000 		.word	TPDO_PROCESS_Status
+ 307 00e4 00000000 		.word	System_enable
+ 308 00e8 00000000 		.word	FootStart_state
+ 309              		.cfi_endproc
+ 310              	.LFE64:
+ 311              		.size	main, .-main
+ 312              		.comm	Data,8,4
+ 313              		.comm	CAN_message,12,4
+ 314              		.comm	receiveData,8,4
+ 315              		.global	key_count
+ 316              		.bss
+ 317              		.type	key_count, %object
+ 318              		.size	key_count, 1
+ 319              	key_count:
+ 320 0000 00       		.space	1
+ 321              		.text
+ 322              	.Letext0:
+ 323              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 324              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 325              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 326              		.file 5 "Generated_Source\\PSoC5/CAN_1.h"
+ 327              		.file 6 ".\\Valve_Control.h"
+ 328              		.file 7 ".\\can.h"
+ 329              		.file 8 ".\\applicfg.h"
+ 330              		.file 9 ".\\TestSlave.h"
+ 331              		.file 10 ".\\canfestival.h"
+ 332              		.file 11 "Generated_Source\\PSoC5/core_cm3.h"
+ 333              		.file 12 ".\\CanopenDictConfig.h"
+ 334              		.file 13 "Generated_Source\\PSoC5/CyLib.h"
+ 335              		.file 14 ".\\led.h"
+ 336              		.file 15 "Generated_Source\\PSoC5/Control_Reg_1.h"
+ 337              		.file 16 "Generated_Source\\PSoC5/Status_Reg_1.h"
+ 338              		.section	.debug_info,"",%progbits
+ 339              	.Ldebug_info0:
+ 340 0000 85060000 		.4byte	0x685
+ 341 0004 0400     		.2byte	0x4
+ 342 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 343 000a 04       		.byte	0x4
+ 344 000b 01       		.uleb128 0x1
+ 345 000c DB020000 		.4byte	.LASF99
+ 346 0010 01       		.byte	0x1
+ 347 0011 5D040000 		.4byte	.LASF100
+ 348 0015 BF030000 		.4byte	.LASF101
+ 349 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 350 001d 00000000 		.4byte	0
+ 351 0021 00000000 		.4byte	.Ldebug_line0
+ 352 0025 02       		.uleb128 0x2
+ 353 0026 01       		.byte	0x1
+ 354 0027 06       		.byte	0x6
+ 355 0028 23010000 		.4byte	.LASF0
+ 356 002c 03       		.uleb128 0x3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 11
+
+
+ 357 002d B9010000 		.4byte	.LASF4
+ 358 0031 02       		.byte	0x2
+ 359 0032 1D       		.byte	0x1d
+ 360 0033 37000000 		.4byte	0x37
+ 361 0037 02       		.uleb128 0x2
+ 362 0038 01       		.byte	0x1
+ 363 0039 08       		.byte	0x8
+ 364 003a E7010000 		.4byte	.LASF1
+ 365 003e 02       		.uleb128 0x2
+ 366 003f 02       		.byte	0x2
+ 367 0040 05       		.byte	0x5
+ 368 0041 3D000000 		.4byte	.LASF2
+ 369 0045 02       		.uleb128 0x2
+ 370 0046 02       		.byte	0x2
+ 371 0047 07       		.byte	0x7
+ 372 0048 78030000 		.4byte	.LASF3
+ 373 004c 03       		.uleb128 0x3
+ 374 004d 66040000 		.4byte	.LASF5
+ 375 0051 02       		.byte	0x2
+ 376 0052 3F       		.byte	0x3f
+ 377 0053 57000000 		.4byte	0x57
+ 378 0057 02       		.uleb128 0x2
+ 379 0058 04       		.byte	0x4
+ 380 0059 05       		.byte	0x5
+ 381 005a 98010000 		.4byte	.LASF6
+ 382 005e 03       		.uleb128 0x3
+ 383 005f 2A040000 		.4byte	.LASF7
+ 384 0063 02       		.byte	0x2
+ 385 0064 41       		.byte	0x41
+ 386 0065 69000000 		.4byte	0x69
+ 387 0069 02       		.uleb128 0x2
+ 388 006a 04       		.byte	0x4
+ 389 006b 07       		.byte	0x7
+ 390 006c 7D020000 		.4byte	.LASF8
+ 391 0070 02       		.uleb128 0x2
+ 392 0071 08       		.byte	0x8
+ 393 0072 05       		.byte	0x5
+ 394 0073 6A010000 		.4byte	.LASF9
+ 395 0077 02       		.uleb128 0x2
+ 396 0078 08       		.byte	0x8
+ 397 0079 07       		.byte	0x7
+ 398 007a 25020000 		.4byte	.LASF10
+ 399 007e 04       		.uleb128 0x4
+ 400 007f 04       		.byte	0x4
+ 401 0080 05       		.byte	0x5
+ 402 0081 696E7400 		.ascii	"int\000"
+ 403 0085 02       		.uleb128 0x2
+ 404 0086 04       		.byte	0x4
+ 405 0087 07       		.byte	0x7
+ 406 0088 54020000 		.4byte	.LASF11
+ 407 008c 03       		.uleb128 0x3
+ 408 008d 70040000 		.4byte	.LASF12
+ 409 0091 03       		.byte	0x3
+ 410 0092 15       		.byte	0x15
+ 411 0093 2C000000 		.4byte	0x2c
+ 412 0097 03       		.uleb128 0x3
+ 413 0098 70030000 		.4byte	.LASF13
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 12
+
+
+ 414 009c 03       		.byte	0x3
+ 415 009d 2C       		.byte	0x2c
+ 416 009e 4C000000 		.4byte	0x4c
+ 417 00a2 03       		.uleb128 0x3
+ 418 00a3 3C020000 		.4byte	.LASF14
+ 419 00a7 03       		.byte	0x3
+ 420 00a8 2D       		.byte	0x2d
+ 421 00a9 5E000000 		.4byte	0x5e
+ 422 00ad 03       		.uleb128 0x3
+ 423 00ae E2000000 		.4byte	.LASF15
+ 424 00b2 04       		.byte	0x4
+ 425 00b3 C2       		.byte	0xc2
+ 426 00b4 37000000 		.4byte	0x37
+ 427 00b8 03       		.uleb128 0x3
+ 428 00b9 C0000000 		.4byte	.LASF16
+ 429 00bd 04       		.byte	0x4
+ 430 00be C3       		.byte	0xc3
+ 431 00bf 45000000 		.4byte	0x45
+ 432 00c3 03       		.uleb128 0x3
+ 433 00c4 EF030000 		.4byte	.LASF17
+ 434 00c8 04       		.byte	0x4
+ 435 00c9 C4       		.byte	0xc4
+ 436 00ca 69000000 		.4byte	0x69
+ 437 00ce 02       		.uleb128 0x2
+ 438 00cf 04       		.byte	0x4
+ 439 00d0 04       		.byte	0x4
+ 440 00d1 0C000000 		.4byte	.LASF18
+ 441 00d5 02       		.uleb128 0x2
+ 442 00d6 08       		.byte	0x8
+ 443 00d7 04       		.byte	0x4
+ 444 00d8 11040000 		.4byte	.LASF19
+ 445 00dc 02       		.uleb128 0x2
+ 446 00dd 01       		.byte	0x1
+ 447 00de 08       		.byte	0x8
+ 448 00df D6020000 		.4byte	.LASF20
+ 449 00e3 05       		.uleb128 0x5
+ 450 00e4 AD000000 		.4byte	0xad
+ 451 00e8 05       		.uleb128 0x5
+ 452 00e9 B8000000 		.4byte	0xb8
+ 453 00ed 02       		.uleb128 0x2
+ 454 00ee 04       		.byte	0x4
+ 455 00ef 07       		.byte	0x7
+ 456 00f0 55000000 		.4byte	.LASF21
+ 457 00f4 06       		.uleb128 0x6
+ 458 00f5 04       		.byte	0x4
+ 459 00f6 07       		.uleb128 0x7
+ 460 00f7 08       		.byte	0x8
+ 461 00f8 05       		.byte	0x5
+ 462 00f9 6F       		.byte	0x6f
+ 463 00fa 0B010000 		.4byte	0x10b
+ 464 00fe 08       		.uleb128 0x8
+ 465 00ff D9010000 		.4byte	.LASF23
+ 466 0103 05       		.byte	0x5
+ 467 0104 71       		.byte	0x71
+ 468 0105 0B010000 		.4byte	0x10b
+ 469 0109 00       		.byte	0
+ 470 010a 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 13
+
+
+ 471 010b 09       		.uleb128 0x9
+ 472 010c AD000000 		.4byte	0xad
+ 473 0110 1B010000 		.4byte	0x11b
+ 474 0114 0A       		.uleb128 0xa
+ 475 0115 ED000000 		.4byte	0xed
+ 476 0119 07       		.byte	0x7
+ 477 011a 00       		.byte	0
+ 478 011b 03       		.uleb128 0x3
+ 479 011c 8D040000 		.4byte	.LASF22
+ 480 0120 05       		.byte	0x5
+ 481 0121 72       		.byte	0x72
+ 482 0122 F6000000 		.4byte	0xf6
+ 483 0126 07       		.uleb128 0x7
+ 484 0127 0C       		.byte	0xc
+ 485 0128 05       		.byte	0x5
+ 486 0129 81       		.byte	0x81
+ 487 012a 76010000 		.4byte	0x176
+ 488 012e 0B       		.uleb128 0xb
+ 489 012f 696400   		.ascii	"id\000"
+ 490 0132 05       		.byte	0x5
+ 491 0133 83       		.byte	0x83
+ 492 0134 C3000000 		.4byte	0xc3
+ 493 0138 00       		.byte	0
+ 494 0139 0B       		.uleb128 0xb
+ 495 013a 72747200 		.ascii	"rtr\000"
+ 496 013e 05       		.byte	0x5
+ 497 013f 84       		.byte	0x84
+ 498 0140 AD000000 		.4byte	0xad
+ 499 0144 04       		.byte	0x4
+ 500 0145 0B       		.uleb128 0xb
+ 501 0146 69646500 		.ascii	"ide\000"
+ 502 014a 05       		.byte	0x5
+ 503 014b 85       		.byte	0x85
+ 504 014c AD000000 		.4byte	0xad
+ 505 0150 05       		.byte	0x5
+ 506 0151 0B       		.uleb128 0xb
+ 507 0152 646C6300 		.ascii	"dlc\000"
+ 508 0156 05       		.byte	0x5
+ 509 0157 86       		.byte	0x86
+ 510 0158 AD000000 		.4byte	0xad
+ 511 015c 06       		.byte	0x6
+ 512 015d 0B       		.uleb128 0xb
+ 513 015e 69727100 		.ascii	"irq\000"
+ 514 0162 05       		.byte	0x5
+ 515 0163 87       		.byte	0x87
+ 516 0164 AD000000 		.4byte	0xad
+ 517 0168 07       		.byte	0x7
+ 518 0169 0B       		.uleb128 0xb
+ 519 016a 6D736700 		.ascii	"msg\000"
+ 520 016e 05       		.byte	0x5
+ 521 016f 8B       		.byte	0x8b
+ 522 0170 76010000 		.4byte	0x176
+ 523 0174 08       		.byte	0x8
+ 524 0175 00       		.byte	0
+ 525 0176 0C       		.uleb128 0xc
+ 526 0177 04       		.byte	0x4
+ 527 0178 1B010000 		.4byte	0x11b
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 14
+
+
+ 528 017c 03       		.uleb128 0x3
+ 529 017d 85010000 		.4byte	.LASF24
+ 530 0181 05       		.byte	0x5
+ 531 0182 8C       		.byte	0x8c
+ 532 0183 26010000 		.4byte	0x126
+ 533 0187 0D       		.uleb128 0xd
+ 534 0188 5E000000 		.4byte	.LASF37
+ 535 018c 01       		.byte	0x1
+ 536 018d 06       		.byte	0x6
+ 537 018e 67       		.byte	0x67
+ 538 018f DC010000 		.4byte	0x1dc
+ 539 0193 0E       		.uleb128 0xe
+ 540 0194 0B010000 		.4byte	.LASF25
+ 541 0198 00       		.sleb128 0
+ 542 0199 0E       		.uleb128 0xe
+ 543 019a 5D010000 		.4byte	.LASF26
+ 544 019e 01       		.sleb128 1
+ 545 019f 0E       		.uleb128 0xe
+ 546 01a0 92010000 		.4byte	.LASF27
+ 547 01a4 02       		.sleb128 2
+ 548 01a5 0E       		.uleb128 0xe
+ 549 01a6 B3020000 		.4byte	.LASF28
+ 550 01aa 03       		.sleb128 3
+ 551 01ab 0E       		.uleb128 0xe
+ 552 01ac 10020000 		.4byte	.LASF29
+ 553 01b0 04       		.sleb128 4
+ 554 01b1 0E       		.uleb128 0xe
+ 555 01b2 A1010000 		.4byte	.LASF30
+ 556 01b6 05       		.sleb128 5
+ 557 01b7 0E       		.uleb128 0xe
+ 558 01b8 78040000 		.4byte	.LASF31
+ 559 01bc 00       		.sleb128 0
+ 560 01bd 0E       		.uleb128 0xe
+ 561 01be C3010000 		.4byte	.LASF32
+ 562 01c2 01       		.sleb128 1
+ 563 01c3 0E       		.uleb128 0xe
+ 564 01c4 B7040000 		.4byte	.LASF33
+ 565 01c8 02       		.sleb128 2
+ 566 01c9 0E       		.uleb128 0xe
+ 567 01ca 20000000 		.4byte	.LASF34
+ 568 01ce 03       		.sleb128 3
+ 569 01cf 0E       		.uleb128 0xe
+ 570 01d0 16020000 		.4byte	.LASF35
+ 571 01d4 04       		.sleb128 4
+ 572 01d5 0E       		.uleb128 0xe
+ 573 01d6 C8040000 		.4byte	.LASF36
+ 574 01da 05       		.sleb128 5
+ 575 01db 00       		.byte	0
+ 576 01dc 0D       		.uleb128 0xd
+ 577 01dd 12000000 		.4byte	.LASF38
+ 578 01e1 01       		.byte	0x1
+ 579 01e2 06       		.byte	0x6
+ 580 01e3 77       		.byte	0x77
+ 581 01e4 13020000 		.4byte	0x213
+ 582 01e8 0E       		.uleb128 0xe
+ 583 01e9 E8000000 		.4byte	.LASF39
+ 584 01ed 00       		.sleb128 0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 15
+
+
+ 585 01ee 0E       		.uleb128 0xe
+ 586 01ef 09040000 		.4byte	.LASF40
+ 587 01f3 01       		.sleb128 1
+ 588 01f4 0E       		.uleb128 0xe
+ 589 01f5 F5010000 		.4byte	.LASF41
+ 590 01f9 02       		.sleb128 2
+ 591 01fa 0E       		.uleb128 0xe
+ 592 01fb 61020000 		.4byte	.LASF42
+ 593 01ff 03       		.sleb128 3
+ 594 0200 0E       		.uleb128 0xe
+ 595 0201 AD030000 		.4byte	.LASF43
+ 596 0205 04       		.sleb128 4
+ 597 0206 0E       		.uleb128 0xe
+ 598 0207 00020000 		.4byte	.LASF44
+ 599 020b 05       		.sleb128 5
+ 600 020c 0E       		.uleb128 0xe
+ 601 020d B6030000 		.4byte	.LASF45
+ 602 0211 06       		.sleb128 6
+ 603 0212 00       		.byte	0
+ 604 0213 0F       		.uleb128 0xf
+ 605 0214 F6030000 		.4byte	.LASF61
+ 606 0218 18       		.byte	0x18
+ 607 0219 06       		.byte	0x6
+ 608 021a 82       		.byte	0x82
+ 609 021b B0020000 		.4byte	0x2b0
+ 610 021f 08       		.uleb128 0x8
+ 611 0220 DE010000 		.4byte	.LASF46
+ 612 0224 06       		.byte	0x6
+ 613 0225 85       		.byte	0x85
+ 614 0226 E8000000 		.4byte	0xe8
+ 615 022a 00       		.byte	0
+ 616 022b 08       		.uleb128 0x8
+ 617 022c 93030000 		.4byte	.LASF47
+ 618 0230 06       		.byte	0x6
+ 619 0231 86       		.byte	0x86
+ 620 0232 E8000000 		.4byte	0xe8
+ 621 0236 02       		.byte	0x2
+ 622 0237 08       		.uleb128 0x8
+ 623 0238 69030000 		.4byte	.LASF48
+ 624 023c 06       		.byte	0x6
+ 625 023d 87       		.byte	0x87
+ 626 023e C0020000 		.4byte	0x2c0
+ 627 0242 04       		.byte	0x4
+ 628 0243 08       		.uleb128 0x8
+ 629 0244 76020000 		.4byte	.LASF49
+ 630 0248 06       		.byte	0x6
+ 631 0249 88       		.byte	0x88
+ 632 024a D5020000 		.4byte	0x2d5
+ 633 024e 08       		.byte	0x8
+ 634 024f 0B       		.uleb128 0xb
+ 635 0250 436E7400 		.ascii	"Cnt\000"
+ 636 0254 06       		.byte	0x6
+ 637 0255 8A       		.byte	0x8a
+ 638 0256 E8000000 		.4byte	0xe8
+ 639 025a 0E       		.byte	0xe
+ 640 025b 08       		.uleb128 0x8
+ 641 025c 9E030000 		.4byte	.LASF50
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 16
+
+
+ 642 0260 06       		.byte	0x6
+ 643 0261 8B       		.byte	0x8b
+ 644 0262 E3000000 		.4byte	0xe3
+ 645 0266 10       		.byte	0x10
+ 646 0267 08       		.uleb128 0x8
+ 647 0268 47000000 		.4byte	.LASF51
+ 648 026c 06       		.byte	0x6
+ 649 026d 8C       		.byte	0x8c
+ 650 026e E3000000 		.4byte	0xe3
+ 651 0272 11       		.byte	0x11
+ 652 0273 08       		.uleb128 0x8
+ 653 0274 8B030000 		.4byte	.LASF52
+ 654 0278 06       		.byte	0x6
+ 655 0279 8D       		.byte	0x8d
+ 656 027a E8000000 		.4byte	0xe8
+ 657 027e 12       		.byte	0x12
+ 658 027f 08       		.uleb128 0x8
+ 659 0280 3B010000 		.4byte	.LASF53
+ 660 0284 06       		.byte	0x6
+ 661 0285 8E       		.byte	0x8e
+ 662 0286 E3000000 		.4byte	0xe3
+ 663 028a 14       		.byte	0x14
+ 664 028b 08       		.uleb128 0x8
+ 665 028c 1A050000 		.4byte	.LASF54
+ 666 0290 06       		.byte	0x6
+ 667 0291 8F       		.byte	0x8f
+ 668 0292 E3000000 		.4byte	0xe3
+ 669 0296 15       		.byte	0x15
+ 670 0297 08       		.uleb128 0x8
+ 671 0298 FE030000 		.4byte	.LASF55
+ 672 029c 06       		.byte	0x6
+ 673 029d 90       		.byte	0x90
+ 674 029e E3000000 		.4byte	0xe3
+ 675 02a2 16       		.byte	0x16
+ 676 02a3 08       		.uleb128 0x8
+ 677 02a4 D1040000 		.4byte	.LASF56
+ 678 02a8 06       		.byte	0x6
+ 679 02a9 92       		.byte	0x92
+ 680 02aa E3000000 		.4byte	0xe3
+ 681 02ae 17       		.byte	0x17
+ 682 02af 00       		.byte	0
+ 683 02b0 09       		.uleb128 0x9
+ 684 02b1 B8000000 		.4byte	0xb8
+ 685 02b5 C0020000 		.4byte	0x2c0
+ 686 02b9 0A       		.uleb128 0xa
+ 687 02ba ED000000 		.4byte	0xed
+ 688 02be 01       		.byte	0x1
+ 689 02bf 00       		.byte	0
+ 690 02c0 05       		.uleb128 0x5
+ 691 02c1 B0020000 		.4byte	0x2b0
+ 692 02c5 09       		.uleb128 0x9
+ 693 02c6 AD000000 		.4byte	0xad
+ 694 02ca D5020000 		.4byte	0x2d5
+ 695 02ce 0A       		.uleb128 0xa
+ 696 02cf ED000000 		.4byte	0xed
+ 697 02d3 05       		.byte	0x5
+ 698 02d4 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 17
+
+
+ 699 02d5 05       		.uleb128 0x5
+ 700 02d6 C5020000 		.4byte	0x2c5
+ 701 02da 07       		.uleb128 0x7
+ 702 02db 0C       		.byte	0xc
+ 703 02dc 07       		.byte	0x7
+ 704 02dd 15       		.byte	0x15
+ 705 02de 13030000 		.4byte	0x313
+ 706 02e2 08       		.uleb128 0x8
+ 707 02e3 A1000000 		.4byte	.LASF57
+ 708 02e7 07       		.byte	0x7
+ 709 02e8 16       		.byte	0x16
+ 710 02e9 45000000 		.4byte	0x45
+ 711 02ed 00       		.byte	0
+ 712 02ee 0B       		.uleb128 0xb
+ 713 02ef 72747200 		.ascii	"rtr\000"
+ 714 02f3 07       		.byte	0x7
+ 715 02f4 17       		.byte	0x17
+ 716 02f5 37000000 		.4byte	0x37
+ 717 02f9 02       		.byte	0x2
+ 718 02fa 0B       		.uleb128 0xb
+ 719 02fb 6C656E00 		.ascii	"len\000"
+ 720 02ff 07       		.byte	0x7
+ 721 0300 18       		.byte	0x18
+ 722 0301 37000000 		.4byte	0x37
+ 723 0305 03       		.byte	0x3
+ 724 0306 08       		.uleb128 0x8
+ 725 0307 A8030000 		.4byte	.LASF58
+ 726 030b 07       		.byte	0x7
+ 727 030c 19       		.byte	0x19
+ 728 030d 13030000 		.4byte	0x313
+ 729 0311 04       		.byte	0x4
+ 730 0312 00       		.byte	0
+ 731 0313 09       		.uleb128 0x9
+ 732 0314 37000000 		.4byte	0x37
+ 733 0318 23030000 		.4byte	0x323
+ 734 031c 0A       		.uleb128 0xa
+ 735 031d ED000000 		.4byte	0xed
+ 736 0321 07       		.byte	0x7
+ 737 0322 00       		.byte	0
+ 738 0323 03       		.uleb128 0x3
+ 739 0324 A2040000 		.4byte	.LASF59
+ 740 0328 07       		.byte	0x7
+ 741 0329 1A       		.byte	0x1a
+ 742 032a DA020000 		.4byte	0x2da
+ 743 032e 0C       		.uleb128 0xc
+ 744 032f 04       		.byte	0x4
+ 745 0330 23030000 		.4byte	0x323
+ 746 0334 03       		.uleb128 0x3
+ 747 0335 BB020000 		.4byte	.LASF60
+ 748 0339 08       		.byte	0x8
+ 749 033a 66       		.byte	0x66
+ 750 033b F4000000 		.4byte	0xf4
+ 751 033f 0F       		.uleb128 0xf
+ 752 0340 70000000 		.4byte	.LASF62
+ 753 0344 0C       		.byte	0xc
+ 754 0345 09       		.byte	0x9
+ 755 0346 0C       		.byte	0xc
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 18
+
+
+ 756 0347 B8030000 		.4byte	0x3b8
+ 757 034b 08       		.uleb128 0x8
+ 758 034c FE000000 		.4byte	.LASF63
+ 759 0350 09       		.byte	0x9
+ 760 0351 0F       		.byte	0xf
+ 761 0352 37000000 		.4byte	0x37
+ 762 0356 00       		.byte	0
+ 763 0357 08       		.uleb128 0x8
+ 764 0358 47010000 		.4byte	.LASF64
+ 765 035c 09       		.byte	0x9
+ 766 035d 10       		.byte	0x10
+ 767 035e 37000000 		.4byte	0x37
+ 768 0362 01       		.byte	0x1
+ 769 0363 08       		.uleb128 0x8
+ 770 0364 78010000 		.4byte	.LASF65
+ 771 0368 09       		.byte	0x9
+ 772 0369 11       		.byte	0x11
+ 773 036a 37000000 		.4byte	0x37
+ 774 036e 02       		.byte	0x2
+ 775 036f 08       		.uleb128 0x8
+ 776 0370 F3040000 		.4byte	.LASF66
+ 777 0374 09       		.byte	0x9
+ 778 0375 12       		.byte	0x12
+ 779 0376 37000000 		.4byte	0x37
+ 780 037a 03       		.byte	0x3
+ 781 037b 08       		.uleb128 0x8
+ 782 037c AA040000 		.4byte	.LASF67
+ 783 0380 09       		.byte	0x9
+ 784 0381 13       		.byte	0x13
+ 785 0382 37000000 		.4byte	0x37
+ 786 0386 04       		.byte	0x4
+ 787 0387 08       		.uleb128 0x8
+ 788 0388 CC010000 		.4byte	.LASF68
+ 789 038c 09       		.byte	0x9
+ 790 038d 14       		.byte	0x14
+ 791 038e 37000000 		.4byte	0x37
+ 792 0392 05       		.byte	0x5
+ 793 0393 08       		.uleb128 0x8
+ 794 0394 E3040000 		.4byte	.LASF69
+ 795 0398 09       		.byte	0x9
+ 796 0399 15       		.byte	0x15
+ 797 039a 45000000 		.4byte	0x45
+ 798 039e 06       		.byte	0x6
+ 799 039f 08       		.uleb128 0x8
+ 800 03a0 2B000000 		.4byte	.LASF70
+ 801 03a4 09       		.byte	0x9
+ 802 03a5 16       		.byte	0x16
+ 803 03a6 45000000 		.4byte	0x45
+ 804 03aa 08       		.byte	0x8
+ 805 03ab 08       		.uleb128 0x8
+ 806 03ac 35040000 		.4byte	.LASF71
+ 807 03b0 09       		.byte	0x9
+ 808 03b1 17       		.byte	0x17
+ 809 03b2 37000000 		.4byte	0x37
+ 810 03b6 0A       		.byte	0xa
+ 811 03b7 00       		.byte	0
+ 812 03b8 07       		.uleb128 0x7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 19
+
+
+ 813 03b9 14       		.byte	0x14
+ 814 03ba 0A       		.byte	0xa
+ 815 03bb 11       		.byte	0x11
+ 816 03bc 09040000 		.4byte	0x409
+ 817 03c0 08       		.uleb128 0x8
+ 818 03c1 1F020000 		.4byte	.LASF72
+ 819 03c5 0A       		.byte	0xa
+ 820 03c6 13       		.byte	0x13
+ 821 03c7 A2000000 		.4byte	0xa2
+ 822 03cb 00       		.byte	0
+ 823 03cc 08       		.uleb128 0x8
+ 824 03cd 49040000 		.4byte	.LASF73
+ 825 03d1 0A       		.byte	0xa
+ 826 03d2 16       		.byte	0x16
+ 827 03d3 A2000000 		.4byte	0xa2
+ 828 03d7 04       		.byte	0x4
+ 829 03d8 0B       		.uleb128 0xb
+ 830 03d9 49444500 		.ascii	"IDE\000"
+ 831 03dd 0A       		.byte	0xa
+ 832 03de 19       		.byte	0x19
+ 833 03df 8C000000 		.4byte	0x8c
+ 834 03e3 08       		.byte	0x8
+ 835 03e4 0B       		.uleb128 0xb
+ 836 03e5 52545200 		.ascii	"RTR\000"
+ 837 03e9 0A       		.byte	0xa
+ 838 03ea 1D       		.byte	0x1d
+ 839 03eb 8C000000 		.4byte	0x8c
+ 840 03ef 09       		.byte	0x9
+ 841 03f0 0B       		.uleb128 0xb
+ 842 03f1 444C4300 		.ascii	"DLC\000"
+ 843 03f5 0A       		.byte	0xa
+ 844 03f6 21       		.byte	0x21
+ 845 03f7 8C000000 		.4byte	0x8c
+ 846 03fb 0A       		.byte	0xa
+ 847 03fc 08       		.uleb128 0x8
+ 848 03fd 18040000 		.4byte	.LASF74
+ 849 0401 0A       		.byte	0xa
+ 850 0402 25       		.byte	0x25
+ 851 0403 09040000 		.4byte	0x409
+ 852 0407 0B       		.byte	0xb
+ 853 0408 00       		.byte	0
+ 854 0409 09       		.uleb128 0x9
+ 855 040a 8C000000 		.4byte	0x8c
+ 856 040e 19040000 		.4byte	0x419
+ 857 0412 0A       		.uleb128 0xa
+ 858 0413 ED000000 		.4byte	0xed
+ 859 0417 07       		.byte	0x7
+ 860 0418 00       		.byte	0
+ 861 0419 03       		.uleb128 0x3
+ 862 041a 54010000 		.4byte	.LASF75
+ 863 041e 0A       		.byte	0xa
+ 864 041f 27       		.byte	0x27
+ 865 0420 B8030000 		.4byte	0x3b8
+ 866 0424 10       		.uleb128 0x10
+ 867 0425 C7000000 		.4byte	.LASF102
+ 868 0429 01       		.byte	0x1
+ 869 042a 57       		.byte	0x57
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 20
+
+
+ 870 042b 37000000 		.4byte	0x37
+ 871 042f 00000000 		.4byte	.LFB63
+ 872 0433 6C000000 		.4byte	.LFE63-.LFB63
+ 873 0437 01       		.uleb128 0x1
+ 874 0438 9C       		.byte	0x9c
+ 875 0439 A6040000 		.4byte	0x4a6
+ 876 043d 11       		.uleb128 0x11
+ 877 043e 08020000 		.4byte	.LASF76
+ 878 0442 01       		.byte	0x1
+ 879 0443 57       		.byte	0x57
+ 880 0444 34030000 		.4byte	0x334
+ 881 0448 00000000 		.4byte	.LLST0
+ 882 044c 12       		.uleb128 0x12
+ 883 044d 6D00     		.ascii	"m\000"
+ 884 044f 01       		.byte	0x1
+ 885 0450 57       		.byte	0x57
+ 886 0451 2E030000 		.4byte	0x32e
+ 887 0455 21000000 		.4byte	.LLST1
+ 888 0459 13       		.uleb128 0x13
+ 889 045a 6900     		.ascii	"i\000"
+ 890 045c 01       		.byte	0x1
+ 891 045d 59       		.byte	0x59
+ 892 045e A2000000 		.4byte	0xa2
+ 893 0462 42000000 		.4byte	.LLST2
+ 894 0466 14       		.uleb128 0x14
+ 895 0467 CF000000 		.4byte	.LASF77
+ 896 046b 01       		.byte	0x1
+ 897 046c 59       		.byte	0x59
+ 898 046d A2000000 		.4byte	0xa2
+ 899 0471 61000000 		.4byte	.LLST3
+ 900 0475 15       		.uleb128 0x15
+ 901 0476 F4000000 		.4byte	.LASF78
+ 902 047a 01       		.byte	0x1
+ 903 047b 5A       		.byte	0x5a
+ 904 047c 19040000 		.4byte	0x419
+ 905 0480 02       		.uleb128 0x2
+ 906 0481 91       		.byte	0x91
+ 907 0482 5C       		.sleb128 -36
+ 908 0483 14       		.uleb128 0x14
+ 909 0484 E7030000 		.4byte	.LASF79
+ 910 0488 01       		.byte	0x1
+ 911 0489 5B       		.byte	0x5b
+ 912 048a A6040000 		.4byte	0x4a6
+ 913 048e 8B000000 		.4byte	.LLST4
+ 914 0492 16       		.uleb128 0x16
+ 915 0493 58000000 		.4byte	.LVL13
+ 916 0497 F4050000 		.4byte	0x5f4
+ 917 049b 17       		.uleb128 0x17
+ 918 049c 01       		.uleb128 0x1
+ 919 049d 50       		.byte	0x50
+ 920 049e 05       		.uleb128 0x5
+ 921 049f 03       		.byte	0x3
+ 922 04a0 00000000 		.4byte	CAN_message
+ 923 04a4 00       		.byte	0
+ 924 04a5 00       		.byte	0
+ 925 04a6 0C       		.uleb128 0xc
+ 926 04a7 04       		.byte	0x4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 21
+
+
+ 927 04a8 19040000 		.4byte	0x419
+ 928 04ac 18       		.uleb128 0x18
+ 929 04ad 7C000000 		.4byte	.LASF103
+ 930 04b1 01       		.byte	0x1
+ 931 04b2 7C       		.byte	0x7c
+ 932 04b3 7E000000 		.4byte	0x7e
+ 933 04b7 00000000 		.4byte	.LFB64
+ 934 04bb EC000000 		.4byte	.LFE64-.LFB64
+ 935 04bf 01       		.uleb128 0x1
+ 936 04c0 9C       		.byte	0x9c
+ 937 04c1 5D050000 		.4byte	0x55d
+ 938 04c5 19       		.uleb128 0x19
+ 939 04c6 52000000 		.4byte	.LBB2
+ 940 04ca 0A000000 		.4byte	.LBE2-.LBB2
+ 941 04ce ED040000 		.4byte	0x4ed
+ 942 04d2 1A       		.uleb128 0x1a
+ 943 04d3 D5000000 		.4byte	.LASF90
+ 944 04d7 01       		.byte	0x1
+ 945 04d8 AC       		.byte	0xac
+ 946 04d9 7E000000 		.4byte	0x7e
+ 947 04dd E3040000 		.4byte	0x4e3
+ 948 04e1 1B       		.uleb128 0x1b
+ 949 04e2 00       		.byte	0
+ 950 04e3 1C       		.uleb128 0x1c
+ 951 04e4 56000000 		.4byte	.LVL22
+ 952 04e8 15060000 		.4byte	0x615
+ 953 04ec 00       		.byte	0
+ 954 04ed 1C       		.uleb128 0x1c
+ 955 04ee 06000000 		.4byte	.LVL15
+ 956 04f2 26060000 		.4byte	0x626
+ 957 04f6 1C       		.uleb128 0x1c
+ 958 04f7 0C000000 		.4byte	.LVL16
+ 959 04fb 2D060000 		.4byte	0x62d
+ 960 04ff 1C       		.uleb128 0x1c
+ 961 0500 10000000 		.4byte	.LVL17
+ 962 0504 38060000 		.4byte	0x638
+ 963 0508 1D       		.uleb128 0x1d
+ 964 0509 16000000 		.4byte	.LVL18
+ 965 050d 3F060000 		.4byte	0x63f
+ 966 0511 1C050000 		.4byte	0x51c
+ 967 0515 17       		.uleb128 0x17
+ 968 0516 01       		.uleb128 0x1
+ 969 0517 50       		.byte	0x50
+ 970 0518 02       		.uleb128 0x2
+ 971 0519 08       		.byte	0x8
+ 972 051a 64       		.byte	0x64
+ 973 051b 00       		.byte	0
+ 974 051c 1D       		.uleb128 0x1d
+ 975 051d 22000000 		.4byte	.LVL19
+ 976 0521 50060000 		.4byte	0x650
+ 977 0525 2F050000 		.4byte	0x52f
+ 978 0529 17       		.uleb128 0x17
+ 979 052a 01       		.uleb128 0x1
+ 980 052b 50       		.byte	0x50
+ 981 052c 01       		.uleb128 0x1
+ 982 052d 35       		.byte	0x35
+ 983 052e 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 22
+
+
+ 984 052f 1C       		.uleb128 0x1c
+ 985 0530 28000000 		.4byte	.LVL20
+ 986 0534 61060000 		.4byte	0x661
+ 987 0538 1C       		.uleb128 0x1c
+ 988 0539 4C000000 		.4byte	.LVL21
+ 989 053d 72060000 		.4byte	0x672
+ 990 0541 1C       		.uleb128 0x1c
+ 991 0542 60000000 		.4byte	.LVL23
+ 992 0546 72060000 		.4byte	0x672
+ 993 054a 1C       		.uleb128 0x1c
+ 994 054b 9A000000 		.4byte	.LVL24
+ 995 054f 7D060000 		.4byte	0x67d
+ 996 0553 1C       		.uleb128 0x1c
+ 997 0554 AA000000 		.4byte	.LVL25
+ 998 0558 61060000 		.4byte	0x661
+ 999 055c 00       		.byte	0
+ 1000 055d 1E       		.uleb128 0x1e
+ 1001 055e 1D040000 		.4byte	.LASF80
+ 1002 0562 0B       		.byte	0xb
+ 1003 0563 2A06     		.2byte	0x62a
+ 1004 0565 69050000 		.4byte	0x569
+ 1005 0569 05       		.uleb128 0x5
+ 1006 056a 97000000 		.4byte	0x97
+ 1007 056e 1F       		.uleb128 0x1f
+ 1008 056f 8D000000 		.4byte	.LASF81
+ 1009 0573 09       		.byte	0x9
+ 1010 0574 0A       		.byte	0xa
+ 1011 0575 37000000 		.4byte	0x37
+ 1012 0579 1F       		.uleb128 0x1f
+ 1013 057a 63010000 		.4byte	.LASF82
+ 1014 057e 06       		.byte	0x6
+ 1015 057f 96       		.byte	0x96
+ 1016 0580 13020000 		.4byte	0x213
+ 1017 0584 1F       		.uleb128 0x1f
+ 1018 0585 8F020000 		.4byte	.LASF83
+ 1019 0589 06       		.byte	0x6
+ 1020 058a 97       		.byte	0x97
+ 1021 058b AD000000 		.4byte	0xad
+ 1022 058f 1F       		.uleb128 0x1f
+ 1023 0590 4F040000 		.4byte	.LASF84
+ 1024 0594 09       		.byte	0x9
+ 1025 0595 0B       		.byte	0xb
+ 1026 0596 37000000 		.4byte	0x37
+ 1027 059a 1F       		.uleb128 0x1f
+ 1028 059b 81040000 		.4byte	.LASF85
+ 1029 059f 09       		.byte	0x9
+ 1030 05a0 19       		.byte	0x19
+ 1031 05a1 3F030000 		.4byte	0x33f
+ 1032 05a5 1F       		.uleb128 0x1f
+ 1033 05a6 A8000000 		.4byte	.LASF86
+ 1034 05aa 01       		.byte	0x1
+ 1035 05ab 17       		.byte	0x17
+ 1036 05ac 7E000000 		.4byte	0x7e
+ 1037 05b0 20       		.uleb128 0x20
+ 1038 05b1 10050000 		.4byte	.LASF87
+ 1039 05b5 01       		.byte	0x1
+ 1040 05b6 19       		.byte	0x19
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 23
+
+
+ 1041 05b7 AD000000 		.4byte	0xad
+ 1042 05bb 05       		.uleb128 0x5
+ 1043 05bc 03       		.byte	0x3
+ 1044 05bd 00000000 		.4byte	key_count
+ 1045 05c1 20       		.uleb128 0x20
+ 1046 05c2 2F010000 		.4byte	.LASF88
+ 1047 05c6 01       		.byte	0x1
+ 1048 05c7 53       		.byte	0x53
+ 1049 05c8 13030000 		.4byte	0x313
+ 1050 05cc 05       		.uleb128 0x5
+ 1051 05cd 03       		.byte	0x3
+ 1052 05ce 00000000 		.4byte	receiveData
+ 1053 05d2 20       		.uleb128 0x20
+ 1054 05d3 81000000 		.4byte	.LASF89
+ 1055 05d7 01       		.byte	0x1
+ 1056 05d8 4F       		.byte	0x4f
+ 1057 05d9 7C010000 		.4byte	0x17c
+ 1058 05dd 05       		.uleb128 0x5
+ 1059 05de 03       		.byte	0x3
+ 1060 05df 00000000 		.4byte	CAN_message
+ 1061 05e3 20       		.uleb128 0x20
+ 1062 05e4 18040000 		.4byte	.LASF74
+ 1063 05e8 01       		.byte	0x1
+ 1064 05e9 51       		.byte	0x51
+ 1065 05ea 1B010000 		.4byte	0x11b
+ 1066 05ee 05       		.uleb128 0x5
+ 1067 05ef 03       		.byte	0x3
+ 1068 05f0 00000000 		.4byte	Data
+ 1069 05f4 21       		.uleb128 0x21
+ 1070 05f5 02050000 		.4byte	.LASF104
+ 1071 05f9 05       		.byte	0x5
+ 1072 05fa 1801     		.2byte	0x118
+ 1073 05fc AD000000 		.4byte	0xad
+ 1074 0600 0A060000 		.4byte	0x60a
+ 1075 0604 22       		.uleb128 0x22
+ 1076 0605 0A060000 		.4byte	0x60a
+ 1077 0609 00       		.byte	0
+ 1078 060a 0C       		.uleb128 0xc
+ 1079 060b 04       		.byte	0x4
+ 1080 060c 10060000 		.4byte	0x610
+ 1081 0610 23       		.uleb128 0x23
+ 1082 0611 7C010000 		.4byte	0x17c
+ 1083 0615 1A       		.uleb128 0x1a
+ 1084 0616 D5000000 		.4byte	.LASF90
+ 1085 061a 01       		.byte	0x1
+ 1086 061b AC       		.byte	0xac
+ 1087 061c 7E000000 		.4byte	0x7e
+ 1088 0620 26060000 		.4byte	0x626
+ 1089 0624 1B       		.uleb128 0x1b
+ 1090 0625 00       		.byte	0
+ 1091 0626 24       		.uleb128 0x24
+ 1092 0627 11010000 		.4byte	.LASF91
+ 1093 062b 06       		.byte	0x6
+ 1094 062c 9B       		.byte	0x9b
+ 1095 062d 25       		.uleb128 0x25
+ 1096 062e 00000000 		.4byte	.LASF96
+ 1097 0632 05       		.byte	0x5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 24
+
+
+ 1098 0633 C5       		.byte	0xc5
+ 1099 0634 AD000000 		.4byte	0xad
+ 1100 0638 24       		.uleb128 0x24
+ 1101 0639 6A020000 		.4byte	.LASF92
+ 1102 063d 0C       		.byte	0xc
+ 1103 063e 0E       		.byte	0xe
+ 1104 063f 26       		.uleb128 0x26
+ 1105 0640 C0040000 		.4byte	.LASF93
+ 1106 0644 0D       		.byte	0xd
+ 1107 0645 77       		.byte	0x77
+ 1108 0646 50060000 		.4byte	0x650
+ 1109 064a 22       		.uleb128 0x22
+ 1110 064b C3000000 		.4byte	0xc3
+ 1111 064f 00       		.byte	0
+ 1112 0650 26       		.uleb128 0x26
+ 1113 0651 C4020000 		.4byte	.LASF94
+ 1114 0655 0E       		.byte	0xe
+ 1115 0656 11       		.byte	0x11
+ 1116 0657 61060000 		.4byte	0x661
+ 1117 065b 22       		.uleb128 0x22
+ 1118 065c AD000000 		.4byte	0xad
+ 1119 0660 00       		.byte	0
+ 1120 0661 26       		.uleb128 0x26
+ 1121 0662 9F020000 		.4byte	.LASF95
+ 1122 0666 0F       		.byte	0xf
+ 1123 0667 27       		.byte	0x27
+ 1124 0668 72060000 		.4byte	0x672
+ 1125 066c 22       		.uleb128 0x22
+ 1126 066d AD000000 		.4byte	0xad
+ 1127 0671 00       		.byte	0
+ 1128 0672 25       		.uleb128 0x25
+ 1129 0673 A7010000 		.4byte	.LASF97
+ 1130 0677 10       		.byte	0x10
+ 1131 0678 28       		.byte	0x28
+ 1132 0679 AD000000 		.4byte	0xad
+ 1133 067d 25       		.uleb128 0x25
+ 1134 067e 45020000 		.4byte	.LASF98
+ 1135 0682 06       		.byte	0x6
+ 1136 0683 9C       		.byte	0x9c
+ 1137 0684 AD000000 		.4byte	0xad
+ 1138 0688 00       		.byte	0
+ 1139              		.section	.debug_abbrev,"",%progbits
+ 1140              	.Ldebug_abbrev0:
+ 1141 0000 01       		.uleb128 0x1
+ 1142 0001 11       		.uleb128 0x11
+ 1143 0002 01       		.byte	0x1
+ 1144 0003 25       		.uleb128 0x25
+ 1145 0004 0E       		.uleb128 0xe
+ 1146 0005 13       		.uleb128 0x13
+ 1147 0006 0B       		.uleb128 0xb
+ 1148 0007 03       		.uleb128 0x3
+ 1149 0008 0E       		.uleb128 0xe
+ 1150 0009 1B       		.uleb128 0x1b
+ 1151 000a 0E       		.uleb128 0xe
+ 1152 000b 55       		.uleb128 0x55
+ 1153 000c 17       		.uleb128 0x17
+ 1154 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 25
+
+
+ 1155 000e 01       		.uleb128 0x1
+ 1156 000f 10       		.uleb128 0x10
+ 1157 0010 17       		.uleb128 0x17
+ 1158 0011 00       		.byte	0
+ 1159 0012 00       		.byte	0
+ 1160 0013 02       		.uleb128 0x2
+ 1161 0014 24       		.uleb128 0x24
+ 1162 0015 00       		.byte	0
+ 1163 0016 0B       		.uleb128 0xb
+ 1164 0017 0B       		.uleb128 0xb
+ 1165 0018 3E       		.uleb128 0x3e
+ 1166 0019 0B       		.uleb128 0xb
+ 1167 001a 03       		.uleb128 0x3
+ 1168 001b 0E       		.uleb128 0xe
+ 1169 001c 00       		.byte	0
+ 1170 001d 00       		.byte	0
+ 1171 001e 03       		.uleb128 0x3
+ 1172 001f 16       		.uleb128 0x16
+ 1173 0020 00       		.byte	0
+ 1174 0021 03       		.uleb128 0x3
+ 1175 0022 0E       		.uleb128 0xe
+ 1176 0023 3A       		.uleb128 0x3a
+ 1177 0024 0B       		.uleb128 0xb
+ 1178 0025 3B       		.uleb128 0x3b
+ 1179 0026 0B       		.uleb128 0xb
+ 1180 0027 49       		.uleb128 0x49
+ 1181 0028 13       		.uleb128 0x13
+ 1182 0029 00       		.byte	0
+ 1183 002a 00       		.byte	0
+ 1184 002b 04       		.uleb128 0x4
+ 1185 002c 24       		.uleb128 0x24
+ 1186 002d 00       		.byte	0
+ 1187 002e 0B       		.uleb128 0xb
+ 1188 002f 0B       		.uleb128 0xb
+ 1189 0030 3E       		.uleb128 0x3e
+ 1190 0031 0B       		.uleb128 0xb
+ 1191 0032 03       		.uleb128 0x3
+ 1192 0033 08       		.uleb128 0x8
+ 1193 0034 00       		.byte	0
+ 1194 0035 00       		.byte	0
+ 1195 0036 05       		.uleb128 0x5
+ 1196 0037 35       		.uleb128 0x35
+ 1197 0038 00       		.byte	0
+ 1198 0039 49       		.uleb128 0x49
+ 1199 003a 13       		.uleb128 0x13
+ 1200 003b 00       		.byte	0
+ 1201 003c 00       		.byte	0
+ 1202 003d 06       		.uleb128 0x6
+ 1203 003e 0F       		.uleb128 0xf
+ 1204 003f 00       		.byte	0
+ 1205 0040 0B       		.uleb128 0xb
+ 1206 0041 0B       		.uleb128 0xb
+ 1207 0042 00       		.byte	0
+ 1208 0043 00       		.byte	0
+ 1209 0044 07       		.uleb128 0x7
+ 1210 0045 13       		.uleb128 0x13
+ 1211 0046 01       		.byte	0x1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 26
+
+
+ 1212 0047 0B       		.uleb128 0xb
+ 1213 0048 0B       		.uleb128 0xb
+ 1214 0049 3A       		.uleb128 0x3a
+ 1215 004a 0B       		.uleb128 0xb
+ 1216 004b 3B       		.uleb128 0x3b
+ 1217 004c 0B       		.uleb128 0xb
+ 1218 004d 01       		.uleb128 0x1
+ 1219 004e 13       		.uleb128 0x13
+ 1220 004f 00       		.byte	0
+ 1221 0050 00       		.byte	0
+ 1222 0051 08       		.uleb128 0x8
+ 1223 0052 0D       		.uleb128 0xd
+ 1224 0053 00       		.byte	0
+ 1225 0054 03       		.uleb128 0x3
+ 1226 0055 0E       		.uleb128 0xe
+ 1227 0056 3A       		.uleb128 0x3a
+ 1228 0057 0B       		.uleb128 0xb
+ 1229 0058 3B       		.uleb128 0x3b
+ 1230 0059 0B       		.uleb128 0xb
+ 1231 005a 49       		.uleb128 0x49
+ 1232 005b 13       		.uleb128 0x13
+ 1233 005c 38       		.uleb128 0x38
+ 1234 005d 0B       		.uleb128 0xb
+ 1235 005e 00       		.byte	0
+ 1236 005f 00       		.byte	0
+ 1237 0060 09       		.uleb128 0x9
+ 1238 0061 01       		.uleb128 0x1
+ 1239 0062 01       		.byte	0x1
+ 1240 0063 49       		.uleb128 0x49
+ 1241 0064 13       		.uleb128 0x13
+ 1242 0065 01       		.uleb128 0x1
+ 1243 0066 13       		.uleb128 0x13
+ 1244 0067 00       		.byte	0
+ 1245 0068 00       		.byte	0
+ 1246 0069 0A       		.uleb128 0xa
+ 1247 006a 21       		.uleb128 0x21
+ 1248 006b 00       		.byte	0
+ 1249 006c 49       		.uleb128 0x49
+ 1250 006d 13       		.uleb128 0x13
+ 1251 006e 2F       		.uleb128 0x2f
+ 1252 006f 0B       		.uleb128 0xb
+ 1253 0070 00       		.byte	0
+ 1254 0071 00       		.byte	0
+ 1255 0072 0B       		.uleb128 0xb
+ 1256 0073 0D       		.uleb128 0xd
+ 1257 0074 00       		.byte	0
+ 1258 0075 03       		.uleb128 0x3
+ 1259 0076 08       		.uleb128 0x8
+ 1260 0077 3A       		.uleb128 0x3a
+ 1261 0078 0B       		.uleb128 0xb
+ 1262 0079 3B       		.uleb128 0x3b
+ 1263 007a 0B       		.uleb128 0xb
+ 1264 007b 49       		.uleb128 0x49
+ 1265 007c 13       		.uleb128 0x13
+ 1266 007d 38       		.uleb128 0x38
+ 1267 007e 0B       		.uleb128 0xb
+ 1268 007f 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 27
+
+
+ 1269 0080 00       		.byte	0
+ 1270 0081 0C       		.uleb128 0xc
+ 1271 0082 0F       		.uleb128 0xf
+ 1272 0083 00       		.byte	0
+ 1273 0084 0B       		.uleb128 0xb
+ 1274 0085 0B       		.uleb128 0xb
+ 1275 0086 49       		.uleb128 0x49
+ 1276 0087 13       		.uleb128 0x13
+ 1277 0088 00       		.byte	0
+ 1278 0089 00       		.byte	0
+ 1279 008a 0D       		.uleb128 0xd
+ 1280 008b 04       		.uleb128 0x4
+ 1281 008c 01       		.byte	0x1
+ 1282 008d 03       		.uleb128 0x3
+ 1283 008e 0E       		.uleb128 0xe
+ 1284 008f 0B       		.uleb128 0xb
+ 1285 0090 0B       		.uleb128 0xb
+ 1286 0091 3A       		.uleb128 0x3a
+ 1287 0092 0B       		.uleb128 0xb
+ 1288 0093 3B       		.uleb128 0x3b
+ 1289 0094 0B       		.uleb128 0xb
+ 1290 0095 01       		.uleb128 0x1
+ 1291 0096 13       		.uleb128 0x13
+ 1292 0097 00       		.byte	0
+ 1293 0098 00       		.byte	0
+ 1294 0099 0E       		.uleb128 0xe
+ 1295 009a 28       		.uleb128 0x28
+ 1296 009b 00       		.byte	0
+ 1297 009c 03       		.uleb128 0x3
+ 1298 009d 0E       		.uleb128 0xe
+ 1299 009e 1C       		.uleb128 0x1c
+ 1300 009f 0D       		.uleb128 0xd
+ 1301 00a0 00       		.byte	0
+ 1302 00a1 00       		.byte	0
+ 1303 00a2 0F       		.uleb128 0xf
+ 1304 00a3 13       		.uleb128 0x13
+ 1305 00a4 01       		.byte	0x1
+ 1306 00a5 03       		.uleb128 0x3
+ 1307 00a6 0E       		.uleb128 0xe
+ 1308 00a7 0B       		.uleb128 0xb
+ 1309 00a8 0B       		.uleb128 0xb
+ 1310 00a9 3A       		.uleb128 0x3a
+ 1311 00aa 0B       		.uleb128 0xb
+ 1312 00ab 3B       		.uleb128 0x3b
+ 1313 00ac 0B       		.uleb128 0xb
+ 1314 00ad 01       		.uleb128 0x1
+ 1315 00ae 13       		.uleb128 0x13
+ 1316 00af 00       		.byte	0
+ 1317 00b0 00       		.byte	0
+ 1318 00b1 10       		.uleb128 0x10
+ 1319 00b2 2E       		.uleb128 0x2e
+ 1320 00b3 01       		.byte	0x1
+ 1321 00b4 3F       		.uleb128 0x3f
+ 1322 00b5 19       		.uleb128 0x19
+ 1323 00b6 03       		.uleb128 0x3
+ 1324 00b7 0E       		.uleb128 0xe
+ 1325 00b8 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 28
+
+
+ 1326 00b9 0B       		.uleb128 0xb
+ 1327 00ba 3B       		.uleb128 0x3b
+ 1328 00bb 0B       		.uleb128 0xb
+ 1329 00bc 27       		.uleb128 0x27
+ 1330 00bd 19       		.uleb128 0x19
+ 1331 00be 49       		.uleb128 0x49
+ 1332 00bf 13       		.uleb128 0x13
+ 1333 00c0 11       		.uleb128 0x11
+ 1334 00c1 01       		.uleb128 0x1
+ 1335 00c2 12       		.uleb128 0x12
+ 1336 00c3 06       		.uleb128 0x6
+ 1337 00c4 40       		.uleb128 0x40
+ 1338 00c5 18       		.uleb128 0x18
+ 1339 00c6 9742     		.uleb128 0x2117
+ 1340 00c8 19       		.uleb128 0x19
+ 1341 00c9 01       		.uleb128 0x1
+ 1342 00ca 13       		.uleb128 0x13
+ 1343 00cb 00       		.byte	0
+ 1344 00cc 00       		.byte	0
+ 1345 00cd 11       		.uleb128 0x11
+ 1346 00ce 05       		.uleb128 0x5
+ 1347 00cf 00       		.byte	0
+ 1348 00d0 03       		.uleb128 0x3
+ 1349 00d1 0E       		.uleb128 0xe
+ 1350 00d2 3A       		.uleb128 0x3a
+ 1351 00d3 0B       		.uleb128 0xb
+ 1352 00d4 3B       		.uleb128 0x3b
+ 1353 00d5 0B       		.uleb128 0xb
+ 1354 00d6 49       		.uleb128 0x49
+ 1355 00d7 13       		.uleb128 0x13
+ 1356 00d8 02       		.uleb128 0x2
+ 1357 00d9 17       		.uleb128 0x17
+ 1358 00da 00       		.byte	0
+ 1359 00db 00       		.byte	0
+ 1360 00dc 12       		.uleb128 0x12
+ 1361 00dd 05       		.uleb128 0x5
+ 1362 00de 00       		.byte	0
+ 1363 00df 03       		.uleb128 0x3
+ 1364 00e0 08       		.uleb128 0x8
+ 1365 00e1 3A       		.uleb128 0x3a
+ 1366 00e2 0B       		.uleb128 0xb
+ 1367 00e3 3B       		.uleb128 0x3b
+ 1368 00e4 0B       		.uleb128 0xb
+ 1369 00e5 49       		.uleb128 0x49
+ 1370 00e6 13       		.uleb128 0x13
+ 1371 00e7 02       		.uleb128 0x2
+ 1372 00e8 17       		.uleb128 0x17
+ 1373 00e9 00       		.byte	0
+ 1374 00ea 00       		.byte	0
+ 1375 00eb 13       		.uleb128 0x13
+ 1376 00ec 34       		.uleb128 0x34
+ 1377 00ed 00       		.byte	0
+ 1378 00ee 03       		.uleb128 0x3
+ 1379 00ef 08       		.uleb128 0x8
+ 1380 00f0 3A       		.uleb128 0x3a
+ 1381 00f1 0B       		.uleb128 0xb
+ 1382 00f2 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 29
+
+
+ 1383 00f3 0B       		.uleb128 0xb
+ 1384 00f4 49       		.uleb128 0x49
+ 1385 00f5 13       		.uleb128 0x13
+ 1386 00f6 02       		.uleb128 0x2
+ 1387 00f7 17       		.uleb128 0x17
+ 1388 00f8 00       		.byte	0
+ 1389 00f9 00       		.byte	0
+ 1390 00fa 14       		.uleb128 0x14
+ 1391 00fb 34       		.uleb128 0x34
+ 1392 00fc 00       		.byte	0
+ 1393 00fd 03       		.uleb128 0x3
+ 1394 00fe 0E       		.uleb128 0xe
+ 1395 00ff 3A       		.uleb128 0x3a
+ 1396 0100 0B       		.uleb128 0xb
+ 1397 0101 3B       		.uleb128 0x3b
+ 1398 0102 0B       		.uleb128 0xb
+ 1399 0103 49       		.uleb128 0x49
+ 1400 0104 13       		.uleb128 0x13
+ 1401 0105 02       		.uleb128 0x2
+ 1402 0106 17       		.uleb128 0x17
+ 1403 0107 00       		.byte	0
+ 1404 0108 00       		.byte	0
+ 1405 0109 15       		.uleb128 0x15
+ 1406 010a 34       		.uleb128 0x34
+ 1407 010b 00       		.byte	0
+ 1408 010c 03       		.uleb128 0x3
+ 1409 010d 0E       		.uleb128 0xe
+ 1410 010e 3A       		.uleb128 0x3a
+ 1411 010f 0B       		.uleb128 0xb
+ 1412 0110 3B       		.uleb128 0x3b
+ 1413 0111 0B       		.uleb128 0xb
+ 1414 0112 49       		.uleb128 0x49
+ 1415 0113 13       		.uleb128 0x13
+ 1416 0114 02       		.uleb128 0x2
+ 1417 0115 18       		.uleb128 0x18
+ 1418 0116 00       		.byte	0
+ 1419 0117 00       		.byte	0
+ 1420 0118 16       		.uleb128 0x16
+ 1421 0119 898201   		.uleb128 0x4109
+ 1422 011c 01       		.byte	0x1
+ 1423 011d 11       		.uleb128 0x11
+ 1424 011e 01       		.uleb128 0x1
+ 1425 011f 31       		.uleb128 0x31
+ 1426 0120 13       		.uleb128 0x13
+ 1427 0121 00       		.byte	0
+ 1428 0122 00       		.byte	0
+ 1429 0123 17       		.uleb128 0x17
+ 1430 0124 8A8201   		.uleb128 0x410a
+ 1431 0127 00       		.byte	0
+ 1432 0128 02       		.uleb128 0x2
+ 1433 0129 18       		.uleb128 0x18
+ 1434 012a 9142     		.uleb128 0x2111
+ 1435 012c 18       		.uleb128 0x18
+ 1436 012d 00       		.byte	0
+ 1437 012e 00       		.byte	0
+ 1438 012f 18       		.uleb128 0x18
+ 1439 0130 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 30
+
+
+ 1440 0131 01       		.byte	0x1
+ 1441 0132 3F       		.uleb128 0x3f
+ 1442 0133 19       		.uleb128 0x19
+ 1443 0134 03       		.uleb128 0x3
+ 1444 0135 0E       		.uleb128 0xe
+ 1445 0136 3A       		.uleb128 0x3a
+ 1446 0137 0B       		.uleb128 0xb
+ 1447 0138 3B       		.uleb128 0x3b
+ 1448 0139 0B       		.uleb128 0xb
+ 1449 013a 49       		.uleb128 0x49
+ 1450 013b 13       		.uleb128 0x13
+ 1451 013c 11       		.uleb128 0x11
+ 1452 013d 01       		.uleb128 0x1
+ 1453 013e 12       		.uleb128 0x12
+ 1454 013f 06       		.uleb128 0x6
+ 1455 0140 40       		.uleb128 0x40
+ 1456 0141 18       		.uleb128 0x18
+ 1457 0142 9742     		.uleb128 0x2117
+ 1458 0144 19       		.uleb128 0x19
+ 1459 0145 01       		.uleb128 0x1
+ 1460 0146 13       		.uleb128 0x13
+ 1461 0147 00       		.byte	0
+ 1462 0148 00       		.byte	0
+ 1463 0149 19       		.uleb128 0x19
+ 1464 014a 0B       		.uleb128 0xb
+ 1465 014b 01       		.byte	0x1
+ 1466 014c 11       		.uleb128 0x11
+ 1467 014d 01       		.uleb128 0x1
+ 1468 014e 12       		.uleb128 0x12
+ 1469 014f 06       		.uleb128 0x6
+ 1470 0150 01       		.uleb128 0x1
+ 1471 0151 13       		.uleb128 0x13
+ 1472 0152 00       		.byte	0
+ 1473 0153 00       		.byte	0
+ 1474 0154 1A       		.uleb128 0x1a
+ 1475 0155 2E       		.uleb128 0x2e
+ 1476 0156 01       		.byte	0x1
+ 1477 0157 3F       		.uleb128 0x3f
+ 1478 0158 19       		.uleb128 0x19
+ 1479 0159 03       		.uleb128 0x3
+ 1480 015a 0E       		.uleb128 0xe
+ 1481 015b 3A       		.uleb128 0x3a
+ 1482 015c 0B       		.uleb128 0xb
+ 1483 015d 3B       		.uleb128 0x3b
+ 1484 015e 0B       		.uleb128 0xb
+ 1485 015f 49       		.uleb128 0x49
+ 1486 0160 13       		.uleb128 0x13
+ 1487 0161 3C       		.uleb128 0x3c
+ 1488 0162 19       		.uleb128 0x19
+ 1489 0163 01       		.uleb128 0x1
+ 1490 0164 13       		.uleb128 0x13
+ 1491 0165 00       		.byte	0
+ 1492 0166 00       		.byte	0
+ 1493 0167 1B       		.uleb128 0x1b
+ 1494 0168 18       		.uleb128 0x18
+ 1495 0169 00       		.byte	0
+ 1496 016a 00       		.byte	0
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 31
+
+
+ 1497 016b 00       		.byte	0
+ 1498 016c 1C       		.uleb128 0x1c
+ 1499 016d 898201   		.uleb128 0x4109
+ 1500 0170 00       		.byte	0
+ 1501 0171 11       		.uleb128 0x11
+ 1502 0172 01       		.uleb128 0x1
+ 1503 0173 31       		.uleb128 0x31
+ 1504 0174 13       		.uleb128 0x13
+ 1505 0175 00       		.byte	0
+ 1506 0176 00       		.byte	0
+ 1507 0177 1D       		.uleb128 0x1d
+ 1508 0178 898201   		.uleb128 0x4109
+ 1509 017b 01       		.byte	0x1
+ 1510 017c 11       		.uleb128 0x11
+ 1511 017d 01       		.uleb128 0x1
+ 1512 017e 31       		.uleb128 0x31
+ 1513 017f 13       		.uleb128 0x13
+ 1514 0180 01       		.uleb128 0x1
+ 1515 0181 13       		.uleb128 0x13
+ 1516 0182 00       		.byte	0
+ 1517 0183 00       		.byte	0
+ 1518 0184 1E       		.uleb128 0x1e
+ 1519 0185 34       		.uleb128 0x34
+ 1520 0186 00       		.byte	0
+ 1521 0187 03       		.uleb128 0x3
+ 1522 0188 0E       		.uleb128 0xe
+ 1523 0189 3A       		.uleb128 0x3a
+ 1524 018a 0B       		.uleb128 0xb
+ 1525 018b 3B       		.uleb128 0x3b
+ 1526 018c 05       		.uleb128 0x5
+ 1527 018d 49       		.uleb128 0x49
+ 1528 018e 13       		.uleb128 0x13
+ 1529 018f 3F       		.uleb128 0x3f
+ 1530 0190 19       		.uleb128 0x19
+ 1531 0191 3C       		.uleb128 0x3c
+ 1532 0192 19       		.uleb128 0x19
+ 1533 0193 00       		.byte	0
+ 1534 0194 00       		.byte	0
+ 1535 0195 1F       		.uleb128 0x1f
+ 1536 0196 34       		.uleb128 0x34
+ 1537 0197 00       		.byte	0
+ 1538 0198 03       		.uleb128 0x3
+ 1539 0199 0E       		.uleb128 0xe
+ 1540 019a 3A       		.uleb128 0x3a
+ 1541 019b 0B       		.uleb128 0xb
+ 1542 019c 3B       		.uleb128 0x3b
+ 1543 019d 0B       		.uleb128 0xb
+ 1544 019e 49       		.uleb128 0x49
+ 1545 019f 13       		.uleb128 0x13
+ 1546 01a0 3F       		.uleb128 0x3f
+ 1547 01a1 19       		.uleb128 0x19
+ 1548 01a2 3C       		.uleb128 0x3c
+ 1549 01a3 19       		.uleb128 0x19
+ 1550 01a4 00       		.byte	0
+ 1551 01a5 00       		.byte	0
+ 1552 01a6 20       		.uleb128 0x20
+ 1553 01a7 34       		.uleb128 0x34
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 32
+
+
+ 1554 01a8 00       		.byte	0
+ 1555 01a9 03       		.uleb128 0x3
+ 1556 01aa 0E       		.uleb128 0xe
+ 1557 01ab 3A       		.uleb128 0x3a
+ 1558 01ac 0B       		.uleb128 0xb
+ 1559 01ad 3B       		.uleb128 0x3b
+ 1560 01ae 0B       		.uleb128 0xb
+ 1561 01af 49       		.uleb128 0x49
+ 1562 01b0 13       		.uleb128 0x13
+ 1563 01b1 3F       		.uleb128 0x3f
+ 1564 01b2 19       		.uleb128 0x19
+ 1565 01b3 02       		.uleb128 0x2
+ 1566 01b4 18       		.uleb128 0x18
+ 1567 01b5 00       		.byte	0
+ 1568 01b6 00       		.byte	0
+ 1569 01b7 21       		.uleb128 0x21
+ 1570 01b8 2E       		.uleb128 0x2e
+ 1571 01b9 01       		.byte	0x1
+ 1572 01ba 3F       		.uleb128 0x3f
+ 1573 01bb 19       		.uleb128 0x19
+ 1574 01bc 03       		.uleb128 0x3
+ 1575 01bd 0E       		.uleb128 0xe
+ 1576 01be 3A       		.uleb128 0x3a
+ 1577 01bf 0B       		.uleb128 0xb
+ 1578 01c0 3B       		.uleb128 0x3b
+ 1579 01c1 05       		.uleb128 0x5
+ 1580 01c2 27       		.uleb128 0x27
+ 1581 01c3 19       		.uleb128 0x19
+ 1582 01c4 49       		.uleb128 0x49
+ 1583 01c5 13       		.uleb128 0x13
+ 1584 01c6 3C       		.uleb128 0x3c
+ 1585 01c7 19       		.uleb128 0x19
+ 1586 01c8 01       		.uleb128 0x1
+ 1587 01c9 13       		.uleb128 0x13
+ 1588 01ca 00       		.byte	0
+ 1589 01cb 00       		.byte	0
+ 1590 01cc 22       		.uleb128 0x22
+ 1591 01cd 05       		.uleb128 0x5
+ 1592 01ce 00       		.byte	0
+ 1593 01cf 49       		.uleb128 0x49
+ 1594 01d0 13       		.uleb128 0x13
+ 1595 01d1 00       		.byte	0
+ 1596 01d2 00       		.byte	0
+ 1597 01d3 23       		.uleb128 0x23
+ 1598 01d4 26       		.uleb128 0x26
+ 1599 01d5 00       		.byte	0
+ 1600 01d6 49       		.uleb128 0x49
+ 1601 01d7 13       		.uleb128 0x13
+ 1602 01d8 00       		.byte	0
+ 1603 01d9 00       		.byte	0
+ 1604 01da 24       		.uleb128 0x24
+ 1605 01db 2E       		.uleb128 0x2e
+ 1606 01dc 00       		.byte	0
+ 1607 01dd 3F       		.uleb128 0x3f
+ 1608 01de 19       		.uleb128 0x19
+ 1609 01df 03       		.uleb128 0x3
+ 1610 01e0 0E       		.uleb128 0xe
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 33
+
+
+ 1611 01e1 3A       		.uleb128 0x3a
+ 1612 01e2 0B       		.uleb128 0xb
+ 1613 01e3 3B       		.uleb128 0x3b
+ 1614 01e4 0B       		.uleb128 0xb
+ 1615 01e5 27       		.uleb128 0x27
+ 1616 01e6 19       		.uleb128 0x19
+ 1617 01e7 3C       		.uleb128 0x3c
+ 1618 01e8 19       		.uleb128 0x19
+ 1619 01e9 00       		.byte	0
+ 1620 01ea 00       		.byte	0
+ 1621 01eb 25       		.uleb128 0x25
+ 1622 01ec 2E       		.uleb128 0x2e
+ 1623 01ed 00       		.byte	0
+ 1624 01ee 3F       		.uleb128 0x3f
+ 1625 01ef 19       		.uleb128 0x19
+ 1626 01f0 03       		.uleb128 0x3
+ 1627 01f1 0E       		.uleb128 0xe
+ 1628 01f2 3A       		.uleb128 0x3a
+ 1629 01f3 0B       		.uleb128 0xb
+ 1630 01f4 3B       		.uleb128 0x3b
+ 1631 01f5 0B       		.uleb128 0xb
+ 1632 01f6 27       		.uleb128 0x27
+ 1633 01f7 19       		.uleb128 0x19
+ 1634 01f8 49       		.uleb128 0x49
+ 1635 01f9 13       		.uleb128 0x13
+ 1636 01fa 3C       		.uleb128 0x3c
+ 1637 01fb 19       		.uleb128 0x19
+ 1638 01fc 00       		.byte	0
+ 1639 01fd 00       		.byte	0
+ 1640 01fe 26       		.uleb128 0x26
+ 1641 01ff 2E       		.uleb128 0x2e
+ 1642 0200 01       		.byte	0x1
+ 1643 0201 3F       		.uleb128 0x3f
+ 1644 0202 19       		.uleb128 0x19
+ 1645 0203 03       		.uleb128 0x3
+ 1646 0204 0E       		.uleb128 0xe
+ 1647 0205 3A       		.uleb128 0x3a
+ 1648 0206 0B       		.uleb128 0xb
+ 1649 0207 3B       		.uleb128 0x3b
+ 1650 0208 0B       		.uleb128 0xb
+ 1651 0209 27       		.uleb128 0x27
+ 1652 020a 19       		.uleb128 0x19
+ 1653 020b 3C       		.uleb128 0x3c
+ 1654 020c 19       		.uleb128 0x19
+ 1655 020d 01       		.uleb128 0x1
+ 1656 020e 13       		.uleb128 0x13
+ 1657 020f 00       		.byte	0
+ 1658 0210 00       		.byte	0
+ 1659 0211 00       		.byte	0
+ 1660              		.section	.debug_loc,"",%progbits
+ 1661              	.Ldebug_loc0:
+ 1662              	.LLST0:
+ 1663 0000 00000000 		.4byte	.LVL0
+ 1664 0004 0C000000 		.4byte	.LVL3
+ 1665 0008 0100     		.2byte	0x1
+ 1666 000a 50       		.byte	0x50
+ 1667 000b 0C000000 		.4byte	.LVL3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 34
+
+
+ 1668 000f 6C000000 		.4byte	.LFE63
+ 1669 0013 0400     		.2byte	0x4
+ 1670 0015 F3       		.byte	0xf3
+ 1671 0016 01       		.uleb128 0x1
+ 1672 0017 50       		.byte	0x50
+ 1673 0018 9F       		.byte	0x9f
+ 1674 0019 00000000 		.4byte	0
+ 1675 001d 00000000 		.4byte	0
+ 1676              	.LLST1:
+ 1677 0021 00000000 		.4byte	.LVL0
+ 1678 0025 22000000 		.4byte	.LVL5
+ 1679 0029 0100     		.2byte	0x1
+ 1680 002b 51       		.byte	0x51
+ 1681 002c 22000000 		.4byte	.LVL5
+ 1682 0030 6C000000 		.4byte	.LFE63
+ 1683 0034 0400     		.2byte	0x4
+ 1684 0036 F3       		.byte	0xf3
+ 1685 0037 01       		.uleb128 0x1
+ 1686 0038 51       		.byte	0x51
+ 1687 0039 9F       		.byte	0x9f
+ 1688 003a 00000000 		.4byte	0
+ 1689 003e 00000000 		.4byte	0
+ 1690              	.LLST2:
+ 1691 0042 08000000 		.4byte	.LVL2
+ 1692 0046 0C000000 		.4byte	.LVL3
+ 1693 004a 0200     		.2byte	0x2
+ 1694 004c 30       		.byte	0x30
+ 1695 004d 9F       		.byte	0x9f
+ 1696 004e 0C000000 		.4byte	.LVL3
+ 1697 0052 28000000 		.4byte	.LVL6
+ 1698 0056 0100     		.2byte	0x1
+ 1699 0058 53       		.byte	0x53
+ 1700 0059 00000000 		.4byte	0
+ 1701 005d 00000000 		.4byte	0
+ 1702              	.LLST3:
+ 1703 0061 2A000000 		.4byte	.LVL7
+ 1704 0065 2C000000 		.4byte	.LVL8
+ 1705 0069 0200     		.2byte	0x2
+ 1706 006b 30       		.byte	0x30
+ 1707 006c 9F       		.byte	0x9f
+ 1708 006d 2C000000 		.4byte	.LVL8
+ 1709 0071 42000000 		.4byte	.LVL10
+ 1710 0075 0100     		.2byte	0x1
+ 1711 0077 53       		.byte	0x53
+ 1712 0078 44000000 		.4byte	.LVL11
+ 1713 007c 57000000 		.4byte	.LVL13-1
+ 1714 0080 0100     		.2byte	0x1
+ 1715 0082 53       		.byte	0x53
+ 1716 0083 00000000 		.4byte	0
+ 1717 0087 00000000 		.4byte	0
+ 1718              	.LLST4:
+ 1719 008b 04000000 		.4byte	.LVL1
+ 1720 008f 5E000000 		.4byte	.LVL14
+ 1721 0093 0300     		.2byte	0x3
+ 1722 0095 91       		.byte	0x91
+ 1723 0096 5C       		.sleb128 -36
+ 1724 0097 9F       		.byte	0x9f
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 35
+
+
+ 1725 0098 5E000000 		.4byte	.LVL14
+ 1726 009c 6C000000 		.4byte	.LFE63
+ 1727 00a0 0300     		.2byte	0x3
+ 1728 00a2 7D       		.byte	0x7d
+ 1729 00a3 5C       		.sleb128 -36
+ 1730 00a4 9F       		.byte	0x9f
+ 1731 00a5 00000000 		.4byte	0
+ 1732 00a9 00000000 		.4byte	0
+ 1733              		.section	.debug_aranges,"",%progbits
+ 1734 0000 24000000 		.4byte	0x24
+ 1735 0004 0200     		.2byte	0x2
+ 1736 0006 00000000 		.4byte	.Ldebug_info0
+ 1737 000a 04       		.byte	0x4
+ 1738 000b 00       		.byte	0
+ 1739 000c 0000     		.2byte	0
+ 1740 000e 0000     		.2byte	0
+ 1741 0010 00000000 		.4byte	.LFB63
+ 1742 0014 6C000000 		.4byte	.LFE63-.LFB63
+ 1743 0018 00000000 		.4byte	.LFB64
+ 1744 001c EC000000 		.4byte	.LFE64-.LFB64
+ 1745 0020 00000000 		.4byte	0
+ 1746 0024 00000000 		.4byte	0
+ 1747              		.section	.debug_ranges,"",%progbits
+ 1748              	.Ldebug_ranges0:
+ 1749 0000 00000000 		.4byte	.LFB63
+ 1750 0004 6C000000 		.4byte	.LFE63
+ 1751 0008 00000000 		.4byte	.LFB64
+ 1752 000c EC000000 		.4byte	.LFE64
+ 1753 0010 00000000 		.4byte	0
+ 1754 0014 00000000 		.4byte	0
+ 1755              		.section	.debug_line,"",%progbits
+ 1756              	.Ldebug_line0:
+ 1757 0000 95020000 		.section	.debug_str,"MS",%progbits,1
+ 1757      0200FC01 
+ 1757      00000201 
+ 1757      FB0E0D00 
+ 1757      01010101 
+ 1758              	.LASF96:
+ 1759 0000 43414E5F 		.ascii	"CAN_1_Start\000"
+ 1759      315F5374 
+ 1759      61727400 
+ 1760              	.LASF18:
+ 1761 000c 666C6F61 		.ascii	"float\000"
+ 1761      7400
+ 1762              	.LASF38:
+ 1763 0012 56414C56 		.ascii	"VALVE_PROCESS\000"
+ 1763      455F5052 
+ 1763      4F434553 
+ 1763      5300
+ 1764              	.LASF34:
+ 1765 0020 4A6F6756 		.ascii	"JogVUnload\000"
+ 1765      556E6C6F 
+ 1765      616400
+ 1766              	.LASF70:
+ 1767 002b 436F6E66 		.ascii	"Config_UnloadTime\000"
+ 1767      69675F55 
+ 1767      6E6C6F61 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 36
+
+
+ 1767      6454696D 
+ 1767      6500
+ 1768              	.LASF2:
+ 1769 003d 73686F72 		.ascii	"short int\000"
+ 1769      7420696E 
+ 1769      7400
+ 1770              	.LASF51:
+ 1771 0047 43757454 		.ascii	"CutTimeStatus\000"
+ 1771      696D6553 
+ 1771      74617475 
+ 1771      7300
+ 1772              	.LASF21:
+ 1773 0055 73697A65 		.ascii	"sizetype\000"
+ 1773      74797065 
+ 1773      00
+ 1774              	.LASF37:
+ 1775 005e 56414C56 		.ascii	"VALVE_ACTION_ENUM\000"
+ 1775      455F4143 
+ 1775      54494F4E 
+ 1775      5F454E55 
+ 1775      4D00
+ 1776              	.LASF62:
+ 1777 0070 436F6E66 		.ascii	"Config_para\000"
+ 1777      69675F70 
+ 1777      61726100 
+ 1778              	.LASF103:
+ 1779 007c 6D61696E 		.ascii	"main\000"
+ 1779      00
+ 1780              	.LASF89:
+ 1781 0081 43414E5F 		.ascii	"CAN_message\000"
+ 1781      6D657373 
+ 1781      61676500 
+ 1782              	.LASF81:
+ 1783 008d 5450444F 		.ascii	"TPDO_PROCESS_Status\000"
+ 1783      5F50524F 
+ 1783      43455353 
+ 1783      5F537461 
+ 1783      74757300 
+ 1784              	.LASF57:
+ 1785 00a1 636F625F 		.ascii	"cob_id\000"
+ 1785      696400
+ 1786              	.LASF86:
+ 1787 00a8 4953525F 		.ascii	"ISR_Stroke_Timer_states\000"
+ 1787      5374726F 
+ 1787      6B655F54 
+ 1787      696D6572 
+ 1787      5F737461 
+ 1788              	.LASF16:
+ 1789 00c0 75696E74 		.ascii	"uint16\000"
+ 1789      313600
+ 1790              	.LASF102:
+ 1791 00c7 63616E53 		.ascii	"canSend\000"
+ 1791      656E6400 
+ 1792              	.LASF77:
+ 1793 00cf 696E6465 		.ascii	"index\000"
+ 1793      7800
+ 1794              	.LASF90:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 37
+
+
+ 1795 00d5 57726974 		.ascii	"Write_config\000"
+ 1795      655F636F 
+ 1795      6E666967 
+ 1795      00
+ 1796              	.LASF15:
+ 1797 00e2 75696E74 		.ascii	"uint8\000"
+ 1797      3800
+ 1798              	.LASF39:
+ 1799 00e8 5374726F 		.ascii	"StrokeStart\000"
+ 1799      6B655374 
+ 1799      61727400 
+ 1800              	.LASF78:
+ 1801 00f4 54784D65 		.ascii	"TxMessage\000"
+ 1801      73736167 
+ 1801      6500
+ 1802              	.LASF63:
+ 1803 00fe 436F6E66 		.ascii	"Config_VFast\000"
+ 1803      69675F56 
+ 1803      46617374 
+ 1803      00
+ 1804              	.LASF25:
+ 1805 010b 56466173 		.ascii	"VFast\000"
+ 1805      7400
+ 1806              	.LASF91:
+ 1807 0111 496E6974 		.ascii	"Init_Stroke_Timer\000"
+ 1807      5F537472 
+ 1807      6F6B655F 
+ 1807      54696D65 
+ 1807      7200
+ 1808              	.LASF0:
+ 1809 0123 7369676E 		.ascii	"signed char\000"
+ 1809      65642063 
+ 1809      68617200 
+ 1810              	.LASF88:
+ 1811 012f 72656365 		.ascii	"receiveData\000"
+ 1811      69766544 
+ 1811      61746100 
+ 1812              	.LASF53:
+ 1813 013b 4D6F6465 		.ascii	"ModeRunFlag\000"
+ 1813      52756E46 
+ 1813      6C616700 
+ 1814              	.LASF64:
+ 1815 0147 436F6E66 		.ascii	"Config_VSlow\000"
+ 1815      69675F56 
+ 1815      536C6F77 
+ 1815      00
+ 1816              	.LASF75:
+ 1817 0154 43616E54 		.ascii	"CanTxMsg\000"
+ 1817      784D7367 
+ 1817      00
+ 1818              	.LASF26:
+ 1819 015d 56536C6F 		.ascii	"VSlow\000"
+ 1819      7700
+ 1820              	.LASF82:
+ 1821 0163 43757452 		.ascii	"CutReg\000"
+ 1821      656700
+ 1822              	.LASF9:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 38
+
+
+ 1823 016a 6C6F6E67 		.ascii	"long long int\000"
+ 1823      206C6F6E 
+ 1823      6720696E 
+ 1823      7400
+ 1824              	.LASF65:
+ 1825 0178 436F6E66 		.ascii	"Config_VKeep\000"
+ 1825      69675F56 
+ 1825      4B656570 
+ 1825      00
+ 1826              	.LASF24:
+ 1827 0185 43414E5F 		.ascii	"CAN_1_TX_MSG\000"
+ 1827      315F5458 
+ 1827      5F4D5347 
+ 1827      00
+ 1828              	.LASF27:
+ 1829 0192 564B6565 		.ascii	"VKeep\000"
+ 1829      7000
+ 1830              	.LASF6:
+ 1831 0198 6C6F6E67 		.ascii	"long int\000"
+ 1831      20696E74 
+ 1831      00
+ 1832              	.LASF30:
+ 1833 01a1 5653746F 		.ascii	"VStop\000"
+ 1833      7000
+ 1834              	.LASF97:
+ 1835 01a7 53746174 		.ascii	"Status_Reg_1_Read\000"
+ 1835      75735F52 
+ 1835      65675F31 
+ 1835      5F526561 
+ 1835      6400
+ 1836              	.LASF4:
+ 1837 01b9 5F5F7569 		.ascii	"__uint8_t\000"
+ 1837      6E74385F 
+ 1837      7400
+ 1838              	.LASF32:
+ 1839 01c3 4A6F6756 		.ascii	"JogVSlow\000"
+ 1839      536C6F77 
+ 1839      00
+ 1840              	.LASF68:
+ 1841 01cc 436F6E66 		.ascii	"Config_VStop\000"
+ 1841      69675F56 
+ 1841      53746F70 
+ 1841      00
+ 1842              	.LASF23:
+ 1843 01d9 62797465 		.ascii	"byte\000"
+ 1843      00
+ 1844              	.LASF46:
+ 1845 01de 4B656570 		.ascii	"KeepTime\000"
+ 1845      54696D65 
+ 1845      00
+ 1846              	.LASF1:
+ 1847 01e7 756E7369 		.ascii	"unsigned char\000"
+ 1847      676E6564 
+ 1847      20636861 
+ 1847      7200
+ 1848              	.LASF41:
+ 1849 01f5 57616974 		.ascii	"WaitNoFoot\000"
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 39
+
+
+ 1849      4E6F466F 
+ 1849      6F7400
+ 1850              	.LASF44:
+ 1851 0200 43757474 		.ascii	"Cutting\000"
+ 1851      696E6700 
+ 1852              	.LASF76:
+ 1853 0208 6E6F7475 		.ascii	"notused\000"
+ 1853      73656400 
+ 1854              	.LASF29:
+ 1855 0210 56426163 		.ascii	"VBack\000"
+ 1855      6B00
+ 1856              	.LASF35:
+ 1857 0216 4A6F6756 		.ascii	"JogVBack\000"
+ 1857      4261636B 
+ 1857      00
+ 1858              	.LASF72:
+ 1859 021f 53746449 		.ascii	"StdId\000"
+ 1859      6400
+ 1860              	.LASF10:
+ 1861 0225 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1861      206C6F6E 
+ 1861      6720756E 
+ 1861      7369676E 
+ 1861      65642069 
+ 1862              	.LASF14:
+ 1863 023c 75696E74 		.ascii	"uint32_t\000"
+ 1863      33325F74 
+ 1863      00
+ 1864              	.LASF98:
+ 1865 0245 5374726F 		.ascii	"Stroke_Process\000"
+ 1865      6B655F50 
+ 1865      726F6365 
+ 1865      737300
+ 1866              	.LASF11:
+ 1867 0254 756E7369 		.ascii	"unsigned int\000"
+ 1867      676E6564 
+ 1867      20696E74 
+ 1867      00
+ 1868              	.LASF42:
+ 1869 0261 57616974 		.ascii	"WaitFoot\000"
+ 1869      466F6F74 
+ 1869      00
+ 1870              	.LASF92:
+ 1871 026a 43616E6F 		.ascii	"CanopenInit\000"
+ 1871      70656E49 
+ 1871      6E697400 
+ 1872              	.LASF49:
+ 1873 0276 41637469 		.ascii	"Action\000"
+ 1873      6F6E00
+ 1874              	.LASF8:
+ 1875 027d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1875      20756E73 
+ 1875      69676E65 
+ 1875      6420696E 
+ 1875      7400
+ 1876              	.LASF83:
+ 1877 028f 466F6F74 		.ascii	"FootStart_state\000"
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 40
+
+
+ 1877      53746172 
+ 1877      745F7374 
+ 1877      61746500 
+ 1878              	.LASF95:
+ 1879 029f 436F6E74 		.ascii	"Control_Reg_1_Write\000"
+ 1879      726F6C5F 
+ 1879      5265675F 
+ 1879      315F5772 
+ 1879      69746500 
+ 1880              	.LASF28:
+ 1881 02b3 56556E6C 		.ascii	"VUnload\000"
+ 1881      6F616400 
+ 1882              	.LASF60:
+ 1883 02bb 43414E5F 		.ascii	"CAN_PORT\000"
+ 1883      504F5254 
+ 1883      00
+ 1884              	.LASF94:
+ 1885 02c4 436F6E74 		.ascii	"Control_LED_Write\000"
+ 1885      726F6C5F 
+ 1885      4C45445F 
+ 1885      57726974 
+ 1885      6500
+ 1886              	.LASF20:
+ 1887 02d6 63686172 		.ascii	"char\000"
+ 1887      00
+ 1888              	.LASF99:
+ 1889 02db 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1889      4320342E 
+ 1889      392E3320 
+ 1889      32303135 
+ 1889      30333033 
+ 1890 030e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1890      20726576 
+ 1890      6973696F 
+ 1890      6E203232 
+ 1890      31323230 
+ 1891 0341 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1891      66756E63 
+ 1891      74696F6E 
+ 1891      2D736563 
+ 1891      74696F6E 
+ 1892              	.LASF48:
+ 1893 0369 56415469 		.ascii	"VATime\000"
+ 1893      6D6500
+ 1894              	.LASF13:
+ 1895 0370 696E7433 		.ascii	"int32_t\000"
+ 1895      325F7400 
+ 1896              	.LASF3:
+ 1897 0378 73686F72 		.ascii	"short unsigned int\000"
+ 1897      7420756E 
+ 1897      7369676E 
+ 1897      65642069 
+ 1897      6E7400
+ 1898              	.LASF52:
+ 1899 038b 56657273 		.ascii	"Version\000"
+ 1899      696F6E00 
+ 1900              	.LASF47:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 41
+
+
+ 1901 0393 556E6C6F 		.ascii	"UnloadTime\000"
+ 1901      61645469 
+ 1901      6D6500
+ 1902              	.LASF50:
+ 1903 039e 43757453 		.ascii	"CutStatus\000"
+ 1903      74617475 
+ 1903      7300
+ 1904              	.LASF58:
+ 1905 03a8 64617461 		.ascii	"data\000"
+ 1905      00
+ 1906              	.LASF43:
+ 1907 03ad 43757453 		.ascii	"CutStart\000"
+ 1907      74617274 
+ 1907      00
+ 1908              	.LASF45:
+ 1909 03b6 4A756467 		.ascii	"JudgMode\000"
+ 1909      4D6F6465 
+ 1909      00
+ 1910              	.LASF101:
+ 1911 03bf 443A5C41 		.ascii	"D:\\A20_CANfestival\\posoc\\Design01.cydsn\000"
+ 1911      32305F43 
+ 1911      414E6665 
+ 1911      73746976 
+ 1911      616C5C70 
+ 1912              	.LASF79:
+ 1913 03e7 7074785F 		.ascii	"ptx_msg\000"
+ 1913      6D736700 
+ 1914              	.LASF17:
+ 1915 03ef 75696E74 		.ascii	"uint32\000"
+ 1915      333200
+ 1916              	.LASF61:
+ 1917 03f6 43555450 		.ascii	"CUTPARA\000"
+ 1917      41524100 
+ 1918              	.LASF55:
+ 1919 03fe 53546F44 		.ascii	"SToDotFlag\000"
+ 1919      6F74466C 
+ 1919      616700
+ 1920              	.LASF40:
+ 1921 0409 4A4F474D 		.ascii	"JOGMODE\000"
+ 1921      4F444500 
+ 1922              	.LASF19:
+ 1923 0411 646F7562 		.ascii	"double\000"
+ 1923      6C6500
+ 1924              	.LASF74:
+ 1925 0418 44617461 		.ascii	"Data\000"
+ 1925      00
+ 1926              	.LASF80:
+ 1927 041d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1927      52784275 
+ 1927      66666572 
+ 1927      00
+ 1928              	.LASF7:
+ 1929 042a 5F5F7569 		.ascii	"__uint32_t\000"
+ 1929      6E743332 
+ 1929      5F7400
+ 1930              	.LASF71:
+ 1931 0435 6973436F 		.ascii	"isConfig_para_state\000"
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 42
+
+
+ 1931      6E666967 
+ 1931      5F706172 
+ 1931      615F7374 
+ 1931      61746500 
+ 1932              	.LASF73:
+ 1933 0449 45787449 		.ascii	"ExtId\000"
+ 1933      6400
+ 1934              	.LASF84:
+ 1935 044f 53797374 		.ascii	"System_enable\000"
+ 1935      656D5F65 
+ 1935      6E61626C 
+ 1935      6500
+ 1936              	.LASF100:
+ 1937 045d 2E5C6D61 		.ascii	".\\main.c\000"
+ 1937      696E2E63 
+ 1937      00
+ 1938              	.LASF5:
+ 1939 0466 5F5F696E 		.ascii	"__int32_t\000"
+ 1939      7433325F 
+ 1939      7400
+ 1940              	.LASF12:
+ 1941 0470 75696E74 		.ascii	"uint8_t\000"
+ 1941      385F7400 
+ 1942              	.LASF31:
+ 1943 0478 4A6F6756 		.ascii	"JogVFast\000"
+ 1943      46617374 
+ 1943      00
+ 1944              	.LASF85:
+ 1945 0481 636F6E66 		.ascii	"config_para\000"
+ 1945      69675F70 
+ 1945      61726100 
+ 1946              	.LASF22:
+ 1947 048d 43414E5F 		.ascii	"CAN_1_DATA_BYTES_MSG\000"
+ 1947      315F4441 
+ 1947      54415F42 
+ 1947      59544553 
+ 1947      5F4D5347 
+ 1948              	.LASF59:
+ 1949 04a2 4D657373 		.ascii	"Message\000"
+ 1949      61676500 
+ 1950              	.LASF67:
+ 1951 04aa 436F6E66 		.ascii	"Config_VBack\000"
+ 1951      69675F56 
+ 1951      4261636B 
+ 1951      00
+ 1952              	.LASF33:
+ 1953 04b7 4A6F6756 		.ascii	"JogVKeep\000"
+ 1953      4B656570 
+ 1953      00
+ 1954              	.LASF93:
+ 1955 04c0 43794465 		.ascii	"CyDelay\000"
+ 1955      6C617900 
+ 1956              	.LASF36:
+ 1957 04c8 4A6F6756 		.ascii	"JogVStop\000"
+ 1957      53746F70 
+ 1957      00
+ 1958              	.LASF56:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccPS5ckP.s 			page 43
+
+
+ 1959 04d1 4F6E6557 		.ascii	"OneWorkFinshState\000"
+ 1959      6F726B46 
+ 1959      696E7368 
+ 1959      53746174 
+ 1959      6500
+ 1960              	.LASF69:
+ 1961 04e3 436F6E66 		.ascii	"Config_KeepTime\000"
+ 1961      69675F4B 
+ 1961      65657054 
+ 1961      696D6500 
+ 1962              	.LASF66:
+ 1963 04f3 436F6E66 		.ascii	"Config_VUnload\000"
+ 1963      69675F56 
+ 1963      556E6C6F 
+ 1963      616400
+ 1964              	.LASF104:
+ 1965 0502 43414E5F 		.ascii	"CAN_1_SendMsg\000"
+ 1965      315F5365 
+ 1965      6E644D73 
+ 1965      6700
+ 1966              	.LASF87:
+ 1967 0510 6B65795F 		.ascii	"key_count\000"
+ 1967      636F756E 
+ 1967      7400
+ 1968              	.LASF54:
+ 1969 051a 56616C76 		.ascii	"ValveNum\000"
+ 1969      654E756D 
+ 1969      00
+ 1970              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
