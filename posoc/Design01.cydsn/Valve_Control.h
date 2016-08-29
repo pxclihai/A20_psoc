@@ -36,7 +36,7 @@
 #include "product.h"
 
 extern unsigned char TPDO_PROCESS_Status;
-
+extern unsigned char TPDO_OUT_Status;
 #define LED_WRITE(a)		{TPDO_PROCESS_Status = a ;}
 //#define RunLED_OFF()	Control_Reg_2_Write(0X00)
 //#define RunLED_FLASH()	Control_Reg_2_Write(0X02)
@@ -58,7 +58,7 @@ extern unsigned char TPDO_PROCESS_Status;
 #define One_Work_Runing 0x11
 
 
-#define ValveOut(odat)		Control_Reg_1_Write(odat)//阀组输出
+#define ValveOut(odat)		{Control_Reg_1_Write(odat);TPDO_OUT_Status = odat;}// 阀组输出 和写入TPDO输出
 #define LEVLE_HIGH
 #ifdef LEVLE_HIGH
 /**********************************************************************/

@@ -9,6 +9,7 @@
 
 struct Config_para config_para;
 UNS8 TPDO_IN_Status = 0x00;		/* Mapped at index 0x2000, subindex 0x00 */
+UNS8 TPDO_OUT_Status = 0x00;
 UNS8 TPDO_PROCESS_Status = 0x00;		/* Mapped at index 0x2000, subindex 0x00 */
 UNS8 System_enable = 0x00;
 
@@ -359,12 +360,12 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                      };
 
 /* index 0x1A00 :   Transmit PDO 1 Mapping. */
-                    UNS8 TestSlave_highestSubIndex_obj1A00 =2; /* number of subindex - 1*/
+                    UNS8 TestSlave_highestSubIndex_obj1A00 =3; /* number of subindex - 1*/
                     UNS32 TestSlave_obj1A00[] = 
                     {
                       0x20000008,	/* 536870913 */
                       0x20000108,	/* 536936449 */
-//                      0x20020008,	/* 537001985 */
+                      0x20000208,	/* 537001985 */
 //                      0x20030008,	/* 537067521 */
 //                      0x20040008,	/* 537133057 */
 //                      0x20050008,	/* 537198593 */
@@ -378,7 +379,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                        { RW, uint8_can, sizeof (UNS8),   (void*)&TestSlave_highestSubIndex_obj1A00 },
                        { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[0] },
                        { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[1] },
-//                       { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[2] },
+                       { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[2] },
 //                       { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[3] },
 //                       { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[4] },
 //                       { RW, uint32_can, sizeof (UNS32), (void*)&TestSlave_obj1A00[5] },
@@ -440,7 +441,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                     subindex TestSlave_Index2000[] = 
                      {
                        { RW, uint8_can, sizeof (UNS8), (void*)&TPDO_IN_Status  },
-                       { RW, uint8_can, sizeof (UNS8), (void*)&TPDO_PROCESS_Status}
+                       { RW, uint8_can, sizeof (UNS8), (void*)&TPDO_PROCESS_Status},
+                       { RW, uint8_can, sizeof (UNS8), (void*)&TPDO_OUT_Status  },
                      };
 
 /* index 0x2001 :   Mapped variable SlaveMap2 */

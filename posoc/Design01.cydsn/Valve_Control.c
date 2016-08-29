@@ -310,7 +310,7 @@ uint8 Stroke_Process(void)
         {
 			 ValveOut(CutReg.Action[VStop]);//停止
             /* 增加动作完成标志20160820*/
-        //CutReg.OneWorkFinshState = One_Work_Finish;
+        CutReg.OneWorkFinshState = One_Work_Finish;
         }
 		
 		break;

@@ -181,7 +181,6 @@ CY_ISR(ISR_Stroke_Timer_Interrupt)
         timer_10ms();
     }
     TPDO_IN_Status = Read_Status_Reg;
-
     timerForCan();
     /* `#END` */
 }

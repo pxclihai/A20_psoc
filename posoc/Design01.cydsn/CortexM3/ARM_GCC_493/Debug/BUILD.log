@@ -1,15 +1,56 @@
---------------- Build Started: 08/25/2016 17:22:57 Project: Design01, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Build Started: 08/27/2016 17:35:29 Project: Design01, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
-.\main.c: In function 'main':
-.\main.c:172:13: warning: implicit declaration of function 'Write_config' [-Wimplicit-function-declaration]
-             Write_config();
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Valve_Control.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Valve_Control.c -o .\CortexM3\ARM_GCC_493\Debug\Valve_Control.o
+.\Valve_Control.c: In function 'EEPROM_Array_Read':
+.\Valve_Control.c:392:9: warning: unused variable 'RegPointer' [-Wunused-variable]
+  reg8 * RegPointer;
+         ^
+.\Valve_Control.c: In function 'Init_Stroke_Timer':
+.\Valve_Control.c:461:5: warning: implicit declaration of function 'Read_config' [-Wimplicit-function-declaration]
+     Read_config();
+     ^
+.\Valve_Control.c: In function 'Valve_config':
+.\Valve_Control.c:504:44: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+                         EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
+                                            ^
+.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
+.\Valve_Control.c:504:56: warning: passing argument 2 of 'EEPROM_Array_Write' discards 'volatile' qualifier from pointer target type
+                         EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
+                                                        ^
+.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'volatile uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
+.\Valve_Control.c:474:13: warning: unused variable 'key_com' [-Wunused-variable]
+     uint8   key_com = 0x03; 
              ^
+.\Valve_Control.c: At top level:
+.\Valve_Control.c:687:6: warning: conflicting types for 'Read_config'
+ void Read_config(void)
+      ^
+.\Valve_Control.c:461:5: note: previous implicit declaration of 'Read_config' was here
+     Read_config();
+     ^
+.\Valve_Control.c: In function 'Read_config':
+.\Valve_Control.c:690:27: warning: passing argument 1 of 'EEPROM_Array_Read' discards 'const' qualifier from pointer target type
+         EEPROM_Array_Read(eepromArray,tempBuf,sizeof(tempBuf));//璇婚榾缁勯厤缃?
+                           ^
+.\Valve_Control.c:390:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Read(uint8 *eepromPtr,uint8 *buf,uint16 len)
+      ^
+.\Valve_Control.c: In function 'Write_config':
+.\Valve_Control.c:707:31: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+            EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
+                               ^
+.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
 arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_493\Debug\Design01.a .\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_493\Debug\RX_1.o .\CortexM3\ARM_GCC_493\Debug\TX_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_INT.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_PM.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_TX_RX_func.o .\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_493\Debug\CyDmac.o .\CortexM3\ARM_GCC_493\Debug\CyFlash.o .\CortexM3\ARM_GCC_493\Debug\CyLib.o .\CortexM3\ARM_GCC_493\Debug\cyPm.o .\CortexM3\ARM_GCC_493\Debug\CySpc.o .\CortexM3\ARM_GCC_493\Debug\cyutils.o .\CortexM3\ARM_GCC_493\Debug\Timer_1.o .\CortexM3\ARM_GCC_493\Debug\Timer_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED1.o .\CortexM3\ARM_GCC_493\Debug\ISR_Stroke_Timer.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED4.o .\CortexM3\ARM_GCC_493\Debug\KA1.o .\CortexM3\ARM_GCC_493\Debug\KA2.o .\CortexM3\ARM_GCC_493\Debug\KA3.o .\CortexM3\ARM_GCC_493\Debug\KA4.o .\CortexM3\ARM_GCC_493\Debug\KA5.o .\CortexM3\ARM_GCC_493\Debug\KA6.o .\CortexM3\ARM_GCC_493\Debug\KA7.o .\CortexM3\ARM_GCC_493\Debug\Status_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\IN_1.o .\CortexM3\ARM_GCC_493\Debug\IN_2.o .\CortexM3\ARM_GCC_493\Debug\IN_3.o .\CortexM3\ARM_GCC_493\Debug\IN_4.o .\CortexM3\ARM_GCC_493\Debug\IN_5.o .\CortexM3\ARM_GCC_493\Debug\IN_6.o .\CortexM3\ARM_GCC_493\Debug\IN_7.o .\CortexM3\ARM_GCC_493\Debug\Clock_1.o .\CortexM3\ARM_GCC_493\Debug\LED2.o .\CortexM3\ARM_GCC_493\Debug\LED3.o .\CortexM3\ARM_GCC_493\Debug\EEPROM_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_493\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_493\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_493\Debug\RX_ISR.o .\CortexM3\ARM_GCC_493\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_493\Debug\Clock_2.o
 arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_493\Debug\Design01.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\Design01.elf .\CortexM3\ARM_GCC_493\Debug\main.o .\CortexM3\ARM_GCC_493\Debug\dcf.o .\CortexM3\ARM_GCC_493\Debug\emcy.o .\CortexM3\ARM_GCC_493\Debug\lifegrd.o .\CortexM3\ARM_GCC_493\Debug\lss.o .\CortexM3\ARM_GCC_493\Debug\nmtMaster.o .\CortexM3\ARM_GCC_493\Debug\nmtSlave.o .\CortexM3\ARM_GCC_493\Debug\objacces.o .\CortexM3\ARM_GCC_493\Debug\pdo.o .\CortexM3\ARM_GCC_493\Debug\sdo.o .\CortexM3\ARM_GCC_493\Debug\states.o .\CortexM3\ARM_GCC_493\Debug\sync.o .\CortexM3\ARM_GCC_493\Debug\TestSlave.o .\CortexM3\ARM_GCC_493\Debug\timer.o .\CortexM3\ARM_GCC_493\Debug\canfestival.o .\CortexM3\ARM_GCC_493\Debug\led.o .\CortexM3\ARM_GCC_493\Debug\Valve_Control.o .\CortexM3\ARM_GCC_493\Debug\CanopenDictConfig.o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o .\CortexM3\ARM_GCC_493\Debug\Design01.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_493\Debug/Design01.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
-cyelftool.exe -C D:\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_493\Debug\Design01.elf --flash_row_size 256 --flash_size 262144
-cyelftool.exe -S D:\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_493\Debug\Design01.elf
-Flash used: 23808 of 262144 bytes (9.1%).
-SRAM used: 5077 of 65536 bytes (7.7%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 08/25/2016 17:22:58 ---------------
+cyelftool.exe -C D:\GIT\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_493\Debug\Design01.elf --flash_row_size 256 --flash_size 262144
+cyelftool.exe -S D:\GIT\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_493\Debug\Design01.elf
+Flash used: 24064 of 262144 bytes (9.2%).
+SRAM used: 5101 of 65536 bytes (7.8%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 08/27/2016 17:35:32 ---------------

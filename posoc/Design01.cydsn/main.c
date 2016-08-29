@@ -154,14 +154,14 @@ int main()
 
     
     /////////////ceshi fucha//////////////
-    CutReg.Action[VFast]   =   0x01;
-    CutReg.Action[VSlow]   =   0x01;
-    CutReg.Action[VKeep]   =   0x01;
-    CutReg.Action[VUnload] =   0x00;
-    CutReg.Action[VBack]   =   0x02;
-    CutReg.Action[VStop]   =   0x00;
-    CutReg.KeepTime        =   500;
-    CutReg.UnloadTime      =   500;
+//    CutReg.Action[VFast]   =   0x01;
+//    CutReg.Action[VSlow]   =   0x01;
+//    CutReg.Action[VKeep]   =   0x01;
+//    CutReg.Action[VUnload] =   0x00;
+//    CutReg.Action[VBack]   =   0x02;
+//    CutReg.Action[VStop]   =   0x00;
+//    CutReg.KeepTime        =   500;
+//    CutReg.UnloadTime      =   500;
     /////////////////////////////////////////
     for(;;)
     {    
