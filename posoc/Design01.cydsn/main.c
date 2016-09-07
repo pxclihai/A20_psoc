@@ -19,7 +19,7 @@
 
 #define CAN_RTR_DATA     ((unsigned int )0x00000000)
 #define CAN_RTR_REMOTE   ((unsigned int )0x00000002)
-#define CAN_ID_STD       ((unsigned int)0x00000000)
+#define CAN_ID_STD       ((unsigned int) 0x00000000)
 extern int ISR_Stroke_Timer_states;
 
 uint8  key_count = 0;
@@ -168,7 +168,7 @@ int main()
         //增加了 配置回复模式 如果开始没有在上止点就进入此模式
          if(config_para.isConfig_para_state == EnterConfig &&!PumpSignal())
          { 
-        //    LED_WRITE(0X01);                          //进入阀组配置状态后默认显示“快下”模式下状态
+       //    LED_WRITE(0X01);                          //进入阀组配置状态后默认显示“快下”模式下状态
        //     ValveOut(CutReg.Action[VFast]);     
             Write_config();
             config_para.isConfig_para_state =  FinsihConfig;

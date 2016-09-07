@@ -1,5 +1,5 @@
-D:\GIT\A20_CANfestival\posoc\Design01.cydsn\Design01.cyprj|1840d014-084e-4456-9590-5c9383afa8c1
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|7d0f2fd0-4302-4769-92c0-0c7dad38f356
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|eb5e14c5-9cfc-48dd-a009-d68ff844e6a3
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9d3ee69c-be5b-479a-aa70-1dfa86fcdb45
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7943ab6e-2406-473c-8095-74571f24461c
+D:\GIT\A20_CANfestival\posoc\Design01.cydsn\Design01.cyprj|ddf8471a-3e74-41f4-9ebf-d0edcac11f18
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|532b712d-7b1c-4536-9715-b7fdca3c8b6d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|33ea09e6-51ac-40ab-b362-40b91463aea7
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|719aca46-f866-42a2-8129-1e3c3566053f
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7a50f477-20ac-4ee5-bce4-4f0c7291df97

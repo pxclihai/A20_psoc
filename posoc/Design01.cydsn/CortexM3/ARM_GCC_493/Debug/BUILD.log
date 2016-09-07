@@ -1,49 +1,49 @@
---------------- Build Started: 08/27/2016 17:35:29 Project: Design01, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Build Started: 09/06/2016 14:49:30 Project: Design01, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Valve_Control.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Valve_Control.c -o .\CortexM3\ARM_GCC_493\Debug\Valve_Control.o
 .\Valve_Control.c: In function 'EEPROM_Array_Read':
-.\Valve_Control.c:392:9: warning: unused variable 'RegPointer' [-Wunused-variable]
+.\Valve_Control.c:393:9: warning: unused variable 'RegPointer' [-Wunused-variable]
   reg8 * RegPointer;
          ^
 .\Valve_Control.c: In function 'Init_Stroke_Timer':
-.\Valve_Control.c:461:5: warning: implicit declaration of function 'Read_config' [-Wimplicit-function-declaration]
+.\Valve_Control.c:462:5: warning: implicit declaration of function 'Read_config' [-Wimplicit-function-declaration]
      Read_config();
      ^
 .\Valve_Control.c: In function 'Valve_config':
-.\Valve_Control.c:504:44: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+.\Valve_Control.c:505:44: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
                          EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
                                             ^
-.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+.\Valve_Control.c:404:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
  void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
       ^
-.\Valve_Control.c:504:56: warning: passing argument 2 of 'EEPROM_Array_Write' discards 'volatile' qualifier from pointer target type
+.\Valve_Control.c:505:56: warning: passing argument 2 of 'EEPROM_Array_Write' discards 'volatile' qualifier from pointer target type
                          EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
                                                         ^
-.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'volatile uint8 *'
+.\Valve_Control.c:404:6: note: expected 'uint8 *' but argument is of type 'volatile uint8 *'
  void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
       ^
-.\Valve_Control.c:474:13: warning: unused variable 'key_com' [-Wunused-variable]
+.\Valve_Control.c:475:13: warning: unused variable 'key_com' [-Wunused-variable]
      uint8   key_com = 0x03; 
              ^
 .\Valve_Control.c: At top level:
-.\Valve_Control.c:687:6: warning: conflicting types for 'Read_config'
+.\Valve_Control.c:688:6: warning: conflicting types for 'Read_config'
  void Read_config(void)
       ^
-.\Valve_Control.c:461:5: note: previous implicit declaration of 'Read_config' was here
+.\Valve_Control.c:462:5: note: previous implicit declaration of 'Read_config' was here
      Read_config();
      ^
 .\Valve_Control.c: In function 'Read_config':
-.\Valve_Control.c:690:27: warning: passing argument 1 of 'EEPROM_Array_Read' discards 'const' qualifier from pointer target type
+.\Valve_Control.c:691:27: warning: passing argument 1 of 'EEPROM_Array_Read' discards 'const' qualifier from pointer target type
          EEPROM_Array_Read(eepromArray,tempBuf,sizeof(tempBuf));//璇婚榾缁勯厤缃?
                            ^
-.\Valve_Control.c:390:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+.\Valve_Control.c:391:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
  void EEPROM_Array_Read(uint8 *eepromPtr,uint8 *buf,uint16 len)
       ^
 .\Valve_Control.c: In function 'Write_config':
-.\Valve_Control.c:707:31: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+.\Valve_Control.c:708:31: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
             EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
                                ^
-.\Valve_Control.c:403:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+.\Valve_Control.c:404:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
  void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
       ^
 arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_493\Debug\Design01.a .\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_493\Debug\RX_1.o .\CortexM3\ARM_GCC_493\Debug\TX_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_INT.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_PM.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_TX_RX_func.o .\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_493\Debug\CyDmac.o .\CortexM3\ARM_GCC_493\Debug\CyFlash.o .\CortexM3\ARM_GCC_493\Debug\CyLib.o .\CortexM3\ARM_GCC_493\Debug\cyPm.o .\CortexM3\ARM_GCC_493\Debug\CySpc.o .\CortexM3\ARM_GCC_493\Debug\cyutils.o .\CortexM3\ARM_GCC_493\Debug\Timer_1.o .\CortexM3\ARM_GCC_493\Debug\Timer_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED1.o .\CortexM3\ARM_GCC_493\Debug\ISR_Stroke_Timer.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED4.o .\CortexM3\ARM_GCC_493\Debug\KA1.o .\CortexM3\ARM_GCC_493\Debug\KA2.o .\CortexM3\ARM_GCC_493\Debug\KA3.o .\CortexM3\ARM_GCC_493\Debug\KA4.o .\CortexM3\ARM_GCC_493\Debug\KA5.o .\CortexM3\ARM_GCC_493\Debug\KA6.o .\CortexM3\ARM_GCC_493\Debug\KA7.o .\CortexM3\ARM_GCC_493\Debug\Status_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\IN_1.o .\CortexM3\ARM_GCC_493\Debug\IN_2.o .\CortexM3\ARM_GCC_493\Debug\IN_3.o .\CortexM3\ARM_GCC_493\Debug\IN_4.o .\CortexM3\ARM_GCC_493\Debug\IN_5.o .\CortexM3\ARM_GCC_493\Debug\IN_6.o .\CortexM3\ARM_GCC_493\Debug\IN_7.o .\CortexM3\ARM_GCC_493\Debug\Clock_1.o .\CortexM3\ARM_GCC_493\Debug\LED2.o .\CortexM3\ARM_GCC_493\Debug\LED3.o .\CortexM3\ARM_GCC_493\Debug\EEPROM_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_493\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_493\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_493\Debug\RX_ISR.o .\CortexM3\ARM_GCC_493\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_493\Debug\Clock_2.o
@@ -53,4 +53,4 @@ cyelftool.exe -C D:\GIT\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_49
 cyelftool.exe -S D:\GIT\A20_CANfestival\posoc\Design01.cydsn\CortexM3\ARM_GCC_493\Debug\Design01.elf
 Flash used: 24064 of 262144 bytes (9.2%).
 SRAM used: 5101 of 65536 bytes (7.8%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 08/27/2016 17:35:32 ---------------
+--------------- Build Succeeded: 09/06/2016 14:49:32 ---------------

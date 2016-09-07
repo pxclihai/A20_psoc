@@ -161,6 +161,7 @@ void timer_10ms(void)
                     LED_WRITE(LED_Status[VStop]);
 					CutReg.CutTimeStatus = VStop;
 					CutReg.Cnt = 0;
+                    CutReg.OneWorkFinshState = One_Work_Finish;//完成一次动作标志 20160829移动这里。回到上止点为一次完成标志
 				}
 			}
 			else
@@ -190,7 +191,7 @@ void timer_10ms(void)
 				CutReg.CutTimeStatus = VStop;
                 
 			}
-            CutReg.OneWorkFinshState = One_Work_Finish;//完成一次动作标志
+           
 			break;
 		default : break;
 		}
@@ -705,6 +706,14 @@ void Write_config(void)
            uint8 tempBuf[sizeof(config_para)-1];
            memcpy(tempBuf,(&config_para),sizeof(config_para)-1);        
            EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
+        CutReg.Action[VFast]   =   config_para.Config_VFast;
+        CutReg.Action[VSlow]   =   config_para.Config_VSlow;
+        CutReg.Action[VKeep]   =   config_para.Config_VKeep;
+        CutReg.Action[VUnload] =   config_para.Config_VUnload;
+        CutReg.Action[VBack]   =   config_para.Config_VBack;
+        CutReg.Action[VStop]   =   config_para.Config_VStop;
+        CutReg.KeepTime        =   config_para.Config_KeepTime;
+        CutReg.UnloadTime      =   config_para.Config_UnloadTime;
            
 }
 /* [] END OF FILE */

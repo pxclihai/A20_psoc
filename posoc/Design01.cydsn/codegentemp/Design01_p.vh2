@@ -1,5 +1,5 @@
 -- Project:   Design01
--- Generated: 08/26/2016 13:30:17
+-- Generated: 09/01/2016 17:35:34
 -- PSoC Creator  3.3
 
 ENTITY Design01 IS
@@ -187,39 +187,37 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF RX_1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF RX_1(0) : LABEL IS "P5[1]";
+    ATTRIBUTE Location OF RX_1(0) : LABEL IS "P4[1]";
     ATTRIBUTE lib_model OF TX_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF TX_1(0) : LABEL IS "P5[0]";
-    ATTRIBUTE lib_model OF LED4(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF LED4(0) : LABEL IS "P3[7]";
-    ATTRIBUTE lib_model OF KA1(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF KA1(0) : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF KA2(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF KA2(0) : LABEL IS "P15[5]";
-    ATTRIBUTE lib_model OF KA3(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF KA3(0) : LABEL IS "P15[4]";
-    ATTRIBUTE lib_model OF KA4(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF KA4(0) : LABEL IS "P6[3]";
-    ATTRIBUTE lib_model OF KA5(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF TX_1(0) : LABEL IS "P4[0]";
+    ATTRIBUTE lib_model OF KA1(0) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF KA1(0) : LABEL IS "P4[2]";
+    ATTRIBUTE lib_model OF KA2(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF KA2(0) : LABEL IS "P4[3]";
+    ATTRIBUTE lib_model OF KA3(0) : LABEL IS "iocell5";
+    ATTRIBUTE Location OF KA3(0) : LABEL IS "P4[4]";
+    ATTRIBUTE lib_model OF KA4(0) : LABEL IS "iocell6";
+    ATTRIBUTE Location OF KA4(0) : LABEL IS "P4[5]";
+    ATTRIBUTE lib_model OF KA5(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF KA5(0) : LABEL IS "P6[2]";
-    ATTRIBUTE lib_model OF KA6(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF KA6(0) : LABEL IS "P6[1]";
-    ATTRIBUTE lib_model OF KA7(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF KA7(0) : LABEL IS "P6[0]";
-    ATTRIBUTE lib_model OF IN_1(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF IN_1(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF IN_2(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF IN_2(0) : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF IN_3(0) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF IN_3(0) : LABEL IS "P2[4]";
-    ATTRIBUTE lib_model OF IN_4(0) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF IN_4(0) : LABEL IS "P2[5]";
-    ATTRIBUTE lib_model OF IN_5(0) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF IN_5(0) : LABEL IS "P12[5]";
-    ATTRIBUTE lib_model OF IN_6(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF IN_6(0) : LABEL IS "P6[4]";
-    ATTRIBUTE lib_model OF IN_7(0) : LABEL IS "iocell17";
-    ATTRIBUTE Location OF IN_7(0) : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF KA6(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF KA6(0) : LABEL IS "P6[3]";
+    ATTRIBUTE lib_model OF KA7(0) : LABEL IS "iocell9";
+    ATTRIBUTE Location OF KA7(0) : LABEL IS "P15[4]";
+    ATTRIBUTE lib_model OF IN_1(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF IN_1(0) : LABEL IS "P0[4]";
+    ATTRIBUTE lib_model OF IN_2(0) : LABEL IS "iocell11";
+    ATTRIBUTE Location OF IN_2(0) : LABEL IS "P0[5]";
+    ATTRIBUTE lib_model OF IN_3(0) : LABEL IS "iocell12";
+    ATTRIBUTE Location OF IN_3(0) : LABEL IS "P0[6]";
+    ATTRIBUTE lib_model OF IN_4(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF IN_4(0) : LABEL IS "P0[7]";
+    ATTRIBUTE lib_model OF IN_5(0) : LABEL IS "iocell14";
+    ATTRIBUTE Location OF IN_5(0) : LABEL IS "P4[6]";
+    ATTRIBUTE lib_model OF IN_6(0) : LABEL IS "iocell15";
+    ATTRIBUTE Location OF IN_6(0) : LABEL IS "P4[7]";
+    ATTRIBUTE lib_model OF IN_7(0) : LABEL IS "iocell16";
+    ATTRIBUTE Location OF IN_7(0) : LABEL IS "P6[0]";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:status_tc\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_204 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \UART_1:BUART:counter_load_not\ : LABEL IS "macrocell3";

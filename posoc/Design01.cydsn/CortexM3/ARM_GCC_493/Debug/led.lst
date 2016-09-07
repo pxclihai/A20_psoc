@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
   39              	.LVL1:
   40 0008 FFF7FEFF 		bl	LED1_Write
   41              	.LVL2:
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 2
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 2
 
 
   17:.\led.c       ****     LED2_Write((led_sta >> 1) & 0x01);
@@ -91,45 +91,45 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
   67 0006 00000000 		.4byte	.Ldebug_abbrev0
   68 000a 04       		.byte	0x4
   69 000b 01       		.uleb128 0x1
-  70 000c BC000000 		.4byte	.LASF18
+  70 000c 9A000000 		.4byte	.LASF18
   71 0010 01       		.byte	0x1
-  72 0011 73010000 		.4byte	.LASF19
-  73 0015 4E000000 		.4byte	.LASF20
+  72 0011 77010000 		.4byte	.LASF19
+  73 0015 4B010000 		.4byte	.LASF20
   74 0019 00000000 		.4byte	.Ldebug_ranges0+0
   75 001d 00000000 		.4byte	0
   76 0021 00000000 		.4byte	.Ldebug_line0
   77 0025 02       		.uleb128 0x2
   78 0026 01       		.byte	0x1
   79 0027 06       		.byte	0x6
-  80 0028 7B010000 		.4byte	.LASF0
+  80 0028 7F010000 		.4byte	.LASF0
   81 002c 02       		.uleb128 0x2
   82 002d 01       		.byte	0x1
   83 002e 08       		.byte	0x8
-  84 002f 4A010000 		.4byte	.LASF1
+  84 002f 28010000 		.4byte	.LASF1
   85 0033 02       		.uleb128 0x2
   86 0034 02       		.byte	0x2
   87 0035 05       		.byte	0x5
-  88 0036 A2010000 		.4byte	.LASF2
+  88 0036 A6010000 		.4byte	.LASF2
   89 003a 02       		.uleb128 0x2
   90 003b 02       		.byte	0x2
   91 003c 07       		.byte	0x7
   92 003d 0E000000 		.4byte	.LASF3
   93 0041 03       		.uleb128 0x3
-  94 0042 87010000 		.4byte	.LASF9
+  94 0042 8B010000 		.4byte	.LASF9
   95 0046 02       		.byte	0x2
   96 0047 3F       		.byte	0x3f
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 3
 
 
   97 0048 4C000000 		.4byte	0x4c
   98 004c 02       		.uleb128 0x2
   99 004d 04       		.byte	0x4
  100 004e 05       		.byte	0x5
- 101 004f 5D010000 		.4byte	.LASF4
+ 101 004f 3B010000 		.4byte	.LASF4
  102 0053 02       		.uleb128 0x2
  103 0054 04       		.byte	0x4
  104 0055 07       		.byte	0x7
- 105 0056 93000000 		.4byte	.LASF5
+ 105 0056 71000000 		.4byte	.LASF5
  106 005a 02       		.uleb128 0x2
  107 005b 08       		.byte	0x8
  108 005c 05       		.byte	0x5
@@ -137,7 +137,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  110 0061 02       		.uleb128 0x2
  111 0062 08       		.byte	0x8
  112 0063 07       		.byte	0x7
- 113 0064 A5000000 		.4byte	.LASF7
+ 113 0064 83000000 		.4byte	.LASF7
  114 0068 04       		.uleb128 0x4
  115 0069 04       		.byte	0x4
  116 006a 05       		.byte	0x5
@@ -147,38 +147,38 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  120 0071 07       		.byte	0x7
  121 0072 2E000000 		.4byte	.LASF8
  122 0076 03       		.uleb128 0x3
- 123 0077 AC010000 		.4byte	.LASF10
+ 123 0077 B0010000 		.4byte	.LASF10
  124 007b 03       		.byte	0x3
  125 007c 2C       		.byte	0x2c
  126 007d 41000000 		.4byte	0x41
  127 0081 03       		.uleb128 0x3
- 128 0082 6D010000 		.4byte	.LASF11
+ 128 0082 4E000000 		.4byte	.LASF11
  129 0086 04       		.byte	0x4
  130 0087 C2       		.byte	0xc2
  131 0088 2C000000 		.4byte	0x2c
  132 008c 02       		.uleb128 0x2
  133 008d 04       		.byte	0x4
  134 008e 04       		.byte	0x4
- 135 008f 9C010000 		.4byte	.LASF12
+ 135 008f A0010000 		.4byte	.LASF12
  136 0093 02       		.uleb128 0x2
  137 0094 08       		.byte	0x8
  138 0095 04       		.byte	0x4
- 139 0096 66010000 		.4byte	.LASF13
+ 139 0096 44010000 		.4byte	.LASF13
  140 009a 02       		.uleb128 0x2
  141 009b 01       		.byte	0x1
  142 009c 08       		.byte	0x8
- 143 009d 58010000 		.4byte	.LASF14
+ 143 009d 36010000 		.4byte	.LASF14
  144 00a1 02       		.uleb128 0x2
  145 00a2 04       		.byte	0x4
  146 00a3 07       		.byte	0x7
- 147 00a4 B4010000 		.4byte	.LASF15
+ 147 00a4 B8010000 		.4byte	.LASF15
  148 00a8 05       		.uleb128 0x5
- 149 00a9 76000000 		.4byte	.LASF21
+ 149 00a9 54000000 		.4byte	.LASF21
  150 00ad 01       		.byte	0x1
  151 00ae 0E       		.byte	0xe
  152 00af 00000000 		.4byte	.LFB63
  153 00b3 1E000000 		.4byte	.LFE63-.LFB63
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 4
 
 
  154 00b7 01       		.uleb128 0x1
@@ -238,13 +238,13 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  208 0114 07       		.byte	0x7
  209 0115 2A06     		.2byte	0x62a
  210 0117 1B010000 		.4byte	0x11b
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 5
 
 
  211 011b 0B       		.uleb128 0xb
  212 011c 76000000 		.4byte	0x76
  213 0120 0C       		.uleb128 0xc
- 214 0121 91010000 		.4byte	.LASF16
+ 214 0121 95010000 		.4byte	.LASF16
  215 0125 05       		.byte	0x5
  216 0126 28       		.byte	0x28
  217 0127 31010000 		.4byte	0x131
@@ -260,7 +260,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  227 013d 81000000 		.4byte	0x81
  228 0141 00       		.byte	0
  229 0142 0E       		.uleb128 0xe
- 230 0143 88000000 		.4byte	.LASF24
+ 230 0143 66000000 		.4byte	.LASF24
  231 0147 08       		.byte	0x8
  232 0148 28       		.byte	0x28
  233 0149 0D       		.uleb128 0xd
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  265 001a 03       		.uleb128 0x3
  266 001b 0E       		.uleb128 0xe
  267 001c 00       		.byte	0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 6
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 6
 
 
  268 001d 00       		.byte	0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  322 0054 0E       		.uleb128 0xe
  323 0055 3A       		.uleb128 0x3a
  324 0056 0B       		.uleb128 0xb
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 7
 
 
  325 0057 3B       		.uleb128 0x3b
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  379 0094 0B       		.uleb128 0xb
  380 0095 35       		.uleb128 0x35
  381 0096 00       		.byte	0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 8
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 8
 
 
  382 0097 49       		.uleb128 0x49
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  436 000a 50       		.byte	0x50
  437 000b 08000000 		.4byte	.LVL1
  438 000f 1E000000 		.4byte	.LFE63
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 9
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 9
 
 
  439 0013 0400     		.2byte	0x4
@@ -538,104 +538,104 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 1
  476 003b 4C454432 		.ascii	"LED2_Write\000"
  476      5F577269 
  476      746500
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 10
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 10
 
 
  477              	.LASF22:
  478 0046 6C65645F 		.ascii	"led_sta\000"
  478      73746100 
- 479              	.LASF20:
- 480 004e 443A5C41 		.ascii	"D:\\A20_CANfestival\\posoc\\Design01.cydsn\000"
- 480      32305F43 
- 480      414E6665 
- 480      73746976 
- 480      616C5C70 
+ 479              	.LASF11:
+ 480 004e 75696E74 		.ascii	"uint8\000"
+ 480      3800
  481              	.LASF21:
- 482 0076 436F6E74 		.ascii	"Control_LED_Write\000"
+ 482 0054 436F6E74 		.ascii	"Control_LED_Write\000"
  482      726F6C5F 
  482      4C45445F 
  482      57726974 
  482      6500
  483              	.LASF24:
- 484 0088 4C454433 		.ascii	"LED3_Write\000"
+ 484 0066 4C454433 		.ascii	"LED3_Write\000"
  484      5F577269 
  484      746500
  485              	.LASF5:
- 486 0093 6C6F6E67 		.ascii	"long unsigned int\000"
+ 486 0071 6C6F6E67 		.ascii	"long unsigned int\000"
  486      20756E73 
  486      69676E65 
  486      6420696E 
  486      7400
  487              	.LASF7:
- 488 00a5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 488 0083 6C6F6E67 		.ascii	"long long unsigned int\000"
  488      206C6F6E 
  488      6720756E 
  488      7369676E 
  488      65642069 
  489              	.LASF18:
- 490 00bc 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 490 009a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  490      4320342E 
  490      392E3320 
  490      32303135 
  490      30333033 
- 491 00ef 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 491 00cd 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  491      20726576 
  491      6973696F 
  491      6E203232 
  491      31323230 
- 492 0122 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 492 0100 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  492      66756E63 
  492      74696F6E 
  492      2D736563 
  492      74696F6E 
  493              	.LASF1:
- 494 014a 756E7369 		.ascii	"unsigned char\000"
+ 494 0128 756E7369 		.ascii	"unsigned char\000"
  494      676E6564 
  494      20636861 
  494      7200
  495              	.LASF14:
- 496 0158 63686172 		.ascii	"char\000"
+ 496 0136 63686172 		.ascii	"char\000"
  496      00
  497              	.LASF4:
- 498 015d 6C6F6E67 		.ascii	"long int\000"
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccD52o7b.s 			page 11
-
-
+ 498 013b 6C6F6E67 		.ascii	"long int\000"
  498      20696E74 
  498      00
  499              	.LASF13:
- 500 0166 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccfzDKTP.s 			page 11
+
+
+ 500 0144 646F7562 		.ascii	"double\000"
  500      6C6500
- 501              	.LASF11:
- 502 016d 75696E74 		.ascii	"uint8\000"
- 502      3800
+ 501              	.LASF20:
+ 502 014b 443A5C47 		.ascii	"D:\\GIT\\A20_CANfestival\\posoc\\Design01.cydsn\000"
+ 502      49545C41 
+ 502      32305F43 
+ 502      414E6665 
+ 502      73746976 
  503              	.LASF19:
- 504 0173 2E5C6C65 		.ascii	".\\led.c\000"
+ 504 0177 2E5C6C65 		.ascii	".\\led.c\000"
  504      642E6300 
  505              	.LASF0:
- 506 017b 7369676E 		.ascii	"signed char\000"
+ 506 017f 7369676E 		.ascii	"signed char\000"
  506      65642063 
  506      68617200 
  507              	.LASF9:
- 508 0187 5F5F696E 		.ascii	"__int32_t\000"
+ 508 018b 5F5F696E 		.ascii	"__int32_t\000"
  508      7433325F 
  508      7400
  509              	.LASF16:
- 510 0191 4C454431 		.ascii	"LED1_Write\000"
+ 510 0195 4C454431 		.ascii	"LED1_Write\000"
  510      5F577269 
  510      746500
  511              	.LASF12:
- 512 019c 666C6F61 		.ascii	"float\000"
+ 512 01a0 666C6F61 		.ascii	"float\000"
  512      7400
  513              	.LASF2:
- 514 01a2 73686F72 		.ascii	"short int\000"
+ 514 01a6 73686F72 		.ascii	"short int\000"
  514      7420696E 
  514      7400
  515              	.LASF10:
- 516 01ac 696E7433 		.ascii	"int32_t\000"
+ 516 01b0 696E7433 		.ascii	"int32_t\000"
  516      325F7400 
  517              	.LASF15:
- 518 01b4 73697A65 		.ascii	"sizetype\000"
+ 518 01b8 73697A65 		.ascii	"sizetype\000"
  518      74797065 
  518      00
  519              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
