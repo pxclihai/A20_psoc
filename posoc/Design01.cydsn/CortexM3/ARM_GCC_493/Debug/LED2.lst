@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
   29:.\Generated_Source\PSoC5/LED2.c **** * Summary:
   30:.\Generated_Source\PSoC5/LED2.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/LED2.c **** *
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 2
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/LED2.c **** * Parameters:  
@@ -93,7 +93,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
   45              	.L3:
   46              		.align	2
   47              	.L2:
-  48 0014 20510040 		.word	1073762592
+  48 0014 C0510040 		.word	1073762752
   49              		.cfi_endproc
   50              	.LFE0:
   51              		.size	LED2_Write, .-LED2_Write
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
   53:.\Generated_Source\PSoC5/LED2.c **** * Parameters:  
   54:.\Generated_Source\PSoC5/LED2.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/LED2.c **** *
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 3
 
 
   56:.\Generated_Source\PSoC5/LED2.c **** *  LED2_DM_STRONG     Strong Drive 
@@ -155,7 +155,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
   75              	.L6:
   76 0012 00BF     		.align	2
   77              	.L5:
-  78 0014 12500040 		.word	1073762322
+  78 0014 62500040 		.word	1073762402
   79              		.cfi_endproc
   80              	.LFE1:
   81              		.size	LED2_SetDriveMode, .-LED2_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
   80:.\Generated_Source\PSoC5/LED2.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:.\Generated_Source\PSoC5/LED2.c **** *  form.
   82:.\Generated_Source\PSoC5/LED2.c **** *
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 4
 
 
   83:.\Generated_Source\PSoC5/LED2.c **** * Parameters:  
@@ -209,7 +209,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  101              	.L9:
  102 000a 00BF     		.align	2
  103              	.L8:
- 104 000c 21510040 		.word	1073762593
+ 104 000c C1510040 		.word	1073762753
  105              		.cfi_endproc
  106              	.LFE2:
  107              		.size	LED2_Read, .-LED2_Read
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  111:.\Generated_Source\PSoC5/LED2.c **** *  
  112:.\Generated_Source\PSoC5/LED2.c **** *******************************************************************************/
  113:.\Generated_Source\PSoC5/LED2.c **** uint8 LED2_ReadDataReg(void) 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 5
 
 
  114:.\Generated_Source\PSoC5/LED2.c **** {
@@ -258,7 +258,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  127              	.L12:
  128 000a 00BF     		.align	2
  129              	.L11:
- 130 000c 20510040 		.word	1073762592
+ 130 000c C0510040 		.word	1073762752
  131              		.cfi_endproc
  132              	.LFE3:
  133              		.size	LED2_ReadDataReg, .-LED2_ReadDataReg
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  167 0041 02       		.uleb128 0x2
  168 0042 04       		.byte	0x4
  169 0043 05       		.byte	0x5
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 6
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 6
 
 
  170 0044 2E000000 		.4byte	.LASF4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  224 00b1 08       		.uleb128 0x8
  225 00b2 12000000 		.4byte	.LASF16
  226 00b6 01       		.byte	0x1
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 7
 
 
  227 00b7 27       		.byte	0x27
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 8
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  338 003f 49       		.uleb128 0x49
  339 0040 13       		.uleb128 0x13
  340 0041 00       		.byte	0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 9
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 9
 
 
  341 0042 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  395 0079 0B       		.uleb128 0xb
  396 007a 3B       		.uleb128 0x3b
  397 007b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 10
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 10
 
 
  398 007c 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  452 0030 18000000 		.4byte	.LFE1
  453 0034 0400     		.2byte	0x4
  454 0036 F3       		.byte	0xf3
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 11
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 11
 
 
  455 0037 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  498      746500
  499              	.LASF23:
  500 0023 73746174 		.ascii	"staticBits\000"
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 12
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 12
 
 
  500      69634269 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 1
  522 0117 6C6F6E67 		.ascii	"long long unsigned int\000"
  522      206C6F6E 
  522      6720756E 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccUK8DKm.s 			page 13
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccg6ueYr.s 			page 13
 
 
  522      7369676E 

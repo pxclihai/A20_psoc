@@ -1,7 +1,0 @@
-D:\A20_CANfestival\posoc\Design01.cydsn\Design01.cyprj|b81cdad2-3b72-44c4-ae0b-ad3bc49bcb2d
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5a2adbb8-4a29-4dac-9de6-9c065dedca40
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6cd2b04b-91e3-45b8-88c4-e2f6f6d4c8c1
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|db362f16-a1e9-449c-958f-852bc05995aa
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|029a0415-40ab-460d-958f-bf705101db4f
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|e0bce2f1-c874-491a-af20-b943ddf26b9d
-D:\A20_CANfestival\posoc\Em_EEPROM_Example01.cydsn\Em_EEPROM_Example01.cyprj|238ef656-73d6-40b4-b5cc-2a7898ecd2cd

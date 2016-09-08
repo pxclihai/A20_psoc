@@ -311,7 +311,7 @@ uint8 Stroke_Process(void)
         {
 			 ValveOut(CutReg.Action[VStop]);//停止
             /* 增加动作完成标志20160820*/
-        CutReg.OneWorkFinshState = One_Work_Finish;
+             CutReg.OneWorkFinshState = One_Work_Finish;
         }
 		
 		break;
@@ -715,5 +715,50 @@ void Write_config(void)
         CutReg.KeepTime        =   config_para.Config_KeepTime;
         CutReg.UnloadTime      =   config_para.Config_UnloadTime;
            
+}
+static lastValue = 0;
+void LCD_DISPLAY(uint8 value)
+{
+    if(lastValue != value)
+    {
+        LCD_Char_1_WriteControl(0x01);
+        lastValue = value;
+    }
+    if(value == LED_Status[VFast] )
+    {
+       LCD_Char_1_Position(0,2) ;
+       LCD_Char_1_PrintString("Fast");
+    }
+    else if(value == LED_Status[VSlow] )
+    {
+          LCD_Char_1_Position(0,2) ;
+       LCD_Char_1_PrintString("Slow");
+    }
+       else if(value == LED_Status[VKeep] )
+    {
+        LCD_Char_1_Position(0,2) ;
+       LCD_Char_1_PrintString("Keep");
+    }
+       else if(value == LED_Status[VUnload] )
+    {
+          LCD_Char_1_Position(0,1) ;
+       LCD_Char_1_PrintString("Unload");
+    }
+       else if(value == LED_Status[VStop] )
+    {
+          LCD_Char_1_Position(0,2) ;
+          LCD_Char_1_PrintString("Stop");
+    }
+         else if(value == LED_Status[VBack] )
+    {
+          LCD_Char_1_Position(0,2) ;
+          LCD_Char_1_PrintString("Back");
+    }
+    else
+    {
+        LCD_Char_1_Position(0,2) ;
+          LCD_Char_1_PrintString("Error");
+    }
+    
 }
 /* [] END OF FILE */

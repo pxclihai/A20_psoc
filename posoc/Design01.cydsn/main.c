@@ -15,7 +15,7 @@
 #include "TestSlave.h"
 #include "canfestival.h"
 #include "CanopenDictConfig.h"
-
+#include "TLC5616.h"
 
 #define CAN_RTR_DATA     ((unsigned int )0x00000000)
 #define CAN_RTR_REMOTE   ((unsigned int )0x00000002)
@@ -23,56 +23,7 @@
 extern int ISR_Stroke_Timer_states;
 
 uint8  key_count = 0;
-//typedef struct
-//{
-//  uint32_t StdId;  /*!< Specifies the standard identifier.
-//                        This parameter can be a value between 0 to 0x7FF. */
-//
-//  uint32_t ExtId;  /*!< Specifies the extended identifier.
-//                        This parameter can be a value between 0 to 0x1FFFFFFF. */
-//
-//  uint8_t IDE;     /*!< Specifies the type of identifier for the message that
-//                        will be transmitted. This parameter can be a value
-//                        of @ref CAN_identifier_type */
-//
-//  uint8_t RTR;     /*!< Specifies the type of frame for the message that will
-//                        be transmitted. This parameter can be a value of
-//                        @ref CAN_remote_transmission_request */
-//
-//  uint8_t DLC;     /*!< Specifies the length of the frame that will be
-//                        transmitted. This parameter can be a value between
-//                        0 to 8 */
-//
-//  uint8_t Data[8]; /*!< Contains the data to be transmitted. It ranges from 0
-//                        to 0xFF. */
-//} CanTxMsg;
-//
-//typedef struct
-//{
-//  uint32_t StdId;  /*!< Specifies the standard identifier.
-//                        This parameter can be a value between 0 to 0x7FF. */
-//
-//  uint32_t ExtId;  /*!< Specifies the extended identifier.
-//                        This parameter can be a value between 0 to 0x1FFFFFFF. */
-//
-//  uint8_t IDE;     /*!< Specifies the type of identifier for the message that
-//                        will be received. This parameter can be a value of
-//                        @ref CAN_identifier_type */
-//
-//  uint8_t RTR;     /*!< Specifies the type of frame for the received message.
-//                        This parameter can be a value of
-//                        @ref CAN_remote_transmission_request */
-//
-//  uint8_t DLC;     /*!< Specifies the length of the frame that will be received.
-//                        This parameter can be a value between 0 to 8 */
-//
-//  uint8_t Data[8]; /*!< Contains the data to be received. It ranges from 0 to
-//                        0xFF. */
-//
-//  uint8_t FMI;     /*!< Specifies the index of the filter the message stored in
-//                        the mailbox passes through. This parameter can be a
-//                        value between 0 to 0xFF */
-//} CanRxMsg;
+
 
 unsigned char  receiveData[8]; 
 
@@ -124,45 +75,34 @@ unsigned char canSend(CAN_PORT notused, Message *m)
 int main()
 {
     Init_Stroke_Timer(); 
-    
+    Init_TLC5616();
     /* Enable global interrupts. */
     CyGlobalIntEnable; 
     CAN_1_Start();    
-//    
-//    setNodeId(&TestSlave_Data, nodeID);	
-//	setState(&TestSlave_Data, Initialisation);
-//   CyGlobalIntEnable; 
+    LCD_Char_1_Init();
     CanopenInit();
-    
-   
-//    
-//   /* 说明：原A2O上机初始化双击按键程序 */
- 
-    
-    CyDelay(100);
-   
-   //  Valve_config(1);
-    
-   
+    CyDelay(100); 
     CutReg.SToDotFlag = 0;
     
     Control_LED_Write(5);
     
     ValveOut(CutReg.Action[VStop]);
+    TLC5616_Write(1,1023);
 
-    
-
-    
     /////////////ceshi fucha//////////////
-//    CutReg.Action[VFast]   =   0x01;
-//    CutReg.Action[VSlow]   =   0x01;
-//    CutReg.Action[VKeep]   =   0x01;
-//    CutReg.Action[VUnload] =   0x00;
-//    CutReg.Action[VBack]   =   0x02;
-//    CutReg.Action[VStop]   =   0x00;
-//    CutReg.KeepTime        =   500;
-//    CutReg.UnloadTime      =   500;
+    CutReg.Action[VFast]   =   0x01;
+    CutReg.Action[VSlow]   =   0x01;
+    CutReg.Action[VKeep]   =   0x01;
+    CutReg.Action[VUnload] =   0x00;
+    CutReg.Action[VBack]   =   0x02;
+    CutReg.Action[VStop]   =   0x00;
+    CutReg.KeepTime        =   500;
+    CutReg.UnloadTime      =   500;
     /////////////////////////////////////////
+//    LCD_Char_1_Position(0,0) ;
+//    LCD_Char_1_PrintString("Welcome1");
+//    LCD_Char_1_Position(1,0) ;
+//    LCD_Char_1_PrintString("Tetraelc");
     for(;;)
     {    
         //增加了 配置回复模式 如果开始没有在上止点就进入此模式
@@ -194,7 +134,7 @@ int main()
         
         if(System_enable == Enter_QUIT) //停止一切活动20160825*/
         {
-           ValveOut(CutReg.Action[VStop]); 
+            ValveOut(CutReg.Action[VStop]); 
             CutReg.OneWorkFinshState = One_Work_Finish;
            
         }
@@ -210,5 +150,6 @@ int main()
         }
     }
 }
+
 
 /* [] END OF FILE */

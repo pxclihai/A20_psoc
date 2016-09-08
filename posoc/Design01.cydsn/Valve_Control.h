@@ -37,7 +37,7 @@
 
 extern unsigned char TPDO_PROCESS_Status;
 extern unsigned char TPDO_OUT_Status;
-#define LED_WRITE(a)		{TPDO_PROCESS_Status = a ;}
+#define LED_WRITE(a)		{TPDO_PROCESS_Status = a ;LCD_DISPLAY(a);}
 //#define RunLED_OFF()	Control_Reg_2_Write(0X00)
 //#define RunLED_FLASH()	Control_Reg_2_Write(0X02)
 	
