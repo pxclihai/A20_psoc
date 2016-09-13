@@ -1,6 +1,6 @@
 // ======================================================================
 // Design01.v generated from TopDesign.cysch
-// 09/07/2016 at 14:13
+// 09/09/2016 at 09:19
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -428,7 +428,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v"
 `endif
 
-// CharLCD_v2_10(ConversionRoutines=true, CUSTOM0=0,E,8,8,8,E,0, CUSTOM1=0,A,A,4,4,4,0, CUSTOM2=0,E,A,E,8,8,0, CUSTOM3=0,E,A,C,A,A,0, CUSTOM4=0,E,8,C,8,E,0, CUSTOM5=0,E,8,E,2,E,0, CUSTOM6=0,E,8,E,2,E,0, CUSTOM7=0,4,4,4,0,4,0, CustomCharacterSet=0, TypeReplacementString=uint8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=CharLCD_v2_10, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD_Char_1, CY_INSTANCE_SHORT_NAME=LCD_Char_1, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3, INSTANCE_NAME=LCD_Char_1, )
+// CharLCD_v2_10(ConversionRoutines=true, CUSTOM0="F,1,1,11,11,11,11,1F,", CUSTOM1="1F,11,11,1,1,1,11,1F,", CUSTOM2="1F,11,11,11,11,11,1,7,", CUSTOM3="1F,11,11,11,11,11,11,18,", CUSTOM4="1F,11,11,11,10,10,10,1F,", CUSTOM5="1F,10,10,10,11,11,11,1F,", CUSTOM6="18,11,11,11,11,11,11,1F,", CUSTOM7="7,1,11,11,11,11,11,1F,", CustomCharacterSet=3, TypeReplacementString=uint8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=CharLCD_v2_10, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD_Char_1, CY_INSTANCE_SHORT_NAME=LCD_Char_1, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3, INSTANCE_NAME=LCD_Char_1, )
 module CharLCD_v2_10_3 ;
 
 

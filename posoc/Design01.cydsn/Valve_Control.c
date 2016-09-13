@@ -69,7 +69,7 @@ void timer_10ms(void)
 //	{
    ISR_Stroke_Timer_states = 0x00; 
  
-   if(((Enter_Start == System_enable)  || ( One_Work_Runing == CutReg.OneWorkFinshState )) && Enter_QUIT != System_enable)   /* 增加动作完成标志20160820 20160825 增加退出停止标志*/
+   if(((Enter_Start == System_enable)  || ( One_Work_Runing == CutReg.OneWorkFinshState && System_enable != Enter_return )) && Enter_QUIT != System_enable)   /* 增加动作完成标志20160820 20160825 增加退出停止标志*/
     {
         
 		if(CutMode() == CUTSMODE && CutReg.CutTimeStatus < VUnload && (!FootStart()))
@@ -224,7 +224,7 @@ uint8 Stroke_Process(void)
 	switch(CutReg.CutStatus)
 	{
 	case StrokeStart:
-		if(CutMode() == CUTCMODE || CutMode() == CUTSMODE)//连续 单次
+		if(CutMode() == CUTCMODE || CutMode() == CUTSMODE )//连续 单次
 		{
             CutReg.CutStatus = WaitNoFoot;
 		}
@@ -233,10 +233,14 @@ uint8 Stroke_Process(void)
 			CutReg.CutStatus = JOGMODE;
 		}
         
+        if(System_enable == Enter_return)
+        {
+            CutReg.CutStatus = JOGMODE;
+        }
 		break;
 	case JOGMODE:
         
-		if(CutMode() != CUTJMODE)
+		if((CutMode() != CUTJMODE)&& System_enable != Enter_return)
 		{
 			ValveOut(CutReg.Action[VStop]);
             LED_WRITE(LED_Status[VStop]);
@@ -288,7 +292,7 @@ uint8 Stroke_Process(void)
 					ValveOut(CutReg.Action[VBack]);
                     LED_WRITE(LED_Status[VBack]);
 				}
-				if(CutMode() != CUTJMODE)
+				if(CutMode() != CUTJMODE && System_enable != Enter_return)
 				{
 					ValveOut(CutReg.Action[VStop]);
                     LED_WRITE(LED_Status[VStop]);
@@ -355,7 +359,7 @@ uint8 Stroke_Process(void)
 		CutReg.CutStatus = Cutting;
 		CutReg.Cnt = 0;
 		CutReg.CutTimeStatus = VFast;
-		ISR_Stroke_Timer_states =0x00;
+		ISR_Stroke_Timer_states = 0x00;
 //		MoveLED(1);
 		break;
 	case Cutting: break;
@@ -703,9 +707,9 @@ void Read_config(void)
 }
 void Write_config(void)
 {
-           uint8 tempBuf[sizeof(config_para)-1];
-           memcpy(tempBuf,(&config_para),sizeof(config_para)-1);        
-           EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
+        uint8 tempBuf[sizeof(config_para)-1];
+        memcpy(tempBuf,(&config_para),sizeof(config_para)-1);        
+        EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
         CutReg.Action[VFast]   =   config_para.Config_VFast;
         CutReg.Action[VSlow]   =   config_para.Config_VSlow;
         CutReg.Action[VKeep]   =   config_para.Config_VKeep;
@@ -716,49 +720,88 @@ void Write_config(void)
         CutReg.UnloadTime      =   config_para.Config_UnloadTime;
            
 }
-static lastValue = 0;
+static lastValue = 0xFF;
+static lastMode  = 0xFF;
 void LCD_DISPLAY(uint8 value)
 {
+    
     if(lastValue != value)
     {
-        LCD_Char_1_WriteControl(0x01);
+        //LCD_Char_1_WriteControl(0x01);
         lastValue = value;
+    }
+
+    else 
+    {
+        return;
     }
     if(value == LED_Status[VFast] )
     {
-       LCD_Char_1_Position(0,2) ;
-       LCD_Char_1_PrintString("Fast");
+       LCD_Char_1_Position(1,0) ;
+       LCD_Char_1_PrintString("  Fast  ");
     }
     else if(value == LED_Status[VSlow] )
     {
-          LCD_Char_1_Position(0,2) ;
-       LCD_Char_1_PrintString("Slow");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString("  Slow  ");
     }
        else if(value == LED_Status[VKeep] )
     {
-        LCD_Char_1_Position(0,2) ;
-       LCD_Char_1_PrintString("Keep");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString("  Keep  ");
     }
        else if(value == LED_Status[VUnload] )
     {
-          LCD_Char_1_Position(0,1) ;
-       LCD_Char_1_PrintString("Unload");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString(" Unload");
     }
        else if(value == LED_Status[VStop] )
     {
-          LCD_Char_1_Position(0,2) ;
-          LCD_Char_1_PrintString("Stop");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString("  Stop  ");
     }
          else if(value == LED_Status[VBack] )
     {
-          LCD_Char_1_Position(0,2) ;
-          LCD_Char_1_PrintString("Back");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString("  Back  ");
     }
     else
     {
-        LCD_Char_1_Position(0,2) ;
-          LCD_Char_1_PrintString("Error");
+        LCD_Char_1_Position(1,0) ;
+        LCD_Char_1_PrintString("  Error ");
+    } 
+
+}
+void LCD_DISPLAY_MODE()
+{
+    if(lastMode  != CutMode())
+    {
+    //LCD_Char_1_WriteControl(0x01);
+      lastMode = CutMode();
     }
-    
+    else 
+    {
+        return;
+    }
+    if(CutMode() == CUTCMODE)
+    {
+        LCD_Char_1_Position(0,1) ;
+        LCD_Char_1_PrintString("C-MODE");
+    }
+    else if(CutMode() == CUTJMODE)
+    {
+        LCD_Char_1_Position(0,1) ;
+        LCD_Char_1_PrintString("J-MODE");
+    }
+    else if(CutMode() == CUTSMODE)
+    {
+        LCD_Char_1_Position(0,1) ;
+        LCD_Char_1_PrintString("S-MODE");
+    }
+    else 
+    {
+        LCD_Char_1_Position(0,1);
+        LCD_Char_1_PrintString("UNKNOWN");
+    }
 }
 /* [] END OF FILE */

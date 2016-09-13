@@ -27,7 +27,7 @@
 ***************************************/
 
 #define LCD_Char_1_CONVERSION_ROUTINES     (1u)
-#define LCD_Char_1_CUSTOM_CHAR_SET         (0u)
+#define LCD_Char_1_CUSTOM_CHAR_SET         (3u)
 
 /* Custom character set types */
 #define LCD_Char_1_NONE                     (0u)    /* No Custom Fonts      */
@@ -65,7 +65,7 @@ void LCD_Char_1_SaveConfig(void) ;
 void LCD_Char_1_RestoreConfig(void) ;
 void LCD_Char_1_Sleep(void) ;
 void LCD_Char_1_Wakeup(void) ;
- 
+
 #if((LCD_Char_1_CUSTOM_CHAR_SET == LCD_Char_1_VERTICAL_BG) || \
                 (LCD_Char_1_CUSTOM_CHAR_SET == LCD_Char_1_HORIZONTAL_BG))
 

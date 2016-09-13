@@ -34,10 +34,10 @@
 #ifndef _VALVE_CONTROL_H
 #define _VALVE_CONTROL_H
 #include "product.h"
-
+extern uint8 LED_Status[];
 extern unsigned char TPDO_PROCESS_Status;
 extern unsigned char TPDO_OUT_Status;
-#define LED_WRITE(a)		{TPDO_PROCESS_Status = a ;LCD_DISPLAY(a);}
+#define LED_WRITE(a)		{TPDO_PROCESS_Status = a ;LCD_DISPLAY(a);LCD_DISPLAY_MODE();}
 //#define RunLED_OFF()	Control_Reg_2_Write(0X00)
 //#define RunLED_FLASH()	Control_Reg_2_Write(0X02)
 	
@@ -62,17 +62,17 @@ extern unsigned char TPDO_OUT_Status;
 #define LEVLE_HIGH
 #ifdef LEVLE_HIGH
 /**********************************************************************/
-#define FootStart()			!(Status_Reg_1_Read()&0x01)//读脚踏开关信号  IN1
-#define FootUp()	    	!(Status_Reg_1_Read()&0x02)//脚踏上  IN2
+#define FootStart()			!(Status_Reg_1_Read()&0x08)//读脚踏开关信号  IN1
+#define FootUp()	    	!(Status_Reg_1_Read()&0x04)//脚踏上  IN2
 /*********************运行模式:单次,连续,点动**********************/
-#define CUTSMODE			0x08//单次模式  IN4
-#define CUTCMODE			0x04//连续模式  IN3
-#define CUTJMODE			0x0C//点动模式
+#define CUTSMODE			0x20//单次模式  IN4
+#define CUTCMODE			0x40//连续模式  IN3
+#define CUTJMODE			0x60//点动模式
 #define CUTEMODE			0x00//单次连续都有效，错误模式
-#define CutMode()			 (Status_Reg_1_Read()&0x0C)//剪切方式 on 连续 off 单次
-#define UpperPoint()		!(Status_Reg_1_Read()&0X10)//上死点信号输入 on 位于上死点 IN5
-#define DownPoint()			!(Status_Reg_1_Read()&0X20)// IN6
-#define PumpSignal()		!(Status_Reg_1_Read()&0X40)//油泵启动信号 IN7
+#define CutMode()			 (Status_Reg_1_Read()&0x60)//剪切方式 on 连续 off 单次
+#define UpperPoint()		!(Status_Reg_1_Read()&0X02)//上死点信号输入 on 位于上死点 IN5
+#define DownPoint()			!(Status_Reg_1_Read()&0X01)// IN6
+#define PumpSignal()		!(Status_Reg_1_Read()&0X10)//油泵启动信号 IN7
 #else
 
 #define FootStart()			!(Status_Reg_1_Read()&0x01)//读脚踏开关信号  IN1
@@ -162,6 +162,7 @@ uint16 Get_ADvalue(uint8 timetype);
 void Wrtie_config(void);
 void Valve_config(uint8 valve_config_flag);             //阀组配置
 void Sys_Test(void);
+void LCD_DISPLAY_MODE();
 
 #endif
 

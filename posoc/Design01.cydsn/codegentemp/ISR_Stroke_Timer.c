@@ -34,6 +34,9 @@
 static unsigned char count;
  int ISR_Stroke_Timer_states = 0;
 static int time_count = 0;
+static int Dis_Step = 0;
+static int Dis_time = 0;
+static int Dis_content = 0;
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE
@@ -174,11 +177,30 @@ CY_ISR(ISR_Stroke_Timer_Interrupt)
     Timer_1_ReadStatusRegister();
    /* Toggle the LED */
     LED1_Write(~LED1_Read());
-    time_count++;
+    time_count++; 
+    Dis_time++;
     if(time_count > 10 & ISR_Stroke_Timer_states == 0x00 )
     {
         time_count = 0;
         timer_10ms();
+    }
+    if(Dis_time >500)
+    {
+        Dis_time = 0;
+        Dis_Step++;
+        switch(Dis_Step)
+        {
+            case 0:Dis_content = LCD_Char_1_CUSTOM_0; break;
+            case 1:Dis_content = LCD_Char_1_CUSTOM_1; break;
+            case 2:Dis_content = LCD_Char_1_CUSTOM_2; break;
+            case 3:Dis_content = LCD_Char_1_CUSTOM_3; break;
+            case 4:Dis_content = LCD_Char_1_CUSTOM_4; break;
+            case 5:Dis_content = LCD_Char_1_CUSTOM_5; break;
+            case 6:Dis_content = LCD_Char_1_CUSTOM_6; break;
+            case 7:Dis_content = LCD_Char_1_CUSTOM_7; Dis_Step = 0;break;
+        }
+        LCD_Char_1_Position(0,0);                                                                //Row = 0,Col = 6
+        LCD_Char_1_PutChar(Dis_content) ;  
     }
     TPDO_IN_Status = Read_Status_Reg;
     timerForCan();

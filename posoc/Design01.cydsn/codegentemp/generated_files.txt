@@ -123,6 +123,7 @@
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\LCD_Char_1.c" value="ARM_C_FILE;LCD_Char_1" />
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\LCD_Char_1.h" value="NONE;LCD_Char_1" />
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\LCD_Char_1_PM.c" value="ARM_C_FILE;LCD_Char_1" />
+  <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\LCD_Char_1_CustChars.c" value="ARM_C_FILE;LCD_Char_1" />
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\UART_1_IntClock.c" value="ARM_C_FILE;UART_1_IntClock" />
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\UART_1_IntClock.h" value="NONE;UART_1_IntClock" />
   <file name="D:\GIT\A20_CANfestival\posoc\Design01.cydsn\codegentemp\LCD_Char_1_LCDPort_aliases.h" value="NONE;LCD_Char_1_LCDPort" />

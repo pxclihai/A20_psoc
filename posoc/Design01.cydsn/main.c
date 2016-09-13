@@ -16,12 +16,12 @@
 #include "canfestival.h"
 #include "CanopenDictConfig.h"
 #include "TLC5616.h"
-
+#include "Valve_Control.h"
 #define CAN_RTR_DATA     ((unsigned int )0x00000000)
 #define CAN_RTR_REMOTE   ((unsigned int )0x00000002)
 #define CAN_ID_STD       ((unsigned int) 0x00000000)
 extern int ISR_Stroke_Timer_states;
-
+extern uint8 const CYCODE LCD_Char_1_customFonts[];
 uint8  key_count = 0;
 
 
@@ -78,31 +78,33 @@ int main()
     Init_TLC5616();
     /* Enable global interrupts. */
     CyGlobalIntEnable; 
-    CAN_1_Start();    
+    
     LCD_Char_1_Init();
+    LCD_Char_1_LoadCustomFonts(LCD_Char_1_customFonts) ; 
+    
+    CAN_1_Start();   
     CanopenInit();
     CyDelay(100); 
     CutReg.SToDotFlag = 0;
     
     Control_LED_Write(5);
-    
     ValveOut(CutReg.Action[VStop]);
+    LED_WRITE(LED_Status[VStop]);
+    
     TLC5616_Write(1,1023);
 
     /////////////ceshi fucha//////////////
     CutReg.Action[VFast]   =   0x01;
     CutReg.Action[VSlow]   =   0x01;
     CutReg.Action[VKeep]   =   0x01;
-    CutReg.Action[VUnload] =   0x00;
+    CutReg.Action[VUnload] =   0x10;
     CutReg.Action[VBack]   =   0x02;
     CutReg.Action[VStop]   =   0x00;
     CutReg.KeepTime        =   500;
     CutReg.UnloadTime      =   500;
     /////////////////////////////////////////
-//    LCD_Char_1_Position(0,0) ;
-//    LCD_Char_1_PrintString("Welcome1");
-//    LCD_Char_1_Position(1,0) ;
-//    LCD_Char_1_PrintString("Tetraelc");
+ // while(1);
+
     for(;;)
     {    
         //增加了 配置回复模式 如果开始没有在上止点就进入此模式
@@ -115,13 +117,11 @@ int main()
          }
         if(!PumpSignal())
 		{
-         
 			ISR_Stroke_Timer_states = 0x01;
 			CutReg.CutStatus = StrokeStart;
 			CutReg.ModeRunFlag = 0;
-
-            LED_WRITE(0x20);
-          
+            
+            LED_WRITE(LED_Status[VStop]);
             
             CutReg.Cnt = 0;
 			CutReg.CutTimeStatus = VFast;   //结束  
@@ -141,7 +141,8 @@ int main()
         if(System_enable == Enter_return)/*20160825进入回复模式*/
         {
            FootStart_state = 0x00;                   //不允许往下只能回到上止点
-           CutReg.CutTimeStatus = VBack;
+           CutReg.CutTimeStatus = VStop;
+           CutReg.CutStatus = JOGMODE;
            CutReg.OneWorkFinshState = One_Work_Runing;
         }
         if(System_enable == Enter_Start)
