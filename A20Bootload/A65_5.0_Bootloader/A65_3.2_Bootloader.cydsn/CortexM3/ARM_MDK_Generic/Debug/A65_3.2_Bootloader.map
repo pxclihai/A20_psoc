@@ -1,0 +1,268 @@
+ARM Linker, 5.03 [Build 76] [MDK-ARM Standard]
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x00000011
+
+  Load Region APPLICATION (Base: 0x00000000, Size: 0x00002d4c, Max: 0x00020000, ABSOLUTE)
+
+    Execution Region VECTORS (Base: 0x00000000, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000010   Data   RO          275    .romvectors         Cm3Start.o
+
+
+    Execution Region CODE (Base: 0x00000010, Size: 0x00002c24, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000010   0x00000000   Code   RO         1923  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000010   0x00000004   Code   RO         1932    .ARM.Collect$$$$00000003  mc_w.l(entry4.o)
+    0x00000014   0x00000004   Code   RO         1935    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00000018   0x00000000   Code   RO         1937    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00000018   0x00000000   Code   RO         1939    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00000018   0x00000008   Code   RO         1940    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000020   0x00000000   Code   RO         1942    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000020   0x00000000   Code   RO         1944    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000020   0x00000004   Code   RO         1933    .ARM.Collect$$$$00002714  mc_w.l(entry4.o)
+    0x00000024   0x00000004   Code   RO          988    .emb_text           A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00000028   0x00000020   Code   RO         1175    .text               A65_3.2_Bootloader.a(CyBootAsmRv.o)
+    0x00000048   0x00000024   Code   RO         1926    .text               mc_w.l(memcpya.o)
+    0x0000006c   0x00000024   Code   RO         1928    .text               mc_w.l(memseta.o)
+    0x00000090   0x00000024   Code   RO         1946    .text               mc_w.l(init.o)
+    0x000000b4   0x0000000c   Code   RO          269    i.$Sub$$main        Cm3Start.o
+    0x000000c0   0x0000002c   Code   RO          352    i.AnalogSetDefault  A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000000ec   0x00000034   Code   RO          989    i.Bootloader_1_Calc8BitSum  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00000120   0x0000001e   Code   RO          990    i.Bootloader_1_CalcPacketChecksum  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x0000013e   0x00000108   Code   RO          992    i.Bootloader_1_GetMetadata  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00000246   0x00000002   PAD
+    0x00000248   0x0000039c   Code   RO          993    i.Bootloader_1_HostLink  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x000005e4   0x00000014   Code   RO          994    i.Bootloader_1_LaunchApplication  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x000005f8   0x00000078   Code   RO          996    i.Bootloader_1_Start  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00000670   0x000000a4   Code   RO          997    i.Bootloader_1_ValidateBootloadable  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00000714   0x0000005a   Code   RO          998    i.Bootloader_1_WritePacket  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x0000076e   0x00000064   Code   RO          209    i.CH452_I2c_RdByte  Key.o
+    0x000007d2   0x0000002e   Code   RO          210    i.CH452_I2c_Start   Key.o
+    0x00000800   0x0000002e   Code   RO          211    i.CH452_I2c_Stop    Key.o
+    0x0000082e   0x0000006c   Code   RO          212    i.CH452_I2c_WrByte  Key.o
+    0x0000089a   0x00000024   Code   RO          214    i.CH452_Write       Key.o
+    0x000008be   0x00000014   Code   RO          353    i.CYCONFIGCPY       A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000008d2   0x00000014   Code   RO          354    i.CYCONFIGCPYCODE   A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000008e6   0x00000010   Code   RO          355    i.CYMEMZERO         A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000008f6   0x00000002   PAD
+    0x000008f8   0x000000c0   Code   RO          356    i.ClockSetup        A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000009b8   0x0000000c   Code   RO          891    i.Control_Reg_1_Write  A65_3.2_Bootloader.a(Control_Reg_1.o)
+    0x000009c4   0x00000034   Code   RO          999    i.CyBtldr_CheckLaunch  A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x000009f8   0x00000006   Code   RO          357    i.CyClockStartupError  A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000009fe   0x00000002   PAD
+    0x00000a00   0x00000030   Code   RO          408    i.CyDelay           A65_3.2_Bootloader.a(CyLib.o)
+    0x00000a30   0x00000018   Code   RO          410    i.CyDelayUs         A65_3.2_Bootloader.a(CyLib.o)
+    0x00000a48   0x00000074   Code   RO         1181    i.CyEEPROM_Start    A65_3.2_Bootloader.a(CyFlash.o)
+    0x00000abc   0x00000050   Code   RO         1183    i.CyFlashGetSpcAlgorithm  A65_3.2_Bootloader.a(CyFlash.o)
+    0x00000b0c   0x00000048   Code   RO          413    i.CyFlushCache      A65_3.2_Bootloader.a(CyLib.o)
+    0x00000b54   0x00000004   Code   RO          414    i.CyHalt            A65_3.2_Bootloader.a(CyLib.o)
+    0x00000b58   0x0000002c   Code   RO          434    i.CyIntSetPriority  A65_3.2_Bootloader.a(CyLib.o)
+    0x00000b84   0x00000030   Code   RO          436    i.CyIntSetVector    A65_3.2_Bootloader.a(CyLib.o)
+    0x00000bb4   0x00000014   Code   RO         1188    i.CySetTemp         A65_3.2_Bootloader.a(CyFlash.o)
+    0x00000bc8   0x00000060   Code   RO         1189    i.CySetTempInt      A65_3.2_Bootloader.a(CyFlash.o)
+    0x00000c28   0x00000014   Code   RO          443    i.CySoftwareReset   A65_3.2_Bootloader.a(CyLib.o)
+    0x00000c3c   0x00000028   Code   RO         1400    i.CySpcGetAlgorithm  A65_3.2_Bootloader.a(CySpc.o)
+    0x00000c64   0x0000003c   Code   RO         1401    i.CySpcGetTemp      A65_3.2_Bootloader.a(CySpc.o)
+    0x00000ca0   0x00000094   Code   RO         1404    i.CySpcLoadRowFull  A65_3.2_Bootloader.a(CySpc.o)
+    0x00000d34   0x00000050   Code   RO         1405    i.CySpcLock         A65_3.2_Bootloader.a(CySpc.o)
+    0x00000d84   0x00000034   Code   RO         1406    i.CySpcReadData     A65_3.2_Bootloader.a(CySpc.o)
+    0x00000db8   0x00000034   Code   RO         1407    i.CySpcStart        A65_3.2_Bootloader.a(CySpc.o)
+    0x00000dec   0x00000044   Code   RO         1409    i.CySpcUnlock       A65_3.2_Bootloader.a(CySpc.o)
+    0x00000e30   0x00000048   Code   RO         1410    i.CySpcWriteRow     A65_3.2_Bootloader.a(CySpc.o)
+    0x00000e78   0x000000f4   Code   RO         1191    i.CyWriteRowFull    A65_3.2_Bootloader.a(CyFlash.o)
+    0x00000f6c   0x0000000c   Code   RO          215    i.Init_key          Key.o
+    0x00000f78   0x00000004   Code   RO          270    i.IntDefaultHandler  Cm3Start.o
+    0x00000f7c   0x00000024   Code   RO          914    i.Key_SCL_Write     A65_3.2_Bootloader.a(Key_SCL.o)
+    0x00000fa0   0x00000010   Code   RO          950    i.Key_SDA_Read      A65_3.2_Bootloader.a(Key_SDA.o)
+    0x00000fb0   0x00000024   Code   RO          953    i.Key_SDA_Write     A65_3.2_Bootloader.a(Key_SDA.o)
+    0x00000fd4   0x000000a2   Code   RO          216    i.Read_KeyValue     Key.o
+    0x00001076   0x00000002   PAD
+    0x00001078   0x0000001c   Code   RO          271    i.Reset             Cm3Start.o
+    0x00001094   0x00000008   Code   RO         1728    i.USBFS_1_BUS_RESET_ISR  A65_3.2_Bootloader.a(USBFS_1_episr.o)
+    0x0000109c   0x000000d4   Code   RO         1823    i.USBFS_1_ClearEndpointHalt  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001170   0x00000200   Code   RO         1824    i.USBFS_1_Config    A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001370   0x00000194   Code   RO         1825    i.USBFS_1_ConfigAltChanged  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001504   0x000000e4   Code   RO         1826    i.USBFS_1_ConfigReg  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x000015e8   0x00000008   Code   RO         1614    i.USBFS_1_ControlReadDataStage  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000015f0   0x00000034   Code   RO         1615    i.USBFS_1_ControlReadStatusStage  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00001624   0x0000007c   Code   RO         1616    i.USBFS_1_ControlWriteDataStage  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000016a0   0x00000020   Code   RO         1617    i.USBFS_1_ControlWriteStatusStage  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000016c0   0x000000a8   Code   RO         1361    i.USBFS_1_CyBtldrCommRead  A65_3.2_Bootloader.a(USBFS_1_boot.o)
+    0x00001768   0x0000000a   Code   RO         1362    i.USBFS_1_CyBtldrCommReset  A65_3.2_Bootloader.a(USBFS_1_boot.o)
+    0x00001772   0x00000002   PAD
+    0x00001774   0x00000018   Code   RO         1363    i.USBFS_1_CyBtldrCommStart  A65_3.2_Bootloader.a(USBFS_1_boot.o)
+    0x0000178c   0x00000052   Code   RO         1365    i.USBFS_1_CyBtldrCommWrite  A65_3.2_Bootloader.a(USBFS_1_boot.o)
+    0x000017de   0x00000002   PAD
+    0x000017e0   0x0000006c   Code   RO         1811    i.USBFS_1_DispatchClassRqst  A65_3.2_Bootloader.a(USBFS_1_cls.o)
+    0x0000184c   0x00000144   Code   RO         1758    i.USBFS_1_DispatchHIDClassRqst  A65_3.2_Bootloader.a(USBFS_1_hid.o)
+    0x00001990   0x000000b8   Code   RO         1618    i.USBFS_1_EP_0_ISR  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00001a48   0x00000038   Code   RO         1729    i.USBFS_1_EP_1_ISR  A65_3.2_Bootloader.a(USBFS_1_episr.o)
+    0x00001a80   0x00000038   Code   RO         1730    i.USBFS_1_EP_2_ISR  A65_3.2_Bootloader.a(USBFS_1_episr.o)
+    0x00001ab8   0x00000038   Code   RO         1485    i.USBFS_1_EnableOutEP  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00001af0   0x00000048   Code   RO         1759    i.USBFS_1_FindHidClassDecriptor  A65_3.2_Bootloader.a(USBFS_1_hid.o)
+    0x00001b38   0x00000074   Code   RO         1760    i.USBFS_1_FindReport  A65_3.2_Bootloader.a(USBFS_1_hid.o)
+    0x00001bac   0x0000004c   Code   RO         1761    i.USBFS_1_FindReportDescriptor  A65_3.2_Bootloader.a(USBFS_1_hid.o)
+    0x00001bf8   0x0000002c   Code   RO         1827    i.USBFS_1_GetConfigTablePtr  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001c24   0x0000000c   Code   RO         1487    i.USBFS_1_GetConfiguration  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00001c30   0x00000018   Code   RO         1828    i.USBFS_1_GetDeviceTablePtr  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001c48   0x00000030   Code   RO         1489    i.USBFS_1_GetEPCount  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00001c78   0x00000014   Code   RO         1490    i.USBFS_1_GetEPState  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00001c8c   0x0000002c   Code   RO         1829    i.USBFS_1_GetInterfaceClassTablePtr  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00001cb8   0x00000034   Code   RO         1619    i.USBFS_1_HandleIN  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00001cec   0x00000040   Code   RO         1620    i.USBFS_1_HandleOUT  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00001d2c   0x0000006c   Code   RO         1621    i.USBFS_1_HandleSetup  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00001d98   0x00000318   Code   RO         1830    i.USBFS_1_HandleStandardRqst  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x000020b0   0x00000024   Code   RO         1896    i.USBFS_1_HandleVendorRqst  A65_3.2_Bootloader.a(USBFS_1_vnd.o)
+    0x000020d4   0x00000164   Code   RO         1492    i.USBFS_1_Init      A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00002238   0x000000d0   Code   RO         1493    i.USBFS_1_InitComponent  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00002308   0x00000050   Code   RO         1622    i.USBFS_1_InitControlRead  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00002358   0x00000048   Code   RO         1623    i.USBFS_1_InitControlWrite  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000023a0   0x0000002c   Code   RO         1624    i.USBFS_1_InitNoDataControlTransfer  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000023cc   0x00000034   Code   RO         1625    i.USBFS_1_InitZeroLengthControlTransfer  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00002400   0x00000024   Code   RO         1626    i.USBFS_1_InitializeStatusBlock  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00002424   0x00000018   Code   RO         1494    i.USBFS_1_IsConfigurationChanged  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x0000243c   0x00000094   Code   RO         1627    i.USBFS_1_LoadEP0   A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000024d0   0x0000009c   Code   RO         1495    i.USBFS_1_LoadInEP  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x0000256c   0x00000040   Code   RO         1628    i.USBFS_1_NoDataControlStatusStage  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x000025ac   0x00000068   Code   RO         1497    i.USBFS_1_ReInitComponent  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00002614   0x0000005c   Code   RO         1498    i.USBFS_1_ReadOutEP  A65_3.2_Bootloader.a(USBFS_1.o)
+    0x00002670   0x00000002   Code   RO         1731    i.USBFS_1_SOF_ISR   A65_3.2_Bootloader.a(USBFS_1_episr.o)
+    0x00002672   0x00000002   PAD
+    0x00002674   0x00000094   Code   RO         1831    i.USBFS_1_SetEndpointHalt  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x00002708   0x00000024   Code   RO         1500    i.USBFS_1_Start     A65_3.2_Bootloader.a(USBFS_1.o)
+    0x0000272c   0x00000028   Code   RO         1629    i.USBFS_1_UpdateStatusBlock  A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x00002754   0x00000048   Code   RO         1833    i.USBFS_1_ValidateAlternateSetting  A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x0000279c   0x0000000e   Code   RO         1950    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000027aa   0x00000002   Code   RO         1951    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000027ac   0x0000000e   Code   RO         1952    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000027ba   0x00000034   Code   RO          359    i.cfg_write_bytes32  A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000027ee   0x00000002   PAD
+    0x000027f0   0x000000ec   Code   RO          360    i.cyfitter_cfg      A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x000028dc   0x00000074   Code   RO          272    i.initialize_psoc   Cm3Start.o
+    0x00002950   0x00000050   Code   RO            5    i.main              main.o
+    0x000029a0   0x00000008   Data   RO         1000    .bootloader         A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x000029a8   0x000000fe   Data   RO          361    .constdata          A65_3.2_Bootloader.a(cyfitter_cfg.o)
+    0x00002aa6   0x00000002   PAD
+    0x00002aa8   0x00000008   Data   RO         1001    .constdata          A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x00002ab0   0x00000154   Data   RO         1909    .constdata          A65_3.2_Bootloader.a(USBFS_1_descr.o)
+    0x00002c04   0x00000030   Data   RO         1948    Region$$Table       anon$$obj.o
+
+
+    Execution Region ISRVECTORS (Base: 0x1fffc000, Size: 0x000000c0, Max: 0xffffffff, ABSOLUTE, UNINIT)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1fffc000   0x000000c0   Data   RW          274    .ramvectors         Cm3Start.o
+
+
+    Execution Region NOINIT_DATA (Base: 0x1fffc0c0, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE, UNINIT)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1fffc0c0   0x00000004   Zero   RW          273    .noinit             Cm3Start.o
+    0x1fffc0c4   0x00000001   Zero   RW          487    .noinit             A65_3.2_Bootloader.a(CyLib.o)
+
+
+    Execution Region DATA (Base: 0x1fffc0c8, Size: 0x00000154, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1fffc0c8   0x00000014   Data   RW          486    .data               A65_3.2_Bootloader.a(CyLib.o)
+    0x1fffc0dc   0x00000008   Data   RW         1002    .data               A65_3.2_Bootloader.a(Bootloader_1.o)
+    0x1fffc0e4   0x00000006   Data   RW         1192    .data               A65_3.2_Bootloader.a(CyFlash.o)
+    0x1fffc0ea   0x00000001   Data   RW         1366    .data               A65_3.2_Bootloader.a(USBFS_1_boot.o)
+    0x1fffc0eb   0x00000001   PAD
+    0x1fffc0ec   0x00000008   Data   RW         1411    .data               A65_3.2_Bootloader.a(CySpc.o)
+    0x1fffc0f4   0x00000001   Data   RW         1502    .data               A65_3.2_Bootloader.a(USBFS_1.o)
+    0x1fffc0f5   0x00000003   PAD
+    0x1fffc0f8   0x00000018   Data   RW         1631    .data               A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x1fffc110   0x00000003   Data   RW         1764    .data               A65_3.2_Bootloader.a(USBFS_1_hid.o)
+    0x1fffc113   0x00000002   Data   RW         1834    .data               A65_3.2_Bootloader.a(USBFS_1_std.o)
+    0x1fffc115   0x00000001   PAD
+    0x1fffc116   0x00000008   Data   RW         1910    .data               A65_3.2_Bootloader.a(USBFS_1_descr.o)
+    0x1fffc11e   0x00000002   PAD
+    0x1fffc120   0x00000078   Zero   RW         1630    .bss                A65_3.2_Bootloader.a(USBFS_1_drv.o)
+    0x1fffc198   0x00000082   Zero   RW         1908    .bss                A65_3.2_Bootloader.a(USBFS_1_descr.o)
+
+
+    Execution Region ARM_LIB_HEAP (Base: 0x20001800, Size: 0x00000800, Max: 0x00000800, ABSOLUTE, UNINIT)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20001800   0x00000800   Zero   RW            1    ARM_LIB_HEAP.bss    anon$$obj.o
+
+
+    Execution Region ARM_LIB_STACK (Base: 0x20002000, Size: 0x00002000, Max: 0x00002000, ABSOLUTE, UNINIT)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20002000   0x00002000   Zero   RW            2    ARM_LIB_STACK.bss   anon$$obj.o
+
+
+
+  Load Region CYLOADERMETA (Base: 0x0001ffc0, Size: 0x00000040, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cyloadermeta (Base: 0x0001ffc0, Size: 0x00000040, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x0001ffc0   0x00000040   Data   RO          341    .cyloadermeta       cymetadata.o
+
+
+
+  Load Region CYCONFIGECC (Base: 0x80000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cyconfigecc (Base: 0x80000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x80000000   0x00000001   Data   RO          338    .cyconfigecc        cymetadata.o
+
+
+
+  Load Region CYCUSTNVL (Base: 0x90000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cycustnvl (Base: 0x90000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x90000000   0x00000004   Data   RO          339    .cycustnvl          cymetadata.o
+
+
+
+  Load Region CYWOLATCH (Base: 0x90100000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cywolatch (Base: 0x90100000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x90100000   0x00000004   Data   RO          343    .cywolatch          cymetadata.o
+
+
+
+  Load Region CYFLASHPROTECT (Base: 0x90400000, Size: 0x00000080, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cyflashprotect (Base: 0x90400000, Size: 0x00000080, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x90400000   0x00000080   Data   RO          340    .cyflashprotect     cymetadata.o
+
+
+
+  Load Region CYMETA (Base: 0x90500000, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region .cymeta (Base: 0x90500000, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x90500000   0x0000000c   Data   RO          342    .cymeta             cymetadata.o
+

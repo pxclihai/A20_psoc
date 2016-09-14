@@ -3,11 +3,11 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspc" version="5" xml_contents_version="3" name="posoc" persistent="" platform="NOT_USED">
-<current_project name=".\Design01.cydsn\Design01.cyprj" />
+<current_project name=".\A66_CanFestival.cydsn\A66_CanFestival.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
-<v>.\Design01.cydsn\Design01.cyprj</v>
+<v>.\A66_CanFestival.cydsn\A66_CanFestival.cyprj</v>
 </projects>
 <workspace_id v="e424c94d-fe5e-4d52-b3c4-a0756e66f4b7" />
 <WriteAppVersionLastSavedWith v="3.3.0.410" />

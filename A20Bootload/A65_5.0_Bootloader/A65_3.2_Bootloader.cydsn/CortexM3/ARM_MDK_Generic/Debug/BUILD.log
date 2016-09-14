@@ -1,0 +1,3 @@
+--------------- Build Started: 09/13/2016 14:29:57 Project: A65_3.2_Bootloader, Configuration: ARM MDK Generic Debug ---------------
+ERROR: No location was selected for the binaries of the tool chain "ARM MDK Generic". The tool chain will not build until a location is selected. Use Tools > Options > Project Management > Generic Toolchains to set the location of the appropriate binaries
+--------------- Build Failed: 09/13/2016 14:29:57 ---------------
