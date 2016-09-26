@@ -1,0 +1,222 @@
+C51 COMPILER V9.51   MAIN                                                                  09/19/2016 16:11:31 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Debug\main.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB WL(2) PR(.\DP8051_Keil_951\Debug/ma
+                    -in.lst) CD OT(0,SIZE) OJ(.\DP8051_Keil_951\Debug\main.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: main.c
+   3          *
+   4          * Version: 2.1
+   5          *
+   6          * Description:
+   7          *  This project enumarates on the computer as a 3-button  mouse. 
+   8          *  When the code is run, mouse cursor moves from the right to the left. 
+   9          *
+  10          * Refer to description on schematic for test procedure.
+  11          *
+  12          * Related Document:
+  13          *  Device Class Definition for Human Interface Devices (HID)
+  14          *  Firmware Specification- Version 1.11
+  15          *
+  16          ********************************************************************************
+  17          * Copyright 2012, Cypress Semiconductor Corporation. All rights reserved.
+  18          * This software is owned by Cypress Semiconductor Corporation and is protected
+  19          * by and subject to worldwide patent and copyright laws and treaties.
+  20          * Therefore, you may use this software only as provided in the license agreement
+  21          * accompanying the software package from which you obtained this software.
+  22          * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  23          * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  24          * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  25          *******************************************************************************/
+  26          
+  27          #include <device.h>
+  28          
+  29          #define MOUSE_ENDPOINT      (0x01u)
+  30          #define MOUSE_DATA_LEN      (0x03u)
+  31          #define CURSOR_STEP         (0x05u)     /* Step size */
+  32          
+  33          /* Mouse packet array: button, X, Y */
+  34          uint8 mouseData[MOUSE_DATA_LEN] = {0u, 0u, 0u}; 
+  35          uint8 bSNstring[16]={0x0Eu, 0x03u, 'F', 0u, 'W', 0u, 'S', 0u, 'N', 0u, '0', 0u, '1', 0u};
+  36          
+  37          int main()
+  38          {
+  39   1          uint8 counter = 0u;
+  40   1          
+  41   1          /* Enable Global Interrupts */
+  42   1          CyGlobalIntEnable;
+  43   1          
+  44   1          /* Set user defined Serial Number string descriptor */
+  45   1          USBFS_1_SerialNumString(&bSNstring[0u]);
+  46   1          
+  47   1          /* Start USBFS device 0 with 3V operation */
+  48   1          USBFS_1_Start(0u, USBFS_1_3V_OPERATION); 
+  49   1      
+  50   1          /* Wait for Device to enumerate */
+  51   1          while(!USBFS_1_GetConfiguration());
+  52   1      
+  53   1          /* Enumeration is done, load endpoint 1. Do not toggle the first time. */
+C51 COMPILER V9.51   MAIN                                                                  09/19/2016 16:11:31 PAGE 2   
+
+  54   1          USBFS_1_LoadInEP(MOUSE_ENDPOINT, mouseData, MOUSE_DATA_LEN);
+  55   1          
+  56   1          while(1)
+  57   1          {
+  58   2              /* Wait for ACK before loading data */
+  59   2              while(!USBFS_1_GetEPAckState(MOUSE_ENDPOINT));
+  60   2              
+  61   2              /* ACK has occurred, load the endpoint and toggle the data bit */
+  62   2              USBFS_1_LoadInEP(1u, mouseData, MOUSE_DATA_LEN);
+  63   2              
+  64   2              /* When our counts hits 128 */
+  65   2              if(counter == 128u)
+  66   2              {
+  67   3                  /* Start moving the mouse to the right */
+  68   3                  mouseData[1u] = CURSOR_STEP;
+  69   3              }
+  70   2              /* When our counts hits 255 */
+  71   2              else if(counter == 255u)
+  72   2              {
+  73   3                  /* Start moving the mouse to the left */
+  74   3                  mouseData[1u] = (uint8)-(int8)CURSOR_STEP;
+  75   3              }
+  76   2      
+  77   2              counter++;
+  78   2          }
+  79   1      }
+  80          
+  81          
+  82          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  09/19/2016 16:11:31 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 39
+0000 900000      R     MOV     DPTR,#counter
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 42
+0005 D2AF              SETB    EA
+0007 9044F4            MOV     DPTR,#044F4H
+000A 74FD              MOV     A,#0FDH
+000C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 45
+000D 7B01              MOV     R3,#01H
+000F 7A00        R     MOV     R2,#HIGH bSNstring
+0011 7900        R     MOV     R1,#LOW bSNstring
+0013 120000      E     LCALL   _USBFS_1_SerialNumString
+                                           ; SOURCE LINE # 48
+0016 7D00              MOV     R5,#00H
+0018 7F00              MOV     R7,#00H
+001A 120000      E     LCALL   _USBFS_1_Start
+001D         ?C0001:
+                                           ; SOURCE LINE # 51
+001D 120000      E     LCALL   USBFS_1_GetConfiguration
+0020 EF                MOV     A,R7
+0021 60FA              JZ      ?C0001
+0023         ?C0002:
+                                           ; SOURCE LINE # 54
+0023 7B01              MOV     R3,#01H
+0025 7A00        R     MOV     R2,#HIGH mouseData
+0027 7900        R     MOV     R1,#LOW mouseData
+0029 900000      E     MOV     DPTR,#?_USBFS_1_LoadInEP?BYTE+04H
+002C E4                CLR     A
+002D F0                MOVX    @DPTR,A
+002E A3                INC     DPTR
+002F 7403              MOV     A,#03H
+0031 F0                MOVX    @DPTR,A
+0032 7F01              MOV     R7,#01H
+0034 120000      E     LCALL   _USBFS_1_LoadInEP
+0037         ?C0003:
+                                           ; SOURCE LINE # 56
+                                           ; SOURCE LINE # 57
+0037         ?C0005:
+                                           ; SOURCE LINE # 59
+0037 7F01              MOV     R7,#01H
+0039 120000      E     LCALL   _USBFS_1_GetEPAckState
+003C EF                MOV     A,R7
+003D 60F8              JZ      ?C0005
+003F         ?C0006:
+                                           ; SOURCE LINE # 62
+003F 7B01              MOV     R3,#01H
+0041 7A00        R     MOV     R2,#HIGH mouseData
+0043 7900        R     MOV     R1,#LOW mouseData
+0045 900000      E     MOV     DPTR,#?_USBFS_1_LoadInEP?BYTE+04H
+0048 E4                CLR     A
+0049 F0                MOVX    @DPTR,A
+004A A3                INC     DPTR
+004B 7403              MOV     A,#03H
+004D F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   MAIN                                                                  09/19/2016 16:11:31 PAGE 4   
+
+004E 7F01              MOV     R7,#01H
+0050 120000      E     LCALL   _USBFS_1_LoadInEP
+                                           ; SOURCE LINE # 65
+0053 900000      R     MOV     DPTR,#counter
+0056 E0                MOVX    A,@DPTR
+0057 FF                MOV     R7,A
+0058 EF                MOV     A,R7
+0059 B48008            CJNE    A,#080H,?C0007
+                                           ; SOURCE LINE # 66
+                                           ; SOURCE LINE # 68
+005C 900000      R     MOV     DPTR,#mouseData+01H
+005F 7405              MOV     A,#05H
+0061 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 69
+0062 800F              SJMP    ?C0008
+0064         ?C0007:
+                                           ; SOURCE LINE # 71
+0064 900000      R     MOV     DPTR,#counter
+0067 E0                MOVX    A,@DPTR
+0068 FF                MOV     R7,A
+0069 EF                MOV     A,R7
+006A B4FF06            CJNE    A,#0FFH,?C0008
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 74
+006D 900000      R     MOV     DPTR,#mouseData+01H
+0070 74FB              MOV     A,#0FBH
+0072 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 75
+0073         ?C0009:
+0073         ?C0008:
+                                           ; SOURCE LINE # 77
+0073 900000      R     MOV     DPTR,#counter
+0076 E0                MOVX    A,@DPTR
+0077 04                INC     A
+0078 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 78
+0079 80BC              SJMP    ?C0005
+007B         ?C0004:
+                                           ; SOURCE LINE # 79
+007B         ?C0010:
+007B 22                RET     
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    124    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     20    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

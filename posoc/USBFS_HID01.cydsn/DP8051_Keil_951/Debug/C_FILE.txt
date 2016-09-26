@@ -1,0 +1,1 @@
+'C:\Users\TN02\Desktop\A20_CANfestival\posoc\USBFS_HID01.cydsn\main.c' -o .obj -T C_FILE -I 'C:\Users\TN02\Desktop\A20_CANfestival\posoc\USBFS_HID01.cydsn' -I 'C:\Users\TN02\Desktop\A20_CANfestival\posoc\USBFS_HID01.cydsn\Generated_Source\PSoC3' -f 'C:\Users\TN02\Desktop\A20_CANfestival\posoc\USBFS_HID01.cydsn\DP8051_Keil_951\Debug\.deps\C_FILE.d'

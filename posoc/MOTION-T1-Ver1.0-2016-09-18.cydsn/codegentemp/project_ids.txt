@@ -1,0 +1,5 @@
+D:\GIT\A20_CANfestival\posoc\MOTION-T1-Ver1.0-2016-09-18.cydsn\MOTION-T1-Ver1.0-2016-09-18.cyprj|544ef4ea-1b6e-42b9-88a6-5ab42f19a450
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|789f8de1-cf5e-4ad7-a1b9-c22724da6798
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3fdfd38f-054c-4ee0-9ec7-1dd3110b7775
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5a823b9d-f16b-46e8-8b7e-9d42afb14f6e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|08740be0-f5d2-46ec-9da1-8a259b68c321

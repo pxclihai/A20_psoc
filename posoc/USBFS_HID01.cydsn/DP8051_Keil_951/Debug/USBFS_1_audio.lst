@@ -1,0 +1,402 @@
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE USBFS_1_AUDIO
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Debug\USBFS_1_audio.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\USBFS_1_audio.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB WL(
+                    -2) PR(.\DP8051_Keil_951\Debug/USBFS_1_audio.lst) CD OT(0,SIZE) OJ(.\DP8051_Keil_951\Debug\USBFS_1_audio.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: USBFS_1_audio.c
+   3          * Version 2.80
+   4          *
+   5          * Description:
+   6          *  USB AUDIO Class request handler.
+   7          *
+   8          * Related Document:
+   9          *  Universal Serial Bus Device Class Definition for Audio Devices Release 1.0
+  10          *
+  11          ********************************************************************************
+  12          * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions,
+  14          * disclaimers, and limitations in the end user license agreement accompanying
+  15          * the software package with which this file was provided.
+  16          *******************************************************************************/
+  17          
+  18          #include "USBFS_1.h"
+  19          #include "cyapicallbacks.h"
+  20          
+  21          #if defined(USBFS_1_ENABLE_AUDIO_CLASS)
+              
+              #include "USBFS_1_audio.h"
+              #include "USBFS_1_pvt.h"
+              #if defined(USBFS_1_ENABLE_MIDI_STREAMING)
+                  #include "USBFS_1_midi.h"
+              #endif /*  USBFS_1_ENABLE_MIDI_STREAMING*/
+              
+              
+              /***************************************
+              * Custom Declarations
+              ***************************************/
+              
+              /* `#START CUSTOM_DECLARATIONS` Place your declaration here */
+              
+              /* `#END` */
+              
+              
+              #if !defined(USER_SUPPLIED_AUDIO_HANDLER)
+              
+              
+              /***************************************
+              *    AUDIO Variables
+              ***************************************/
+              
+              #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+                  volatile uint8 USBFS_1_currentSampleFrequency[USBFS_1_MAX_EP][USBFS_1_SAMPLE_FREQ_LEN];
+                  volatile uint8 USBFS_1_frequencyChanged;
+                  volatile uint8 USBFS_1_currentMute;
+                  volatile uint8 USBFS_1_currentVolume[USBFS_1_VOLUME_LEN];
+                  volatile uint8 USBFS_1_minimumVolume[USBFS_1_VOLUME_LEN] = {USBFS_1_VOL_MIN_LSB,
+                                                                                                USBFS_1_VOL_MIN_MSB};
+                  volatile uint8 USBFS_1_maximumVolume[USBFS_1_VOLUME_LEN] = {USBFS_1_VOL_MAX_LSB,
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 2   
+
+                                                                                                USBFS_1_VOL_MAX_MSB};
+                  volatile uint8 USBFS_1_resolutionVolume[USBFS_1_VOLUME_LEN] = {USBFS_1_VOL_RES_LSB,
+                                                                                                   USBFS_1_VOL_RES_MSB};
+              #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+              
+              /*******************************************************************************
+              * Function Name: USBFS_1_DispatchAUDIOClassRqst
+              ********************************************************************************
+              *
+              * Summary:
+              *  This routine dispatches class requests
+              *
+              * Parameters:
+              *  None.
+              *
+              * Return:
+              *  requestHandled
+              *
+              * Global variables:
+              *   USBFS_1_currentSampleFrequency: Contains the current audio Sample
+              *       Frequency. It is set by the Host using SET_CUR request to the endpoint.
+              *   USBFS_1_frequencyChanged: This variable is used as a flag for the
+              *       user code, to be aware that Host has been sent request for changing
+              *       Sample Frequency. Sample frequency will be sent on the next OUT
+              *       transaction. It is contains endpoint address when set. The following
+              *       code is recommended for detecting new Sample Frequency in main code:
+              *       if((USBFS_1_frequencyChanged != 0) &&
+              *       (USBFS_1_transferState == USBFS_1_TRANS_STATE_IDLE))
+              *       {
+              *          USBFS_1_frequencyChanged = 0;
+              *       }
+              *       USBFS_1_transferState variable is checked to be sure that
+              *             transfer completes.
+              *   USBFS_1_currentMute: Contains mute configuration set by Host.
+              *   USBFS_1_currentVolume: Contains volume level set by Host.
+              *
+              * Reentrant:
+              *  No.
+              *
+              *******************************************************************************/
+              uint8 USBFS_1_DispatchAUDIOClassRqst(void) 
+              {
+                  uint8 requestHandled = USBFS_1_FALSE;
+                  uint8 bmRequestType  = CY_GET_REG8(USBFS_1_bmRequestType);
+              
+                  #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+                      uint8 epNumber;
+                      epNumber = CY_GET_REG8(USBFS_1_wIndexLo) & USBFS_1_DIR_UNUSED;
+                  #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+              
+                  if ((bmRequestType & USBFS_1_RQST_DIR_MASK) == USBFS_1_RQST_DIR_D2H)
+                  {
+                      /* Control Read */
+                      if((bmRequestType & USBFS_1_RQST_RCPT_MASK) == USBFS_1_RQST_RCPT_EP)
+                      {
+                          /* Endpoint */
+                          switch (CY_GET_REG8(USBFS_1_bRequest))
+                          {
+                              case USBFS_1_GET_CUR:
+                              #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 3   
+
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_SAMPLING_FREQ_CONTROL)
+                                  {
+                                       /* point Control Selector is Sampling Frequency */
+                                      USBFS_1_currentTD.wCount = USBFS_1_SAMPLE_FREQ_LEN;
+                                      USBFS_1_currentTD.pData  = USBFS_1_currentSampleFrequency[epNumber];
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                              #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+                              /* `#START AUDIO_READ_REQUESTS` Place other request handler here */
+              
+                              /* `#END` */
+                              
+                              #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_READ_REQUESTS_CALLBACK
+                                  USBFS_1_DispatchAUDIOClass_AUDIO_READ_REQUESTS_Callback();
+                              #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_READ_REQUESTS_CALLBACK */
+              
+                                  break;
+                              default:
+                                  break;
+                          }
+                      }
+                      else if((bmRequestType & USBFS_1_RQST_RCPT_MASK) == USBFS_1_RQST_RCPT_IFC)
+                      {
+                          /* Interface or Entity ID */
+                          switch (CY_GET_REG8(USBFS_1_bRequest))
+                          {
+                              case USBFS_1_GET_CUR:
+                              #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_MUTE_CONTROL)
+                                  {
+                                      /* `#START MUTE_CONTROL_GET_REQUEST` Place multi-channel handler here */
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_MUTE_CONTROL_GET_REQUEST_CALLBACK
+                                          USBFS_1_DispatchAUDIOClass_MUTE_CONTROL_GET_REQUEST_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_MUTE_CONTROL_GET_REQUEST_CALLBACK */
+              
+                                      /* Entity ID Control Selector is MUTE */
+                                      USBFS_1_currentTD.wCount = 1u;
+                                      USBFS_1_currentTD.pData  = &USBFS_1_currentMute;
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                                  else if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_VOLUME_CONTROL)
+                                  {
+                                      /* `#START VOLUME_CONTROL_GET_REQUEST` Place multi-channel handler here */
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_VOLUME_CONTROL_GET_REQUEST_CALLBACK
+                                          USBFS_1_DispatchAUDIOClass_VOLUME_CONTROL_GET_REQUEST_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_VOLUME_CONTROL_GET_REQUEST_CALLBACK */
+              
+                                      /* Entity ID Control Selector is VOLUME, */
+                                      USBFS_1_currentTD.wCount = USBFS_1_VOLUME_LEN;
+                                      USBFS_1_currentTD.pData  = USBFS_1_currentVolume;
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                                  else
+                                  {
+                                      /* `#START OTHER_GET_CUR_REQUESTS` Place other request handler here */
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 4   
+
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_OTHER_GET_CUR_REQUESTS_CALLBACK
+                                          USBFS_1_DispatchAUDIOClass_OTHER_GET_CUR_REQUESTS_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_OTHER_GET_CUR_REQUESTS_CALLBACK */
+                                  }
+                                  break;
+                              case USBFS_1_GET_MIN:    /* GET_MIN */
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_VOLUME_CONTROL)
+                                  {
+                                      /* Entity ID Control Selector is VOLUME, */
+                                      USBFS_1_currentTD.wCount = USBFS_1_VOLUME_LEN;
+                                      USBFS_1_currentTD.pData  = &USBFS_1_minimumVolume[0];
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                                  break;
+                              case USBFS_1_GET_MAX:    /* GET_MAX */
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_VOLUME_CONTROL)
+                                  {
+                                      /* Entity ID Control Selector is VOLUME, */
+                                      USBFS_1_currentTD.wCount = USBFS_1_VOLUME_LEN;
+                                      USBFS_1_currentTD.pData  = &USBFS_1_maximumVolume[0];
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                                  break;
+                              case USBFS_1_GET_RES:    /* GET_RES */
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_VOLUME_CONTROL)
+                                  {
+                                       /* Entity ID Control Selector is VOLUME, */
+                                      USBFS_1_currentTD.wCount = USBFS_1_VOLUME_LEN;
+                                      USBFS_1_currentTD.pData  = &USBFS_1_resolutionVolume[0];
+                                      requestHandled   = USBFS_1_InitControlRead();
+                                  }
+                                  break;
+                              /* The contents of the status message is reserved for future use.
+                              *  For the time being, a null packet should be returned in the data stage of the
+                              *  control transfer, and the received null packet should be ACKed.
+                              */
+                              case USBFS_1_GET_STAT:
+                                      USBFS_1_currentTD.wCount = 0u;
+                                      requestHandled   = USBFS_1_InitControlWrite();
+              
+                              #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+                              /* `#START AUDIO_WRITE_REQUESTS` Place other request handler here */
+              
+                              /* `#END` */
+              
+                              #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_WRITE_REQUESTS_CALLBACK
+                                  USBFS_1_DispatchAUDIOClass_AUDIO_WRITE_REQUESTS_Callback();
+                              #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_WRITE_REQUESTS_CALLBACK */
+              
+                                  break;
+                              default:
+                                  break;
+                          }
+                      }
+                      else
+                      {   /* USBFS_1_RQST_RCPT_OTHER */
+                      }
+                  }
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 5   
+
+                  else
+                  {
+                      /* Control Write */
+                      if((bmRequestType & USBFS_1_RQST_RCPT_MASK) == USBFS_1_RQST_RCPT_EP)
+                      {
+                          /* point */
+                          switch (CY_GET_REG8(USBFS_1_bRequest))
+                          {
+                              case USBFS_1_SET_CUR:
+                              #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_SAMPLING_FREQ_CONTROL)
+                                  {
+                                       /* point Control Selector is Sampling Frequency */
+                                      USBFS_1_currentTD.wCount = USBFS_1_SAMPLE_FREQ_LEN;
+                                      USBFS_1_currentTD.pData  = USBFS_1_currentSampleFrequency[epNumber];
+                                      requestHandled   = USBFS_1_InitControlWrite();
+                                      USBFS_1_frequencyChanged = epNumber;
+                                  }
+                              #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+                              /* `#START AUDIO_SAMPLING_FREQ_REQUESTS` Place other request handler here */
+              
+                              /* `#END` */
+              
+                              #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_SAMPLING_FREQ_REQUESTS_CALLBACK
+                                  USBFS_1_DispatchAUDIOClass_AUDIO_SAMPLING_FREQ_REQUESTS_Callback();
+                              #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_SAMPLING_FREQ_REQUESTS_CALLBACK */
+              
+                                  break;
+                              default:
+                                  break;
+                          }
+                      }
+                      else if((bmRequestType & USBFS_1_RQST_RCPT_MASK) == USBFS_1_RQST_RCPT_IFC)
+                      {
+                          /* Interface or Entity ID */
+                          switch (CY_GET_REG8(USBFS_1_bRequest))
+                          {
+                              case USBFS_1_SET_CUR:
+                              #if defined(USBFS_1_ENABLE_AUDIO_STREAMING)
+                                  if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_MUTE_CONTROL)
+                                  {
+                                      /* `#START MUTE_SET_REQUEST` Place multi-channel handler here */
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_MUTE_SET_REQUEST_CALLBACK
+                                          USBFS_1_DispatchAUDIOClass_MUTE_SET_REQUEST_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_MUTE_SET_REQUEST_CALLBACK */
+              
+                                      /* Entity ID Control Selector is MUTE */
+                                      USBFS_1_currentTD.wCount = 1u;
+                                      USBFS_1_currentTD.pData  = &USBFS_1_currentMute;
+                                      requestHandled   = USBFS_1_InitControlWrite();
+                                  }
+                                  else if(CY_GET_REG8(USBFS_1_wValueHi) == USBFS_1_VOLUME_CONTROL)
+                                  {
+                                      /* `#START VOLUME_CONTROL_SET_REQUEST` Place multi-channel handler here */
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_VOLUME_CONTROL_SET_REQUEST_CALLBACK
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 6   
+
+                                          USBFS_1_DispatchAUDIOClass_VOLUME_CONTROL_SET_REQUEST_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_VOLUME_CONTROL_SET_REQUEST_CALLBACK */
+              
+                                      /* Entity ID Control Selector is VOLUME */
+                                      USBFS_1_currentTD.wCount = USBFS_1_VOLUME_LEN;
+                                      USBFS_1_currentTD.pData  = USBFS_1_currentVolume;
+                                      requestHandled   = USBFS_1_InitControlWrite();
+                                  }
+                                  else
+                                  {
+                                      /* `#START OTHER_SET_CUR_REQUESTS` Place other request handler here */
+              
+                                      /* `#END` */
+              
+                                      #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_OTHER_SET_CUR_REQUESTS_CALLBACK
+                                          USBFS_1_DispatchAUDIOClass_OTHER_SET_CUR_REQUESTS_Callback();
+                                      #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_OTHER_SET_CUR_REQUESTS_CALLBACK */
+                                  }
+                              #endif /*  USBFS_1_ENABLE_AUDIO_STREAMING */
+              
+                              /* `#START AUDIO_CONTROL_SEL_REQUESTS` Place other request handler here */
+              
+                              /* `#END` */
+              
+                              #ifdef USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_CONTROL_SEL_REQUESTS_CALLBACK
+                                  USBFS_1_DispatchAUDIOClass_AUDIO_CONTROL_SEL_REQUESTS_Callback();
+                              #endif /* USBFS_1_DISPATCH_AUDIO_CLASS_AUDIO_CONTROL_SEL_REQUESTS_CALLBACK */
+              
+                                  break;
+                              default:
+                                  break;
+                          }
+                      }
+                      else
+                      {
+                          /* USBFS_1_RQST_RCPT_OTHER */
+                      }
+                  }
+              
+                  return(requestHandled);
+              }
+              
+              #endif /* USER_SUPPLIED_AUDIO_HANDLER */
+              
+              
+              /*******************************************************************************
+              * Additional user functions supporting AUDIO Requests
+              ********************************************************************************/
+              
+              /* `#START AUDIO_FUNCTIONS` Place any additional functions here */
+              
+              /* `#END` */
+              
+              #endif  /*  USBFS_1_ENABLE_AUDIO_CLASS */
+ 356          
+ 357          
+ 358          /* [] END OF FILE */
+C51 COMPILER V9.51   USBFS_1_AUDIO                                                         09/19/2016 16:11:32 PAGE 7   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

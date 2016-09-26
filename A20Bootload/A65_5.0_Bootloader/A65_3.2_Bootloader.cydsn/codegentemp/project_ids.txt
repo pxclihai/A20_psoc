@@ -1,6 +1,0 @@
-D:\PROJECT\A65\V6.0\A65_H6.0_FWP_V6.74_20160525\A65_6.0_Bootloader\A65_5.0_Bootloader\A65_3.2_Bootloader.cydsn\A65_3.2_Bootloader.cyprj|cfbb2455-7c66-496e-a9dd-586e42c005c8
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|465930a7-46a9-4f7b-8abc-23210d49598b
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|c2874e78-b82d-4da3-b759-bb129ab2c6fe
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|a937247f-6ec2-427e-83ba-325cdf5773fb
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|0cae26f7-0f41-40b5-a246-df028f0d8ef3
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6b02814b-2577-4ca8-b061-09de979cad7a

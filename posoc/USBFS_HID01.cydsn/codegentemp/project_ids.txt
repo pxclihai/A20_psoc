@@ -1,0 +1,7 @@
+C:\Users\TN02\Desktop\A20_CANfestival\posoc\MOTION-T1-Ver1.0-2016-09-18.cydsn\MOTION-T1-Ver1.0-2016-09-18.cyprj|0de06779-e413-4d45-ae54-f2ce4781f943
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|93be8775-5aef-47c5-9e98-c382892011a3
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d75b5dea-d574-4b9c-ae76-ec80ee01f088
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|75c7f2e2-f182-4b4d-b2df-d6ba5f38c729
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8971d7b5-4d22-4bcf-876b-a474c44efdaa
+C:\Users\TN02\Desktop\A20_CANfestival\posoc\USBFS_HID01.cydsn\USBFS_HID01.cyprj|2bdcece4-a77b-4cea-8d79-710849a77a2d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b2c013fc-2645-4391-b323-af5ba98f3422

@@ -1,6 +1,0 @@
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|27529efd-a4dd-4261-b20d-95a3de90154f
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7a99faa6-9218-4a32-b453-51746f49f765
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|37fcd37b-02d7-420e-b935-90315d16bb71
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|eab7b1eb-6576-46bb-82a5-d04e2b8809d3
-D:\GIT\A20_CANfestival\A20Bootload\A66_canfestival_bootload\Workspace01\A66_canfestival_bootload.cydsn\A66_canfestival_bootload.cyprj|155d0b69-767c-4540-9222-fef618a1e0d4
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|c6627e13-6e82-42e2-901f-917760a88ece
