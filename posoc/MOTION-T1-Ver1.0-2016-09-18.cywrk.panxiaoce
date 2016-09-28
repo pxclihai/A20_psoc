@@ -558,6 +558,8 @@
 <name v=".\MOTION-T1-Ver1.0-2016-09-18.cydsn\led.c" />
 <name v=".\MOTION-T1-Ver1.0-2016-09-18.cydsn\TestSlave.c" />
 <name v=".\MOTION-T1-Ver1.0-2016-09-18.cydsn\TestSlave.h" />
+<name v=".\MOTION-T1-Ver1.0-2016-09-18.cydsn\canfestival.c" />
+<name v=".\MOTION-T1-Ver1.0-2016-09-18.cydsn\CanopenDictConfig.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

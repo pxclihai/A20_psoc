@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
   29:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** * Summary:
   30:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 2
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
   54:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *
   56:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  LCD_Char_1_LCDPort_DM_STRONG     Strong Drive 
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 3
 
 
   57:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  LCD_Char_1_LCDPort_DM_OD_HI      Open Drain, Drives High 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
   94 0038 03F0F103 		and	r3, r3, #241
   95 003c 0343     		orrs	r3, r3, r0
   96 003e 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 4
 
 
   76:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_Char_1_LCDPort_5, mode);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  126              		.cfi_startproc
  127              		@ args = 0, pretend = 0, frame = 0
  128              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 5
 
 
  129              		@ link register save eliminated.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  161 0008 7047     		bx	lr
  162              	.L12:
  163 000a 00BF     		.align	2
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 6
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 6
 
 
  164              	.L11:
@@ -316,82 +316,82 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  176 0006 00000000 		.4byte	.Ldebug_abbrev0
  177 000a 04       		.byte	0x4
  178 000b 01       		.uleb128 0x1
- 179 000c 1D010000 		.4byte	.LASF20
+ 179 000c A4000000 		.4byte	.LASF20
  180 0010 01       		.byte	0x1
- 181 0011 E8000000 		.4byte	.LASF21
- 182 0015 31000000 		.4byte	.LASF22
+ 181 0011 6F000000 		.4byte	.LASF21
+ 182 0015 6E010000 		.4byte	.LASF22
  183 0019 00000000 		.4byte	.Ldebug_ranges0+0
  184 001d 00000000 		.4byte	0
  185 0021 00000000 		.4byte	.Ldebug_line0
  186 0025 02       		.uleb128 0x2
  187 0026 01       		.byte	0x1
  188 0027 06       		.byte	0x6
- 189 0028 50020000 		.4byte	.LASF0
+ 189 0028 41020000 		.4byte	.LASF0
  190 002c 02       		.uleb128 0x2
  191 002d 01       		.byte	0x1
  192 002e 08       		.byte	0x8
- 193 002f B0000000 		.4byte	.LASF1
+ 193 002f 37000000 		.4byte	.LASF1
  194 0033 02       		.uleb128 0x2
  195 0034 02       		.byte	0x2
  196 0035 05       		.byte	0x5
- 197 0036 E7010000 		.4byte	.LASF2
+ 197 0036 D8010000 		.4byte	.LASF2
  198 003a 02       		.uleb128 0x2
  199 003b 02       		.byte	0x2
  200 003c 07       		.byte	0x7
- 201 003d D5000000 		.4byte	.LASF3
+ 201 003d 5C000000 		.4byte	.LASF3
  202 0041 02       		.uleb128 0x2
  203 0042 04       		.byte	0x4
  204 0043 05       		.byte	0x5
- 205 0044 2E020000 		.4byte	.LASF4
+ 205 0044 1F020000 		.4byte	.LASF4
  206 0048 02       		.uleb128 0x2
  207 0049 04       		.byte	0x4
  208 004a 07       		.byte	0x7
- 209 004b C3000000 		.4byte	.LASF5
+ 209 004b 4A000000 		.4byte	.LASF5
  210 004f 02       		.uleb128 0x2
  211 0050 08       		.byte	0x8
  212 0051 05       		.byte	0x5
- 213 0052 D4010000 		.4byte	.LASF6
+ 213 0052 5B010000 		.4byte	.LASF6
  214 0056 02       		.uleb128 0x2
  215 0057 08       		.byte	0x8
  216 0058 07       		.byte	0x7
- 217 0059 B8010000 		.4byte	.LASF7
+ 217 0059 3F010000 		.4byte	.LASF7
  218 005d 03       		.uleb128 0x3
  219 005e 04       		.byte	0x4
  220 005f 05       		.byte	0x5
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 7
 
 
  221 0060 696E7400 		.ascii	"int\000"
  222 0064 02       		.uleb128 0x2
  223 0065 04       		.byte	0x4
  224 0066 07       		.byte	0x7
- 225 0067 AB010000 		.4byte	.LASF8
+ 225 0067 32010000 		.4byte	.LASF8
  226 006b 04       		.uleb128 0x4
- 227 006c 28020000 		.4byte	.LASF12
+ 227 006c 19020000 		.4byte	.LASF12
  228 0070 02       		.byte	0x2
  229 0071 C2       		.byte	0xc2
  230 0072 2C000000 		.4byte	0x2c
  231 0076 02       		.uleb128 0x2
  232 0077 04       		.byte	0x4
  233 0078 04       		.byte	0x4
- 234 0079 AA000000 		.4byte	.LASF9
+ 234 0079 31000000 		.4byte	.LASF9
  235 007d 02       		.uleb128 0x2
  236 007e 08       		.byte	0x8
  237 007f 04       		.byte	0x4
- 238 0080 16010000 		.4byte	.LASF10
+ 238 0080 9D000000 		.4byte	.LASF10
  239 0084 02       		.uleb128 0x2
  240 0085 01       		.byte	0x1
  241 0086 08       		.byte	0x8
- 242 0087 E2010000 		.4byte	.LASF11
+ 242 0087 69010000 		.4byte	.LASF11
  243 008b 05       		.uleb128 0x5
- 244 008c BE000000 		.4byte	.LASF13
+ 244 008c 45000000 		.4byte	.LASF13
  245 0090 02       		.byte	0x2
  246 0091 6C01     		.2byte	0x16c
  247 0093 97000000 		.4byte	0x97
  248 0097 06       		.uleb128 0x6
  249 0098 6B000000 		.4byte	0x6b
  250 009c 07       		.uleb128 0x7
- 251 009d 37020000 		.4byte	.LASF14
+ 251 009d 28020000 		.4byte	.LASF14
  252 00a1 01       		.byte	0x1
  253 00a2 27       		.byte	0x27
  254 00a3 00000000 		.4byte	.LFB0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  275 00d3 01       		.byte	0x1
  276 00d4 45       		.byte	0x45
  277 00d5 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 8
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 8
 
 
  278 00d9 60000000 		.4byte	.LFE1-.LFB1
@@ -426,14 +426,14 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  280 00de 9C       		.byte	0x9c
  281 00df F3000000 		.4byte	0xf3
  282 00e3 08       		.uleb128 0x8
- 283 00e4 CF010000 		.4byte	.LASF17
+ 283 00e4 56010000 		.4byte	.LASF17
  284 00e8 01       		.byte	0x1
  285 00e9 45       		.byte	0x45
  286 00ea 6B000000 		.4byte	0x6b
  287 00ee 21000000 		.4byte	.LLST1
  288 00f2 00       		.byte	0
  289 00f3 0A       		.uleb128 0xa
- 290 00f4 F1010000 		.4byte	.LASF18
+ 290 00f4 E2010000 		.4byte	.LASF18
  291 00f8 01       		.byte	0x1
  292 00f9 63       		.byte	0x63
  293 00fa 6B000000 		.4byte	0x6b
@@ -442,7 +442,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  296 0106 01       		.uleb128 0x1
  297 0107 9C       		.byte	0x9c
  298 0108 0A       		.uleb128 0xa
- 299 0109 09020000 		.4byte	.LASF19
+ 299 0109 FA010000 		.4byte	.LASF19
  300 010d 01       		.byte	0x1
  301 010e 77       		.byte	0x77
  302 010f 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  332 0016 0B       		.uleb128 0xb
  333 0017 0B       		.uleb128 0xb
  334 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 9
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 9
 
 
  335 0019 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  389 004f 03       		.uleb128 0x3
  390 0050 0E       		.uleb128 0xe
  391 0051 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 10
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 10
 
 
  392 0052 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  446 0089 3A       		.uleb128 0x3a
  447 008a 0B       		.uleb128 0xb
  448 008b 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 11
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 11
 
 
  449 008c 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  503 0010 00000000 		.4byte	.LFB0
  504 0014 18000000 		.4byte	.LFE0-.LFB0
  505 0018 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 12
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 12
 
 
  506 001c 60000000 		.4byte	.LFE1-.LFB1
@@ -700,129 +700,127 @@ ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 1
  533 0026 73746174 		.ascii	"staticBits\000"
  533      69634269 
  533      747300
- 534              	.LASF22:
- 535 0031 433A5C55 		.ascii	"C:\\Users\\TN02\\Desktop\\A20_CANfestival\\A20Bootl"
- 535      73657273 
- 535      5C544E30 
- 535      325C4465 
- 535      736B746F 
- 536 005f 6F61645C 		.ascii	"oad\\A66_canfestival_bootload\\Workspace01\\MOTION-"
- 536      4136365F 
- 536      63616E66 
- 536      65737469 
- 536      76616C5F 
- 537 008f 54312D32 		.ascii	"T1-2016-09-18-ver1.0.cydsn\000"
- 537      3031362D 
- 537      30392D31 
- 537      382D7665 
- 537      72312E30 
- 538              	.LASF9:
- 539 00aa 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 13
+ 534              	.LASF9:
+ 535 0031 666C6F61 		.ascii	"float\000"
+ 535      7400
+ 536              	.LASF1:
+ 537 0037 756E7369 		.ascii	"unsigned char\000"
+ 537      676E6564 
+ 537      20636861 
+ 537      7200
+ 538              	.LASF13:
+ 539 0045 72656738 		.ascii	"reg8\000"
+ 539      00
+ 540              	.LASF5:
+ 541 004a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 541      20756E73 
+ 541      69676E65 
+ 541      6420696E 
+ 541      7400
+ 542              	.LASF3:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 13
 
 
- 539      7400
- 540              	.LASF1:
- 541 00b0 756E7369 		.ascii	"unsigned char\000"
- 541      676E6564 
- 541      20636861 
- 541      7200
- 542              	.LASF13:
- 543 00be 72656738 		.ascii	"reg8\000"
- 543      00
- 544              	.LASF5:
- 545 00c3 6C6F6E67 		.ascii	"long unsigned int\000"
- 545      20756E73 
- 545      69676E65 
- 545      6420696E 
- 545      7400
- 546              	.LASF3:
- 547 00d5 73686F72 		.ascii	"short unsigned int\000"
- 547      7420756E 
- 547      7369676E 
- 547      65642069 
- 547      6E7400
- 548              	.LASF21:
- 549 00e8 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\LCD_Char_1_LCDPort.c\000"
- 549      6E657261 
- 549      7465645F 
- 549      536F7572 
- 549      63655C50 
- 550              	.LASF10:
- 551 0116 646F7562 		.ascii	"double\000"
- 551      6C6500
- 552              	.LASF20:
- 553 011d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 553      4320342E 
- 553      392E3320 
- 553      32303135 
- 553      30333033 
- 554 0150 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 554      20726576 
- 554      6973696F 
- 554      6E203232 
- 554      31323230 
- 555 0183 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 555      66756E63 
- 555      74696F6E 
- 555      2D736563 
- 555      74696F6E 
- 556              	.LASF8:
- 557 01ab 756E7369 		.ascii	"unsigned int\000"
- 557      676E6564 
- 557      20696E74 
+ 543 005c 73686F72 		.ascii	"short unsigned int\000"
+ 543      7420756E 
+ 543      7369676E 
+ 543      65642069 
+ 543      6E7400
+ 544              	.LASF21:
+ 545 006f 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\LCD_Char_1_LCDPort.c\000"
+ 545      6E657261 
+ 545      7465645F 
+ 545      536F7572 
+ 545      63655C50 
+ 546              	.LASF10:
+ 547 009d 646F7562 		.ascii	"double\000"
+ 547      6C6500
+ 548              	.LASF20:
+ 549 00a4 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 549      4320342E 
+ 549      392E3320 
+ 549      32303135 
+ 549      30333033 
+ 550 00d7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 550      20726576 
+ 550      6973696F 
+ 550      6E203232 
+ 550      31323230 
+ 551 010a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 551      66756E63 
+ 551      74696F6E 
+ 551      2D736563 
+ 551      74696F6E 
+ 552              	.LASF8:
+ 553 0132 756E7369 		.ascii	"unsigned int\000"
+ 553      676E6564 
+ 553      20696E74 
+ 553      00
+ 554              	.LASF7:
+ 555 013f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 555      206C6F6E 
+ 555      6720756E 
+ 555      7369676E 
+ 555      65642069 
+ 556              	.LASF17:
+ 557 0156 6D6F6465 		.ascii	"mode\000"
  557      00
- 558              	.LASF7:
- 559 01b8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 558              	.LASF6:
+ 559 015b 6C6F6E67 		.ascii	"long long int\000"
  559      206C6F6E 
- 559      6720756E 
- 559      7369676E 
- 559      65642069 
-ARM GAS  C:\Users\TN02\AppData\Local\Temp\cc4vnlzU.s 			page 14
-
-
- 560              	.LASF17:
- 561 01cf 6D6F6465 		.ascii	"mode\000"
+ 559      6720696E 
+ 559      7400
+ 560              	.LASF11:
+ 561 0169 63686172 		.ascii	"char\000"
  561      00
- 562              	.LASF6:
- 563 01d4 6C6F6E67 		.ascii	"long long int\000"
- 563      206C6F6E 
- 563      6720696E 
- 563      7400
- 564              	.LASF11:
- 565 01e2 63686172 		.ascii	"char\000"
- 565      00
+ 562              	.LASF22:
+ 563 016e 443A5C47 		.ascii	"D:\\GIT\\A20_CANfestival\\A20Bootload\\A66_canfesti"
+ 563      49545C41 
+ 563      32305F43 
+ 563      414E6665 
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 14
+
+
+ 563      73746976 
+ 564 019d 76616C5F 		.ascii	"val_bootload\\Workspace01\\MOTION-T1-2016-09-18-ver"
+ 564      626F6F74 
+ 564      6C6F6164 
+ 564      5C576F72 
+ 564      6B737061 
+ 565 01ce 312E302E 		.ascii	"1.0.cydsn\000"
+ 565      63796473 
+ 565      6E00
  566              	.LASF2:
- 567 01e7 73686F72 		.ascii	"short int\000"
+ 567 01d8 73686F72 		.ascii	"short int\000"
  567      7420696E 
  567      7400
  568              	.LASF18:
- 569 01f1 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Read\000"
+ 569 01e2 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Read\000"
  569      43686172 
  569      5F315F4C 
  569      4344506F 
  569      72745F52 
  570              	.LASF19:
- 571 0209 4C43445F 		.ascii	"LCD_Char_1_LCDPort_ReadDataReg\000"
+ 571 01fa 4C43445F 		.ascii	"LCD_Char_1_LCDPort_ReadDataReg\000"
  571      43686172 
  571      5F315F4C 
  571      4344506F 
  571      72745F52 
  572              	.LASF12:
- 573 0228 75696E74 		.ascii	"uint8\000"
+ 573 0219 75696E74 		.ascii	"uint8\000"
  573      3800
  574              	.LASF4:
- 575 022e 6C6F6E67 		.ascii	"long int\000"
+ 575 021f 6C6F6E67 		.ascii	"long int\000"
  575      20696E74 
  575      00
  576              	.LASF14:
- 577 0237 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Write\000"
+ 577 0228 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Write\000"
  577      43686172 
  577      5F315F4C 
  577      4344506F 
  577      72745F57 
  578              	.LASF0:
- 579 0250 7369676E 		.ascii	"signed char\000"
+ 579 0241 7369676E 		.ascii	"signed char\000"
  579      65642063 
  579      68617200 
  580              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

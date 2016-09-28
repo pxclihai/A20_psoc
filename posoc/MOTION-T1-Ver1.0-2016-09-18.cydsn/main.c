@@ -91,7 +91,7 @@ int main()
     Control_LED_Write(5);
     ValveOut(CutReg.Action[VStop]);
     LED_WRITE(LED_Status[VStop]);
-    
+   
     TLC5616_Write(1,1023);
 
     /////////////ceshi fucha//////////////

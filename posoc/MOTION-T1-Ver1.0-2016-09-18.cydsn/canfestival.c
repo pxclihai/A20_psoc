@@ -26,7 +26,7 @@ static TIMEVAL last_time_set = TIMEVAL_MAX;//上一次的时间计数
 
 void setTimer(TIMEVAL value)
 {
-    NextTime=(TimeCNT+value)%TIMER_MAX_COUNT;
+    NextTime=TimeCNT+value;
 }
 TIMEVAL getElapsedTime(void)
 {

@@ -224,7 +224,7 @@ uint8 Stroke_Process(void)
 	switch(CutReg.CutStatus)
 	{
 	case StrokeStart:
-		if((CutMode() == CUTCMODE || CutMode() == CUTSMODE) && Enter_CUTJMODE == System_enable)//连续 单次
+		if((CutMode() == CUTCMODE || CutMode() == CUTSMODE) && Enter_CUTJMODE == System_enable)
 		{
             CutReg.CutStatus = StrokeStart;
 		}

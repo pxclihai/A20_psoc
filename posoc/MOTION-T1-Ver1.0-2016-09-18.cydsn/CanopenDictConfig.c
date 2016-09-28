@@ -34,7 +34,7 @@ void Slave_heartbeatError(CO_Data* d, UNS8 heartbeatID)
   */
 void Slave_initialisation(CO_Data* d)
 {
-      UNS16 HeartTimePeriod = 1000;
+      UNS16 HeartTimePeriod = 500;
 	  UNS32 size = sizeof(HeartTimePeriod); // 注意传递的是uns32
 
 	  writeLocalDict( d, /*CO_Data* d*/
