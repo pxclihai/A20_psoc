@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
   29:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** * Summary:
   30:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 2
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
   54:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *
   56:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  LCD_Char_1_LCDPort_DM_STRONG     Strong Drive 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 3
 
 
   57:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** *  LCD_Char_1_LCDPort_DM_OD_HI      Open Drain, Drives High 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
   94 0038 03F0F103 		and	r3, r3, #241
   95 003c 0343     		orrs	r3, r3, r0
   96 003e 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 4
 
 
   76:.\Generated_Source\PSoC5/LCD_Char_1_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_Char_1_LCDPort_5, mode);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  126              		.cfi_startproc
  127              		@ args = 0, pretend = 0, frame = 0
  128              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 5
 
 
  129              		@ link register save eliminated.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  161 0008 7047     		bx	lr
  162              	.L12:
  163 000a 00BF     		.align	2
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 6
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 6
 
 
  164              	.L11:
@@ -319,14 +319,14 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  179 000c A4000000 		.4byte	.LASF20
  180 0010 01       		.byte	0x1
  181 0011 6F000000 		.4byte	.LASF21
- 182 0015 6E010000 		.4byte	.LASF22
+ 182 0015 E3010000 		.4byte	.LASF22
  183 0019 00000000 		.4byte	.Ldebug_ranges0+0
  184 001d 00000000 		.4byte	0
  185 0021 00000000 		.4byte	.Ldebug_line0
  186 0025 02       		.uleb128 0x2
  187 0026 01       		.byte	0x1
  188 0027 06       		.byte	0x6
- 189 0028 41020000 		.4byte	.LASF0
+ 189 0028 D7010000 		.4byte	.LASF0
  190 002c 02       		.uleb128 0x2
  191 002d 01       		.byte	0x1
  192 002e 08       		.byte	0x8
@@ -334,7 +334,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  194 0033 02       		.uleb128 0x2
  195 0034 02       		.byte	0x2
  196 0035 05       		.byte	0x5
- 197 0036 D8010000 		.4byte	.LASF2
+ 197 0036 6E010000 		.4byte	.LASF2
  198 003a 02       		.uleb128 0x2
  199 003b 02       		.byte	0x2
  200 003c 07       		.byte	0x7
@@ -342,7 +342,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  202 0041 02       		.uleb128 0x2
  203 0042 04       		.byte	0x4
  204 0043 05       		.byte	0x5
- 205 0044 1F020000 		.4byte	.LASF4
+ 205 0044 B5010000 		.4byte	.LASF4
  206 0048 02       		.uleb128 0x2
  207 0049 04       		.byte	0x4
  208 004a 07       		.byte	0x7
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  218 005d 03       		.uleb128 0x3
  219 005e 04       		.byte	0x4
  220 005f 05       		.byte	0x5
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 7
 
 
  221 0060 696E7400 		.ascii	"int\000"
@@ -367,7 +367,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  224 0066 07       		.byte	0x7
  225 0067 32010000 		.4byte	.LASF8
  226 006b 04       		.uleb128 0x4
- 227 006c 19020000 		.4byte	.LASF12
+ 227 006c AF010000 		.4byte	.LASF12
  228 0070 02       		.byte	0x2
  229 0071 C2       		.byte	0xc2
  230 0072 2C000000 		.4byte	0x2c
@@ -391,7 +391,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  248 0097 06       		.uleb128 0x6
  249 0098 6B000000 		.4byte	0x6b
  250 009c 07       		.uleb128 0x7
- 251 009d 28020000 		.4byte	.LASF14
+ 251 009d BE010000 		.4byte	.LASF14
  252 00a1 01       		.byte	0x1
  253 00a2 27       		.byte	0x27
  254 00a3 00000000 		.4byte	.LFB0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  275 00d3 01       		.byte	0x1
  276 00d4 45       		.byte	0x45
  277 00d5 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 8
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 8
 
 
  278 00d9 60000000 		.4byte	.LFE1-.LFB1
@@ -433,7 +433,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  287 00ee 21000000 		.4byte	.LLST1
  288 00f2 00       		.byte	0
  289 00f3 0A       		.uleb128 0xa
- 290 00f4 E2010000 		.4byte	.LASF18
+ 290 00f4 78010000 		.4byte	.LASF18
  291 00f8 01       		.byte	0x1
  292 00f9 63       		.byte	0x63
  293 00fa 6B000000 		.4byte	0x6b
@@ -442,7 +442,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  296 0106 01       		.uleb128 0x1
  297 0107 9C       		.byte	0x9c
  298 0108 0A       		.uleb128 0xa
- 299 0109 FA010000 		.4byte	.LASF19
+ 299 0109 90010000 		.4byte	.LASF19
  300 010d 01       		.byte	0x1
  301 010e 77       		.byte	0x77
  302 010f 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  332 0016 0B       		.uleb128 0xb
  333 0017 0B       		.uleb128 0xb
  334 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 9
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 9
 
 
  335 0019 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  389 004f 03       		.uleb128 0x3
  390 0050 0E       		.uleb128 0xe
  391 0051 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 10
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 10
 
 
  392 0052 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  446 0089 3A       		.uleb128 0x3a
  447 008a 0B       		.uleb128 0xb
  448 008b 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 11
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 11
 
 
  449 008c 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  503 0010 00000000 		.4byte	.LFB0
  504 0014 18000000 		.4byte	.LFE0-.LFB0
  505 0018 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 12
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 12
 
 
  506 001c 60000000 		.4byte	.LFE1-.LFB1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  541      6420696E 
  541      7400
  542              	.LASF3:
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 13
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 13
 
 
  543 005c 73686F72 		.ascii	"short unsigned int\000"
@@ -773,54 +773,52 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 1
  560              	.LASF11:
  561 0169 63686172 		.ascii	"char\000"
  561      00
- 562              	.LASF22:
- 563 016e 443A5C47 		.ascii	"D:\\GIT\\A20_CANfestival\\A20Bootload\\A66_canfesti"
- 563      49545C41 
- 563      32305F43 
- 563      414E6665 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccRuCLty.s 			page 14
+ 562              	.LASF2:
+ 563 016e 73686F72 		.ascii	"short int\000"
+ 563      7420696E 
+ 563      7400
+ 564              	.LASF18:
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccKD4niD.s 			page 14
 
 
- 563      73746976 
- 564 019d 76616C5F 		.ascii	"val_bootload\\Workspace01\\MOTION-T1-2016-09-18-ver"
- 564      626F6F74 
- 564      6C6F6164 
- 564      5C576F72 
- 564      6B737061 
- 565 01ce 312E302E 		.ascii	"1.0.cydsn\000"
- 565      63796473 
- 565      6E00
- 566              	.LASF2:
- 567 01d8 73686F72 		.ascii	"short int\000"
- 567      7420696E 
- 567      7400
- 568              	.LASF18:
- 569 01e2 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Read\000"
- 569      43686172 
- 569      5F315F4C 
- 569      4344506F 
- 569      72745F52 
- 570              	.LASF19:
- 571 01fa 4C43445F 		.ascii	"LCD_Char_1_LCDPort_ReadDataReg\000"
- 571      43686172 
- 571      5F315F4C 
- 571      4344506F 
- 571      72745F52 
- 572              	.LASF12:
- 573 0219 75696E74 		.ascii	"uint8\000"
- 573      3800
- 574              	.LASF4:
- 575 021f 6C6F6E67 		.ascii	"long int\000"
- 575      20696E74 
- 575      00
- 576              	.LASF14:
- 577 0228 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Write\000"
- 577      43686172 
- 577      5F315F4C 
- 577      4344506F 
- 577      72745F57 
- 578              	.LASF0:
- 579 0241 7369676E 		.ascii	"signed char\000"
- 579      65642063 
- 579      68617200 
+ 565 0178 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Read\000"
+ 565      43686172 
+ 565      5F315F4C 
+ 565      4344506F 
+ 565      72745F52 
+ 566              	.LASF19:
+ 567 0190 4C43445F 		.ascii	"LCD_Char_1_LCDPort_ReadDataReg\000"
+ 567      43686172 
+ 567      5F315F4C 
+ 567      4344506F 
+ 567      72745F52 
+ 568              	.LASF12:
+ 569 01af 75696E74 		.ascii	"uint8\000"
+ 569      3800
+ 570              	.LASF4:
+ 571 01b5 6C6F6E67 		.ascii	"long int\000"
+ 571      20696E74 
+ 571      00
+ 572              	.LASF14:
+ 573 01be 4C43445F 		.ascii	"LCD_Char_1_LCDPort_Write\000"
+ 573      43686172 
+ 573      5F315F4C 
+ 573      4344506F 
+ 573      72745F57 
+ 574              	.LASF0:
+ 575 01d7 7369676E 		.ascii	"signed char\000"
+ 575      65642063 
+ 575      68617200 
+ 576              	.LASF22:
+ 577 01e3 443A5C47 		.ascii	"D:\\GIT\\MOTION-T1\\A20Bootload\\A66_canfestival_bo"
+ 577      49545C4D 
+ 577      4F54494F 
+ 577      4E2D5431 
+ 577      5C413230 
+ 578 0212 6F746C6F 		.ascii	"otload\\Workspace01\\MOTION-T1-2016-09-18-ver1.0.cy"
+ 578      61645C57 
+ 578      6F726B73 
+ 578      70616365 
+ 578      30315C4D 
+ 579 0243 64736E00 		.ascii	"dsn\000"
  580              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

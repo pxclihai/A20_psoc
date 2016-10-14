@@ -160,6 +160,7 @@
 <v>Workspace01\MOTION-T1-2016-09-18-ver1.0\Generated_Source\PSoC5\LCD_Char_1_LCDPort</v>
 <v>Workspace01\MOTION-T1-2016-09-18-ver1.0\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.c</v>
 <v>Workspace01\MOTION-T1-2016-09-18-ver1.0\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.h</v>
+<v>Workspace01\MOTION-T1-2016-09-18-ver1.0\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort_aliases.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">

@@ -1,22 +1,16 @@
-D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CortexM3/ARM_GCC_493/Debug/CanopenDictConfig.o : D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CanopenDictConfig.c D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CanopenDictConfig.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/TestSlave.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/applicfg.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/can.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/canfestival.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/config.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/data.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/dcf.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/def.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/emcy.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/lifegrd.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/lss.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/nmtMaster.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/nmtSlave.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/objacces.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/objdictdef.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/pdo.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/sdo.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/states.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/sync.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/timer.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/timerscfg.h 
-
-D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CanopenDictConfig.c : 
-
-D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CanopenDictConfig.h : 
-
-D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/TestSlave.h : 
+D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/CortexM3/ARM_GCC_493/Debug/canfestival.o : D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/applicfg.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/can.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/canfestival.c D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/canfestival.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/config.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/data.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/def.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/emcy.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/lifegrd.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/lss.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/nmtMaster.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/nmtSlave.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/objacces.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/objdictdef.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/pdo.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/sdo.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/states.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/sync.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/timer.h D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/timerscfg.h 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/applicfg.h : 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/can.h : 
+
+D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/canfestival.c : 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/canfestival.h : 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/config.h : 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/data.h : 
-
-D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/dcf.h : 
 
 D:/GIT/A20_CANfestival/posoc/MOTION-T1-Ver1.0-2016-09-18.cydsn/def.h : 
 

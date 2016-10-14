@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
   29:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** * Summary:
   30:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 2
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
   52:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** * 
   53:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** * Parameters:  
   54:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  mode:  Change the pins to one of the following drive modes.
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 3
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 3
 
 
   55:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
   79:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** * Summary:
   80:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  form.
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 4
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 4
 
 
   82:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  110:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  Returns the current value assigned to the Digital Port's data output register
  111:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *  
  112:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** *******************************************************************************/
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 5
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 5
 
 
  113:.\Generated_Source\PSoC5/USBFS_1_Dm.c **** uint8 USBFS_1_Dm_ReadDataReg(void) 
@@ -276,14 +276,14 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  145 000c B5000000 		.4byte	.LASF20
  146 0010 01       		.byte	0x1
  147 0011 00000000 		.4byte	.LASF21
- 148 0015 7F010000 		.4byte	.LASF22
+ 148 0015 A4010000 		.4byte	.LASF22
  149 0019 00000000 		.4byte	.Ldebug_ranges0+0
  150 001d 00000000 		.4byte	0
  151 0021 00000000 		.4byte	.Ldebug_line0
  152 0025 02       		.uleb128 0x2
  153 0026 01       		.byte	0x1
  154 0027 06       		.byte	0x6
- 155 0028 02020000 		.4byte	.LASF0
+ 155 0028 98010000 		.4byte	.LASF0
  156 002c 02       		.uleb128 0x2
  157 002d 01       		.byte	0x1
  158 002e 08       		.byte	0x8
@@ -291,18 +291,18 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  160 0033 02       		.uleb128 0x2
  161 0034 02       		.byte	0x2
  162 0035 05       		.byte	0x5
- 163 0036 E9010000 		.4byte	.LASF2
+ 163 0036 7F010000 		.4byte	.LASF2
  164 003a 02       		.uleb128 0x2
  165 003b 02       		.byte	0x2
  166 003c 07       		.byte	0x7
  167 003d 8B000000 		.4byte	.LASF3
  168 0041 02       		.uleb128 0x2
  169 0042 04       		.byte	0x4
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 6
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 6
 
 
  170 0043 05       		.byte	0x5
- 171 0044 F9010000 		.4byte	.LASF4
+ 171 0044 8F010000 		.4byte	.LASF4
  172 0048 02       		.uleb128 0x2
  173 0049 04       		.byte	0x4
  174 004a 07       		.byte	0x7
@@ -324,7 +324,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  190 0066 07       		.byte	0x7
  191 0067 43010000 		.4byte	.LASF8
  192 006b 04       		.uleb128 0x4
- 193 006c F3010000 		.4byte	.LASF12
+ 193 006c 89010000 		.4byte	.LASF12
  194 0070 02       		.byte	0x2
  195 0071 C2       		.byte	0xc2
  196 0072 2C000000 		.4byte	0x2c
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  224 00ad D0000000 		.4byte	0xd0
  225 00b1 08       		.uleb128 0x8
  226 00b2 3E000000 		.4byte	.LASF16
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 7
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 7
 
 
  227 00b6 01       		.byte	0x1
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  261 0108 01       		.uleb128 0x1
  262 0109 9C       		.byte	0x9c
  263 010a 0A       		.uleb128 0xa
- 264 010b 0E020000 		.4byte	.LASF19
+ 264 010b 08020000 		.4byte	.LASF19
  265 010f 01       		.byte	0x1
  266 0110 71       		.byte	0x71
  267 0111 6B000000 		.4byte	0x6b
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 8
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  338 003f 49       		.uleb128 0x49
  339 0040 13       		.uleb128 0x13
  340 0041 00       		.byte	0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 9
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 9
 
 
  341 0042 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  395 0079 0B       		.uleb128 0xb
  396 007a 3B       		.uleb128 0x3b
  397 007b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 10
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 10
 
 
  398 007c 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  452 0030 00000000 		.4byte	0
  453              	.LLST2:
  454 0034 00000000 		.4byte	.LVL4
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 11
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 11
 
 
  455 0038 0C000000 		.4byte	.LVL5
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  501      63655C50 
  502              	.LASF15:
  503 0026 55534246 		.ascii	"USBFS_1_Dm_SetDriveMode\000"
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 12
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 12
 
 
  503      535F315F 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  526 00e8 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  526      20726576 
  526      6973696F 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 13
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 13
 
 
  526      6E203232 
@@ -750,40 +750,38 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 1
  536              	.LASF11:
  537 017a 63686172 		.ascii	"char\000"
  537      00
- 538              	.LASF22:
- 539 017f 443A5C47 		.ascii	"D:\\GIT\\A20_CANfestival\\A20Bootload\\A66_canfesti"
- 539      49545C41 
- 539      32305F43 
- 539      414E6665 
- 539      73746976 
- 540 01ae 76616C5F 		.ascii	"val_bootload\\Workspace01\\MOTION-T1-2016-09-18-ver"
- 540      626F6F74 
- 540      6C6F6164 
- 540      5C576F72 
- 540      6B737061 
- 541 01df 312E302E 		.ascii	"1.0.cydsn\000"
- 541      63796473 
- 541      6E00
- 542              	.LASF2:
- 543 01e9 73686F72 		.ascii	"short int\000"
- 543      7420696E 
- 543      7400
- 544              	.LASF12:
- 545 01f3 75696E74 		.ascii	"uint8\000"
- 545      3800
- 546              	.LASF4:
- 547 01f9 6C6F6E67 		.ascii	"long int\000"
- 547      20696E74 
- 547      00
- 548              	.LASF0:
- 549 0202 7369676E 		.ascii	"signed char\000"
- 549      65642063 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccf9uLrO.s 			page 14
-
-
- 549      68617200 
+ 538              	.LASF2:
+ 539 017f 73686F72 		.ascii	"short int\000"
+ 539      7420696E 
+ 539      7400
+ 540              	.LASF12:
+ 541 0189 75696E74 		.ascii	"uint8\000"
+ 541      3800
+ 542              	.LASF4:
+ 543 018f 6C6F6E67 		.ascii	"long int\000"
+ 543      20696E74 
+ 543      00
+ 544              	.LASF0:
+ 545 0198 7369676E 		.ascii	"signed char\000"
+ 545      65642063 
+ 545      68617200 
+ 546              	.LASF22:
+ 547 01a4 443A5C47 		.ascii	"D:\\GIT\\MOTION-T1\\A20Bootload\\A66_canfestival_bo"
+ 547      49545C4D 
+ 547      4F54494F 
+ 547      4E2D5431 
+ 547      5C413230 
+ 548 01d3 6F746C6F 		.ascii	"otload\\Workspace01\\MOTION-T1-2016-09-18-ver1.0.cy"
+ 548      61645C57 
+ 548      6F726B73 
+ 548      70616365 
+ 548      30315C4D 
+ 549 0204 64736E00 		.ascii	"dsn\000"
  550              	.LASF19:
- 551 020e 55534246 		.ascii	"USBFS_1_Dm_ReadDataReg\000"
+ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccgqQzhZ.s 			page 14
+
+
+ 551 0208 55534246 		.ascii	"USBFS_1_Dm_ReadDataReg\000"
  551      535F315F 
  551      446D5F52 
  551      65616444 

@@ -14,7 +14,7 @@
 
 unsigned int TimeCNT=0;//时间计数
 unsigned int NextTime=0;//下一次触发时间计数
-unsigned int TIMER_MAX_COUNT=70000;//最大时间计数
+unsigned int TIMER_MAX_COUNT=0xffff;//最大时间计数
 static TIMEVAL last_time_set = TIMEVAL_MAX;//上一次的时间计数
 
 
@@ -26,7 +26,7 @@ static TIMEVAL last_time_set = TIMEVAL_MAX;//上一次的时间计数
 
 void setTimer(TIMEVAL value)
 {
-    NextTime=TimeCNT+value;
+    NextTime = (TimeCNT+value)%TIMER_MAX_COUNT;
 }
 TIMEVAL getElapsedTime(void)
 {
