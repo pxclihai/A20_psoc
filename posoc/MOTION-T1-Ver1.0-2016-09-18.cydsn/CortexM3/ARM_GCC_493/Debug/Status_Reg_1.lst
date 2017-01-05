@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
   29:.\Generated_Source\PSoC5/Status_Reg_1.c **** *
   30:.\Generated_Source\PSoC5/Status_Reg_1.c **** * Parameters:
   31:.\Generated_Source\PSoC5/Status_Reg_1.c **** *  None.
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 2
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Status_Reg_1.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
   54              		@ args = 0, pretend = 0, frame = 0
   55              		@ frame_needed = 0, uses_anonymous_args = 0
   56 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 3
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 3
 
 
   57              		.cfi_def_cfa_offset 8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
   88              		.cfi_startproc
   89              		@ args = 0, pretend = 0, frame = 0
   90              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 4
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 4
 
 
   91 0000 08B5     		push	{r3, lr}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  122              		.loc 1 104 0
  123              		.cfi_startproc
  124              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 5
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 5
 
 
  125              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  155              		.loc 1 128 0
  156 0000 014B     		ldr	r3, .L16
  157 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 6
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 6
 
 
  129:.\Generated_Source\PSoC5/Status_Reg_1.c **** }
@@ -322,25 +322,25 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  175 0006 00000000 		.4byte	.Ldebug_abbrev0
  176 000a 04       		.byte	0x4
  177 000b 01       		.uleb128 0x1
- 178 000c E1000000 		.4byte	.LASF21
+ 178 000c A2000000 		.4byte	.LASF21
  179 0010 01       		.byte	0x1
- 180 0011 D2010000 		.4byte	.LASF22
- 181 0015 6D000000 		.4byte	.LASF23
+ 180 0011 DA010000 		.4byte	.LASF22
+ 181 0015 30010000 		.4byte	.LASF23
  182 0019 00000000 		.4byte	.Ldebug_ranges0+0
  183 001d 00000000 		.4byte	0
  184 0021 00000000 		.4byte	.Ldebug_line0
  185 0025 02       		.uleb128 0x2
  186 0026 01       		.byte	0x1
  187 0027 06       		.byte	0x6
- 188 0028 3F020000 		.4byte	.LASF0
+ 188 0028 47020000 		.4byte	.LASF0
  189 002c 02       		.uleb128 0x2
  190 002d 01       		.byte	0x1
  191 002e 08       		.byte	0x8
- 192 002f 74010000 		.4byte	.LASF1
+ 192 002f 7C010000 		.4byte	.LASF1
  193 0033 02       		.uleb128 0x2
  194 0034 02       		.byte	0x2
  195 0035 05       		.byte	0x5
- 196 0036 30020000 		.4byte	.LASF2
+ 196 0036 38020000 		.4byte	.LASF2
  197 003a 02       		.uleb128 0x2
  198 003b 02       		.byte	0x2
  199 003c 07       		.byte	0x7
@@ -348,22 +348,22 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  201 0041 02       		.uleb128 0x2
  202 0042 04       		.byte	0x4
  203 0043 05       		.byte	0x5
- 204 0044 A5010000 		.4byte	.LASF4
+ 204 0044 AD010000 		.4byte	.LASF4
  205 0048 02       		.uleb128 0x2
  206 0049 04       		.byte	0x4
  207 004a 07       		.byte	0x7
- 208 004b B2000000 		.4byte	.LASF5
+ 208 004b 73000000 		.4byte	.LASF5
  209 004f 02       		.uleb128 0x2
  210 0050 08       		.byte	0x8
  211 0051 05       		.byte	0x5
  212 0052 00000000 		.4byte	.LASF6
  213 0056 02       		.uleb128 0x2
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 7
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 7
 
 
  214 0057 08       		.byte	0x8
  215 0058 07       		.byte	0x7
- 216 0059 C4000000 		.4byte	.LASF7
+ 216 0059 85000000 		.4byte	.LASF7
  217 005d 03       		.uleb128 0x3
  218 005e 04       		.byte	0x4
  219 005f 05       		.byte	0x5
@@ -373,24 +373,24 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  223 0066 07       		.byte	0x7
  224 0067 21000000 		.4byte	.LASF8
  225 006b 04       		.uleb128 0x4
- 226 006c AC000000 		.4byte	.LASF12
+ 226 006c 6D000000 		.4byte	.LASF12
  227 0070 02       		.byte	0x2
  228 0071 C2       		.byte	0xc2
  229 0072 2C000000 		.4byte	0x2c
  230 0076 02       		.uleb128 0x2
  231 0077 04       		.byte	0x4
  232 0078 04       		.byte	0x4
- 233 0079 DB000000 		.4byte	.LASF9
+ 233 0079 9C000000 		.4byte	.LASF9
  234 007d 02       		.uleb128 0x2
  235 007e 08       		.byte	0x8
  236 007f 04       		.byte	0x4
- 237 0080 AE010000 		.4byte	.LASF10
+ 237 0080 B6010000 		.4byte	.LASF10
  238 0084 02       		.uleb128 0x2
  239 0085 01       		.byte	0x1
  240 0086 08       		.byte	0x8
- 241 0087 A0010000 		.4byte	.LASF11
+ 241 0087 A8010000 		.4byte	.LASF11
  242 008b 05       		.uleb128 0x5
- 243 008c 3A020000 		.4byte	.LASF13
+ 243 008c 42020000 		.4byte	.LASF13
  244 0090 02       		.byte	0x2
  245 0091 6C01     		.2byte	0x16c
  246 0093 97000000 		.4byte	0x97
@@ -399,7 +399,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  249 009c 02       		.uleb128 0x2
  250 009d 04       		.byte	0x4
  251 009e 07       		.byte	0x7
- 252 009f 10020000 		.4byte	.LASF14
+ 252 009f 18020000 		.4byte	.LASF14
  253 00a3 07       		.uleb128 0x7
  254 00a4 44000000 		.4byte	.LASF19
  255 00a8 01       		.byte	0x1
@@ -410,7 +410,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  260 00b6 01       		.uleb128 0x1
  261 00b7 9C       		.byte	0x9c
  262 00b8 08       		.uleb128 0x8
- 263 00b9 B5010000 		.4byte	.LASF15
+ 263 00b9 BD010000 		.4byte	.LASF15
  264 00bd 01       		.byte	0x1
  265 00be 39       		.byte	0x39
  266 00bf 00000000 		.4byte	.LFB1
@@ -418,11 +418,11 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  268 00c7 01       		.uleb128 0x1
  269 00c8 9C       		.byte	0x9c
  270 00c9 EF000000 		.4byte	0xef
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 8
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 8
 
 
  271 00cd 09       		.uleb128 0x9
- 272 00ce 4B020000 		.4byte	.LASF17
+ 272 00ce 53020000 		.4byte	.LASF17
  273 00d2 01       		.byte	0x1
  274 00d3 3B       		.byte	0x3b
  275 00d4 6B000000 		.4byte	0x6b
@@ -435,7 +435,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  282 00ea 6B010000 		.4byte	0x16b
  283 00ee 00       		.byte	0
  284 00ef 08       		.uleb128 0x8
- 285 00f0 82010000 		.4byte	.LASF16
+ 285 00f0 8A010000 		.4byte	.LASF16
  286 00f4 01       		.byte	0x1
  287 00f5 50       		.byte	0x50
  288 00f6 00000000 		.4byte	.LFB2
@@ -444,7 +444,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  291 00ff 9C       		.byte	0x9c
  292 0100 26010000 		.4byte	0x126
  293 0104 09       		.uleb128 0x9
- 294 0105 4B020000 		.4byte	.LASF17
+ 294 0105 53020000 		.4byte	.LASF17
  295 0109 01       		.byte	0x1
  296 010a 52       		.byte	0x52
  297 010b 6B000000 		.4byte	0x6b
@@ -457,7 +457,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  304 0121 6B010000 		.4byte	0x16b
  305 0125 00       		.byte	0
  306 0126 08       		.uleb128 0x8
- 307 0127 19020000 		.4byte	.LASF18
+ 307 0127 21020000 		.4byte	.LASF18
  308 012b 01       		.byte	0x1
  309 012c 67       		.byte	0x67
  310 012d 00000000 		.4byte	.LFB3
@@ -466,7 +466,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  313 0136 9C       		.byte	0x9c
  314 0137 4B010000 		.4byte	0x14b
  315 013b 0B       		.uleb128 0xb
- 316 013c 6F010000 		.4byte	.LASF24
+ 316 013c 77010000 		.4byte	.LASF24
  317 0140 01       		.byte	0x1
  318 0141 67       		.byte	0x67
  319 0142 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  325 0151 7E       		.byte	0x7e
  326 0152 6B000000 		.4byte	0x6b
  327 0156 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 9
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 9
 
 
  328 015a 0C000000 		.4byte	.LFE4-.LFB4
@@ -490,7 +490,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  334 0166 7E       		.byte	0x7e
  335 0167 6B000000 		.4byte	0x6b
  336 016b 0D       		.uleb128 0xd
- 337 016c FA010000 		.4byte	.LASF26
+ 337 016c 02020000 		.4byte	.LASF26
  338 0170 03       		.byte	0x3
  339 0171 7F       		.byte	0x7f
  340 0172 0E       		.uleb128 0xe
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  382 0024 0B       		.uleb128 0xb
  383 0025 03       		.uleb128 0x3
  384 0026 08       		.uleb128 0x8
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 10
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 10
 
 
  385 0027 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  439 005d 40       		.uleb128 0x40
  440 005e 18       		.uleb128 0x18
  441 005f 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 11
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 11
 
 
  442 0061 19       		.uleb128 0x19
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  496 009a 00       		.byte	0
  497 009b 03       		.uleb128 0x3
  498 009c 0E       		.uleb128 0xe
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 12
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 12
 
 
  499 009d 3A       		.uleb128 0x3a
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  553              		.section	.debug_loc,"",%progbits
  554              	.Ldebug_loc0:
  555              	.LLST0:
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 13
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 13
 
 
  556 0000 06000000 		.4byte	.LVL0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  610 0020 00000000 		.4byte	.LFB4
  611 0024 0C000000 		.4byte	.LFE4
  612 0028 00000000 		.4byte	0
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 14
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 14
 
 
  613 002c 00000000 		.4byte	0
@@ -823,121 +823,122 @@ ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 1
  628      72697469 
  628      63616C53 
  628      65637469 
- 629              	.LASF23:
- 630 006d 443A5C47 		.ascii	"D:\\GIT\\A20_CANfestival\\posoc\\MOTION-T1-Ver1.0-2"
- 630      49545C41 
- 630      32305F43 
- 630      414E6665 
- 630      73746976 
- 631 009c 3031362D 		.ascii	"016-09-18.cydsn\000"
- 631      30392D31 
- 631      382E6379 
- 631      64736E00 
- 632              	.LASF12:
- 633 00ac 75696E74 		.ascii	"uint8\000"
- 633      3800
- 634              	.LASF5:
- 635 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 15
+ 629              	.LASF12:
+ 630 006d 75696E74 		.ascii	"uint8\000"
+ 630      3800
+ 631              	.LASF5:
+ 632 0073 6C6F6E67 		.ascii	"long unsigned int\000"
+ 632      20756E73 
+ 632      69676E65 
+ 632      6420696E 
+ 632      7400
+ 633              	.LASF7:
+ 634 0085 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 634      206C6F6E 
+ 634      6720756E 
+ 634      7369676E 
+ 634      65642069 
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 15
 
 
- 635      20756E73 
- 635      69676E65 
- 635      6420696E 
- 635      7400
- 636              	.LASF7:
- 637 00c4 6C6F6E67 		.ascii	"long long unsigned int\000"
- 637      206C6F6E 
- 637      6720756E 
- 637      7369676E 
- 637      65642069 
- 638              	.LASF9:
- 639 00db 666C6F61 		.ascii	"float\000"
- 639      7400
- 640              	.LASF21:
- 641 00e1 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 641      4320342E 
- 641      392E3320 
- 641      32303135 
- 641      30333033 
- 642 0114 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 642      20726576 
- 642      6973696F 
- 642      6E203232 
- 642      31323230 
- 643 0147 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 643      66756E63 
- 643      74696F6E 
- 643      2D736563 
- 643      74696F6E 
+ 635              	.LASF9:
+ 636 009c 666C6F61 		.ascii	"float\000"
+ 636      7400
+ 637              	.LASF21:
+ 638 00a2 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 638      4320342E 
+ 638      392E3320 
+ 638      32303135 
+ 638      30333033 
+ 639 00d5 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 639      20726576 
+ 639      6973696F 
+ 639      6E203232 
+ 639      31323230 
+ 640 0108 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 640      66756E63 
+ 640      74696F6E 
+ 640      2D736563 
+ 640      74696F6E 
+ 641              	.LASF23:
+ 642 0130 433A5C55 		.ascii	"C:\\Users\\pxc\\Desktop\\MOTION-T1\\posoc\\MOTION-T"
+ 642      73657273 
+ 642      5C707863 
+ 642      5C446573 
+ 642      6B746F70 
+ 643 015d 312D5665 		.ascii	"1-Ver1.0-2016-09-18.cydsn\000"
+ 643      72312E30 
+ 643      2D323031 
+ 643      362D3039 
+ 643      2D31382E 
  644              	.LASF24:
- 645 016f 6D61736B 		.ascii	"mask\000"
+ 645 0177 6D61736B 		.ascii	"mask\000"
  645      00
  646              	.LASF1:
- 647 0174 756E7369 		.ascii	"unsigned char\000"
+ 647 017c 756E7369 		.ascii	"unsigned char\000"
  647      676E6564 
  647      20636861 
  647      7200
  648              	.LASF16:
- 649 0182 53746174 		.ascii	"Status_Reg_1_InterruptDisable\000"
+ 649 018a 53746174 		.ascii	"Status_Reg_1_InterruptDisable\000"
  649      75735F52 
  649      65675F31 
  649      5F496E74 
  649      65727275 
  650              	.LASF11:
- 651 01a0 63686172 		.ascii	"char\000"
+ 651 01a8 63686172 		.ascii	"char\000"
  651      00
  652              	.LASF4:
- 653 01a5 6C6F6E67 		.ascii	"long int\000"
+ 653 01ad 6C6F6E67 		.ascii	"long int\000"
  653      20696E74 
  653      00
  654              	.LASF10:
- 655 01ae 646F7562 		.ascii	"double\000"
+ 655 01b6 646F7562 		.ascii	"double\000"
  655      6C6500
  656              	.LASF15:
- 657 01b5 53746174 		.ascii	"Status_Reg_1_InterruptEnable\000"
+ 657 01bd 53746174 		.ascii	"Status_Reg_1_InterruptEnable\000"
  657      75735F52 
+ARM GAS  C:\Users\pxc\AppData\Local\Temp\ccRWp8Le.s 			page 16
+
+
  657      65675F31 
-ARM GAS  C:\Users\PANXIA~1\AppData\Local\Temp\ccE9WMGR.s 			page 16
-
-
  657      5F496E74 
  657      65727275 
  658              	.LASF22:
- 659 01d2 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Status_Reg_1.c\000"
+ 659 01da 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Status_Reg_1.c\000"
  659      6E657261 
  659      7465645F 
  659      536F7572 
  659      63655C50 
  660              	.LASF26:
- 661 01fa 43794578 		.ascii	"CyExitCriticalSection\000"
+ 661 0202 43794578 		.ascii	"CyExitCriticalSection\000"
  661      69744372 
  661      69746963 
  661      616C5365 
  661      6374696F 
  662              	.LASF14:
- 663 0210 73697A65 		.ascii	"sizetype\000"
+ 663 0218 73697A65 		.ascii	"sizetype\000"
  663      74797065 
  663      00
  664              	.LASF18:
- 665 0219 53746174 		.ascii	"Status_Reg_1_WriteMask\000"
+ 665 0221 53746174 		.ascii	"Status_Reg_1_WriteMask\000"
  665      75735F52 
  665      65675F31 
  665      5F577269 
  665      74654D61 
  666              	.LASF2:
- 667 0230 73686F72 		.ascii	"short int\000"
+ 667 0238 73686F72 		.ascii	"short int\000"
  667      7420696E 
  667      7400
  668              	.LASF13:
- 669 023a 72656738 		.ascii	"reg8\000"
+ 669 0242 72656738 		.ascii	"reg8\000"
  669      00
  670              	.LASF0:
- 671 023f 7369676E 		.ascii	"signed char\000"
+ 671 0247 7369676E 		.ascii	"signed char\000"
  671      65642063 
  671      68617200 
  672              	.LASF17:
- 673 024b 696E7465 		.ascii	"interruptState\000"
+ 673 0253 696E7465 		.ascii	"interruptState\000"
  673      72727570 
  673      74537461 
  673      746500

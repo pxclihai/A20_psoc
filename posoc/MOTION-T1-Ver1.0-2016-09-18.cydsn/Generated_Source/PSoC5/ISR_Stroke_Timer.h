@@ -20,6 +20,7 @@
 #include <cyfitter.h>
 
 /* Interrupt Controller API. */
+//extern int Dis_time_flag ;
 void ISR_Stroke_Timer_Start(void);
 void ISR_Stroke_Timer_StartEx(cyisraddress address);
 void ISR_Stroke_Timer_Stop(void);

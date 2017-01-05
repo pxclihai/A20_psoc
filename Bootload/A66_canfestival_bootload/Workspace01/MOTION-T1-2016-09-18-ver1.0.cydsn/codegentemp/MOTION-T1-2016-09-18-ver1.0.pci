@@ -1,0 +1,17 @@
+# MOTION-T1-2016-09-18-ver1.0
+# 2016-11-07 05:22:47Z
+
+# IO_0@[IOP=(15)][IoId=(0)] is reserved: MhzXtalEnabled
+dont_use_io iocell 15 0
+# IO_1@[IOP=(15)][IoId=(1)] is reserved: MhzXtalEnabled
+dont_use_io iocell 15 1
+set_io "\LCD_Char_1:LCDPort(0)\" iocell 3 0
+set_io "\LCD_Char_1:LCDPort(1)\" iocell 3 1
+set_io "\LCD_Char_1:LCDPort(2)\" iocell 3 2
+set_io "\LCD_Char_1:LCDPort(3)\" iocell 3 3
+set_io "\LCD_Char_1:LCDPort(4)\" iocell 3 4
+set_io "\LCD_Char_1:LCDPort(5)\" iocell 3 5
+set_io "\LCD_Char_1:LCDPort(6)\" iocell 3 6
+set_io "\USBFS_1:Dm(0)\" iocell 15 7
+set_io "\USBFS_1:Dp(0)\" iocell 15 6
+set_location "\USBFS_1:USB\" usbcell -1 -1 0

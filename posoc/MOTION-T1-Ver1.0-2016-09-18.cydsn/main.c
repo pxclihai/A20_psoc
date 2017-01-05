@@ -23,8 +23,14 @@
 extern int ISR_Stroke_Timer_states;
 extern uint8 const CYCODE LCD_Char_1_customFonts[];
 uint8  key_count = 0;
-
-
+uint8 test_count;
+uint8 test_pin ;
+uint8 mode_dis_cur;
+uint8 mode_dis_pre;
+extern uint8 Dis_time_flag;
+extern int Dis_Step ;
+extern uint8 Dis_time_flag;
+extern int Dis_content ;
 unsigned char  receiveData[8]; 
 
 CAN_1_TX_MSG CAN_message;     /* Declares Data as structure variable of type DATA_BYTES_MSG */  
@@ -77,11 +83,17 @@ int main()
     
     Init_Stroke_Timer(); 
     Init_TLC5616();
-    /* Enable global interrupts. */
-    CyGlobalIntEnable; 
-    
     LCD_Char_1_Init();
     LCD_Char_1_LoadCustomFonts(LCD_Char_1_customFonts) ; 
+    CyDelay(20); 
+    /* Enable global interrupts. */
+    LCD_Char_1_Position(0,0) ;
+    LCD_Char_1_PrintString("StartUp");
+    LCD_Char_1_Position(1,0) ;
+    LCD_Char_1_PrintString("Ver-1.02");
+    CyDelay(800); 
+    LCD_Char_1_WriteData(0x01);
+    CyGlobalIntEnable; 
     
     CAN_1_Start();   
     CanopenInit();
@@ -92,30 +104,31 @@ int main()
     ValveOut(CutReg.Action[VStop]);
     LED_WRITE(LED_Status[VStop]);
    
-    TLC5616_Write(1,1023);
+//    TLC5616_Write(1,1023);
 
-    /////////////ceshi fucha//////////////
-    CutReg.Action[VFast]   =   0x01;
-    CutReg.Action[VSlow]   =   0x01;
-    CutReg.Action[VKeep]   =   0x01;
-    CutReg.Action[VUnload] =   0x00;
-    CutReg.Action[VBack]   =   0x02;
-    CutReg.Action[VStop]   =   0x00;
-    CutReg.KeepTime        =   600;
-    CutReg.UnloadTime      =   500;  
-    /////////////////////////////////////////
- // while(1);
-   config_para.isConfig_para_state = 0;
+///////////////////ceshi fucha//////////////
+//    CutReg.Action[VFast]   =   0x01;
+//    CutReg.Action[VSlow]   =   0x01;
+//    CutReg.Action[VKeep]   =   0x01;
+//    CutReg.Action[VUnload] =   0x00;
+//    CutReg.Action[VBack]   =   0x02;
+//    CutReg.Action[VStop]   =   0x00;
+//    CutReg.KeepTime        =   600;
+//    CutReg.UnloadTime      =   500;  
+/////////////////////////////////////////////
+    config_para.isConfig_para_state = 0;
+    
+  //   System_enable = Enter_Start;
     for(;;)
     {    
         //增加了 配置回复模式 如果开始没有在上止点就进入此模式
-         if(config_para.isConfig_para_state == EnterConfig )
+        if(config_para.isConfig_para_state ==  EnterConfig )
          { 
-       //    LED_WRITE(0X01);                          //进入阀组配置状态后默认显示“快下”模式下状态
-       //     ValveOut(CutReg.Action[VFast]);     
             Write_config();
             config_para.isConfig_para_state =  FinsihConfig;
+            mode_dis_pre = 0;
          }
+
         if(!PumpSignal())
 		{
 			ISR_Stroke_Timer_states = 0x01;
@@ -126,11 +139,12 @@ int main()
             
             CutReg.Cnt = 0;
 			CutReg.CutTimeStatus = VFast;   //结束  
+              mode_dis_pre = 1;
 		}
-        
 		else if((System_enable == Enter_Start ||System_enable == Enter_CUTJMODE || CutReg.OneWorkFinshState == One_Work_Runing)&& System_enable != Enter_QUIT)
 		{
 			Stroke_Process();
+             mode_dis_pre = 2;
 		}
         
         if(System_enable == Enter_QUIT) //停止一切活动20160825*/
@@ -140,41 +154,94 @@ int main()
             FootStart_state=0x01;
             CutReg.CutStatus = StrokeStart;
             CutReg.CutTimeStatus = VStop;
+            ISR_Stroke_Timer_states = 0x01;
+            mode_dis_pre = 3;
+     
         }
         if(System_enable == Enter_return)/*20160825进入回复模式*/
         {
            FootStart_state = 0x00;                   //不允许往下只能回到上止点
            CutReg.CutTimeStatus = VStop;
            CutReg.CutStatus = JOGMODE;
-           CutReg.OneWorkFinshState = One_Work_Runing; 
+           CutReg.OneWorkFinshState = One_Work_Runing;
+           mode_dis_pre = 4;
         }
-        
         if(System_enable == Enter_Start)
         {
             FootStart_state = 0x01;
+            mode_dis_pre = 5;
         }
         if(System_enable == Enter_Config_Test)
         {
-            ValveOut(Config_Test_Value);
-//            switch(Config_Test_Value)
-//            {
-//                case 0x31: ValveOut(Config_Test_Value); break;
-//                case 0x32: ValveOut(Config_Test_Value); break;
-//                case 0x33: ValveOut(Config_Test_Value); break;
-//                case 0x34: ValveOut(Config_Test_Value); break;
-//                case 0x35: ValveOut(Config_Test_Value); break;
-//                case 0x36: ValveOut(Config_Test_Value); break;
-//                case 0x36: ValveOut(Config_Test_Value); break;
-//                default
-//            }
-            
+            ValveOut(Config_Test_Value);  
+            mode_dis_pre = 6;
         }
         else if(System_enable == Quit_Config_Test)
         {
             Config_Test_Value = 0x00;
             ValveOut(Config_Test_Value);
+            mode_dis_pre = 7;
         }
-        
+   //     test_pin = test_Read();
+//        
+//        if(test_pin == 0 )
+//        {
+//            CyDelay(500);
+//            if(test_count == 0)
+//            {
+//                
+//                System_enable = Enter_Start;
+//                test_count = 1;
+//                LCD_Char_1_Position(1,0) ;
+//                LCD_Char_1_PrintString("ON");
+//                CyDelay(500);
+//            }
+//            else
+//            {
+//                test_count =0;
+//                System_enable = Enter_QUIT;
+//                    test_count = 1;
+//                LCD_Char_1_Position(1,0) ;
+//               LCD_Char_1_PrintString("OF");
+//             CyDelay(500);
+//            }
+//           
+  //      }
+        ///
+        if(mode_dis_pre != mode_dis_cur)
+        {
+           switch(mode_dis_pre)
+           {
+            case 0 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("0");break;}
+            case 1 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("1");break;}
+            case 2 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("2");break;}
+            case 3 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("3");break;}
+            case 4 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("4");break;}
+            case 5 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("5");break;}
+            case 6 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("6");break;}
+            case 7 :            {LCD_Char_1_Position(1,0) ; LCD_Char_1_PrintString("7");break;}
+           }
+            mode_dis_cur = mode_dis_pre;
+        }
+        if(Dis_time_flag == 1)
+        {       Dis_Step++;
+            switch(Dis_Step)
+        {
+            case 0:Dis_content = LCD_Char_1_CUSTOM_0; break;
+            case 1:Dis_content = LCD_Char_1_CUSTOM_1; break;
+            case 2:Dis_content = LCD_Char_1_CUSTOM_2; break;
+            case 3:Dis_content = LCD_Char_1_CUSTOM_3; break;
+            case 4:Dis_content = LCD_Char_1_CUSTOM_4; break;
+            case 5:Dis_content = LCD_Char_1_CUSTOM_5; break;
+            case 6:Dis_content = LCD_Char_1_CUSTOM_6; break;
+            case 7:Dis_content = LCD_Char_1_CUSTOM_7; Dis_Step = 0;break;
+        }
+        LCD_Char_1_Position(0,0);                                                                //Row = 0,Col = 6
+        LCD_Char_1_PutChar(Dis_content) ;  
+        LCD_DISPLAY_MODE();
+       Dis_time_flag = 0;
+        }
+     
     }
 }
 

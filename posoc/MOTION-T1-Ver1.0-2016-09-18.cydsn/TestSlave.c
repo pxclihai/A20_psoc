@@ -542,7 +542,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 					{
                      { RO, uint8_can, sizeof (UNS8), (void*)&TestSlave_highestSubIndex_obj7001},
 			       	 { RW, uint8_can, sizeof (UNS8), (void*)&System_enable},
-                     { RW, uint8_can, sizeof (UNS8), (void*)&Config_Test_Value}
+                     { RW, uint8_can, sizeof (UNS8), (void*)&Config_Test_Value},
+                     { RW, uint8_can, sizeof (UNS8), (void*)&config_para.isConfig_para_state_2 },
 					};                   
 		        
 

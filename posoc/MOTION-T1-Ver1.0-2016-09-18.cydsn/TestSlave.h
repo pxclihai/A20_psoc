@@ -21,6 +21,7 @@ struct Config_para
     UNS16 Config_KeepTime;
     UNS16 Config_UnloadTime;
     UNS8 isConfig_para_state;
+    UNS8 isConfig_para_state_2;
 };
 extern struct Config_para config_para;
 /* Prototypes of function provided by object dictionnary */

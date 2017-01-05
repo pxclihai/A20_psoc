@@ -50,9 +50,12 @@ struct CUTPARA	CutReg;
 uint8 LED_Status[]={0x01,0x02,0x04,0x08,0x10,0x20};
 uint8 FootStart_state = 0x01;
 uint8 FootUP_State    = 0x01;
+static lastValue = 0xFF;
+static lastMode  = 0xFF;
 CY_ISR_PROTO(Stroke_ISRHandle);
 uint16 Get_ADvalue(uint8 timetype);
-
+void Read_config(void);
+void LCD_DISPLAY(uint8 value);
 extern int ISR_Stroke_Timer_states;
 /**********************************************************
 函数名：
@@ -84,9 +87,11 @@ void timer_10ms(void)
 			}
 		} 
        // 
+        
 		switch(CutReg.CutTimeStatus)
 		{
 		case VFast:
+           Read_config();
            CutReg.OneWorkFinshState = One_Work_Runing;   /* 增加动作完成标志20160820*/
 			if(DownPoint())
 			{
@@ -177,10 +182,8 @@ void timer_10ms(void)
 			{
 				CutReg.Cnt = 0;
 				ISR_Stroke_Timer_states =0x01;
-          
 				CutReg.CutTimeStatus = VFast;  //结束
-            
-                CutReg.CutTimeStatus = VStop;
+      
 				CutReg.CutStatus = JudgMode;
              
 			}
@@ -189,7 +192,7 @@ void timer_10ms(void)
 				ValveOut(CutReg.Action[VStop]);
                 LED_WRITE(LED_Status[VStop]);
 				CutReg.CutTimeStatus = VStop;
-                
+            
 			}
            
 			break;
@@ -236,7 +239,6 @@ uint8 Stroke_Process(void)
 		{
 			CutReg.CutStatus = JOGMODE;
 		}
-        
         if(System_enable == Enter_return)
         {
             CutReg.CutStatus = JOGMODE;
@@ -359,9 +361,7 @@ uint8 Stroke_Process(void)
 		}
 		break;
 	case CutStart:
-//		CutReg.KeepTime = (Get_ADvalue(0) - 900)/2;
-//       CutReg.KeepTime = Get_ADvalue(0) - 900;
-//		CutReg.UnloadTime = Get_ADvalue(1) - 900;
+
 		CutReg.CutStatus = Cutting;
 		CutReg.Cnt = 0;
 		CutReg.CutTimeStatus = VFast;
@@ -373,18 +373,31 @@ uint8 Stroke_Process(void)
 //		MoveLED(0);
 		if(CutMode() == CUTCMODE)//连续
 		{
-			CutReg.CutStatus = CutStart;//回
+            CyDelay(5);
+            if(CutMode() == CUTCMODE)//连续
+		    {
+		    	CutReg.CutStatus = CutStart;//回
+            }
+		
 		}
 		else if(CutMode() == CUTSMODE)//单次
 		{
+               CyDelay(5);
+             if(CutMode() == CUTSMODE)//单次
+            {
 			CutReg.CutStatus = WaitNoFoot;
             CutReg.SToDotFlag = 1;
+            }
            
 		}
 		else if(CutMode() == CUTJMODE)//点动
 		{
+            CyDelay(5);
+            if(CutMode() == CUTSMODE)//单次
+            {
 			CutReg.CutStatus = JOGMODE;
             ModeFlag = 1;
+            }
 		}
 		break;
 	default : break;
@@ -726,8 +739,7 @@ void Write_config(void)
         CutReg.UnloadTime      =   config_para.Config_UnloadTime;
            
 }
-static lastValue = 0xFF;
-static lastMode  = 0xFF;
+
 void LCD_DISPLAY(uint8 value)
 {
     
