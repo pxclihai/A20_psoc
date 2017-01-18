@@ -1,5 +1,5 @@
--- Project:   D:\GIT\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\MOTION-T1-2016-09-18-ver1.0.cyprj
--- Generated: 11/07/2016 13:22:50
+-- Project:   C:\Users\li\Desktop\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\MOTION-T1-2016-09-18-ver1.0.cyprj
+-- Generated: 01/18/2017 16:20:01
 -- PSoC Creator  3.3
 
 ENTITY \MOTION-T1-2016-09-18-ver1.0\ IS
@@ -13,8 +13,8 @@ ENTITY \MOTION-T1-2016-09-18-ver1.0\ IS
         \LCD_Char_1:LCDPort(6)_PAD\ : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO0 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO1 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO2 OF __DEFAULT__ : ENTITY IS 5e0;

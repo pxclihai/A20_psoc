@@ -1,0 +1,34 @@
+# MOTION-T1-Ver1.03
+# 2017-01-18 08:18:29Z
+
+# IO_0@[IOP=(15)][IoId=(0)] is reserved: MhzXtalEnabled
+dont_use_io iocell 15 0
+# IO_1@[IOP=(15)][IoId=(1)] is reserved: MhzXtalEnabled
+dont_use_io iocell 15 1
+set_io "\LCD_Char_1:LCDPort(0)\" iocell 3 0
+set_io "\LCD_Char_1:LCDPort(1)\" iocell 3 1
+set_io "\LCD_Char_1:LCDPort(2)\" iocell 3 2
+set_io "\LCD_Char_1:LCDPort(3)\" iocell 3 3
+set_io "\LCD_Char_1:LCDPort(4)\" iocell 3 4
+set_io "\LCD_Char_1:LCDPort(5)\" iocell 3 5
+set_io "\LCD_Char_1:LCDPort(6)\" iocell 3 6
+set_io "TLC5616_CS1(0)" iocell 5 5
+set_io "TLC5616_DAT(0)" iocell 5 7
+set_io "TLC5616_CLK(0)" iocell 5 6
+set_io "IN_7(0)" iocell 6 0
+set_io "IN_6(0)" iocell 4 7
+set_io "IN_5(0)" iocell 4 6
+set_io "IN_4(0)" iocell 0 7
+set_io "IN_3(0)" iocell 0 6
+set_io "IN_2(0)" iocell 0 5
+set_io "IN_1(0)" iocell 0 4
+set_io "KA7(0)" iocell 15 4
+set_io "KA6(0)" iocell 6 3
+set_io "KA5(0)" iocell 6 2
+set_io "KA4(0)" iocell 4 5
+set_io "KA3(0)" iocell 4 4
+set_io "KA2(0)" iocell 4 3
+set_io "KA1(0)" iocell 4 2
+set_io "TX_1(0)" iocell 4 0
+set_io "test(0)" iocell 6 1
+set_io "RX_1(0)" iocell 4 1

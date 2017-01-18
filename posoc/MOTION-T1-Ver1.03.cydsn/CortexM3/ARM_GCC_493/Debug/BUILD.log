@@ -1,0 +1,171 @@
+--------------- Build Started: 01/18/2017 16:18:22 Project: MOTION-T1-Ver1.03, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\li\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\li\Desktop\MOTION-T1\posoc\MOTION-T1-Ver1.03.cydsn\MOTION-T1-Ver1.03.cyprj -d CY8C5688AXI-LP099 -s C:\Users\li\Desktop\MOTION-T1\posoc\MOTION-T1-Ver1.03.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+HDL Generation ...
+Synthesis ...
+Place and Route ...
+Tech mapping ...
+ADD: pft.M0040: information: The following 7 pin(s) will be assigned a location by the fitter: LED1(0), LED2(0), LED3(0), LED4(0), TLC5616_CS2(0), UART_RX(0), UART_TX(0)
+Analog Placement ...
+Analog Routing ...
+Analog Code Generation ...
+Digital Placement ...
+Digital Routing ...
+Bitstream Generation ...
+Static timing analysis ...
+API Generation ...
+Dependency Generation ...
+Clean Temporary Files ...
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
+.\main.c: In function 'main':
+.\main.c:105:5: warning: implicit declaration of function 'LCD_DISPLAY' [-Wimplicit-function-declaration]
+     LED_WRITE(LED_Status[VStop]);
+     ^
+.\main.c:127:13: warning: implicit declaration of function 'Write_config' [-Wimplicit-function-declaration]
+             Write_config();
+             ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/dcf.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\dcf.c -o .\CortexM3\ARM_GCC_493\Debug\dcf.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/emcy.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\emcy.c -o .\CortexM3\ARM_GCC_493\Debug\emcy.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/lifegrd.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\lifegrd.c -o .\CortexM3\ARM_GCC_493\Debug\lifegrd.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/lss.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\lss.c -o .\CortexM3\ARM_GCC_493\Debug\lss.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/nmtMaster.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\nmtMaster.c -o .\CortexM3\ARM_GCC_493\Debug\nmtMaster.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/nmtSlave.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\nmtSlave.c -o .\CortexM3\ARM_GCC_493\Debug\nmtSlave.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/objacces.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\objacces.c -o .\CortexM3\ARM_GCC_493\Debug\objacces.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/pdo.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\pdo.c -o .\CortexM3\ARM_GCC_493\Debug\pdo.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/sdo.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\sdo.c -o .\CortexM3\ARM_GCC_493\Debug\sdo.o
+.\sdo.c: In function 'proceedSDO':
+.\sdo.c:813:36: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+         if ((whoami == SDO_SERVER) && (d->transfers[line].state == SDO_BLOCK_DOWNLOAD_IN_PROGRESS) ||(whoami == SDO_CLIENT) && (d->transfers[line].state == SDO_BLOCK_UPLOAD_IN_PROGRESS))
+                                    ^
+.\sdo.c:1524:33: warning: 'subIndex' may be used uninitialized in this function [-Wmaybe-uninitialized]
+                                 failedSDO(d, CliServNbr, whoami, index, subIndex, SDOABT_GENERAL_ERROR);
+                                 ^
+.\sdo.c:1524:33: warning: 'index' may be used uninitialized in this function [-Wmaybe-uninitialized]
+.\sdo.c:1686:25: warning: 'CliServNbr' may be used uninitialized in this function [-Wmaybe-uninitialized]
+                         sendSDO(d, whoami, CliServNbr, data);
+                         ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/states.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\states.c -o .\CortexM3\ARM_GCC_493\Debug\states.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/sync.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\sync.c -o .\CortexM3\ARM_GCC_493\Debug\sync.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TestSlave.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\TestSlave.c -o .\CortexM3\ARM_GCC_493\Debug\TestSlave.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/timer.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\timer.c -o .\CortexM3\ARM_GCC_493\Debug\timer.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/canfestival.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\canfestival.c -o .\CortexM3\ARM_GCC_493\Debug\canfestival.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/led.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\led.c -o .\CortexM3\ARM_GCC_493\Debug\led.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Valve_Control.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Valve_Control.c -o .\CortexM3\ARM_GCC_493\Debug\Valve_Control.o
+.\Valve_Control.c:53:8: warning: type defaults to 'int' in declaration of 'lastValue' [-Wimplicit-int]
+ static lastValue = 0xFF;
+        ^
+.\Valve_Control.c:54:8: warning: type defaults to 'int' in declaration of 'lastMode' [-Wimplicit-int]
+ static lastMode  = 0xFF;
+        ^
+.\Valve_Control.c: In function 'EEPROM_Array_Read':
+.\Valve_Control.c:415:9: warning: unused variable 'RegPointer' [-Wunused-variable]
+  reg8 * RegPointer;
+         ^
+.\Valve_Control.c: In function 'Valve_config':
+.\Valve_Control.c:527:44: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+                         EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
+                                            ^
+.\Valve_Control.c:426:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
+.\Valve_Control.c:527:56: warning: passing argument 2 of 'EEPROM_Array_Write' discards 'volatile' qualifier from pointer target type
+                         EEPROM_Array_Write(eepromArray,CutReg.Action,6);  //淇濆瓨閰嶇疆
+                                                        ^
+.\Valve_Control.c:426:6: note: expected 'uint8 *' but argument is of type 'volatile uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
+.\Valve_Control.c:497:13: warning: unused variable 'key_com' [-Wunused-variable]
+     uint8   key_com = 0x03; 
+             ^
+.\Valve_Control.c: In function 'Read_config':
+.\Valve_Control.c:713:27: warning: passing argument 1 of 'EEPROM_Array_Read' discards 'const' qualifier from pointer target type
+         EEPROM_Array_Read(eepromArray,tempBuf,sizeof(tempBuf));//璇婚榾缁勯厤缃?
+                           ^
+.\Valve_Control.c:413:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Read(uint8 *eepromPtr,uint8 *buf,uint16 len)
+      ^
+.\Valve_Control.c: In function 'Write_config':
+.\Valve_Control.c:730:28: warning: passing argument 1 of 'EEPROM_Array_Write' discards 'const' qualifier from pointer target type
+         EEPROM_Array_Write(eepromArray,tempBuf,sizeof(tempBuf));
+                            ^
+.\Valve_Control.c:426:6: note: expected 'uint8 *' but argument is of type 'const uint8 *'
+ void EEPROM_Array_Write(uint8 *eepromPtr,uint8 *buf,uint16 len) //娌℃湁鍋氳秺鐣屽鐞嗭紝瓒呰繃16涓瓧鑺傝鍒嗗紑澶勭悊
+      ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CanopenDictConfig.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\CanopenDictConfig.c -o .\CortexM3\ARM_GCC_493\Debug\CanopenDictConfig.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TLC5616.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\TLC5616.c -o .\CortexM3\ARM_GCC_493\Debug\TLC5616.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/cyfitter_cfg.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/cymetadata.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/RX_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\RX_1.c -o .\CortexM3\ARM_GCC_493\Debug\RX_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TX_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\TX_1.c -o .\CortexM3\ARM_GCC_493\Debug\TX_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CAN_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CAN_1.c -o .\CortexM3\ARM_GCC_493\Debug\CAN_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CAN_1_INT.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CAN_1_INT.c -o .\CortexM3\ARM_GCC_493\Debug\CAN_1_INT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CAN_1_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CAN_1_PM.c -o .\CortexM3\ARM_GCC_493\Debug\CAN_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CAN_1_TX_RX_func.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CAN_1_TX_RX_func.c -o .\CortexM3\ARM_GCC_493\Debug\CAN_1_TX_RX_func.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Cm3Start.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Cm3Start.c -o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\CortexM3\ARM_GCC_493\Debug/CyBootAsmGnu.lst -g -W -o .\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o .\Generated_Source\PSoC5\CyBootAsmGnu.s
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CyDmac.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CyDmac.c -o .\CortexM3\ARM_GCC_493\Debug\CyDmac.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CyFlash.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CyFlash.c -o .\CortexM3\ARM_GCC_493\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CyLib.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CyLib.c -o .\CortexM3\ARM_GCC_493\Debug\CyLib.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/cyPm.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\cyPm.c -o .\CortexM3\ARM_GCC_493\Debug\cyPm.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CySpc.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\CySpc.c -o .\CortexM3\ARM_GCC_493\Debug\CySpc.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/cyutils.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\cyutils.c -o .\CortexM3\ARM_GCC_493\Debug\cyutils.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Timer_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Timer_1.c -o .\CortexM3\ARM_GCC_493\Debug\Timer_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Timer_1_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Timer_1_PM.c -o .\CortexM3\ARM_GCC_493\Debug\Timer_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LED1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LED1.c -o .\CortexM3\ARM_GCC_493\Debug\LED1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/ISR_Stroke_Timer.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\ISR_Stroke_Timer.c -o .\CortexM3\ARM_GCC_493\Debug\ISR_Stroke_Timer.o
+.\Generated_Source\PSoC5\ISR_Stroke_Timer.c: In function 'ISR_Stroke_Timer_Interrupt':
+.\Generated_Source\PSoC5\ISR_Stroke_Timer.c:186:9: warning: implicit declaration of function 'timer_10ms' [-Wimplicit-function-declaration]
+         timer_10ms();
+         ^
+.\Generated_Source\PSoC5\ISR_Stroke_Timer.c: At top level:
+.\Generated_Source\PSoC5\ISR_Stroke_Timer.c:34:22: warning: 'count' defined but not used [-Wunused-variable]
+ static unsigned char count;
+                      ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Control_Reg_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Control_Reg_1.c -o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Control_Reg_1_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Control_Reg_1_PM.c -o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LED4.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LED4.c -o .\CortexM3\ARM_GCC_493\Debug\LED4.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA1.c -o .\CortexM3\ARM_GCC_493\Debug\KA1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA2.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA2.c -o .\CortexM3\ARM_GCC_493\Debug\KA2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA3.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA3.c -o .\CortexM3\ARM_GCC_493\Debug\KA3.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA4.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA4.c -o .\CortexM3\ARM_GCC_493\Debug\KA4.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA5.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA5.c -o .\CortexM3\ARM_GCC_493\Debug\KA5.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA6.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA6.c -o .\CortexM3\ARM_GCC_493\Debug\KA6.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/KA7.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\KA7.c -o .\CortexM3\ARM_GCC_493\Debug\KA7.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Status_Reg_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Status_Reg_1.c -o .\CortexM3\ARM_GCC_493\Debug\Status_Reg_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_1.c -o .\CortexM3\ARM_GCC_493\Debug\IN_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_2.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_2.c -o .\CortexM3\ARM_GCC_493\Debug\IN_2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_3.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_3.c -o .\CortexM3\ARM_GCC_493\Debug\IN_3.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_4.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_4.c -o .\CortexM3\ARM_GCC_493\Debug\IN_4.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_5.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_5.c -o .\CortexM3\ARM_GCC_493\Debug\IN_5.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_6.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_6.c -o .\CortexM3\ARM_GCC_493\Debug\IN_6.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/IN_7.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\IN_7.c -o .\CortexM3\ARM_GCC_493\Debug\IN_7.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Clock_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Clock_1.c -o .\CortexM3\ARM_GCC_493\Debug\Clock_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LED2.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LED2.c -o .\CortexM3\ARM_GCC_493\Debug\LED2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LED3.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LED3.c -o .\CortexM3\ARM_GCC_493\Debug\LED3.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/EEPROM_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\EEPROM_1.c -o .\CortexM3\ARM_GCC_493\Debug\EEPROM_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UART_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\UART_1.c -o .\CortexM3\ARM_GCC_493\Debug\UART_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UART_1_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\UART_1_PM.c -o .\CortexM3\ARM_GCC_493\Debug\UART_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UART_1_INT.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\UART_1_INT.c -o .\CortexM3\ARM_GCC_493\Debug\UART_1_INT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UART_1_BOOT.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\UART_1_BOOT.c -o .\CortexM3\ARM_GCC_493\Debug\UART_1_BOOT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/RX_ISR.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\RX_ISR.c -o .\CortexM3\ARM_GCC_493\Debug\RX_ISR.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UART_1_IntClock.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\UART_1_IntClock.c -o .\CortexM3\ARM_GCC_493\Debug\UART_1_IntClock.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Clock_2.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Clock_2.c -o .\CortexM3\ARM_GCC_493\Debug\Clock_2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TLC5616_CLK.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\TLC5616_CLK.c -o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CLK.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TLC5616_DAT.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\TLC5616_DAT.c -o .\CortexM3\ARM_GCC_493\Debug\TLC5616_DAT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TLC5616_CS1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\TLC5616_CS1.c -o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CS1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/TLC5616_CS2.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\TLC5616_CS2.c -o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CS2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LCD_Char_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LCD_Char_1.c -o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LCD_Char_1_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LCD_Char_1_PM.c -o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LCD_Char_1_CustChars.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LCD_Char_1_CustChars.c -o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_CustChars.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/LCD_Char_1_LCDPort.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\LCD_Char_1_LCDPort.c -o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_LCDPort.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/cybootloader.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\cybootloader.c -o .\CortexM3\ARM_GCC_493\Debug\cybootloader.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Bootloadable_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\Bootloadable_1.c -o .\CortexM3\ARM_GCC_493\Debug\Bootloadable_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/test.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC5\test.c -o .\CortexM3\ARM_GCC_493\Debug\test.o
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.a .\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_493\Debug\RX_1.o .\CortexM3\ARM_GCC_493\Debug\TX_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_INT.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_PM.o .\CortexM3\ARM_GCC_493\Debug\CAN_1_TX_RX_func.o .\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_493\Debug\CyDmac.o .\CortexM3\ARM_GCC_493\Debug\CyFlash.o .\CortexM3\ARM_GCC_493\Debug\CyLib.o .\CortexM3\ARM_GCC_493\Debug\cyPm.o .\CortexM3\ARM_GCC_493\Debug\CySpc.o .\CortexM3\ARM_GCC_493\Debug\cyutils.o .\CortexM3\ARM_GCC_493\Debug\Timer_1.o .\CortexM3\ARM_GCC_493\Debug\Timer_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED1.o .\CortexM3\ARM_GCC_493\Debug\ISR_Stroke_Timer.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\Control_Reg_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LED4.o .\CortexM3\ARM_GCC_493\Debug\KA1.o .\CortexM3\ARM_GCC_493\Debug\KA2.o .\CortexM3\ARM_GCC_493\Debug\KA3.o .\CortexM3\ARM_GCC_493\Debug\KA4.o .\CortexM3\ARM_GCC_493\Debug\KA5.o .\CortexM3\ARM_GCC_493\Debug\KA6.o .\CortexM3\ARM_GCC_493\Debug\KA7.o .\CortexM3\ARM_GCC_493\Debug\Status_Reg_1.o .\CortexM3\ARM_GCC_493\Debug\IN_1.o .\CortexM3\ARM_GCC_493\Debug\IN_2.o .\CortexM3\ARM_GCC_493\Debug\IN_3.o .\CortexM3\ARM_GCC_493\Debug\IN_4.o .\CortexM3\ARM_GCC_493\Debug\IN_5.o .\CortexM3\ARM_GCC_493\Debug\IN_6.o .\CortexM3\ARM_GCC_493\Debug\IN_7.o .\CortexM3\ARM_GCC_493\Debug\Clock_1.o .\CortexM3\ARM_GCC_493\Debug\LED2.o .\CortexM3\ARM_GCC_493\Debug\LED3.o .\CortexM3\ARM_GCC_493\Debug\EEPROM_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1.o .\CortexM3\ARM_GCC_493\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_493\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_493\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_493\Debug\RX_ISR.o .\CortexM3\ARM_GCC_493\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_493\Debug\Clock_2.o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CLK.o .\CortexM3\ARM_GCC_493\Debug\TLC5616_DAT.o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CS1.o .\CortexM3\ARM_GCC_493\Debug\TLC5616_CS2.o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1.o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_PM.o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_CustChars.o .\CortexM3\ARM_GCC_493\Debug\LCD_Char_1_LCDPort.o .\CortexM3\ARM_GCC_493\Debug\Bootloadable_1.o .\CortexM3\ARM_GCC_493\Debug\test.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.elf .\CortexM3\ARM_GCC_493\Debug\main.o .\CortexM3\ARM_GCC_493\Debug\dcf.o .\CortexM3\ARM_GCC_493\Debug\emcy.o .\CortexM3\ARM_GCC_493\Debug\lifegrd.o .\CortexM3\ARM_GCC_493\Debug\lss.o .\CortexM3\ARM_GCC_493\Debug\nmtMaster.o .\CortexM3\ARM_GCC_493\Debug\nmtSlave.o .\CortexM3\ARM_GCC_493\Debug\objacces.o .\CortexM3\ARM_GCC_493\Debug\pdo.o .\CortexM3\ARM_GCC_493\Debug\sdo.o .\CortexM3\ARM_GCC_493\Debug\states.o .\CortexM3\ARM_GCC_493\Debug\sync.o .\CortexM3\ARM_GCC_493\Debug\TestSlave.o .\CortexM3\ARM_GCC_493\Debug\timer.o .\CortexM3\ARM_GCC_493\Debug\canfestival.o .\CortexM3\ARM_GCC_493\Debug\led.o .\CortexM3\ARM_GCC_493\Debug\Valve_Control.o .\CortexM3\ARM_GCC_493\Debug\CanopenDictConfig.o .\CortexM3\ARM_GCC_493\Debug\TLC5616.o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o .\CortexM3\ARM_GCC_493\Debug\cybootloader.o .\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_493\Debug/MOTION-T1-Ver1.03.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -B C:\Users\li\Desktop\MOTION-T1\posoc\MOTION-T1-Ver1.03.cydsn\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.elf --flash_row_size 256 --flash_size 262144 --flash_array_size 65536 --ee_array 64 --ee_row_size 16
+cyelftool.exe -S C:\Users\li\Desktop\MOTION-T1\posoc\MOTION-T1-Ver1.03.cydsn\CortexM3\ARM_GCC_493\Debug\MOTION-T1-Ver1.03.elf
+Flash used: 37888 of 262144 bytes (14.5%). Bootloader: 11264 bytes. Application: 26368 bytes. Metadata: 256 bytes.
+SRAM used: 5165 of 65536 bytes (7.9%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 01/18/2017 16:19:11 ---------------

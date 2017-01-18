@@ -1,4 +1,4 @@
-D:\GIT\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\TopDesign\TopDesign.cysch
+C:\Users\li\Desktop\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\TopDesign\TopDesign.cysch
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bootloader_v1_30\Bootloader_v1_30.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bootloader_v1_30\Bootloader_v1_30.cystate
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bootloader_v1_30\Bootloader_v1_30.pdf
@@ -372,7 +372,7 @@ C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprim
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\Custom\custom.cs
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC5\API\intc.c
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC5\API\intc.h
-D:\GIT\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\MOTION-T1-2016-09-18-ver1.0.cydwr
+C:\Users\li\Desktop\MOTION-T1\Bootload\A66_canfestival_bootload\Workspace01\MOTION-T1-2016-09-18-ver1.0.cydsn\MOTION-T1-2016-09-18-ver1.0.cydwr
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v5_20\PSoC5\API\cm3gcc.ld
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v5_20\PSoC5\API\Cm3RealView.scat
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v5_20\PSoC5\API\Cm3Start.c

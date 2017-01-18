@@ -1,5 +1,5 @@
 -- Project:   MOTION-T1-2016-09-18-ver1.0
--- Generated: 11/07/2016 13:22:47
+-- Generated: 01/18/2017 16:19:58
 -- PSoC Creator  3.3
 
 ENTITY \MOTION-T1-2016-09-18-ver1.0\ IS
@@ -13,8 +13,8 @@ ENTITY \MOTION-T1-2016-09-18-ver1.0\ IS
         \LCD_Char_1:LCDPort(6)_PAD\ : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO0 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO1 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO2 OF __DEFAULT__ : ENTITY IS 5e0;

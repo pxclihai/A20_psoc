@@ -1,5 +1,0 @@
-C:\Users\pxc\Desktop\MOTION-T1\posoc\MOTION-T1-Ver1.0-2016-09-18.cydsn\MOTION-T1-Ver1.0-2016-09-18.cyprj|9cfc0793-c519-459e-8a43-7daab23d812a
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2fe02699-8b28-429a-a144-2c17cdcd1474
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4ae96a84-3b64-48f8-adc3-a9894ae3753f
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2b1dcb5e-0eee-4132-8d0c-a78e44e87225
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e965c570-ef53-42a2-917a-8626cd8337e6
