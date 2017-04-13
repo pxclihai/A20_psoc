@@ -1,0 +1,5 @@
+D:\Program Files (x86)\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|cc8e3545-ac36-4672-ac94-c9a421eb904f
+D:\Program Files (x86)\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1ff1ae99-6ffe-4f4b-bc18-f3d079de6930
+D:\Program Files (x86)\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|87d8e4be-8d36-481b-a573-50892a67a0f7
+D:\Program Files (x86)\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6e0929ef-eed6-4412-b348-7fc6ebf00f98
+D:\NC\MOTION-T1\posoc\MOTION-T1-Ver1.04.cydsn\MOTION-T1-Ver1.04.cyprj|4b8c4170-2d98-4922-af86-23e9c9626037
